@@ -12,7 +12,7 @@
   --radius-xl:28px;
   --radius-lg:20px;
   --radius-md:16px;
-  --max:1200px;
+  --max:1280px;
   --space-1:8px;
   --space-2:12px;
   --space-3:16px;
@@ -31,7 +31,8 @@ button,input,select,textarea{font:inherit}
 button{cursor:pointer}
 .skip-link{position:absolute;left:16px;top:-48px;z-index:9999;background:var(--navy);color:#fff;padding:12px 16px;border-radius:999px;transition:top .2s ease;}
 .skip-link:focus{top:16px}
-.container{width:min(var(--max), calc(100% - 32px));margin-inline:auto;}
+.container{width:min(var(--max), 100%);margin-inline:auto;}
+.page-shell{max-width:1280px;margin-inline:auto;padding-inline:24px}
 .glass{background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.55);backdrop-filter:blur(18px);box-shadow:var(--shadow-soft);}
 .section{padding:88px 0;content-visibility:auto;contain-intrinsic-size:1px 900px;}
 .section-title{margin:0;font-size:clamp(2rem, 4vw, 3.4rem);line-height:1.05;letter-spacing:-.03em;color:var(--navy);}
@@ -172,5 +173,6 @@ button{cursor:pointer}
 @keyframes arrow-bounce{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
 .hidden{display:none !important}
 @media (min-width:640px){.stats{grid-template-columns:repeat(4,1fr)}.service-grid{grid-template-columns:repeat(2,1fr)}.testimonial-grid{grid-template-columns:repeat(2,1fr)}.destinations{grid-template-columns:repeat(2,1fr)}.process{grid-template-columns:repeat(2,1fr)}.contact-grid{grid-template-columns:repeat(3,1fr)}.modal-grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:900px){.page-shell{padding-inline:40px}}
 @media (min-width:900px){.nav-links{display:flex}.menu-toggle{display:none}.section-heading{grid-template-columns:1fr auto;align-items:end;}.about-grid{grid-template-columns:1.1fr .9fr;align-items:center;}.destinations{grid-template-columns:repeat(4,1fr)}.destination.span-2{grid-row:span 2}.testimonial-grid{grid-template-columns:repeat(3,1fr)}.footer-grid{grid-template-columns:1fr 1fr 1fr;}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none !important;transition:none !important;}}
