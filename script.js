@@ -230,7 +230,7 @@ function bindEvents() {
   document.getElementById("moreCountriesOpen").addEventListener("click", () => openModal(moreCountriesModal));
   document.querySelectorAll(".mobile-link").forEach((link) => link.addEventListener("click", closeMenu));
   document.querySelectorAll("[data-close]").forEach((btn) => btn.addEventListener("click", () => closeModal(document.getElementById(btn.dataset.close))));
-  document.getElementById("termsOpen").addEventListener("click", () => openLegal("Terms of Service", "By using Broad Mobility services, you agree to provide accurate information, comply with destination-country regulations, and accept that visa outcomes depend on embassy decisions and document quality. Guidance is advisory and professional in nature."));
+  document.getElementById("termsOpen").addEventListener("click", () => openLegal("Terms of Service", "By using Broad Mobility services, you agree to provide accurate information, comply with destination-country regulations, and accept that visa outcomes depend on embassy decisions and document quality. Group discounts apply for up to 3 people; above 3 requires a contact request and review. Special discount links are issued after review. Pricing, access level, and support level vary by plan."));
   document.getElementById("privacyOpen").addEventListener("click", () => openLegal("Privacy Policy", "Broad Mobility uses personal information only for consultation, application preparation, and communication. Reasonable safeguards are used, and personal data is not sold. Contact the team for access or correction requests."));
   document.getElementById("appLevel").addEventListener("change", (e) => {
     const v = e.target.value;
@@ -265,6 +265,24 @@ function bindEvents() {
     if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
   });
   document.getElementById("searchClear").addEventListener("click", () => { searchInput.value = ""; renderSearchResults(""); searchInput.focus(); });
+
+  const tabPersonal = document.getElementById("tabPersonal");
+  const tabGroup = document.getElementById("tabGroup");
+  const panelPersonal = document.getElementById("panelPersonal");
+  const panelGroup = document.getElementById("panelGroup");
+  if (tabPersonal && tabGroup && panelPersonal && panelGroup) {
+    const activateTab = (key) => {
+      const personal = key === "personal";
+      tabPersonal.classList.toggle("active", personal);
+      tabGroup.classList.toggle("active", !personal);
+      tabPersonal.setAttribute("aria-selected", personal ? "true" : "false");
+      tabGroup.setAttribute("aria-selected", personal ? "false" : "true");
+      panelPersonal.classList.toggle("hidden", !personal);
+      panelGroup.classList.toggle("hidden", personal);
+    };
+    tabPersonal.addEventListener("click", () => activateTab("personal"));
+    tabGroup.addEventListener("click", () => activateTab("group"));
+  }
 }
 
 function syncMenuScroll() { setHeaderState(); setActiveNav(); }
