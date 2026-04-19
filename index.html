@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#001f3f">
+  <title>Broad Mobility | Premium Visa and Travel Consultancy</title>
+  <meta name="description" content="Broad Mobility is an Addis Ababa-based premium visa consultancy for student, tourist, and work visas worldwide.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container glass nav-shell">
+      <a class="site-logo" href="#home" aria-label="Broad Mobility home">
+        <img src="/images/logo.webp" width="148" height="42" alt="Broad Mobility logo" fetchpriority="high">
+      </a>
+
+      <nav aria-label="Primary">
+        <ul class="nav-links" id="desktopNav">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about-us">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#destinations">Destinations</a></li>
+          <li><a href="#impact">Success Stories</a></li>
+          <li><a href="#how-it-works">Process</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn" id="searchOpen" type="button" aria-label="Open search">⌕</button>
+        <button class="btn btn-primary" id="consultOpenTop" type="button">Book Consultation</button>
+        <button class="icon-btn menu-toggle" id="menuOpen" type="button" aria-controls="mobilePanel" aria-expanded="false" aria-label="Open menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <aside class="mobile-panel" id="mobilePanel" aria-hidden="true">
+    <div class="mobile-top">
+      <a class="site-logo" href="#home" aria-label="Broad Mobility home">
+        <img src="/images/logo.webp" width="148" height="42" alt="Broad Mobility logo">
+      </a>
+      <button class="icon-btn" id="menuClose" type="button" aria-label="Close menu">×</button>
+    </div>
+    <nav aria-label="Mobile">
+      <ul class="mobile-menu">
+        <li><a href="#home" class="mobile-link">Home</a></li>
+        <li><a href="#about-us" class="mobile-link">About Us</a></li>
+        <li><a href="#services" class="mobile-link">Services</a></li>
+        <li><a href="#destinations" class="mobile-link">Destinations</a></li>
+        <li><a href="#impact" class="mobile-link">Success Stories</a></li>
+        <li><a href="#how-it-works" class="mobile-link">Process</a></li>
+        <li><a href="#testimonials" class="mobile-link">Testimonials</a></li>
+        <li><a href="#contact" class="mobile-link">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-footer">
+      <button class="btn btn-primary" id="consultOpenMobile" type="button">Book Consultation</button>
+      <button class="btn btn-light" id="searchOpenMobile" type="button">Search site</button>
+    </div>
+  </aside>
+
+  <main id="main">
+    <section class="hero" id="home">
+      <div class="floating-dot" style="width:84px;height:84px;left:8%;top:22%;background:rgba(0,166,81,.65)"></div>
+      <div class="floating-dot" style="width:56px;height:56px;left:84%;top:26%;background:rgba(242,201,76,.70);animation-delay:1s"></div>
+      <div class="floating-dot" style="width:112px;height:112px;left:68%;top:72%;background:rgba(0,31,63,.28);animation-delay:2s"></div>
+
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <span class="eyebrow">Join 1,000+ travelers worldwide</span>
+          <h1 class="reveal in" style="transition-delay:.05s">Study, travel, work <span style="color:#00A651">worldwide</span>.</h1>
+          <p class="reveal in" style="transition-delay:.12s">From your location to your dream destination, with clear guidance shaped for international standards.</p>
+
+          <div class="hero-actions reveal in" style="transition-delay:.18s">
+            <button class="btn btn-primary" id="consultOpenHero" type="button">Book Consultation</button>
+            <button class="btn btn-secondary" id="exploreDestinations" type="button">Explore Destinations</button>
+          </div>
+
+          <div class="marquee reveal in" style="transition-delay:.24s">
+            <div class="marquee-track" aria-label="Service highlights">
+              <div class="marquee-item"><img src="https://cdn-icons-png.flaticon.com/512/4436/4436481.png" alt="" loading="lazy" decoding="async"><span>100% online</span></div>
+              <div class="marquee-item"><img src="https://cdn-icons-png.flaticon.com/512/2857/2857398.png" alt="" loading="lazy" decoding="async"><span>Clear pricing</span></div>
+              <div class="marquee-item"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="" loading="lazy" decoding="async"><span>Fast response</span></div>
+              <div class="marquee-item"><img src="https://cdn-icons-png.flaticon.com/512/943/943941.png" alt="" loading="lazy" decoding="async"><span>Visa support</span></div>
+              <div class="marquee-item"><img src="https://cdn-icons-png.flaticon.com/512/4436/4436481.png" alt="" loading="lazy" decoding="async"><span>100% online</span></div>
+              <div class="marquee-item"><img src="https://cdn-icons-png.flaticon.com/512/2857/2857398.png" alt="" loading="lazy" decoding="async"><span>Clear pricing</span></div>
+              <div class="marquee-item"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="" loading="lazy" decoding="async"><span>Fast response</span></div>
+              <div class="marquee-item"><img src="https://cdn-icons-png.flaticon.com/512/943/943941.png" alt="" loading="lazy" decoding="async"><span>Visa support</span></div>
+            </div>
+          </div>
+
+          <div class="stats reveal in" style="transition-delay:.30s">
+            <article class="card stat">
+              <strong data-count="51">0</strong>
+              <span>Visas secured</span>
+            </article>
+            <article class="card stat">
+              <strong>Global</strong>
+              <span>Reach</span>
+            </article>
+            <article class="card stat">
+              <strong>Proven</strong>
+              <span>Track record</span>
+            </article>
+            <article class="card stat">
+              <strong>95%+</strong>
+              <span>Success rate</span>
+            </article>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section" id="about-us">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="muted-pill">About Broad Mobility</span>
+            <h2 class="section-title reveal" style="margin-top:40px">Built on trust, service, and opportunity.</h2>
+          </div>
+        </div>
+
+        <div class="about-grid">
+          <div class="reveal">
+            <p class="section-subtitle" style="max-width:64ch">
+              "As global mobility grows, the journey to study, work, or travel abroad can feel complex and uncertain.
+              I built Broad Mobility to provide clear guidance and reliable support, so no one has to face the process alone.
+              Going abroad should be simple, transparent, and achievable. We work with trusted partners to bring real opportunities within your reach."
+            </p>
+            <p class="section-subtitle" style="font-weight:700;color:var(--accent);margin-top:32px">Gediyon Adamu, Founder and CEO</p>
+            <div style="height:4px;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--gold),#ff8a00);margin-top:24px"></div>
+            <p class="muted" style="margin-top:16px">Milestone growth from first success to worldwide destination coverage.</p>
+          </div>
+
+          <div class="portrait-wrap reveal">
+            <a class="portrait" href="https://www.linkedin.com/in/gediyon-adamu-yeshitila-080b90338" target="_blank" rel="noopener noreferrer">
+              <img src="https://i.imgur.com/bbiOPcf.jpeg" width="900" height="1125" alt="Portrait of Gediyon Adamu" loading="lazy" decoding="async">
+            </a>
+            <button class="btn btn-primary" type="button" id="consultOpenAbout">Start your application</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services" style="background:#fff">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="muted-pill">Professional services</span>
+            <h2 class="section-title reveal"><span class="accent">Premium</span> consultancy services</h2>
+          </div>
+          <p class="section-subtitle" style="max-width:62ch">Structured support for student, tourist, and work visa paths, with document help and interview readiness.</p>
+        </div>
+
+        <div class="service-grid">
+          <article class="card service reveal">
+            <h3>Student Visa Consultancy</h3>
+            <p>Priority support for academic pathways, embassy readiness, and country selection.</p>
+          </article>
+          <article class="card service reveal">
+            <h3>Tourist Visa Consultancy</h3>
+            <p>Clear planning for compliant and efficient travel visa processing.</p>
+          </article>
+          <article class="card service reveal">
+            <h3>Document Preparation and Interview Coaching</h3>
+            <p>Document quality checks with scenario-based interview practice sessions.</p>
+          </article>
+          <article class="card service reveal">
+            <h3>Work Visa Consultancy</h3>
+            <p>Guidance for skilled worker visas, job offer support, and long-term employment pathways.</p>
+          </article>
+        </div>
+        <article class="card more-services reveal" style="margin-top:22px">
+          <p><span class="more-arrow">➔</span> We also provide full travel planning, relocation support, scholarship hunting, and family visa packages. Contact us for personalized solutions.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="destinations">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="muted-pill">Top destinations</span>
+            <h2 class="section-title reveal">Your gateway to the world.</h2>
+          </div>
+          <p class="section-subtitle">We support visa paths for many countries, with focused expertise in the destinations below.</p>
+        </div>
+
+        <div class="destinations" id="destinationGrid" aria-live="polite"></div>
+        <button class="center section-subtitle more-countries-link" id="moreCountriesOpen" type="button" style="margin-top:24px">100+ additional countries worldwide</button>
+      </div>
+    </section>
+
+    <section class="section" id="impact" style="background:#fff">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="muted-pill">Success stories</span>
+            <h2 class="section-title reveal">Our impact and success stories</h2>
+          </div>
+          <p class="section-subtitle center" style="text-align:right">Past achievement: <strong class="accent" id="impactCount">0</strong> visas secured</p>
+        </div>
+
+        <div class="impact-carousel reveal" id="impactCarousel">
+          <article class="card service impact-slide active">
+            <h3>Strategic support</h3>
+            <p>“The process was strategic, professional, and perfectly organized.”</p>
+            <p class="muted" style="margin-top:10px;font-weight:700">Liya M. • Italy</p>
+          </article>
+          <article class="card service impact-slide">
+            <h3>Interview coaching</h3>
+            <p>“Excellent consultancy standards and outstanding interview coaching.”</p>
+            <p class="muted" style="margin-top:10px;font-weight:700">Abel T. • Germany</p>
+          </article>
+          <article class="card service impact-slide">
+            <h3>Application support</h3>
+            <p>“I felt supported from planning through final visa approval.”</p>
+            <p class="muted" style="margin-top:10px;font-weight:700">Sara K. • UK</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how-it-works" style="background:var(--navy);color:#fff">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="muted-pill" style="background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.08)">Process</span>
+            <h2 class="section-title reveal" style="color:#fff">How we secure your visa.</h2>
+          </div>
+          <p class="section-subtitle" style="color:rgba(255,255,255,.75)">A clear path from first talk to final decision.</p>
+        </div>
+
+        <div class="process">
+          <article class="card step reveal" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08);color:#fff">
+            <div class="step-number">01</div>
+            <h3>Initial Consultation</h3>
+            <p class="muted" style="color:rgba(255,255,255,.72)">Define goals and destination fit.</p>
+          </article>
+          <article class="card step reveal" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08);color:#fff">
+            <div class="step-number">02</div>
+            <h3>Strategy and Planning</h3>
+            <p class="muted" style="color:rgba(255,255,255,.72)">Create your full visa roadmap.</p>
+          </article>
+          <article class="card step reveal" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08);color:#fff">
+            <div class="step-number">03</div>
+            <h3>Document Prep</h3>
+            <p class="muted" style="color:rgba(255,255,255,.72)">Build a complete, accurate file.</p>
+          </article>
+          <article class="card step reveal" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08);color:#fff">
+            <div class="step-number">04</div>
+            <h3>Submission</h3>
+            <p class="muted" style="color:rgba(255,255,255,.72)">Submit with precision and timing.</p>
+          </article>
+          <article class="card step reveal" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08);color:#fff">
+            <div class="step-number">05</div>
+            <h3>Interview Coaching</h3>
+            <p class="muted" style="color:rgba(255,255,255,.72)">Train with realistic scenarios.</p>
+          </article>
+          <article class="card step reveal" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08);color:#fff">
+            <div class="step-number">06</div>
+            <h3>Visa Approval</h3>
+            <p class="muted" style="color:rgba(255,255,255,.72)">Final guidance for departure.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="testimonials">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="muted-pill">Testimonials</span>
+            <h2 class="section-title reveal"><span class="accent">Testimonials</span></h2>
+          </div>
+          <p class="section-subtitle">Real stories from clients who used the service.</p>
+        </div>
+
+        <div style="overflow:hidden">
+          <div class="testimonial-row" id="testimonialRowA"></div>
+        </div>
+        <div style="overflow:hidden;margin-top:16px">
+          <div class="testimonial-row reverse" id="testimonialRowB"></div>
+        </div>
+
+        <div class="container" style="padding:0;margin-top:44px">
+          <div class="guarantee reveal">
+            <div style="width:66px;height:66px;border-radius:999px;margin:0 auto 18px;background:linear-gradient(45deg,#ff8a00,#ff5c00);display:grid;place-items:center;box-shadow:0 10px 24px rgba(249,115,22,.22)">
+              <svg viewBox="0 0 24 24" fill="none" width="28" height="28" aria-hidden="true">
+                <path d="M5 13L9 17L19 7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 style="margin:0;font-size:1.8rem;color:#1a2a3a">Broad Mobility Guarantee</h3>
+            <button class="btn btn-primary" id="confidenceOpen" type="button" style="margin-top:20px">Continue with confidence</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq" style="background:#fff">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="muted-pill">FAQ</span>
+            <h2 class="section-title reveal">Frequently asked questions</h2>
+          </div>
+          <p class="section-subtitle">Fast answers for common visa and service questions.</p>
+        </div>
+
+        <div class="faq-grid" id="faqList">
+          <div class="faq-item reveal">
+            <button class="faq-question" type="button" aria-expanded="false">Do you handle student, tourist, and work visas worldwide? <span>+</span></button>
+            <div class="faq-answer"><p>Yes. The consultancy supports global visa pathways across major destinations and emerging opportunities.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-question" type="button" aria-expanded="false">Can you support document and interview preparation? <span>+</span></button>
+            <div class="faq-answer"><p>Yes. The service includes document checks, mock interviews, and embassy-ready communication coaching.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-question" type="button" aria-expanded="false">How long does the process usually take? <span>+</span></button>
+            <div class="faq-answer"><p>Timelines vary by country and intake window, but the path is planned step by step from consultation to submission.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-question" type="button" aria-expanded="false">Do you help with scholarship and funding strategy? <span>+</span></button>
+            <div class="faq-answer"><p>Yes. The service covers scholarship positioning, funding documents, and practical affordability planning.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-question" type="button" aria-expanded="false">Can Broad Mobility support repeat applications or refusals? <span>+</span></button>
+            <div class="faq-answer"><p>Yes. Previous files can be reviewed, gaps identified, and a stronger application plan built.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-question" type="button" aria-expanded="false">Where is Broad Mobility located? <span>+</span></button>
+            <div class="faq-answer"><p>Addis Ababa, Ethiopia.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="muted-pill">Contact</span>
+            <h2 class="section-title reveal">Connect with Broad Mobility</h2>
+          </div>
+          <p class="section-subtitle">Use the links below or open the consultation form.</p>
+        </div>
+
+        <div class="contact-grid">
+          <article class="card contact-card reveal">
+            <h3 style="margin:0;color:var(--navy)">Broad Mobility</h3>
+            <p class="muted" style="margin-top:10px">Addis Ababa, Ethiopia</p>
+            <button class="btn btn-primary" type="button" id="consultOpenFooter" style="margin-top:18px">Book consultation</button>
+          </article>
+
+          <article class="card contact-card reveal">
+            <h3 style="margin:0;color:var(--navy)">Navigation</h3>
+            <ul class="footer-links" style="margin-top:12px">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about-us">About Us</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#destinations">Destinations</a></li>
+              <li><a href="#impact">Success Stories</a></li>
+              <li><a href="#how-it-works">Process</a></li>
+              <li><a href="#testimonials">Testimonials</a></li>
+            </ul>
+          </article>
+
+          <article class="card contact-card reveal">
+            <h3 style="margin:0;color:var(--navy)">Connect</h3>
+            <div class="socials" aria-label="Social links">
+              <a href="mailto:scelta.infinity@gmail.com" aria-label="Email"><img src="https://pnglove.com/data/img/1231_aHzA.jpg" alt="Email" loading="lazy" decoding="async"></a>
+              <a href="https://www.instagram.com/broadmobility" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/250px-Instagram_logo_2022.svg.png" alt="Instagram" loading="lazy" decoding="async"></a>
+              <a href="https://www.facebook.com/broadmobility" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Facebook_logo_%28square%29.png" alt="Facebook" loading="lazy" decoding="async"></a>
+              <a href="https://t.me/scholartransfer" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/960px-Telegram_logo.svg.png" alt="Telegram" loading="lazy" decoding="async"></a>
+              <a href="https://www.linkedin.com/in/gediyon-adamu-yeshitila-080b90338" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><img src="https://sb.kaleidousercontent.com/67418/400x400/d2ee90c914/linkedin-logo.png" alt="LinkedIn" loading="lazy" decoding="async"></a>
+              <a href="https://x.com/gediyon_adamu" target="_blank" rel="noopener noreferrer" aria-label="X"><img src="https://freepnglogo.com/images/all_img/1725374683twitter-x-logo.png" alt="X" loading="lazy" decoding="async"></a>
+              <a href="https://www.fiverr.com/s/vv0AaAN" target="_blank" rel="noopener noreferrer" aria-label="Fiverr"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Fiverr_Logo_fiverr.png" alt="Fiverr" loading="lazy" decoding="async"></a>
+              <a href="https://www.upwork.com/freelancers/~0123a8909753318865?mp_source=share" target="_blank" rel="noopener noreferrer" aria-label="Upwork"><img src="https://cdn.worldvectorlogo.com/logos/upwork-roundedsquare-1.svg" alt="Upwork" loading="lazy" decoding="async"></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <img src="/images/logo.webp" alt="Broad Mobility logo" width="148" height="42" loading="lazy" decoding="async">
+        <p class="footer-note" style="margin-top:14px">Addis Ababa, Ethiopia</p>
+        <p class="footer-note" style="margin-top:14px;max-width:38ch">Trusted visa consultancy for students, tourists, workers, and professional travelers worldwide.</p>
+      </div>
+
+      <div>
+        <h4 style="margin:0 0 12px">Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about-us">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#destinations">Destinations</a></li>
+          <li><a href="#how-it-works">Process</a></li>
+          <li><a href="#impact">Success Stories</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="margin:0 0 12px">Connect</h4>
+        <div class="socials" aria-label="Social links">
+          <a href="mailto:scelta.infinity@gmail.com" aria-label="Email"><img src="https://pnglove.com/data/img/1231_aHzA.jpg" alt="Email" loading="lazy" decoding="async"></a>
+          <a href="https://www.instagram.com/broadmobility" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/250px-Instagram_logo_2022.svg.png" alt="Instagram" loading="lazy" decoding="async"></a>
+          <a href="https://www.facebook.com/broadmobility" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Facebook_logo_%28square%29.png" alt="Facebook" loading="lazy" decoding="async"></a>
+          <a href="https://t.me/scholartransfer" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/960px-Telegram_logo.svg.png" alt="Telegram" loading="lazy" decoding="async"></a>
+          <a href="https://www.linkedin.com/in/gediyon-adamu-yeshitila-080b90338" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><img src="https://sb.kaleidousercontent.com/67418/400x400/d2ee90c914/linkedin-logo.png" alt="LinkedIn" loading="lazy" decoding="async"></a>
+          <a href="https://x.com/gediyon_adamu" target="_blank" rel="noopener noreferrer" aria-label="X"><img src="https://freepnglogo.com/images/all_img/1725374683twitter-x-logo.png" alt="X" loading="lazy" decoding="async"></a>
+          <a href="https://www.fiverr.com/s/vv0AaAN" target="_blank" rel="noopener noreferrer" aria-label="Fiverr"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Fiverr_Logo_fiverr.png" alt="Fiverr" loading="lazy" decoding="async"></a>
+          <a href="https://www.upwork.com/freelancers/~0123a8909753318865?mp_source=share" target="_blank" rel="noopener noreferrer" aria-label="Upwork"><img src="https://cdn.worldvectorlogo.com/logos/upwork-roundedsquare-1.svg" alt="Upwork" loading="lazy" decoding="async"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>Copyright © 2026 Broad Mobility. All rights reserved.</p>
+      <p><button class="link-btn" id="termsOpen" type="button" style="background:none;border:0;padding:0;color:rgba(255,255,255,.82)">Terms of Service</button> | <button class="link-btn" id="privacyOpen" type="button" style="background:none;border:0;padding:0;color:rgba(255,255,255,.82)">Privacy Policy</button></p>
+    </div>
+    <div class="footer-gold-line"></div>
+  </footer>
+
+  <div class="modal modal-dark" id="consultModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="consultTitle">
+    <button class="modal-close" type="button" data-close="consultModal" aria-label="Close consultation form">×</button>
+    <div class="modal-shell">
+      <div class="modal-content">
+        <h3 id="consultTitle">Your journey to study abroad starts here</h3>
+        <p>Fill the form and one of the consultants can reach you soon.</p>
+
+        <form id="consultForm" style="margin-top:22px">
+          <div class="modal-grid">
+            <label>
+              Full Name *
+              <input required name="fullName" type="text" style="width:100%;margin-top:8px;padding:14px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:#12253c;color:#fff">
+            </label>
+            <label>
+              Email *
+              <input required name="email" type="email" style="width:100%;margin-top:8px;padding:14px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:#12253c;color:#fff">
+            </label>
+            <label>
+              Phone *
+              <input required name="phone" type="tel" style="width:100%;margin-top:8px;padding:14px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:#12253c;color:#fff">
+            </label>
+            <label>
+              Secondary Phone
+              <input name="secondaryPhone" type="tel" style="width:100%;margin-top:8px;padding:14px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:#12253c;color:#fff">
+            </label>
+          </div>
+
+          <div class="modal-grid" style="margin-top:16px">
+            <label>
+              Application Level *
+              <select required name="level" id="appLevel" style="width:100%;margin-top:8px;padding:14px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:#12253c;color:#fff">
+                <option value="">Select level</option>
+                <option>Bachelor</option>
+                <option>Masters</option>
+                <option>Others</option>
+              </select>
+            </label>
+            <label>
+              Application Area *
+              <input required name="field" type="text" style="width:100%;margin-top:8px;padding:14px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:#12253c;color:#fff">
+            </label>
+            <label>
+              Countries Interested In *
+              <input required name="countries" type="text" placeholder="Poland, Turkey, Hungary" style="width:100%;margin-top:8px;padding:14px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:#12253c;color:#fff">
+            </label>
+            <label>
+              How Did You Hear About Us? *
+              <select required name="source" style="width:100%;margin-top:8px;padding:14px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:#12253c;color:#fff">
+                <option value="">Select source</option>
+                <option>Instagram</option>
+                <option>Telegram</option>
+                <option>Referral</option>
+                <option>Search</option>
+                <option>Other</option>
+              </select>
+            </label>
+          </div>
+
+          <div id="dynamicUploads" class="modal-grid" style="margin-top:16px"></div>
+
+          <div class="modal-grid" style="margin-top:16px">
+            <label style="padding:16px;border-radius:18px;border:1px dashed rgba(255,255,255,.20);background:rgba(255,255,255,.04)">
+              High School Transcript
+              <input type="file" name="transcript" multiple style="display:block;margin-top:10px;width:100%;color:#fff">
+            </label>
+            <label style="padding:16px;border-radius:18px;border:1px dashed rgba(255,255,255,.20);background:rgba(255,255,255,.04)">
+              Passport
+              <input type="file" name="passport" multiple style="display:block;margin-top:10px;width:100%;color:#fff">
+            </label>
+          </div>
+
+          <p style="margin-top:12px;color:rgba(255,255,255,.72);font-size:.92rem">Maximum combined size should stay below 10MB.</p>
+          <button class="btn btn-primary" type="submit" style="margin-top:18px;width:100%;border-radius:18px;padding:16px 20px">Submit Application</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="countryModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="countryTitleLabel">
+    <button class="modal-close" type="button" data-close="countryModal" aria-label="Close country details">×</button>
+    <div class="modal-shell">
+      <img class="modal-hero" id="countryHero" src="" alt="">
+      <div class="modal-content">
+        <h3 id="countryTitleLabel"></h3>
+        <p id="countryWhy"></p>
+
+        <div class="modal-grid" style="margin-top:18px">
+          <div class="modal-box">
+            <h4>Top Prestigious Universities</h4>
+            <div id="universityGrid" class="grid" style="margin-top:12px"></div>
+          </div>
+          <div class="modal-box">
+            <h4>Scholarships and Funding</h4>
+            <p id="countryScholarships"></p>
+          </div>
+          <div class="modal-box">
+            <h4>Work Opportunities</h4>
+            <p id="countryWork"></p>
+          </div>
+          <div class="modal-box">
+            <h4>Political and Economic Stability</h4>
+            <p id="countryStability"></p>
+          </div>
+          <div class="modal-box" style="grid-column:1/-1">
+            <h4>Living Cost and Student Life</h4>
+            <p id="countryLife"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="moreCountriesModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="moreCountriesTitle">
+    <button class="modal-close" type="button" data-close="moreCountriesModal" aria-label="Close countries list">×</button>
+    <div class="modal-shell">
+      <div class="modal-content">
+        <h3 id="moreCountriesTitle">More countries we support</h3>
+        <div id="moreCountriesList" class="grid"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="legalModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="legalTitle">
+    <button class="modal-close" type="button" data-close="legalModal" aria-label="Close legal text">×</button>
+    <div class="modal-shell">
+      <div class="modal-content">
+        <h3 id="legalTitle">Legal</h3>
+        <p id="legalBody"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="searchModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+    <button class="modal-close" type="button" data-close="searchModal" aria-label="Close search">×</button>
+    <div class="search-panel">
+      <div class="search-bar">
+        <input id="searchInput" type="search" placeholder="Search services, destinations, FAQs, and pages" aria-labelledby="searchTitle">
+        <button class="btn btn-primary" type="button" id="searchClear">Clear</button>
+      </div>
+      <div class="search-results" id="searchResults" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <template id="destinationTemplate">
+    <article class="destination reveal" tabindex="0" role="button">
+      <img alt="" loading="lazy" decoding="async">
+      <div class="destination-content">
+        <h3></h3>
+        <p></p>
+      </div>
+    </article>
+  </template>
+
+  <template id="testimonialTemplate">
+    <article class="card testimonial">
+      <div style="font-size:2.8rem;line-height:1;color:var(--accent)">“</div>
+      <div class="stars">★★★★★</div>
+      <p style="margin-top:12px"></p>
+      <footer>
+        <img alt="" loading="lazy" decoding="async">
+        <div>
+          <strong></strong>
+          <div class="muted" style="font-size:.92rem"></div>
+        </div>
+      </footer>
+    </article>
+  </template>
+
+  <script src="./script.js"></script>
+</body>
+</html>
