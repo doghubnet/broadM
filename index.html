@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
@@ -438,6 +439,47 @@
         <p class="pricing-note muted reveal">Pricing is for service access and support level, not for hidden fees. Group offers depend on number of people and service scope. Terms of service explain group discount rules clearly.</p>
       </div>
     </section>
+
+    <section id="blog" class="section" style="background:#fff">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="muted-pill">Newsroom</span>
+            <h2 class="section-title reveal">News &amp; Updates</h2>
+          </div>
+          <p class="section-subtitle">Stay up to date with visa policies, scholarships and travel tips.</p>
+        </div>
+        <div class="blog-grid">
+          <article class="card blog-card reveal">
+            <a href="/blog/2026-04-28-uk-student-visa-update.html">
+              <div class="blog-thumb" style="background-image:url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1200&q=80')"><span>UK Student Visa Updates 2026</span></div>
+            </a>
+            <p class="blog-date">April 28, 2026</p>
+            <h3>New UK student visa guidelines as of 2026</h3>
+            <p>Key compliance changes, financial proof updates, and interview readiness points for international applicants.</p>
+            <a class="btn btn-light" href="/blog/2026-04-28-uk-student-visa-update.html">Read More</a>
+          </article>
+          <article class="card blog-card reveal">
+            <a href="/blog/2026-04-28-daad-deadlines.html">
+              <div class="blog-thumb" style="background-image:url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80')"><span>DAAD Scholarship Deadlines</span></div>
+            </a>
+            <p class="blog-date">April 28, 2026</p>
+            <h3>Germany’s DAAD scholarship deadlines and document plan</h3>
+            <p>A practical timeline to prepare academic records, language scores, recommendation letters, and motivation documents.</p>
+            <a class="btn btn-light" href="/blog/2026-04-28-daad-deadlines.html">Read More</a>
+          </article>
+          <article class="card blog-card reveal">
+            <a href="/blog/2026-04-28-smart-travel-tips.html">
+              <div class="blog-thumb" style="background-image:url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=80')"><span>Smart Travel Preparation</span></div>
+            </a>
+            <p class="blog-date">April 28, 2026</p>
+            <h3>Practical travel preparation tips for first-time international movers</h3>
+            <p>How to organize documents, budget for transition costs, and prepare for your first weeks abroad with confidence.</p>
+            <a class="btn btn-light" href="/blog/2026-04-28-smart-travel-tips.html">Read More</a>
+          </article>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
@@ -591,6 +633,10 @@
             <h4>Living Cost and Student Life</h4>
             <p id="countryLife"></p>
           </div>
+          <div class="modal-box" style="grid-column:1/-1">
+            <h4>Typical Embassy Process</h4>
+            <ol id="embassyProcess"></ol>
+          </div>
         </div>
       </div>
     </div>
@@ -611,7 +657,7 @@
     <div class="modal-shell">
       <div class="modal-content">
         <h3 id="legalTitle">Legal</h3>
-        <p id="legalBody"></p>
+        <div id="legalBody" class="legal-body"></div>
       </div>
     </div>
   </div>

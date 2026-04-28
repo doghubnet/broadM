@@ -49,7 +49,7 @@ const destinationTemplate = document.getElementById("destinationTemplate");
 const testimonialTemplate = document.getElementById("testimonialTemplate");
 const impactCarousel = document.getElementById("impactCarousel");
 
-const extraCountries = ["🇨🇦 Canada", "🇦🇺 Australia", "🇪🇸 Spain", "🇳🇱 Netherlands", "🇸🇪 Sweden", "🇳🇴 Norway", "🇯🇵 Japan", "🇰🇷 South Korea", "🇳🇿 New Zealand", "🇮🇪 Ireland", "🇵🇱 Poland", "🇭🇺 Hungary", "🇨🇿 Czech Republic", "🇵🇹 Portugal", "🇬🇷 Greece", "🇧🇪 Belgium", "🇨🇭 Switzerland"];
+const extraCountries = ["🇺🇸 USA", "🇩🇪 Germany", "🇨🇦 Canada", "🇦🇺 Australia", "🇬🇧 UK", "🇳🇱 Netherlands", "🇸🇪 Sweden", "🇯🇵 Japan", "🇰🇷 South Korea", "🇳🇴 Norway", "🇳🇿 New Zealand", "🇫🇷 France", "🇨🇭 Switzerland", "🇩🇰 Denmark", "🇫🇮 Finland", "🇧🇪 Belgium", "🇦🇹 Austria", "🇮🇹 Italy", "🇪🇸 Spain", "🇨🇳 China", "🇮🇪 Ireland", "🇵🇱 Poland", "🇭🇺 Hungary", "🇨🇿 Czech Republic", "🇵🇹 Portugal", "🇬🇷 Greece", "🇷🇴 Romania", "🇹🇷 Türkiye", "🇲🇾 Malaysia", "🇸🇬 Singapore", "🇲🇹 Malta", "🇱🇹 Lithuania", "🇱🇻 Latvia", "🇪🇪 Estonia", "🇧🇬 Bulgaria", "🇭🇷 Croatia", "🇸🇮 Slovenia", "🇸🇰 Slovakia", "🇦🇪 UAE", "🇶🇦 Qatar", "🇸🇦 Saudi Arabia", "🇪🇬 Egypt", "🇿🇦 South Africa", "🇧🇷 Brazil", "🇦🇷 Argentina", "🇨🇱 Chile", "🇲🇽 Mexico", "🇮🇳 India", "🇵🇭 Philippines", "🇹🇭 Thailand", "🇻🇳 Vietnam"];
 
 const fallbackSvg = "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(`
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
@@ -91,11 +91,14 @@ function openCountry(data) {
   document.getElementById("countryWork").textContent = data.work;
   document.getElementById("countryStability").textContent = data.stability;
   document.getElementById("countryLife").textContent = data.life;
+  const process = data.process || ["Gather documents", "Submit application online", "Book interview and biometrics", "Attend interview", "Receive passport decision"];
+  document.getElementById("embassyProcess").innerHTML = process.map((step) => `<li>${step}</li>`).join("");
   const universityGrid = document.getElementById("universityGrid");
   universityGrid.innerHTML = data.unis.map(([name, desc]) => `<article class="card" style="padding:16px;border-radius:18px"><h5 style="margin:0;color:var(--navy)">${name}</h5><p style="margin-top:8px;color:var(--muted)">${desc}</p></article>`).join("");
   openModal(countryModal);
+  if (window.gsap) gsap.fromTo("#countryModal .modal-shell", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" });
 }
-function openLegal(title, bodyText) { document.getElementById("legalTitle").textContent = title; document.getElementById("legalBody").textContent = bodyText; openModal(legalModal); }
+function openLegal(title, bodyHtml) { document.getElementById("legalTitle").textContent = title; document.getElementById("legalBody").innerHTML = bodyHtml; openModal(legalModal); }
 function openSearch() { openModal(searchModal); renderSearchResults(""); setTimeout(() => searchInput.focus(), 50); }
 function attachFallback(img) {
   img.addEventListener("error", () => {
@@ -128,7 +131,7 @@ function renderDestinations() {
   });
 }
 function renderMoreCountries() {
-  moreCountriesList.innerHTML = extraCountries.map((c) => `<div class="card" style="padding:12px 14px;border-radius:14px">${c}</div>`).join("");
+  moreCountriesList.innerHTML = extraCountries.map((c) => `<button class="search-result" type="button" data-country="${c.split(" ").slice(1).join(" ")}">${c}</button>`).join("");
 }
 function startImpactCarousel() {
   if (!impactCarousel) return;
@@ -230,8 +233,8 @@ function bindEvents() {
   document.getElementById("moreCountriesOpen").addEventListener("click", () => openModal(moreCountriesModal));
   document.querySelectorAll(".mobile-link").forEach((link) => link.addEventListener("click", closeMenu));
   document.querySelectorAll("[data-close]").forEach((btn) => btn.addEventListener("click", () => closeModal(document.getElementById(btn.dataset.close))));
-  document.getElementById("termsOpen").addEventListener("click", () => openLegal("Terms of Service", "By using Broad Mobility services, you agree to provide accurate information, comply with destination-country regulations, and accept that visa outcomes depend on embassy decisions and document quality. Group discounts apply for up to 3 people; above 3 requires a contact request and review. Special discount links are issued after review. Pricing, access level, and support level vary by plan."));
-  document.getElementById("privacyOpen").addEventListener("click", () => openLegal("Privacy Policy", "Broad Mobility uses personal information only for consultation, application preparation, and communication. Reasonable safeguards are used, and personal data is not sold. Contact the team for access or correction requests."));
+  document.getElementById("termsOpen").addEventListener("click", () => openLegal("Terms of Service", "<h3>Scope of Services</h3><p>Broad Mobility provides visa guidance, document preparation support, admissions advisory, and travel planning assistance. Embassy outcomes remain under official authority.</p><h3>Rights and Obligations</h3><p>Clients must provide accurate records and follow submission timelines. Broad Mobility commits to professional guidance, clear communication, and reasonable service standards for the selected plan.</p><h3>Disclaimers and Liability</h3><p>Decisions by embassies, universities, or border authorities are independent. Broad Mobility is not liable for losses resulting from incorrect client information, late submissions, or policy changes by authorities.</p><h3>Indemnity and Disputes</h3><p>Clients agree to indemnify Broad Mobility against claims resulting from false submissions. Disputes are first handled through direct resolution before formal legal channels.</p><h3>Contact</h3><p>Legal inquiries: scelta.infinity@gmail.com</p>"));
+  document.getElementById("privacyOpen").addEventListener("click", () => openLegal("Privacy Policy", "<h3>Introduction</h3><p>This policy explains how Broad Mobility collects, uses, stores, and protects personal information shared through consultations and service forms.</p><h3>Information Collection and Use</h3><p>We collect contact data, education/work background, and supporting documents only for application preparation, communication, and service delivery.</p><h3>Data Handling and Retention</h3><p>Information is retained only as needed for active services, legal compliance, or recordkeeping, then securely deleted or archived.</p><h3>User Rights</h3><p>You may request access, correction, or deletion of eligible data by contacting our team. Some records may be retained where legally required.</p><h3>Security and Sharing</h3><p>Broad Mobility applies reasonable safeguards and does not sell personal data. Information is shared only with trusted process partners when required for your selected service.</p><h3>Contact</h3><p>Privacy inquiries: scelta.infinity@gmail.com</p>"));
   document.getElementById("appLevel").addEventListener("change", (e) => {
     const v = e.target.value;
     if (v === "Bachelor") dynamicUploads.innerHTML = '<label style="padding:16px;border-radius:18px;border:1px dashed rgba(255,255,255,.20);background:rgba(255,255,255,.04)">Grade 10 and 12 National Exams<input type="file" name="bachelorDocs" multiple style="display:block;margin-top:10px;width:100%;color:#fff"></label>';
@@ -265,6 +268,15 @@ function bindEvents() {
     if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
   });
   document.getElementById("searchClear").addEventListener("click", () => { searchInput.value = ""; renderSearchResults(""); searchInput.focus(); });
+  moreCountriesList.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-country]");
+    if (!btn) return;
+    const name = btn.dataset.country;
+    const known = destinations.find((d) => d.name.toLowerCase() === name.toLowerCase());
+    closeModal(moreCountriesModal);
+    if (known) openCountry(known);
+    else openCountry({ name, flag: "", image: fallbackSvg, why: `${name} offers international pathways depending on program and intake.`, scholarships: "National, institutional, and merit pathways vary by school and year.", work: "Part-time rights and post-study options depend on current policy.", stability: "Policy stability varies by region and sector.", life: "Cost of living and student lifestyle differ by city.", unis: [["Leading University 1", "Recognized for international student pathways."], ["Leading University 2", "Strong programs across major disciplines."], ["Leading University 3", "Research and career-oriented programs."], ["Leading University 4", "Popular destination for international applicants."]] });
+  });
 
   const tabPersonal = document.getElementById("tabPersonal");
   const tabGroup = document.getElementById("tabGroup");
