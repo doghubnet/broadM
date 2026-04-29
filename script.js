@@ -100,10 +100,25 @@ function openCountry(data) {
 function openLegal(title, bodyHtml) { document.getElementById("legalTitle").textContent = title; document.getElementById("legalBody").innerHTML = bodyHtml; openModal(legalModal); }
 function openSearch() { openModal(searchModal); renderSearchResults(""); setTimeout(() => searchInput.focus(), 50); }
 function attachFallback(img) {
+  if (img.matches(".site-logo-img,[data-logo-img]")) return;
   img.addEventListener("error", () => {
     if (img.dataset.fallbackApplied === "1") return;
     img.dataset.fallbackApplied = "1";
     img.src = fallbackSvg;
+  });
+}
+function setupLogoFallbacks() {
+  const logoImages = document.querySelectorAll(".site-logo-img, [data-logo-img]");
+  logoImages.forEach((img) => {
+    img.addEventListener("error", () => {
+      const wrapper = img.closest(".site-logo");
+      if (!wrapper || img.dataset.logoFallbackApplied === "1") return;
+      img.dataset.logoFallbackApplied = "1";
+      img.style.display = "none";
+      wrapper.classList.add("logo-failed");
+      const fallback = wrapper.querySelector(".logo-fallback");
+      if (fallback) fallback.setAttribute("aria-hidden", "false");
+    });
   });
 }
 function renderDestinations() {
@@ -299,6 +314,7 @@ function bindEvents() {
 
 function syncMenuScroll() { setHeaderState(); setActiveNav(); }
 function init() {
+  setupLogoFallbacks();
   renderDestinations();
   renderMoreCountries();
   renderTestimonials();

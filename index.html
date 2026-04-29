@@ -18,8 +18,9 @@
 
   <header class="site-header" id="siteHeader">
     <div class="container glass nav-shell">
-      <a class="site-logo" href="#home" aria-label="Broad Mobility home">
-        <img src="/images/broad-mobility-logo.webp" onerror="this.src='https://i.imgur.com/Dld2E9S.jpeg'" width="148" height="42" alt="Broad Mobility logo" fetchpriority="high">
+      <a class="site-logo nav-logo" href="#home" aria-label="Broad Mobility home">
+        <img class="site-logo-img" data-logo-img src="https://i.imgur.com/4fSD4Vz.jpeg" width="148" height="42" alt="Broad Mobility logo" loading="eager" decoding="async" fetchpriority="high">
+        <span class="logo-fallback" aria-hidden="true">Broad Mobility</span>
       </a>
 
       <nav aria-label="Primary">
@@ -46,8 +47,9 @@
 
   <aside class="mobile-panel" id="mobilePanel" aria-hidden="true">
     <div class="mobile-top">
-      <a class="site-logo" href="#home" aria-label="Broad Mobility home">
-        <img src="/images/broad-mobility-logo.webp" onerror="this.src='https://i.imgur.com/Dld2E9S.jpeg'" width="148" height="42" alt="Broad Mobility logo">
+      <a class="site-logo nav-logo" href="#home" aria-label="Broad Mobility home">
+        <img class="site-logo-img" data-logo-img src="https://i.imgur.com/4fSD4Vz.jpeg" width="148" height="42" alt="Broad Mobility logo" loading="eager" decoding="async">
+        <span class="logo-fallback" aria-hidden="true">Broad Mobility</span>
       </a>
       <button class="icon-btn" id="menuClose" type="button" aria-label="Close menu">×</button>
     </div>
@@ -133,20 +135,19 @@
         </div>
 
         <div class="about-grid">
-          <div class="reveal">
+          <div class="reveal about-copy">
             <h3 class="about-subtitle">Built on Trust, Service, and Opportunity.</h3>
-            <p class="section-subtitle" style="max-width:64ch;margin-bottom:32px">
+            <p class="about-message">
               “As global mobility grows, the journey to study, work, or travel abroad can feel complex and uncertain.<br><br>
               I built Broad Mobility to provide clear guidance and reliable support, so no one has to face the process alone.<br><br>
               Going abroad should be simple, transparent, and achievable. We work with trusted partners to bring real opportunities within your reach.”
             </p>
-            <p class="section-subtitle" style="font-weight:700;color:var(--accent);margin-top:0;margin-bottom:24px">Gediyon Adamu, Founder &amp; CEO</p>
-            <div style="height:4px;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--gold),#ff8a00);margin-bottom:16px"></div>
-            <p class="muted" style="margin-top:16px">Milestone growth from first success to worldwide destination coverage.</p>
+            <p class="about-founder">Gediyon Adamu, Founder &amp; CEO</p>
+            <div class="about-divider"></div>
+            <p class="about-milestone">Milestone growth from first success to worldwide destination coverage.</p>
           </div>
 
           <div class="portrait-wrap reveal">
-            <div class="founder-badge" aria-hidden="true">🌍</div>
             <a class="portrait" href="https://www.linkedin.com/in/gediyon-adamu-080b90338" target="_blank" rel="noopener noreferrer">
               <img src="https://i.imgur.com/bbiOPcf.jpeg" width="900" height="1125" alt="Portrait of Gediyon Adamu, founder and CEO of Broad Mobility" loading="lazy" decoding="async">
             </a>
@@ -246,34 +247,35 @@
         </div>
 
         <div class="process">
-          <article class="card step reveal" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08);color:#fff">
+          <article class="card step reveal">
             <div class="step-number">01</div>
             <h3>Initial Consultation</h3>
-            <p class="muted" style="color:rgba(255,255,255,.72)">Define goals and destination fit.</p>
+            <p class="step-desc">Define goals and destination fit.</p>
           </article>
-          <article class="card step reveal" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08);color:#fff">
+          <article class="card step reveal">
             <div class="step-number">02</div>
             <h3>Strategy and Planning</h3>
-            <p class="muted" style="color:rgba(255,255,255,.72)">Create your full visa roadmap.</p>
+            <p class="step-desc">Create your full visa roadmap.</p>
           </article>
-          <article class="card step reveal" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08);color:#fff">
+          <article class="card step reveal">
             <div class="step-number">03</div>
             <h3>Document Prep</h3>
-            <p class="muted" style="color:rgba(255,255,255,.72)">Build a complete, accurate file.</p>
+            <p class="step-desc">Build a complete, accurate file.</p>
           </article>
-          <article class="card step reveal" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08);color:#fff">
+          <article class="card step reveal">
+            <div class="step-number">04</div>
             <h3>Submission</h3>
-            <p class="muted" style="color:rgba(255,255,255,.72)">Submit with precision and timing.</p>
+            <p class="step-desc">Submit with precision and timing.</p>
           </article>
-          <article class="card step reveal" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08);color:#fff">
+          <article class="card step reveal">
             <div class="step-number">05</div>
             <h3>Interview Coaching</h3>
-            <p class="muted" style="color:rgba(255,255,255,.72)">Train with realistic scenarios.</p>
+            <p class="step-desc">Train with realistic scenarios.</p>
           </article>
-          <article class="card step reveal" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08);color:#fff">
+          <article class="card step reveal">
             <div class="step-number">06</div>
             <h3>Visa Approval</h3>
-            <p class="muted" style="color:rgba(255,255,255,.72)">Final guidance for departure.</p>
+            <p class="step-desc">Final guidance for departure.</p>
           </article>
         </div>
       </div>
