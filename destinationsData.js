@@ -15,27 +15,32 @@ window.extraCountryProfiles = [
     "unis": [
       [
         "University of Toronto",
-        "Respected institution with broad international academic pathways."
+        "Major research university with global academic recognition."
       ],
       [
         "University of British Columbia",
-        "Known for research, professional programs, and regional employer links."
+        "Research university with strong international reputation."
       ],
       [
         "McGill University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Historic research university in Montréal."
+      ],
+      [
+        "University of Alberta",
+        "Public research university known for science, engineering, and health."
       ],
       [
         "University of Waterloo",
-        "Popular for globally minded students seeking practical career preparation."
+        "Known for engineering, computer science, and co-op education."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Canada.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -54,27 +59,32 @@ window.extraCountryProfiles = [
     "unis": [
       [
         "University of Melbourne",
-        "Respected institution with broad international academic pathways."
+        "Major research university with strong international ranking."
       ],
       [
         "Australian National University",
-        "Known for research, professional programs, and regional employer links."
+        "Research university known for policy, science, and global affairs."
       ],
       [
         "University of Sydney",
-        "Offers strong options for business, technology, health, and public policy."
+        "Historic university with broad academic strength."
+      ],
+      [
+        "University of Queensland",
+        "Research university known for science, health, and engineering."
       ],
       [
         "Monash University",
-        "Popular for globally minded students seeking practical career preparation."
+        "Large public university with strong international programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Australia.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -93,27 +103,32 @@ window.extraCountryProfiles = [
     "unis": [
       [
         "University of Amsterdam",
-        "Respected institution with broad international academic pathways."
+        "Major research university with strong international programs."
       ],
       [
         "Delft University of Technology",
-        "Known for research, professional programs, and regional employer links."
-      ],
-      [
-        "Leiden University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Leading technical university for engineering and design."
       ],
       [
         "Utrecht University",
-        "Popular for globally minded students seeking practical career preparation."
+        "Research university known for broad academic strength."
+      ],
+      [
+        "Leiden University",
+        "Historic research university with strong global reputation."
+      ],
+      [
+        "Erasmus University Rotterdam",
+        "Known for business, economics, health, and social sciences."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Netherlands.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -148,11 +163,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Sweden.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -187,11 +203,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Japan.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -226,11 +243,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for South Korea.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -265,11 +283,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Norway.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -304,11 +323,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for New Zealand.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -343,11 +363,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Switzerland.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -382,11 +403,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Denmark.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -421,11 +443,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Finland.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -460,11 +483,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Belgium.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -499,11 +523,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Spain.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -538,11 +563,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Ireland.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -577,11 +603,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Poland.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -616,11 +643,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Hungary.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -639,27 +667,32 @@ window.extraCountryProfiles = [
     "unis": [
       [
         "Charles University",
-        "Respected institution with broad international academic pathways."
+        "Historic public research university in Prague."
       ],
       [
         "Czech Technical University in Prague",
-        "Known for research, professional programs, and regional employer links."
+        "Leading technical university for engineering and technology."
       ],
       [
         "Masaryk University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Major public university with strong research and international programs."
       ],
       [
-        "University of Chemistry and Technology Prague",
-        "Popular for globally minded students seeking practical career preparation."
+        "Brno University of Technology",
+        "Public technical university known for engineering and applied sciences."
+      ],
+      [
+        "University of Chemistry and Technology, Prague",
+        "Specialized public university focused on chemistry, technology, and applied research."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Czech Republic.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -694,11 +727,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Portugal.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -733,11 +767,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Greece.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -772,11 +807,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Türkiye.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -811,11 +847,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Malaysia.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -850,11 +887,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Singapore.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -889,11 +927,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Malta.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -911,28 +950,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Lithuania vary by city. Vilnius is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Lithuania",
-        "Respected institution with broad international academic pathways."
-      ],
-      [
-        "National University of Lithuania",
-        "Known for research, professional programs, and regional employer links."
-      ],
-      [
         "Vilnius University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Vilnius Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Kaunas University of Technology",
+        "Recognized institution for technology, engineering, and applied professional programs."
+      ],
+      [
+        "Vilnius Gediminas Technical University",
+        "Recognized institution for technology, engineering, and applied professional programs."
+      ],
+      [
+        "Vytautas Magnus University",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Lithuania.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -951,27 +991,28 @@ window.extraCountryProfiles = [
     "unis": [
       [
         "University of Latvia",
-        "Respected institution with broad international academic pathways."
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Latvia",
-        "Known for research, professional programs, and regional employer links."
+        "Riga Technical University",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ],
       [
-        "Riga University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Riga Stradiņš University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Riga Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Latvia University of Life Sciences and Technologies",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Latvia.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -989,28 +1030,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Estonia vary by city. Tallinn is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Estonia",
-        "Respected institution with broad international academic pathways."
+        "University of Tartu",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Estonia",
-        "Known for research, professional programs, and regional employer links."
+        "Tallinn University of Technology",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ],
       [
         "Tallinn University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Tallinn Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Estonian University of Life Sciences",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Estonia.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -1028,28 +1070,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Bulgaria vary by city. Sofia is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Bulgaria",
-        "Respected institution with broad international academic pathways."
+        "Sofia University St. Kliment Ohridski",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Bulgaria",
-        "Known for research, professional programs, and regional employer links."
+        "Technical University of Sofia",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ],
       [
-        "Sofia University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Medical University of Sofia",
+        "Recognized institution for health sciences, medicine, and professional training."
       ],
       [
-        "Sofia Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "University of National and World Economy",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Bulgaria.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -1067,28 +1110,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Croatia vary by city. Zagreb is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Croatia",
-        "Respected institution with broad international academic pathways."
+        "University of Zagreb",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Croatia",
-        "Known for research, professional programs, and regional employer links."
+        "University of Split",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Zagreb University",
-        "Offers strong options for business, technology, health, and public policy."
+        "University of Rijeka",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Zagreb Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "University of Osijek",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Croatia.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -1106,28 +1150,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Slovenia vary by city. Ljubljana is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Slovenia",
-        "Respected institution with broad international academic pathways."
+        "University of Ljubljana",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Slovenia",
-        "Known for research, professional programs, and regional employer links."
+        "University of Maribor",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Ljubljana University",
-        "Offers strong options for business, technology, health, and public policy."
+        "University of Primorska",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Ljubljana Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "University of Nova Gorica",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Slovenia.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -1145,28 +1190,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Slovakia vary by city. Bratislava is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Slovakia",
-        "Respected institution with broad international academic pathways."
+        "Comenius University Bratislava",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Slovakia",
-        "Known for research, professional programs, and regional employer links."
+        "Slovak University of Technology in Bratislava",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ],
       [
-        "Bratislava University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Pavol Jozef Šafárik University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Bratislava Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "University of Žilina",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Slovakia.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -1201,11 +1247,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for UAE.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -1240,11 +1287,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Qatar.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -1279,11 +1327,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Saudi Arabia.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -1318,11 +1367,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Egypt.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -1357,11 +1407,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for South Africa.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -1396,11 +1447,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Brazil.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -1435,11 +1487,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Argentina.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -1474,11 +1527,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Chile.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -1513,11 +1567,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Mexico.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -1552,11 +1607,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for India.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -1591,11 +1647,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Philippines.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -1630,11 +1687,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Thailand.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -1669,11 +1727,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Vietnam.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -1708,11 +1767,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Indonesia.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -1747,11 +1807,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Taiwan.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -1786,11 +1847,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Hong Kong.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -1809,27 +1871,28 @@ window.extraCountryProfiles = [
     "unis": [
       [
         "University of Cyprus",
-        "Respected institution with broad international academic pathways."
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Cyprus",
-        "Known for research, professional programs, and regional employer links."
+        "Cyprus University of Technology",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ],
       [
-        "Nicosia University",
-        "Offers strong options for business, technology, health, and public policy."
+        "University of Nicosia",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Nicosia Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "European University Cyprus",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Cyprus.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -1848,27 +1911,28 @@ window.extraCountryProfiles = [
     "unis": [
       [
         "University of Luxembourg",
-        "Respected institution with broad international academic pathways."
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Luxembourg",
-        "Known for research, professional programs, and regional employer links."
+        "Luxembourg School of Business",
+        "Recognized institution for business, management, and professional programs."
       ],
       [
-        "Luxembourg University",
-        "Offers strong options for business, technology, health, and public policy."
+        "LUNEX University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Luxembourg Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "European Institute of Public Administration",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Luxembourg.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -1887,27 +1951,28 @@ window.extraCountryProfiles = [
     "unis": [
       [
         "University of Iceland",
-        "Respected institution with broad international academic pathways."
-      ],
-      [
-        "National University of Iceland",
-        "Known for research, professional programs, and regional employer links."
+        "Recognized university with established academic and research programs."
       ],
       [
         "Reykjavik University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Reykjavik Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "University of Akureyri",
+        "Recognized university with established academic and research programs."
+      ],
+      [
+        "Bifröst University",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Iceland.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -1942,11 +2007,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Israel.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -1965,27 +2031,28 @@ window.extraCountryProfiles = [
     "unis": [
       [
         "University of Jordan",
-        "Respected institution with broad international academic pathways."
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Jordan",
-        "Known for research, professional programs, and regional employer links."
+        "Jordan University of Science and Technology",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ],
       [
-        "Amman University",
-        "Offers strong options for business, technology, health, and public policy."
+        "German Jordanian University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Amman Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Yarmouk University",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Jordan.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -2003,28 +2070,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Lebanon vary by city. Beirut is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Lebanon",
-        "Respected institution with broad international academic pathways."
+        "American University of Beirut",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Lebanon",
-        "Known for research, professional programs, and regional employer links."
+        "Lebanese University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Beirut University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Saint Joseph University of Beirut",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Beirut Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Lebanese American University",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Lebanon.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -2042,28 +2110,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Morocco vary by city. Rabat is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Morocco",
-        "Respected institution with broad international academic pathways."
+        "Mohammed V University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Morocco",
-        "Known for research, professional programs, and regional employer links."
+        "Al Akhawayn University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Rabat University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Cadi Ayyad University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Rabat Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Hassan II University of Casablanca",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Morocco.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -2081,28 +2150,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Tunisia vary by city. Tunis is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Tunisia",
-        "Respected institution with broad international academic pathways."
+        "University of Tunis El Manar",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Tunisia",
-        "Known for research, professional programs, and regional employer links."
+        "University of Carthage",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Tunis University",
-        "Offers strong options for business, technology, health, and public policy."
+        "University of Sfax",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Tunis Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "University of Monastir",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Tunisia.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -2137,11 +2207,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Kenya.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -2160,27 +2231,28 @@ window.extraCountryProfiles = [
     "unis": [
       [
         "University of Ghana",
-        "Respected institution with broad international academic pathways."
+        "Recognized university with established academic and research programs."
       ],
       [
         "Kwame Nkrumah University of Science and Technology",
-        "Known for research, professional programs, and regional employer links."
-      ],
-      [
-        "Ashesi University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Recognized institution for technology, engineering, and applied professional programs."
       ],
       [
         "University of Cape Coast",
-        "Popular for globally minded students seeking practical career preparation."
+        "Recognized university with established academic and research programs."
+      ],
+      [
+        "Ashesi University",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Ghana.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -2215,11 +2287,12 @@ window.extraCountryProfiles = [
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Nigeria.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -2238,27 +2311,28 @@ window.extraCountryProfiles = [
     "unis": [
       [
         "University of Rwanda",
-        "Respected institution with broad international academic pathways."
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Rwanda",
-        "Known for research, professional programs, and regional employer links."
+        "Carnegie Mellon University Africa",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Kigali University",
-        "Offers strong options for business, technology, health, and public policy."
+        "African Leadership University Rwanda",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Kigali Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Adventist University of Central Africa",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Rwanda.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -2277,27 +2351,28 @@ window.extraCountryProfiles = [
     "unis": [
       [
         "University of Mauritius",
-        "Respected institution with broad international academic pathways."
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Mauritius",
-        "Known for research, professional programs, and regional employer links."
+        "University of Technology, Mauritius",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ],
       [
-        "Port Louis University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Middlesex University Mauritius",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Port Louis Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Open University of Mauritius",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Mauritius.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -2316,27 +2391,28 @@ window.extraCountryProfiles = [
     "unis": [
       [
         "University of Botswana",
-        "Respected institution with broad international academic pathways."
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Botswana",
-        "Known for research, professional programs, and regional employer links."
+        "Botswana International University of Science and Technology",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ],
       [
-        "Gaborone University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Botswana Accountancy College",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Gaborone Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Botho University",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Botswana.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -2355,27 +2431,28 @@ window.extraCountryProfiles = [
     "unis": [
       [
         "University of Namibia",
-        "Respected institution with broad international academic pathways."
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Namibia",
-        "Known for research, professional programs, and regional employer links."
+        "Namibia University of Science and Technology",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ],
       [
-        "Windhoek University",
-        "Offers strong options for business, technology, health, and public policy."
+        "International University of Management",
+        "Recognized institution for business, management, and professional programs."
       ],
       [
-        "Windhoek Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Namibia Business School",
+        "Recognized institution for business, management, and professional programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Namibia.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -2393,28 +2470,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Senegal vary by city. Dakar is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Senegal",
-        "Respected institution with broad international academic pathways."
+        "Cheikh Anta Diop University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Senegal",
-        "Known for research, professional programs, and regional employer links."
+        "Gaston Berger University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Dakar University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Virtual University of Senegal",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Dakar Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "École Supérieure Polytechnique de Dakar",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Senegal.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -2432,28 +2510,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Tanzania vary by city. Dar es Salaam is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Tanzania",
-        "Respected institution with broad international academic pathways."
+        "University of Dar es Salaam",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Tanzania",
-        "Known for research, professional programs, and regional employer links."
+        "Sokoine University of Agriculture",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Dar es Salaam University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Muhimbili University of Health and Allied Sciences",
+        "Recognized institution for health sciences, medicine, and professional training."
       ],
       [
-        "Dar es Salaam Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Nelson Mandela African Institution of Science and Technology",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Tanzania.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -2471,28 +2550,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Uganda vary by city. Kampala is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Uganda",
-        "Respected institution with broad international academic pathways."
+        "Makerere University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Uganda",
-        "Known for research, professional programs, and regional employer links."
+        "Mbarara University of Science and Technology",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ],
       [
-        "Kampala University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Uganda Christian University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Kampala Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Kyambogo University",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Uganda.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -2510,28 +2590,33 @@ window.extraCountryProfiles = [
     "life": "Living costs in Ethiopia vary by city. Addis Ababa is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Ethiopia",
-        "Respected institution with broad international academic pathways."
-      ],
-      [
-        "National University of Ethiopia",
-        "Known for research, professional programs, and regional employer links."
-      ],
-      [
         "Addis Ababa University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Major public research university and Ethiopia’s oldest higher education institution."
       ],
       [
-        "Addis Ababa Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Addis Ababa Science and Technology University",
+        "Public science and technology university focused on engineering and applied research."
+      ],
+      [
+        "Adama Science and Technology University",
+        "Public university known for technology, engineering, and applied science programs."
+      ],
+      [
+        "Bahir Dar University",
+        "Large public university with broad academic programs and research activity."
+      ],
+      [
+        "University of Gondar",
+        "Public university known for health sciences, research, and professional programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Ethiopia.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -2549,28 +2634,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Peru vary by city. Lima is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Peru",
-        "Respected institution with broad international academic pathways."
+        "Pontifical Catholic University of Peru",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Peru",
-        "Known for research, professional programs, and regional employer links."
+        "National University of San Marcos",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Lima University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Universidad Peruana Cayetano Heredia",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Lima Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Universidad de Lima",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Peru.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -2588,28 +2674,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Colombia vary by city. Bogotá is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Colombia",
-        "Respected institution with broad international academic pathways."
-      ],
-      [
         "National University of Colombia",
-        "Known for research, professional programs, and regional employer links."
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Bogotá University",
-        "Offers strong options for business, technology, health, and public policy."
+        "University of Los Andes",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Bogotá Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Pontificia Universidad Javeriana",
+        "Recognized university with established academic and research programs."
+      ],
+      [
+        "University of Antioquia",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Colombia.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -2627,28 +2714,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Uruguay vary by city. Montevideo is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Uruguay",
-        "Respected institution with broad international academic pathways."
+        "University of the Republic",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Uruguay",
-        "Known for research, professional programs, and regional employer links."
+        "Universidad ORT Uruguay",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Montevideo University",
-        "Offers strong options for business, technology, health, and public policy."
+        "University of Montevideo",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Montevideo Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Catholic University of Uruguay",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Uruguay.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -2667,27 +2755,28 @@ window.extraCountryProfiles = [
     "unis": [
       [
         "University of Panama",
-        "Respected institution with broad international academic pathways."
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Panama",
-        "Known for research, professional programs, and regional employer links."
+        "Technological University of Panama",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Panama City University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Universidad Santa María la Antigua",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Panama City Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Florida State University Panama",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Panama.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -2706,27 +2795,28 @@ window.extraCountryProfiles = [
     "unis": [
       [
         "University of Costa Rica",
-        "Respected institution with broad international academic pathways."
+        "Recognized university with established academic and research programs."
+      ],
+      [
+        "Costa Rica Institute of Technology",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ],
       [
         "National University of Costa Rica",
-        "Known for research, professional programs, and regional employer links."
+        "Recognized university with established academic and research programs."
       ],
       [
-        "San José University",
-        "Offers strong options for business, technology, health, and public policy."
-      ],
-      [
-        "San José Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "EARTH University",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Costa Rica.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -2744,28 +2834,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Ecuador vary by city. Quito is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Ecuador",
-        "Respected institution with broad international academic pathways."
+        "Universidad San Francisco de Quito",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Ecuador",
-        "Known for research, professional programs, and regional employer links."
+        "Pontifical Catholic University of Ecuador",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Quito University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Escuela Politécnica Nacional",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Quito Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "University of Cuenca",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Ecuador.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -2783,28 +2874,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Paraguay vary by city. Asunción is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Paraguay",
-        "Respected institution with broad international academic pathways."
+        "National University of Asunción",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Paraguay",
-        "Known for research, professional programs, and regional employer links."
+        "Catholic University of Asunción",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Asunción University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Universidad Americana",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Asunción Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Universidad Autónoma de Asunción",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Paraguay.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -2822,28 +2914,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Bolivia vary by city. La Paz is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Bolivia",
-        "Respected institution with broad international academic pathways."
+        "Universidad Mayor de San Andrés",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Bolivia",
-        "Known for research, professional programs, and regional employer links."
+        "Universidad Mayor de San Simón",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "La Paz University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Universidad Privada Boliviana",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "La Paz Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Universidad Católica Boliviana",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Bolivia.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -2861,28 +2954,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Dominican Republic vary by city. Santo Domingo is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Dominican Republic",
-        "Respected institution with broad international academic pathways."
+        "Autonomous University of Santo Domingo",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Dominican Republic",
-        "Known for research, professional programs, and regional employer links."
+        "Pontificia Universidad Católica Madre y Maestra",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Santo Domingo University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Instituto Tecnológico de Santo Domingo",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Santo Domingo Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Universidad Iberoamericana",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Dominican Republic.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -2900,28 +2994,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Jamaica vary by city. Kingston is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Jamaica",
-        "Respected institution with broad international academic pathways."
+        "University of the West Indies, Mona",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Jamaica",
-        "Known for research, professional programs, and regional employer links."
+        "University of Technology, Jamaica",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ],
       [
-        "Kingston University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Northern Caribbean University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Kingston Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Mico University College",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Jamaica.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -2939,28 +3034,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Cuba vary by city. Havana is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Cuba",
-        "Respected institution with broad international academic pathways."
+        "University of Havana",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Cuba",
-        "Known for research, professional programs, and regional employer links."
+        "Universidad de Oriente",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Havana University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Marta Abreu Central University of Las Villas",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Havana Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "José Antonio Echeverría Technological University of Havana",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Cuba.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -2978,28 +3074,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Georgia vary by city. Tbilisi is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Georgia",
-        "Respected institution with broad international academic pathways."
+        "Tbilisi State University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Georgia",
-        "Known for research, professional programs, and regional employer links."
+        "Ilia State University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Tbilisi University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Georgian Technical University",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ],
       [
-        "Tbilisi Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Caucasus University",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Georgia.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -3017,28 +3114,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Armenia vary by city. Yerevan is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Armenia",
-        "Respected institution with broad international academic pathways."
+        "Yerevan State University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Armenia",
-        "Known for research, professional programs, and regional employer links."
+        "American University of Armenia",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Yerevan University",
-        "Offers strong options for business, technology, health, and public policy."
+        "National Polytechnic University of Armenia",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ],
       [
-        "Yerevan Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Yerevan State Medical University",
+        "Recognized institution for health sciences, medicine, and professional training."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Armenia.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -3056,28 +3154,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Azerbaijan vary by city. Baku is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Azerbaijan",
-        "Respected institution with broad international academic pathways."
+        "Baku State University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Azerbaijan",
-        "Known for research, professional programs, and regional employer links."
+        "Azerbaijan State Oil and Industry University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Baku University",
-        "Offers strong options for business, technology, health, and public policy."
+        "ADA University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Baku Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Azerbaijan Medical University",
+        "Recognized institution for health sciences, medicine, and professional training."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Azerbaijan.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -3095,28 +3194,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Kazakhstan vary by city. Almaty is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Kazakhstan",
-        "Respected institution with broad international academic pathways."
+        "Al-Farabi Kazakh National University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Kazakhstan",
-        "Known for research, professional programs, and regional employer links."
+        "Nazarbayev University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Almaty University",
-        "Offers strong options for business, technology, health, and public policy."
+        "L.N. Gumilyov Eurasian National University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Almaty Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Satbayev University",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Kazakhstan.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -3134,28 +3234,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Uzbekistan vary by city. Tashkent is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Uzbekistan",
-        "Respected institution with broad international academic pathways."
-      ],
-      [
         "National University of Uzbekistan",
-        "Known for research, professional programs, and regional employer links."
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Tashkent University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Tashkent State Technical University",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ],
       [
-        "Tashkent Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Westminster International University in Tashkent",
+        "Recognized university with established academic and research programs."
+      ],
+      [
+        "Tashkent State University of Economics",
+        "Recognized institution for business, management, and professional programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Uzbekistan.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -3173,28 +3274,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Kyrgyzstan vary by city. Bishkek is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Kyrgyzstan",
-        "Respected institution with broad international academic pathways."
+        "Kyrgyz National University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Kyrgyzstan",
-        "Known for research, professional programs, and regional employer links."
+        "American University of Central Asia",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Bishkek University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Kyrgyz-Turkish Manas University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Bishkek Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Kyrgyz State Technical University",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Kyrgyzstan.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -3212,28 +3314,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Pakistan vary by city. Islamabad is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Pakistan",
-        "Respected institution with broad international academic pathways."
+        "Quaid-i-Azam University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Pakistan",
-        "Known for research, professional programs, and regional employer links."
+        "National University of Sciences and Technology",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ],
       [
-        "Islamabad University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Lahore University of Management Sciences",
+        "Recognized institution for business, management, and professional programs."
       ],
       [
-        "Islamabad Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "University of the Punjab",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Pakistan.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -3251,28 +3354,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Bangladesh vary by city. Dhaka is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Bangladesh",
-        "Respected institution with broad international academic pathways."
+        "University of Dhaka",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Bangladesh",
-        "Known for research, professional programs, and regional employer links."
+        "Bangladesh University of Engineering and Technology",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ],
       [
-        "Dhaka University",
-        "Offers strong options for business, technology, health, and public policy."
+        "North South University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Dhaka Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "BRAC University",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Bangladesh.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -3290,28 +3394,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Sri Lanka vary by city. Colombo is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Sri Lanka",
-        "Respected institution with broad international academic pathways."
+        "University of Colombo",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Sri Lanka",
-        "Known for research, professional programs, and regional employer links."
+        "University of Peradeniya",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Colombo University",
-        "Offers strong options for business, technology, health, and public policy."
+        "University of Moratuwa",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Colombo Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "University of Sri Jayewardenepura",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Sri Lanka.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -3329,28 +3434,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Nepal vary by city. Kathmandu is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Nepal",
-        "Respected institution with broad international academic pathways."
-      ],
-      [
-        "National University of Nepal",
-        "Known for research, professional programs, and regional employer links."
+        "Tribhuvan University",
+        "Recognized university with established academic and research programs."
       ],
       [
         "Kathmandu University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Kathmandu Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Pokhara University",
+        "Recognized university with established academic and research programs."
+      ],
+      [
+        "Purbanchal University",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Nepal.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -3368,28 +3474,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Cambodia vary by city. Phnom Penh is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Cambodia",
-        "Respected institution with broad international academic pathways."
+        "Royal University of Phnom Penh",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Cambodia",
-        "Known for research, professional programs, and regional employer links."
+        "Institute of Technology of Cambodia",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ],
       [
-        "Phnom Penh University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Paññāsāstra University of Cambodia",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Phnom Penh Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "National University of Management",
+        "Recognized institution for business, management, and professional programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Cambodia.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -3407,28 +3514,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Laos vary by city. Vientiane is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Laos",
-        "Respected institution with broad international academic pathways."
-      ],
-      [
         "National University of Laos",
-        "Known for research, professional programs, and regional employer links."
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Vientiane University",
-        "Offers strong options for business, technology, health, and public policy."
+        "University of Health Sciences Laos",
+        "Recognized institution for health sciences, medicine, and professional training."
       ],
       [
-        "Vientiane Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Souphanouvong University",
+        "Recognized university with established academic and research programs."
+      ],
+      [
+        "Champasack University",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Laos.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -3446,28 +3554,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Mongolia vary by city. Ulaanbaatar is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Mongolia",
-        "Respected institution with broad international academic pathways."
-      ],
-      [
         "National University of Mongolia",
-        "Known for research, professional programs, and regional employer links."
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Ulaanbaatar University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Mongolian University of Science and Technology",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ],
       [
-        "Ulaanbaatar Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Mongolian National University of Medical Sciences",
+        "Recognized institution for health sciences, medicine, and professional training."
+      ],
+      [
+        "University of Finance and Economics",
+        "Recognized institution for business, management, and professional programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Mongolia.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -3485,28 +3594,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Brunei vary by city. Bandar Seri Begawan is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Brunei",
-        "Respected institution with broad international academic pathways."
+        "Universiti Brunei Darussalam",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Brunei",
-        "Known for research, professional programs, and regional employer links."
+        "Universiti Teknologi Brunei",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Bandar Seri Begawan University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Sultan Sharif Ali Islamic University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Bandar Seri Begawan Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Politeknik Brunei",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Brunei.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -3524,28 +3634,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Oman vary by city. Muscat is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Oman",
-        "Respected institution with broad international academic pathways."
+        "Sultan Qaboos University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Oman",
-        "Known for research, professional programs, and regional employer links."
+        "University of Nizwa",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Muscat University",
-        "Offers strong options for business, technology, health, and public policy."
+        "German University of Technology in Oman",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ],
       [
-        "Muscat Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Sohar University",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Oman.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -3563,28 +3674,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Kuwait vary by city. Kuwait City is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Kuwait",
-        "Respected institution with broad international academic pathways."
+        "Kuwait University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Kuwait",
-        "Known for research, professional programs, and regional employer links."
+        "Gulf University for Science and Technology",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ],
       [
-        "Kuwait City University",
-        "Offers strong options for business, technology, health, and public policy."
+        "American University of Kuwait",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Kuwait City Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Australian University Kuwait",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Kuwait.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -3603,27 +3715,28 @@ window.extraCountryProfiles = [
     "unis": [
       [
         "University of Bahrain",
-        "Respected institution with broad international academic pathways."
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Bahrain",
-        "Known for research, professional programs, and regional employer links."
+        "Arabian Gulf University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Manama University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Ahlia University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Manama Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Royal University for Women",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Bahrain.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -3641,28 +3754,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Serbia vary by city. Belgrade is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Serbia",
-        "Respected institution with broad international academic pathways."
+        "University of Belgrade",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Serbia",
-        "Known for research, professional programs, and regional employer links."
+        "University of Novi Sad",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Belgrade University",
-        "Offers strong options for business, technology, health, and public policy."
+        "University of Niš",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Belgrade Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "University of Kragujevac",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Serbia.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -3681,27 +3795,28 @@ window.extraCountryProfiles = [
     "unis": [
       [
         "University of Montenegro",
-        "Respected institution with broad international academic pathways."
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Montenegro",
-        "Known for research, professional programs, and regional employer links."
+        "University of Donja Gorica",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Podgorica University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Mediterranean University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Podgorica Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Adriatic University Bar",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Montenegro.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -3719,28 +3834,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Bosnia and Herzegovina vary by city. Sarajevo is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Bosnia and Herzegovina",
-        "Respected institution with broad international academic pathways."
+        "University of Sarajevo",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Bosnia and Herzegovina",
-        "Known for research, professional programs, and regional employer links."
+        "University of Banja Luka",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Sarajevo University",
-        "Offers strong options for business, technology, health, and public policy."
+        "University of Mostar",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Sarajevo Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "International University of Sarajevo",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Bosnia and Herzegovina.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -3758,28 +3874,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Albania vary by city. Tirana is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Albania",
-        "Respected institution with broad international academic pathways."
+        "University of Tirana",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Albania",
-        "Known for research, professional programs, and regional employer links."
+        "Polytechnic University of Tirana",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ],
       [
-        "Tirana University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Agricultural University of Tirana",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Tirana Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Epoka University",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Albania.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -3797,28 +3914,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in North Macedonia vary by city. Skopje is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of North Macedonia",
-        "Respected institution with broad international academic pathways."
+        "Ss. Cyril and Methodius University in Skopje",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of North Macedonia",
-        "Known for research, professional programs, and regional employer links."
+        "Goce Delčev University of Štip",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Skopje University",
-        "Offers strong options for business, technology, health, and public policy."
+        "South East European University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Skopje Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "University of Information Science and Technology St. Paul the Apostle",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for North Macedonia.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -3836,28 +3954,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Kosovo vary by city. Pristina is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Kosovo",
-        "Respected institution with broad international academic pathways."
+        "University of Prishtina",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Kosovo",
-        "Known for research, professional programs, and regional employer links."
+        "RIT Kosovo",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Pristina University",
-        "Offers strong options for business, technology, health, and public policy."
+        "AAB College",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Pristina Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "University for Business and Technology",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Kosovo.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -3875,28 +3994,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Moldova vary by city. Chișinău is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Moldova",
-        "Respected institution with broad international academic pathways."
+        "Moldova State University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Moldova",
-        "Known for research, professional programs, and regional employer links."
+        "Technical University of Moldova",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ],
       [
-        "Chișinău University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Nicolae Testemițanu State University of Medicine and Pharmacy",
+        "Recognized institution for health sciences, medicine, and professional training."
       ],
       [
-        "Chișinău Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Academy of Economic Studies of Moldova",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Moldova.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -3914,28 +4034,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Ukraine vary by city. Kyiv is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Ukraine",
-        "Respected institution with broad international academic pathways."
+        "Taras Shevchenko National University of Kyiv",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Ukraine",
-        "Known for research, professional programs, and regional employer links."
+        "National Technical University of Ukraine Igor Sikorsky Kyiv Polytechnic Institute",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ],
       [
-        "Kyiv University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Lviv Polytechnic National University",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ],
       [
-        "Kyiv Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "V. N. Karazin Kharkiv National University",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Ukraine.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -3953,28 +4074,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Monaco vary by city. Monaco is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Monaco",
-        "Respected institution with broad international academic pathways."
+        "International University of Monaco",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Monaco",
-        "Known for research, professional programs, and regional employer links."
+        "Monaco Institute of Sports Medicine",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ],
       [
-        "Monaco University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Pavillon Bosio Higher School of Plastic Arts",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Monaco Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Académie Rainier III",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Monaco.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -3993,27 +4115,28 @@ window.extraCountryProfiles = [
     "unis": [
       [
         "University of Andorra",
-        "Respected institution with broad international academic pathways."
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Andorra",
-        "Known for research, professional programs, and regional employer links."
+        "Andorra Aviation Academy",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Andorra la Vella University",
-        "Offers strong options for business, technology, health, and public policy."
+        "La Salle Open University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Andorra la Vella Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Universitat Oberta La Salle",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Andorra.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -4031,28 +4154,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in San Marino vary by city. San Marino is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of San Marino",
-        "Respected institution with broad international academic pathways."
+        "University of the Republic of San Marino",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of San Marino",
-        "Known for research, professional programs, and regional employer links."
+        "San Marino Academy of Sciences",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "San Marino University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Istituto Musicale Sammarinese",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "San Marino Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "San Marino Design Institute",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for San Marino.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -4071,27 +4195,28 @@ window.extraCountryProfiles = [
     "unis": [
       [
         "University of Liechtenstein",
-        "Respected institution with broad international academic pathways."
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Liechtenstein",
-        "Known for research, professional programs, and regional employer links."
+        "Private University in the Principality of Liechtenstein",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Vaduz University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Liechtenstein Institute",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ],
       [
-        "Vaduz Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "International Academy of Philosophy",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Liechtenstein.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -4110,27 +4235,28 @@ window.extraCountryProfiles = [
     "unis": [
       [
         "University of Zimbabwe",
-        "Respected institution with broad international academic pathways."
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Zimbabwe",
-        "Known for research, professional programs, and regional employer links."
+        "National University of Science and Technology",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ],
       [
-        "Harare University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Midlands State University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Harare Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Africa University",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Zimbabwe.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -4149,27 +4275,28 @@ window.extraCountryProfiles = [
     "unis": [
       [
         "University of Zambia",
-        "Respected institution with broad international academic pathways."
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Zambia",
-        "Known for research, professional programs, and regional employer links."
+        "Copperbelt University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Lusaka University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Mulungushi University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Lusaka Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Levy Mwanawasa Medical University",
+        "Recognized institution for health sciences, medicine, and professional training."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Zambia.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -4188,27 +4315,28 @@ window.extraCountryProfiles = [
     "unis": [
       [
         "University of Malawi",
-        "Respected institution with broad international academic pathways."
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Malawi",
-        "Known for research, professional programs, and regional employer links."
+        "Malawi University of Science and Technology",
+        "Recognized institution for technology, engineering, and applied professional programs."
       ],
       [
-        "Lilongwe University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Mzuzu University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Lilongwe Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Lilongwe University of Agriculture and Natural Resources",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Malawi.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -4226,28 +4354,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Mozambique vary by city. Maputo is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Mozambique",
-        "Respected institution with broad international academic pathways."
+        "Eduardo Mondlane University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Mozambique",
-        "Known for research, professional programs, and regional employer links."
+        "Pedagogical University of Maputo",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Maputo University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Lúrio University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Maputo Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Zambeze University",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Mozambique.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -4265,28 +4394,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Angola vary by city. Luanda is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Angola",
-        "Respected institution with broad international academic pathways."
+        "Agostinho Neto University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Angola",
-        "Known for research, professional programs, and regional employer links."
+        "Catholic University of Angola",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Luanda University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Methodist University of Angola",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Luanda Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Jean Piaget University of Angola",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Angola.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -4304,28 +4434,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Cameroon vary by city. Yaoundé is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Cameroon",
-        "Respected institution with broad international academic pathways."
+        "University of Yaoundé I",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Cameroon",
-        "Known for research, professional programs, and regional employer links."
+        "University of Douala",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Yaoundé University",
-        "Offers strong options for business, technology, health, and public policy."
+        "University of Buea",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Yaoundé Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "University of Dschang",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Cameroon.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   },
   {
@@ -4343,28 +4474,29 @@ window.extraCountryProfiles = [
     "life": "Living costs in Côte d’Ivoire vary by city. Abidjan is often the main arrival hub, while regional cities may offer more affordable housing and calmer student life.",
     "unis": [
       [
-        "University of Côte d’Ivoire",
-        "Respected institution with broad international academic pathways."
+        "Félix Houphouët-Boigny University",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "National University of Côte d’Ivoire",
-        "Known for research, professional programs, and regional employer links."
+        "Université Nangui Abrogoua",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Abidjan University",
-        "Offers strong options for business, technology, health, and public policy."
+        "Institut National Polytechnique Félix Houphouët-Boigny",
+        "Recognized university with established academic and research programs."
       ],
       [
-        "Abidjan Institute of Technology",
-        "Popular for globally minded students seeking practical career preparation."
+        "Université Alassane Ouattara",
+        "Recognized university with established academic and research programs."
       ]
     ],
     "process": [
-      "Confirm admission, scholarship, or visitor purpose for Côte d’Ivoire.",
-      "Prepare passport, financial evidence, academic/work records, and translated documents.",
-      "Complete the visa form and appointment booking through the official channel.",
-      "Attend biometrics or interview where required with organized supporting files.",
-      "Track the decision, collect the passport, and complete pre-departure planning."
+      "Gather documents",
+      "Complete application form",
+      "Book appointment or submit online",
+      "Attend biometrics or interview",
+      "Track decision",
+      "Collect passport and prepare travel"
     ]
   }
 ];
