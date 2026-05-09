@@ -21,6 +21,15 @@
   --space-6:32px;
   --space-7:40px;
   --space-8:56px;
+  --motion-ease:cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-fast:350ms;
+  --motion-normal:850ms;
+  --motion-slow:1000ms;
+  --motion-delay-1:100ms;
+  --motion-delay-2:220ms;
+  --motion-delay-3:340ms;
+  --motion-delay-4:460ms;
+  --motion-delay-5:580ms;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -324,3 +333,26 @@ button{cursor:pointer}
 @media (prefers-reduced-motion:reduce){.guarantee-badge-ring,.guarantee-badge-check{animation:none !important;stroke-dashoffset:0;opacity:1}.country-list-btn,.country-back-btn{transition:none !important}}
 .modal-hero.country-flag-hero{object-fit:contain;padding:28px;background:linear-gradient(135deg,#f8fafc,#eef6f1)}
 @media (max-width:640px){.modal-hero.country-flag-hero{padding:18px}}
+
+.motion-mask{overflow:hidden}
+.motion-reveal,.motion-reveal-up{opacity:0;transform:translateY(28px) scale(.98);filter:blur(10px);animation:globalReveal var(--motion-normal) var(--motion-ease) forwards;will-change:opacity,transform,filter}
+.motion-delay-1{animation-delay:var(--motion-delay-1)}
+.motion-delay-2{animation-delay:var(--motion-delay-2)}
+.motion-delay-3{animation-delay:var(--motion-delay-3)}
+.motion-delay-4{animation-delay:var(--motion-delay-4)}
+.motion-delay-5{animation-delay:var(--motion-delay-5)}
+.scroll-reveal{opacity:0;transform:translateY(36px) scale(.98);filter:blur(10px);transition:opacity var(--motion-slow) var(--motion-ease),transform var(--motion-slow) var(--motion-ease),filter var(--motion-slow) var(--motion-ease);will-change:opacity,transform,filter}
+.scroll-reveal.is-visible{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+.motion-card{transition:transform var(--motion-fast) var(--motion-ease),box-shadow var(--motion-fast) var(--motion-ease),filter var(--motion-fast) var(--motion-ease),border-color var(--motion-fast) var(--motion-ease);will-change:transform}
+.motion-card:hover{transform:translateY(-6px) scale(1.015)}
+.motion-button{transition:transform var(--motion-fast) var(--motion-ease),box-shadow var(--motion-fast) var(--motion-ease),background-color var(--motion-fast) var(--motion-ease),color var(--motion-fast) var(--motion-ease),border-color var(--motion-fast) var(--motion-ease);will-change:transform}
+.motion-button:hover{transform:translateY(-3px) scale(1.02)}
+.motion-button:active{transform:scale(.98)}
+.motion-float-soft{animation:motionFloatSoft 8s ease-in-out infinite}
+.motion-float-slow{animation:motionFloatSoft 10s ease-in-out infinite}
+.motion-modal{opacity:0;transform:translateY(18px) scale(.98);transition:opacity 420ms var(--motion-ease),transform 420ms var(--motion-ease)}
+.motion-modal.is-open{opacity:1;transform:translateY(0) scale(1)}
+@keyframes globalReveal{from{opacity:0;transform:translateY(28px) scale(.98);filter:blur(10px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
+@keyframes motionFloatSoft{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@media (max-width:768px){.motion-reveal,.motion-reveal-up{transform:translateY(22px) scale(.985);filter:blur(8px)}.scroll-reveal{transform:translateY(26px) scale(.985);filter:blur(8px)}.motion-card:hover{transform:translateY(-3px) scale(1.006)}.motion-button:hover{transform:translateY(-2px) scale(1.01)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:1ms !important;animation-iteration-count:1 !important;transition-duration:1ms !important;scroll-behavior:auto !important}.motion-reveal,.motion-reveal-up,.scroll-reveal,.scroll-reveal.is-visible{opacity:1 !important;transform:none !important;filter:none !important}.motion-float-soft,.motion-float-slow{animation:none !important}.motion-modal{opacity:1 !important;transform:none !important}}

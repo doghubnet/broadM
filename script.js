@@ -68,8 +68,20 @@ function syncBodyLock() {
   const hasOpenMenu = mobilePanel.classList.contains("open");
   body.style.overflow = hasOpenModal || hasOpenMenu ? "hidden" : "";
 }
-function openModal(modal) { modal.classList.add("open"); modal.setAttribute("aria-hidden", "false"); syncBodyLock(); }
-function closeModal(modal) { modal.classList.remove("open"); modal.setAttribute("aria-hidden", "true"); syncBodyLock(); }
+function openModal(modal) {
+  modal.classList.add("open");
+  modal.setAttribute("aria-hidden", "false");
+  const shell = modal.querySelector(".motion-modal");
+  if (shell) requestAnimationFrame(() => shell.classList.add("is-open"));
+  syncBodyLock();
+}
+function closeModal(modal) {
+  const shell = modal.querySelector(".motion-modal");
+  if (shell) shell.classList.remove("is-open");
+  modal.classList.remove("open");
+  modal.setAttribute("aria-hidden", "true");
+  syncBodyLock();
+}
 function setHeaderState() { siteHeader.classList.toggle("scrolled", window.scrollY > 16); }
 function setActiveNav() {
   const sections = ["home", "about-us", "services", "destinations", "impact", "how-it-works", "testimonials", "newsroom", "contact"];
@@ -134,6 +146,7 @@ function renderDestinations() {
   destinations.forEach((d, index) => {
     const node = destinationTemplate.content.cloneNode(true);
     const article = node.querySelector(".destination");
+    article.classList.add("motion-card", "scroll-reveal");
     const img = node.querySelector("img");
     article.dataset.country = d.key;
     if (index === 0 || index === 3) article.classList.add("span-2");
@@ -154,7 +167,7 @@ function renderDestinations() {
 }
 function renderMoreCountries() {
   moreCountriesList.classList.add("more-countries-list");
-  moreCountriesList.innerHTML = extraCountries.map((country) => `<button class="country-list-btn" type="button" data-country="${country.key}"><span>${country.flag} ${country.name}</span><small>${country.region}</small></button>`).join("");
+  moreCountriesList.innerHTML = extraCountries.map((country) => `<button class="country-list-btn motion-card" type="button" data-country="${country.key}"><span>${country.flag} ${country.name}</span><small>${country.region}</small></button>`).join("");
 }
 function startImpactCarousel() {
   if (!impactCarousel) return;
@@ -171,6 +184,7 @@ function renderTestimonials() {
   const uniqueCards = testimonials.map((t) => {
     const node = testimonialTemplate.content.cloneNode(true);
     const article = node.querySelector(".testimonial");
+    article.classList.add("motion-card");
     const img = node.querySelector("img");
     img.src = t.img;
     img.alt = `${t.name} portrait`;
@@ -215,11 +229,30 @@ function animateCounters() {
   }
   requestAnimationFrame(tickImpact);
 }
+function applyMotionClasses() {
+  document.querySelectorAll(".section-title").forEach((el) => {
+    el.classList.add("scroll-reveal");
+    el.parentElement?.classList.add("motion-mask");
+  });
+  document.querySelectorAll(".about-copy, .guarantee").forEach((el) => el.classList.add("scroll-reveal"));
+  document.querySelectorAll(".service, .more-services, .step, .faq-item, .pricing-card, .group-offer-card, .blog-card").forEach((el) => el.classList.add("motion-card", "scroll-reveal"));
+  document.querySelectorAll(".impact-slide").forEach((el) => el.classList.add("motion-card"));
+  document.querySelectorAll(".testimonial").forEach((el) => el.classList.add("motion-card"));
+  document.querySelectorAll(".about-founder-card").forEach((el) => el.classList.add("motion-card", "scroll-reveal"));
+  document.querySelectorAll(".btn:not(.icon-btn), .article-back-btn, .group-cta-button").forEach((el) => el.classList.add("motion-button"));
+  document.querySelectorAll(".modal-shell").forEach((el) => el.classList.add("motion-modal"));
+}
 function revealOnScroll() {
+  const revealItems = document.querySelectorAll(".reveal, .scroll-reveal");
+  if (!revealItems.length) return;
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add("in"); });
-  }, { threshold: 0.14 });
-  document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("in", "is-visible");
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.18 });
+  revealItems.forEach((el) => observer.observe(el));
 }
 function bindFaq() {
   document.querySelectorAll(".faq-item").forEach((item) => {
@@ -325,7 +358,7 @@ function bindEvents() {
 
 function animateHeroIntro() {
   const heroItems = document.querySelectorAll(".hero-badge, .hero-title, .hero-subtitle, .hero-actions, .hero-ticker, .hero-stat-card");
-  if (!heroItems.length || !window.gsap || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (!heroItems.length || heroItems[0].classList.contains("motion-reveal") || !window.gsap || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   gsap.from(heroItems, {
     opacity: 0,
     y: 24,
@@ -358,6 +391,7 @@ function init() {
   renderDestinations();
   renderMoreCountries();
   renderTestimonials();
+  applyMotionClasses();
   startImpactCarousel();
   startProcessNumberCycle();
   bindFaq();
