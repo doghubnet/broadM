@@ -330,13 +330,15 @@
 
         <div class="container" style="padding:0;margin-top:44px">
           <div class="guarantee reveal">
-            <div style="width:66px;height:66px;border-radius:999px;margin:0 auto 18px;background:linear-gradient(45deg,#ff8a00,#ff5c00);display:grid;place-items:center;box-shadow:0 10px 24px rgba(249,115,22,.22)">
-              <svg viewBox="0 0 24 24" fill="none" width="28" height="28" aria-hidden="true">
-                <path d="M5 13L9 17L19 7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <div class="guarantee-badge" aria-hidden="true">
+              <svg class="guarantee-badge-svg" viewBox="0 0 72 72" fill="none">
+                <circle class="guarantee-badge-fill" cx="36" cy="36" r="28"/>
+                <circle class="guarantee-badge-ring" cx="36" cy="36" r="30"/>
+                <path class="guarantee-badge-check" d="M23 37.5L32.2 46L50 27"/>
               </svg>
             </div>
-            <h3 style="margin:0;font-size:1.8rem;color:#1a2a3a">Broad Mobility Guarantee</h3>
-            <button class="btn btn-primary" id="confidenceOpen" type="button" style="margin-top:20px">Continue with confidence</button>
+            <h3>Broad Mobility Guarantee</h3>
+            <button class="btn btn-primary guarantee-cta" id="confidenceOpen" type="button">Continue with confidence</button>
           </div>
         </div>
       </div>
@@ -648,6 +650,7 @@
   <div class="modal" id="countryModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="countryTitleLabel">
     <button class="modal-close" type="button" data-close="countryModal" aria-label="Close country details">×</button>
     <div class="modal-shell">
+      <button class="country-back-btn hidden" id="countryBackToList" type="button">← Back to 100+ countries</button>
       <img class="modal-hero" id="countryHero" src="" alt="">
       <div class="modal-content">
         <h3 id="countryTitleLabel"></h3>
@@ -739,6 +742,7 @@
     </article>
   </template>
 
+  <script src="./destinationsData.js"></script>
   <script src="./script.js"></script>
 </body>
 </html>

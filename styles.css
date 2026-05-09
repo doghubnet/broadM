@@ -301,3 +301,26 @@ button{cursor:pointer}
 @media (max-width:768px){.hero-section::after{top:16%;left:50%;width:90%;height:32%;opacity:.55;filter:blur(24px)}.about-founder-card{max-width:390px;margin-inline:auto}}
 @media (max-width:420px){.hero-section::after{opacity:.42}.about-application-btn{right:18px;bottom:18px;padding:10px 16px;font-size:.82rem}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none !important;transition:none !important}.step-number.is-active::before{opacity:1}.hero-stat-card,.about-application-btn{transition:none !important}}
+.guarantee{padding:38px 24px;text-align:center;border-radius:32px;background:linear-gradient(135deg, rgba(255,196,77,.16), rgba(255,170,51,.10));border:1px solid rgba(255,184,77,.26);box-shadow:0 16px 40px rgba(255,184,77,.10);backdrop-filter:blur(10px)}
+.guarantee h3{margin:0;font-size:1.8rem;color:#1a2a3a;font-weight:800;line-height:1.2}
+.guarantee-badge{width:76px;height:76px;margin:0 auto 18px;border-radius:999px;display:grid;place-items:center;background:linear-gradient(135deg, rgba(255,184,77,.34), rgba(245,158,11,.22));box-shadow:0 14px 30px rgba(245,158,11,.18), inset 0 1px 0 rgba(255,255,255,.55)}
+.guarantee-badge-svg{width:66px;height:66px;display:block;overflow:visible}
+.guarantee-badge-fill{fill:rgba(245,158,11,.52)}
+.guarantee-badge-ring{fill:none;stroke:#FFB84D;stroke-width:3.2;stroke-linecap:round;stroke-dasharray:188.5;stroke-dashoffset:188.5;animation:guaranteeRingDraw 2.8s ease-in-out infinite}
+.guarantee-badge-check{fill:none;stroke:#fff;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:41;stroke-dashoffset:41;filter:drop-shadow(0 2px 4px rgba(0,31,63,.16));animation:guaranteeCheckDraw 2.8s ease-in-out infinite}
+.guarantee-cta{margin-top:20px}
+.country-back-btn{position:sticky;top:16px;left:16px;z-index:2;margin:16px 0 -4px 16px;align-self:flex-start;border:1px solid rgba(0,31,63,.10);background:rgba(255,255,255,.88);color:#002B4E;border-radius:999px;padding:10px 14px;font-family:inherit;font-weight:800;box-shadow:0 10px 24px rgba(0,31,63,.08);transition:transform .18s ease,background .18s ease,border-color .18s ease}
+.country-back-btn:hover{transform:translateY(-1px);background:#fff;border-color:rgba(0,166,81,.24)}
+.more-countries-list{grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+.country-list-btn{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px;border-radius:16px;border:1px solid rgba(0,31,63,.10);background:#f8fafc;color:#002B4E;font-weight:800;text-align:left;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease,background .18s ease}
+.country-list-btn:hover{transform:translateY(-2px);border-color:rgba(0,166,81,.25);box-shadow:0 12px 24px rgba(0,31,63,.08);background:#fff}
+.country-list-btn small{color:#64748B;font-weight:700}
+.country-university-card{padding:16px;border-radius:18px;background:#fff;border:1px solid rgba(0,31,63,.08);box-shadow:0 8px 22px rgba(0,31,63,.05)}
+.country-university-card h5{margin:0;color:var(--navy);font-size:1rem;line-height:1.25}
+.country-university-card p{margin-top:8px;color:var(--muted);line-height:1.55}
+@keyframes guaranteeRingDraw{0%{stroke-dashoffset:188.5;opacity:.95}43%,100%{stroke-dashoffset:0;opacity:1}}
+@keyframes guaranteeCheckDraw{0%,43%{stroke-dashoffset:41;opacity:0}68%,100%{stroke-dashoffset:0;opacity:1}}
+@media (max-width:640px){.guarantee{padding:30px 18px}.guarantee h3{font-size:1.55rem}.country-back-btn{margin:14px 0 -2px 14px;padding:9px 12px;font-size:.9rem}.more-countries-list{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.guarantee-badge-ring,.guarantee-badge-check{animation:none !important;stroke-dashoffset:0;opacity:1}.country-list-btn,.country-back-btn{transition:none !important}}
+.modal-hero.country-flag-hero{object-fit:contain;padding:28px;background:linear-gradient(135deg,#f8fafc,#eef6f1)}
+@media (max-width:640px){.modal-hero.country-flag-hero{padding:18px}}

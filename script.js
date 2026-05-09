@@ -44,18 +44,22 @@ const searchInput = document.getElementById("searchInput");
 const searchResults = document.getElementById("searchResults");
 const dynamicUploads = document.getElementById("dynamicUploads");
 const moreCountriesList = document.getElementById("moreCountriesList");
+const countryBackToList = document.getElementById("countryBackToList");
 const destinationTemplate = document.getElementById("destinationTemplate");
 const testimonialTemplate = document.getElementById("testimonialTemplate");
 const impactCarousel = document.getElementById("impactCarousel");
 
-const extraCountries = ["🇺🇸 USA", "🇩🇪 Germany", "🇨🇦 Canada", "🇦🇺 Australia", "🇬🇧 UK", "🇳🇱 Netherlands", "🇸🇪 Sweden", "🇯🇵 Japan", "🇰🇷 South Korea", "🇳🇴 Norway", "🇳🇿 New Zealand", "🇫🇷 France", "🇨🇭 Switzerland", "🇩🇰 Denmark", "🇫🇮 Finland", "🇧🇪 Belgium", "🇦🇹 Austria", "🇮🇹 Italy", "🇪🇸 Spain", "🇨🇳 China", "🇮🇪 Ireland", "🇵🇱 Poland", "🇭🇺 Hungary", "🇨🇿 Czech Republic", "🇵🇹 Portugal", "🇬🇷 Greece", "🇷🇴 Romania", "🇹🇷 Türkiye", "🇲🇾 Malaysia", "🇸🇬 Singapore", "🇲🇹 Malta", "🇱🇹 Lithuania", "🇱🇻 Latvia", "🇪🇪 Estonia", "🇧🇬 Bulgaria", "🇭🇷 Croatia", "🇸🇮 Slovenia", "🇸🇰 Slovakia", "🇦🇪 UAE", "🇶🇦 Qatar", "🇸🇦 Saudi Arabia", "🇪🇬 Egypt", "🇿🇦 South Africa", "🇧🇷 Brazil", "🇦🇷 Argentina", "🇨🇱 Chile", "🇲🇽 Mexico", "🇮🇳 India", "🇵🇭 Philippines", "🇹🇭 Thailand", "🇻🇳 Vietnam"];
+const featuredDestinationNames = new Set(destinations.map((country) => country.name.toLowerCase()));
+const extraCountryProfiles = window.extraCountryProfiles || [];
+const extraCountries = extraCountryProfiles.filter((country) => !featuredDestinationNames.has(country.name.toLowerCase()));
+const allCountriesMap = new Map([...destinations, ...extraCountries].map((country) => [country.key, country]));
 
 const fallbackSvg = "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(`
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
   <rect width="1200" height="800" fill="#dfe7f1"/>
   <rect x="70" y="70" width="1060" height="660" rx="36" fill="#f8f9fa" stroke="#cfd8e3"/>
   <text x="600" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="44" fill="#001f3f">Broad Mobility</text>
-  <text x="600" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="#5f6b7a">Image placeholder</text>
+  <text x="600" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="#5f6b7a">Destination image unavailable</text>
 </svg>
 `);
 
@@ -81,10 +85,12 @@ function setActiveNav() {
 function openMenu() { mobilePanel.classList.add("open"); mobilePanel.setAttribute("aria-hidden", "false"); menuOpen.setAttribute("aria-expanded", "true"); syncBodyLock(); }
 function closeMenu() { mobilePanel.classList.remove("open"); mobilePanel.setAttribute("aria-hidden", "true"); menuOpen.setAttribute("aria-expanded", "false"); syncBodyLock(); }
 
-function openCountry(data) {
-  document.getElementById("countryHero").src = data.image;
-  document.getElementById("countryHero").alt = `${data.name} destination image`;
-  document.getElementById("countryTitleLabel").textContent = `${data.name} ${data.flag}`;
+function openCountry(data, options = {}) {
+  const countryHero = document.getElementById("countryHero");
+  countryHero.src = data.image;
+  countryHero.alt = `${data.name} destination image`;
+  countryHero.classList.toggle("country-flag-hero", data.image.includes("flagcdn.com"));
+  document.getElementById("countryTitleLabel").textContent = `${data.name} ${data.flag || ""}`.trim();
   document.getElementById("countryWhy").textContent = data.why;
   document.getElementById("countryScholarships").textContent = data.scholarships;
   document.getElementById("countryWork").textContent = data.work;
@@ -93,9 +99,11 @@ function openCountry(data) {
   const process = data.process || ["Gather documents", "Submit application online", "Book interview and biometrics", "Attend interview", "Receive passport decision"];
   document.getElementById("embassyProcess").innerHTML = process.map((step) => `<li>${step}</li>`).join("");
   const universityGrid = document.getElementById("universityGrid");
-  universityGrid.innerHTML = data.unis.map(([name, desc]) => `<article class="card" style="padding:16px;border-radius:18px"><h5 style="margin:0;color:var(--navy)">${name}</h5><p style="margin-top:8px;color:var(--muted)">${desc}</p></article>`).join("");
+  universityGrid.innerHTML = data.unis.map(([name, desc]) => `<article class="card country-university-card"><h5>${name}</h5><p>${desc}</p></article>`).join("");
+  countryBackToList.classList.toggle("hidden", !options.fromExtraList);
   openModal(countryModal);
-  if (window.gsap) gsap.fromTo("#countryModal .modal-shell", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" });
+  countryModal.querySelector(".modal-shell").scrollTo({ top: 0, behavior: "auto" });
+  if (window.gsap) gsap.fromTo("#countryModal .modal-shell", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.36, ease: "power2.out" });
 }
 function openLegal(title, bodyHtml) { document.getElementById("legalTitle").textContent = title; document.getElementById("legalBody").innerHTML = bodyHtml; openModal(legalModal); }
 function openSearch() { openModal(searchModal); renderSearchResults(""); setTimeout(() => searchInput.focus(), 50); }
@@ -145,7 +153,8 @@ function renderDestinations() {
   });
 }
 function renderMoreCountries() {
-  moreCountriesList.innerHTML = extraCountries.map((c) => `<button class="search-result" type="button" data-country="${c.split(" ").slice(1).join(" ")}">${c}</button>`).join("");
+  moreCountriesList.classList.add("more-countries-list");
+  moreCountriesList.innerHTML = extraCountries.map((country) => `<button class="country-list-btn" type="button" data-country="${country.key}"><span>${country.flag} ${country.name}</span><small>${country.region}</small></button>`).join("");
 }
 function startImpactCarousel() {
   if (!impactCarousel) return;
@@ -245,7 +254,8 @@ function bindEvents() {
   menuClose.addEventListener("click", closeMenu);
   document.getElementById("searchOpen").addEventListener("click", openSearch);
   document.getElementById("searchOpenMobile").addEventListener("click", () => { closeMenu(); openSearch(); });
-  document.getElementById("moreCountriesOpen").addEventListener("click", () => openModal(moreCountriesModal));
+  document.getElementById("moreCountriesOpen").addEventListener("click", () => { moreCountriesModal.querySelector(".modal-shell").scrollTo({ top: 0, behavior: "auto" }); openModal(moreCountriesModal); });
+  countryBackToList.addEventListener("click", () => { closeModal(countryModal); openModal(moreCountriesModal); moreCountriesModal.querySelector(".modal-shell").scrollTo({ top: 0, behavior: "auto" }); });
   document.querySelectorAll(".mobile-link").forEach((link) => link.addEventListener("click", closeMenu));
   document.querySelectorAll("[data-close]").forEach((btn) => btn.addEventListener("click", () => closeModal(document.getElementById(btn.dataset.close))));
   document.getElementById("termsOpen").addEventListener("click", () => openLegal("Terms of Service", `<section><h3>Terms of Service</h3><p>These Terms explain how Broad Mobility delivers visa, education, and travel support services. By using this website or booking support, you agree to these terms.</p></section><section><h4>1) Scope of Services</h4><p>Broad Mobility provides advisory support including consultations, document preparation guidance, interview coaching, travel planning assistance, and general destination information.</p></section><section><h4>2) Eligibility</h4><p>Clients must be legally permitted to apply for their selected program, visa, or travel category and must provide truthful personal and supporting information.</p></section><section><h4>3) Client Responsibilities</h4><p>Clients are responsible for attending meetings, submitting requested records on time, and reviewing all documents before submission to any embassy, school, or third party.</p></section><section><h4>4) Accuracy of Information</h4><p>All outcomes depend on accurate information. Inconsistent, altered, or incomplete records can delay processing or lead to refusal by authorities.</p></section><section><h4>5) Consultation and Advisory Nature</h4><p>Broad Mobility is an advisory consultancy. We prepare and guide, but we do not guarantee approvals because final decisions are made by independent institutions.</p></section><section><h4>6) Fees and Payments</h4><p>Published service plans describe support level and scope. Where fees apply, clients are informed before onboarding. Government or embassy fees are separate unless clearly stated.</p></section><section><h4>7) Third-Party Decisions</h4><p>Embassies, universities, scholarship boards, and border authorities make independent decisions. Broad Mobility cannot override, influence, or reverse those decisions.</p></section><section><h4>8) Timelines and Expectations</h4><p>Processing timelines vary by country, intake, season, and document readiness. Shared timelines are planning estimates, not guaranteed processing dates.</p></section><section><h4>9) Refund, Cancellation, and Rescheduling</h4><p>Consultation slots may be rescheduled with notice. Service fees already used for delivered work or reviews may be non-refundable based on completed scope.</p></section><section><h4>10) Intellectual Property</h4><p>All website content, guidance templates, and branded materials remain the property of Broad Mobility unless otherwise stated.</p></section><section><h4>11) Acceptable Use</h4><p>You agree not to misuse forms, upload harmful files, impersonate others, or use our materials for unlawful activities.</p></section><section><h4>12) Limitation of Liability</h4><p>Broad Mobility is not liable for indirect losses caused by third-party decisions, policy changes, client delays, or inaccurate client-provided information.</p></section><section><h4>13) Indemnification</h4><p>Clients agree to indemnify Broad Mobility against claims arising from falsified records, unauthorized use, or misuse of advisory materials.</p></section><section><h4>14) Privacy Reference</h4><p>Personal information is handled under our Privacy Policy. Please review it for details on data collection, processing, and retention.</p></section><section><h4>15) Service and Term Updates</h4><p>Broad Mobility may update services, terms, and published offers to reflect operational or legal changes. Updated terms apply once posted.</p></section><section><h4>16) Support and Customer Contact</h4><p>For service clarifications, plan scope, or complaint resolution, contact our support team and include your full name and service reference.</p></section><section><h4>17) Contact Information</h4><p>Legal and support inquiries: scelta.infinity@gmail.com.</p></section>`));
@@ -286,11 +296,10 @@ function bindEvents() {
   moreCountriesList.addEventListener("click", (e) => {
     const btn = e.target.closest("[data-country]");
     if (!btn) return;
-    const name = btn.dataset.country;
-    const known = destinations.find((d) => d.name.toLowerCase() === name.toLowerCase());
+    const country = allCountriesMap.get(btn.dataset.country);
+    if (!country) return;
     closeModal(moreCountriesModal);
-    if (known) openCountry(known);
-    else openCountry({ name, flag: "", image: fallbackSvg, why: `${name} offers international pathways depending on program and intake.`, scholarships: "National, institutional, and merit pathways vary by school and year.", work: "Part-time rights and post-study options depend on current policy.", stability: "Policy stability varies by region and sector.", life: "Cost of living and student lifestyle differ by city.", unis: [["Leading University 1", "Recognized for international student pathways."], ["Leading University 2", "Strong programs across major disciplines."], ["Leading University 3", "Research and career-oriented programs."], ["Leading University 4", "Popular destination for international applicants."]] });
+    openCountry(country, { fromExtraList: true });
   });
 
   const tabPersonal = document.getElementById("tabPersonal");
