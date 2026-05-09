@@ -313,6 +313,20 @@ function bindEvents() {
 }
 
 
+
+function animateHeroIntro() {
+  const heroItems = document.querySelectorAll(".hero-badge, .hero-title, .hero-subtitle, .hero-actions, .hero-ticker, .hero-stat-card");
+  if (!heroItems.length || !window.gsap || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  gsap.from(heroItems, {
+    opacity: 0,
+    y: 24,
+    duration: 0.85,
+    ease: "power3.out",
+    stagger: 0.08
+  });
+  gsap.from(".hero-title", { letterSpacing: "0.01em", duration: 0.85, ease: "power3.out" });
+}
+
 function startProcessNumberCycle() {
   const processNumbers = document.querySelectorAll(".process-number, .step-circle");
   if (!processNumbers.length) return;
@@ -331,6 +345,7 @@ function startProcessNumberCycle() {
 function syncMenuScroll() { setHeaderState(); setActiveNav(); }
 function init() {
   setupLogoFallbacks();
+  animateHeroIntro();
   renderDestinations();
   renderMoreCountries();
   renderTestimonials();
