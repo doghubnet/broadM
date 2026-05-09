@@ -312,6 +312,22 @@ function bindEvents() {
   }
 }
 
+
+function startProcessNumberCycle() {
+  const processNumbers = document.querySelectorAll(".process-number, .step-circle");
+  if (!processNumbers.length) return;
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let activeProcessIndex = 0;
+  const activateProcessNumber = () => {
+    processNumbers.forEach((item) => item.classList.remove("is-active"));
+    const activeItem = processNumbers[activeProcessIndex];
+    if (activeItem) activeItem.classList.add("is-active");
+    activeProcessIndex = (activeProcessIndex + 1) % processNumbers.length;
+  };
+  activateProcessNumber();
+  if (!prefersReducedMotion) window.setInterval(activateProcessNumber, 1300);
+}
+
 function syncMenuScroll() { setHeaderState(); setActiveNav(); }
 function init() {
   setupLogoFallbacks();
@@ -319,6 +335,7 @@ function init() {
   renderMoreCountries();
   renderTestimonials();
   startImpactCarousel();
+  startProcessNumberCycle();
   bindFaq();
   bindEvents();
   revealOnScroll();
