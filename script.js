@@ -405,6 +405,7 @@ function bindEvents() {
 
 
 function animateHeroIntro() {
+  if (document.querySelector(".hero-title-motion")) return;
   const heroItems = document.querySelectorAll(".hero-badge, .hero-title, .hero-subtitle, .hero-actions, .hero-ticker, .hero-stat-card");
   if (!heroItems.length || heroItems[0].classList.contains("motion-reveal") || !window.gsap || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   gsap.from(".hero-title", { opacity: 0, y: 24, duration: 1.2, ease: "expo.out" });
