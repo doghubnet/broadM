@@ -638,15 +638,16 @@
           <div class="modal-grid" style="margin-top:16px">
             <label style="padding:16px;border-radius:18px;border:1px dashed rgba(255,255,255,.20);background:rgba(255,255,255,.04)">
               High School Transcript
-              <input type="file" name="transcript" multiple style="display:block;margin-top:10px;width:100%;color:#fff">
+              <input type="file" name="highSchoolTranscript" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" multiple style="display:block;margin-top:10px;width:100%;color:#fff">
             </label>
             <label style="padding:16px;border-radius:18px;border:1px dashed rgba(255,255,255,.20);background:rgba(255,255,255,.04)">
               Passport
-              <input type="file" name="passport" multiple style="display:block;margin-top:10px;width:100%;color:#fff">
+              <input type="file" name="passport" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" multiple style="display:block;margin-top:10px;width:100%;color:#fff">
             </label>
           </div>
 
           <p style="margin-top:12px;color:rgba(255,255,255,.72);font-size:.92rem">Maximum combined size should stay below 10MB.</p>
+          <div id="applicationFormMessage" class="application-form-message" role="status" aria-live="polite"></div>
           <button class="btn btn-primary" type="submit" style="margin-top:18px;width:100%;border-radius:18px;padding:16px 20px">Submit Application</button>
         </form>
       </div>
@@ -749,6 +750,6 @@
   </template>
 
   <script src="./destinationsData.js"></script>
-  <script src="./script.js"></script>
+  <script type="module" src="./script.js"></script>
 </body>
 </html>

@@ -1,3 +1,5 @@
+import { supabase } from "./src/lib/supabase.js";
+
 const destinations = [
   { key: "usa", name: "USA", flag: "🇺🇸", image: "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?auto=format&fit=crop&w=1400&q=80", pulse: "94%", why: "The USA offers globally ranked universities, high research funding, and broad career paths across STEM, business, and creative fields.", scholarships: "Merit scholarships, assistantships, athletics, Fulbright, and departmental fellowships.", work: "Part-time work during studies, with post-study routes such as OPT and CPT in many programs.", stability: "Stable institutions, a deep innovation economy, and strong long-term education investment.", life: "Higher living costs in major cities, with active campus culture and wide student communities.", unis: [["Harvard University", "Ivy League research university with global academic recognition."], ["Stanford University", "Research university known for technology, entrepreneurship, and innovation."], ["Massachusetts Institute of Technology", "Leading institution for engineering, science, and technology."], ["University of California, Berkeley", "Major public research university with strong global reputation."], ["New York University", "Large private university with strong international and urban programs."]] },
   { key: "italy", name: "Italy", flag: "🇮🇹", image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1400&q=80", pulse: "96%", why: "Italy combines historic universities, strong design and architecture fields, and access to wider European opportunities.", scholarships: "DSU regional grants, merit awards, tuition waivers, and Erasmus mobility support.", work: "Part-time work during studies, with growing opportunities in design, engineering, and tourism.", stability: "EU framework, stable academic systems, and continued international education growth.", life: "Moderate costs outside Milan and Rome, plus a rich culture and strong student life.", unis: [["University of Bologna", "Historic public university with broad academic strength."], ["Sapienza University of Rome", "Large public research university with many international programs."], ["University of Padua", "Major public university known for research and academic tradition."], ["Politecnico di Milano", "Leading technical university for engineering, architecture, and design."], ["University of Milan", "Large public university with strong research and professional programs."]] },
@@ -302,6 +304,196 @@ function revealOnScroll() {
   }, { threshold: 0.18 });
   revealItems.forEach((el) => observer.observe(el));
 }
+
+const APPLICATION_DOCUMENTS_BUCKET = "application-documents";
+const MAX_APPLICATION_FILE_BYTES = 10 * 1024 * 1024;
+const ALLOWED_APPLICATION_MIME_TYPES = new Set(["application/pdf", "image/jpeg", "image/png"]);
+const ALLOWED_APPLICATION_EXTENSIONS = new Set(["pdf", "jpg", "jpeg", "png"]);
+const APPLICATION_DOCUMENT_FIELDS = {
+  gradeExams: {
+    label: "Grade 10 and 12 National Exams",
+    column: "grade_10_12_exam_path",
+    folder: "grade-exams"
+  },
+  highSchoolTranscript: {
+    label: "High School Transcript",
+    column: "high_school_transcript_path",
+    folder: "high-school-transcripts"
+  },
+  passport: {
+    label: "Passport",
+    column: "passport_path",
+    folder: "passports"
+  },
+  bachelorDegreeCertificate: {
+    label: "Bachelor Degree Certificate",
+    column: "bachelor_degree_certificate_path",
+    folder: "bachelor-certificates"
+  },
+  bachelorTranscript: {
+    label: "Bachelor Transcript or Student Copy",
+    column: "bachelor_transcript_path",
+    folder: "bachelor-transcripts"
+  }
+};
+
+function setApplicationFormMessage(type, message) {
+  const messageEl = document.getElementById("applicationFormMessage");
+  if (!messageEl) return;
+  messageEl.textContent = message || "";
+  messageEl.classList.remove("is-success", "is-error");
+  if (type && message) messageEl.classList.add(type === "success" ? "is-success" : "is-error");
+}
+
+function getFieldValue(form, name) {
+  return String(form.elements[name]?.value || "").trim();
+}
+
+function getApplicationRequiredDocuments(level) {
+  const baseDocuments = ["highSchoolTranscript", "passport"];
+  if (level === "Bachelor") return ["gradeExams", ...baseDocuments];
+  if (level === "Masters") return ["bachelorDegreeCertificate", "bachelorTranscript", ...baseDocuments];
+  return baseDocuments;
+}
+
+function getFileExtension(file) {
+  return file.name.split(".").pop()?.toLowerCase() || "";
+}
+
+function validateApplicationFileInput(input, documentConfig) {
+  if (!input || !input.files || input.files.length === 0) {
+    return { error: `${documentConfig.label} is required.` };
+  }
+
+  if (input.files.length > 1) {
+    return { error: "Please upload one combined PDF or one image per document field." };
+  }
+
+  const file = input.files[0];
+  const extension = getFileExtension(file);
+  if (!ALLOWED_APPLICATION_MIME_TYPES.has(file.type) || !ALLOWED_APPLICATION_EXTENSIONS.has(extension)) {
+    return { error: `${documentConfig.label} must be a PDF, JPG, JPEG, or PNG file.` };
+  }
+
+  return { file, extension };
+}
+
+function validateApplicationForm(form) {
+  const fullName = getFieldValue(form, "fullName");
+  const email = getFieldValue(form, "email");
+  const phone = getFieldValue(form, "phone");
+  const secondaryPhone = getFieldValue(form, "secondaryPhone");
+  const applicationLevel = getFieldValue(form, "level");
+  const applicationArea = getFieldValue(form, "field");
+  const countriesInterested = getFieldValue(form, "countries");
+  const heardAboutUs = getFieldValue(form, "source");
+  const emailInput = form.elements.email;
+  const phonePattern = /^[0-9+\-()\s]+$/;
+  const simpleEmailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
+  if (!fullName || !email || !phone || !applicationLevel || !applicationArea || !countriesInterested || !heardAboutUs) {
+    return { error: "Please complete all required fields before submitting." };
+  }
+
+  if (!emailInput.validity.valid || !simpleEmailPattern.test(email)) {
+    return { error: "Please enter a valid email address." };
+  }
+
+  if (!phonePattern.test(phone) || (secondaryPhone && !phonePattern.test(secondaryPhone))) {
+    return { error: "Please enter a valid phone number using digits, spaces, +, -, or parentheses." };
+  }
+
+  const requiredDocumentNames = getApplicationRequiredDocuments(applicationLevel);
+  const fileUploads = [];
+  let totalSize = 0;
+
+  for (const documentName of requiredDocumentNames) {
+    const documentConfig = APPLICATION_DOCUMENT_FIELDS[documentName];
+    const input = form.querySelector(`[name="${documentName}"]`);
+    const result = validateApplicationFileInput(input, documentConfig);
+    if (result.error) return { error: result.error };
+    totalSize += result.file.size;
+    fileUploads.push({ ...documentConfig, file: result.file, extension: result.extension });
+  }
+
+  if (totalSize > MAX_APPLICATION_FILE_BYTES) {
+    return { error: "Maximum combined file size should stay below 10MB." };
+  }
+
+  return {
+    payload: {
+      full_name: fullName,
+      email,
+      phone,
+      secondary_phone: secondaryPhone || null,
+      application_level: applicationLevel,
+      application_area: applicationArea,
+      countries_interested: countriesInterested,
+      heard_about_us: heardAboutUs,
+      status: "new"
+    },
+    fileUploads
+  };
+}
+
+function buildApplicationStoragePath(folder, extension) {
+  return `${folder}/${crypto.randomUUID()}.${extension}`;
+}
+
+async function uploadApplicationDocument({ file, folder, extension }) {
+  const path = buildApplicationStoragePath(folder, extension);
+  const { data, error } = await supabase.storage
+    .from(APPLICATION_DOCUMENTS_BUCKET)
+    .upload(path, file, {
+      cacheControl: "3600",
+      upsert: false,
+      contentType: file.type
+    });
+
+  if (error) throw error;
+  return data.path;
+}
+
+async function handleConsultFormSubmit(event) {
+  event.preventDefault();
+  const form = event.currentTarget;
+  const submitButton = form.querySelector('button[type="submit"]');
+  const originalButtonText = submitButton.textContent;
+  setApplicationFormMessage("", "");
+
+  const validation = validateApplicationForm(form);
+  if (validation.error) {
+    setApplicationFormMessage("error", validation.error);
+    return;
+  }
+
+  submitButton.disabled = true;
+  submitButton.textContent = "Submitting...";
+
+  try {
+    const payload = { ...validation.payload };
+    for (const upload of validation.fileUploads) {
+      payload[upload.column] = await uploadApplicationDocument(upload);
+    }
+
+    const { error } = await supabase
+      .from("applications")
+      .insert([payload]);
+
+    if (error) throw error;
+
+    form.reset();
+    dynamicUploads.innerHTML = "";
+    setApplicationFormMessage("success", "Application submitted successfully. Our team will contact you soon.");
+  } catch (error) {
+    console.error(error);
+    setApplicationFormMessage("error", "Submission failed. Please check your connection and try again.");
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = originalButtonText;
+  }
+}
+
 function bindFaq() {
   document.querySelectorAll(".faq-item").forEach((item) => {
     const btn = item.querySelector(".faq-question");
@@ -343,11 +535,11 @@ function bindEvents() {
   document.getElementById("privacyOpen").addEventListener("click", () => openLegal("Privacy Policy", `<section><h3>Privacy Policy</h3><p>This Policy explains how Broad Mobility collects, uses, stores, and protects personal information shared through this website and our consultation services.</p></section><section><h4>1) Introduction</h4><p>We are committed to responsible data handling and only collect information necessary for service delivery, communication, and compliance.</p></section><section><h4>2) Information We Collect</h4><p>We may collect contact details, education/work background, destination interests, uploaded records, and consultation notes.</p></section><section><h4>3) How We Use Information</h4><p>Data is used to assess eligibility pathways, deliver advisory guidance, prepare documentation checklists, and communicate updates.</p></section><section><h4>4) Consultation and Service Delivery Data</h4><p>Consultation records may include action plans, timeline recommendations, and document feedback to improve delivery quality and continuity.</p></section><section><h4>5) Cookies and Technical Data</h4><p>We may use basic technical logs or analytics signals (such as browser type and page interactions) to improve site usability and reliability.</p></section><section><h4>6) Document Handling</h4><p>Uploaded files are used only for advisory and preparation support. Clients should avoid sharing unrelated sensitive records not required for service scope.</p></section><section><h4>7) Sharing with Trusted Partners</h4><p>Where necessary, information may be shared with trusted service partners or official channels strictly for client-requested processing steps.</p></section><section><h4>8) Data Retention</h4><p>Information is retained only for active services, recordkeeping, legal obligations, or quality control, then securely deleted or archived.</p></section><section><h4>9) Security Measures</h4><p>Broad Mobility applies reasonable technical and operational safeguards to reduce unauthorized access, disclosure, or misuse risks.</p></section><section><h4>10) User Rights</h4><p>You may request access, correction, or deletion of eligible personal data by contacting us. Some records may be retained where required by law.</p></section><section><h4>11) International Users</h4><p>Clients using our services across borders acknowledge that processing may involve data handling relevant to destination-country procedures.</p></section><section><h4>12) Third-Party Links</h4><p>Our site may link to third-party platforms. We are not responsible for external privacy practices and recommend reviewing those policies directly.</p></section><section><h4>13) Updates to This Policy</h4><p>We may revise this Policy as services evolve. Updated versions apply from the date of publication on our website.</p></section><section><h4>14) Contact Information</h4><p>Privacy inquiries: scelta.infinity@gmail.com.</p></section>`));
   document.getElementById("appLevel").addEventListener("change", (e) => {
     const v = e.target.value;
-    if (v === "Bachelor") dynamicUploads.innerHTML = '<label style="padding:16px;border-radius:18px;border:1px dashed rgba(255,255,255,.20);background:rgba(255,255,255,.04)">Grade 10 and 12 National Exams<input type="file" name="bachelorDocs" multiple style="display:block;margin-top:10px;width:100%;color:#fff"></label>';
-    else if (v === "Masters") dynamicUploads.innerHTML = '<label style="padding:16px;border-radius:18px;border:1px dashed rgba(255,255,255,.20);background:rgba(255,255,255,.04)">Bachelor Degree Certificate<input type="file" name="mastersDegree" multiple style="display:block;margin-top:10px;width:100%;color:#fff"></label><label style="padding:16px;border-radius:18px;border:1px dashed rgba(255,255,255,.20);background:rgba(255,255,255,.04)">Bachelor Transcript or Student Copy<input type="file" name="mastersTranscript" multiple style="display:block;margin-top:10px;width:100%;color:#fff"></label>';
+    if (v === "Bachelor") dynamicUploads.innerHTML = '<label style="padding:16px;border-radius:18px;border:1px dashed rgba(255,255,255,.20);background:rgba(255,255,255,.04)">Grade 10 and 12 National Exams<input type="file" name="gradeExams" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" multiple style="display:block;margin-top:10px;width:100%;color:#fff"></label>';
+    else if (v === "Masters") dynamicUploads.innerHTML = '<label style="padding:16px;border-radius:18px;border:1px dashed rgba(255,255,255,.20);background:rgba(255,255,255,.04)">Bachelor Degree Certificate<input type="file" name="bachelorDegreeCertificate" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" multiple style="display:block;margin-top:10px;width:100%;color:#fff"></label><label style="padding:16px;border-radius:18px;border:1px dashed rgba(255,255,255,.20);background:rgba(255,255,255,.04)">Bachelor Transcript or Student Copy<input type="file" name="bachelorTranscript" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" multiple style="display:block;margin-top:10px;width:100%;color:#fff"></label>';
     else dynamicUploads.innerHTML = "";
   });
-  document.getElementById("consultForm").addEventListener("submit", (e) => { e.preventDefault(); alert("Form ready for your backend integration."); });
+  document.getElementById("consultForm").addEventListener("submit", handleConsultFormSubmit);
   document.addEventListener("click", (e) => {
     if (e.target === consultModal) closeModal(consultModal);
     if (e.target === countryModal) closeModal(countryModal);
