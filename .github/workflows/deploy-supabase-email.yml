@@ -1,0 +1,107 @@
+name: Deploy Supabase Email Function
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy-supabase-email:
+    runs-on: ubuntu-latest
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
+      RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+      BROAD_MOBILITY_WEBHOOK_SECRET: ${{ secrets.BROAD_MOBILITY_WEBHOOK_SECRET }}
+      SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Supabase CLI
+        uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      - name: Verify required deployment secrets
+        shell: bash
+        run: |
+          missing=()
+
+          if [ -z "${SUPABASE_ACCESS_TOKEN}" ]; then
+            missing+=("SUPABASE_ACCESS_TOKEN")
+          fi
+
+          if [ -z "${SUPABASE_PROJECT_REF}" ]; then
+            missing+=("SUPABASE_PROJECT_REF")
+          fi
+
+          if [ -z "${RESEND_API_KEY}" ]; then
+            missing+=("RESEND_API_KEY")
+          fi
+
+          if [ -z "${BROAD_MOBILITY_WEBHOOK_SECRET}" ]; then
+            missing+=("BROAD_MOBILITY_WEBHOOK_SECRET")
+          fi
+
+          if [ "${#missing[@]}" -gt 0 ]; then
+            printf 'Missing required deployment secret: %s\n' "${missing[@]}" >&2
+            exit 1
+          fi
+
+          echo "Required deployment secrets are present."
+
+      - name: Set Supabase Edge Function secrets
+        shell: bash
+        run: |
+          supabase secrets set \
+            RESEND_API_KEY="${RESEND_API_KEY}" \
+            BROAD_MOBILITY_WEBHOOK_SECRET="${BROAD_MOBILITY_WEBHOOK_SECRET}" \
+            --project-ref "${SUPABASE_PROJECT_REF}"
+
+      - name: Deploy Supabase Edge Function
+        shell: bash
+        run: supabase functions deploy send-application-email --project-ref "${SUPABASE_PROJECT_REF}"
+
+      - name: Install PostgreSQL client for webhook SQL
+        if: ${{ env.SUPABASE_DB_URL != '' }}
+        shell: bash
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client
+
+      - name: Run webhook SQL automatically
+        if: ${{ env.SUPABASE_DB_URL != '' }}
+        shell: bash
+        run: |
+          TEMP_SQL="$(mktemp)"
+          cleanup() {
+            rm -f "${TEMP_SQL}"
+          }
+          trap cleanup EXIT
+
+          python3 - <<'PY' "supabase-email-webhook.sql" "${TEMP_SQL}"
+import os
+import sys
+from pathlib import Path
+
+source_path = Path(sys.argv[1])
+target_path = Path(sys.argv[2])
+project_ref = os.environ["SUPABASE_PROJECT_REF"]
+webhook_secret = os.environ["BROAD_MOBILITY_WEBHOOK_SECRET"]
+
+sql = source_path.read_text()
+sql = sql.replace("YOUR_PROJECT_REF", project_ref)
+sql = sql.replace("YOUR_WEBHOOK_SECRET", webhook_secret)
+target_path.write_text(sql)
+PY
+
+          psql "${SUPABASE_DB_URL}" -v ON_ERROR_STOP=1 -f "${TEMP_SQL}"
+          echo "Webhook SQL executed successfully."
+
+      - name: Manual webhook SQL fallback
+        if: ${{ env.SUPABASE_DB_URL == '' }}
+        shell: bash
+        run: |
+          echo "SUPABASE_DB_URL is not configured. Edge Function was deployed and secrets were set. To finish webhook setup, open supabase-email-webhook.sql, replace YOUR_PROJECT_REF and YOUR_WEBHOOK_SECRET, then run the SQL manually in Supabase SQL Editor."
