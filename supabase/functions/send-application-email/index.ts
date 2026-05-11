@@ -1,5 +1,10 @@
 const RESEND_API_URL = "https://api.resend.com/emails";
-const ADMIN_EMAIL = "sceltainfinity@gmail.com";
+// Resend testing note:
+// onboarding@resend.dev is only for testing and can send only to the Resend account owner email.
+// For the current no-domain setup, notifications are sent to gediyonadamu5070@gmail.com.
+// In production, verify a Broad Mobility domain in Resend and replace the sender with
+// Broad Mobility <applications@broadmobility.com> or another verified sender.
+const ADMIN_EMAIL = "gediyonadamu5070@gmail.com";
 const EMAIL_SUBJECT = "New Broad Mobility Application Submitted";
 const EMAIL_FROM = "Broad Mobility <onboarding@resend.dev>";
 const WEBHOOK_SECRET_HEADER = "x-broadmobility-webhook-secret";

@@ -10,7 +10,7 @@ The intended flow is:
 2. The existing frontend uploads documents to Supabase Storage and inserts one row into `public.applications`.
 3. A Supabase Database Webhook calls the `send-application-email` Edge Function.
 4. The Edge Function sends an admin notification email through Resend.
-5. The admin inbox receives the application notice at `sceltainfinity@gmail.com`.
+5. The admin inbox receives the application notice at `gediyonadamu5070@gmail.com`.
 
 ## 2. Required GitHub repository secrets
 
@@ -94,7 +94,17 @@ Manual steps:
 5. Confirm a new row exists.
 6. Check that Supabase Storage paths remain saved in the application row.
 7. Check Supabase Edge Function logs for `send-application-email`.
-8. Check the admin inbox: `sceltainfinity@gmail.com`.
+8. Check the admin inbox: `gediyonadamu5070@gmail.com`.
+
+
+## No-domain Resend testing
+
+- The current sender is `Broad Mobility <onboarding@resend.dev>`.
+- This sender is for testing only.
+- With `onboarding@resend.dev`, Resend can only send to the Resend account owner email.
+- The current testing recipient is `gediyonadamu5070@gmail.com`.
+- For production, verify a custom domain in Resend.
+- After domain verification, update the sender to a verified address such as `applications@broadmobility.com` and update the recipient as needed.
 
 ## 10. Troubleshooting
 
