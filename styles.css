@@ -224,6 +224,7 @@ button{cursor:pointer}
 .modal-content h4{margin:22px 0 10px;color:var(--accent);font-size:1rem;}
 .modal-content p{color:#525252;opacity:1;margin:0;font-size:.9rem;}
 .application-form-message{display:none;margin-top:14px;padding:12px 14px;border-radius:14px;font-size:.92rem;font-weight:700;line-height:1.45}
+.application-form-message:empty{display:none}
 .application-form-message.is-success{display:block;background:rgba(0,166,81,.12);color:#7ee0a3;border:1px solid rgba(0,166,81,.28)}
 .application-form-message.is-error{display:block;background:rgba(245,158,11,.12);color:#ffcf8a;border:1px solid rgba(245,158,11,.30)}
 #countryTitleLabel{font-size:1.25rem;color:var(--navy);font-weight:800}
