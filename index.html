@@ -539,31 +539,31 @@
         </div>
         <div class="blog-grid">
           <article class="card blog-card reveal">
-            <a href="/blog/2026-04-28-uk-student-visa-update.html">
+            <a href="#newsroom" data-article-id="uk-student-visa-update">
               <div class="blog-thumb" style="background-image:url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1200&q=80')"><span>UK Student Visa Updates 2026</span></div>
             </a>
             <p class="blog-date">April 28, 2026</p>
             <h3>New UK student visa guidelines as of 2026</h3>
             <p>Key compliance changes, financial proof updates, and interview readiness points for international applicants.</p>
-            <a class="btn btn-light" href="/blog/2026-04-28-uk-student-visa-update.html">Read More</a>
+            <a class="btn btn-light" href="#newsroom" data-article-id="uk-student-visa-update">Read More</a>
           </article>
           <article class="card blog-card reveal">
-            <a href="/blog/2026-04-28-daad-deadlines.html">
+            <a href="#newsroom" data-article-id="daad-deadlines">
               <div class="blog-thumb" style="background-image:url('https://i.imgur.com/m8d5HZz.jpeg')"><span>DAAD Scholarship Deadlines</span></div>
             </a>
             <p class="blog-date">April 28, 2026</p>
             <h3>Germany’s DAAD scholarship deadlines and document plan</h3>
             <p>A practical timeline to prepare academic records, language scores, recommendation letters, and motivation documents.</p>
-            <a class="btn btn-light" href="/blog/2026-04-28-daad-deadlines.html">Read More</a>
+            <a class="btn btn-light" href="#newsroom" data-article-id="daad-deadlines">Read More</a>
           </article>
           <article class="card blog-card reveal">
-            <a href="/blog/2026-04-28-smart-travel-tips.html">
+            <a href="#newsroom" data-article-id="smart-travel-preparation">
               <div class="blog-thumb" style="background-image:url('https://i.imgur.com/Vf8zZnh.jpeg')"><span>Smart Travel Preparation</span></div>
             </a>
             <p class="blog-date">April 28, 2026</p>
             <h3>Practical travel preparation tips for first-time international movers</h3>
             <p>How to organize documents, budget for transition costs, and prepare for your first weeks abroad with confidence.</p>
-            <a class="btn btn-light" href="/blog/2026-04-28-smart-travel-tips.html">Read More</a>
+            <a class="btn btn-light" href="#newsroom" data-article-id="smart-travel-preparation">Read More</a>
           </article>
         </div>
       </div>
@@ -761,6 +761,19 @@
         <button class="btn btn-primary" type="button" id="searchClear">Clear</button>
       </div>
       <div class="search-results" id="searchResults" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="modal" id="articleModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="articleModalTitle">
+    <button class="modal-close" type="button" data-close="articleModal" aria-label="Close article">×</button>
+    <div class="modal-shell article-modal-shell">
+      <div class="modal-content article-modal-content">
+        <img class="article-modal-image" id="articleModalImage" src="" alt="">
+        <div class="article-modal-meta" id="articleModalMeta"></div>
+        <h3 id="articleModalTitle"></h3>
+        <div id="articleModalBody" class="article-modal-body"></div>
+        <button class="article-back-btn article-modal-back" type="button" data-close="articleModal">Back to News</button>
+      </div>
     </div>
   </div>
 

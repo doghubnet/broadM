@@ -68,6 +68,7 @@ const consultModal = document.getElementById("consultModal");
 const countryModal = document.getElementById("countryModal");
 const moreCountriesModal = document.getElementById("moreCountriesModal");
 const legalModal = document.getElementById("legalModal");
+const articleModal = document.getElementById("articleModal");
 const searchModal = document.getElementById("searchModal");
 const destinationGrid = document.getElementById("destinationGrid");
 const testimonialRowA = document.getElementById("testimonialRowA");
@@ -81,6 +82,10 @@ const countryBackToList = document.getElementById("countryBackToList");
 const destinationTemplate = document.getElementById("destinationTemplate");
 const testimonialTemplate = document.getElementById("testimonialTemplate");
 const impactCarousel = document.getElementById("impactCarousel");
+const articleModalImage = document.getElementById("articleModalImage");
+const articleModalMeta = document.getElementById("articleModalMeta");
+const articleModalTitle = document.getElementById("articleModalTitle");
+const articleModalBody = document.getElementById("articleModalBody");
 const themeToggle = document.getElementById("themeToggle");
 const THEME_STORAGE_KEY = "broadMobilityTheme";
 
@@ -113,6 +118,92 @@ const ethiopiaUniversities = [
 
 const extraCountryProfiles = window.extraCountryProfiles || [];
 const extraCountryProfilesByName = new Map(extraCountryProfiles.map((country) => [country.name.toLowerCase(), country]));
+const countryImages = {
+  "Canada": "https://upload.wikimedia.org/wikipedia/commons/b/b7/CN_Tower_from_Puente_de_Luz%2C_Toronto%2C_Ontario%2C_2025-08-25_01.jpg",
+  "Australia": "https://upload.wikimedia.org/wikipedia/commons/4/40/Sydney_Opera_House_Sails.jpg",
+  "Netherlands": "https://upload.wikimedia.org/wikipedia/commons/f/ff/KinderdijkMolens02.jpg",
+  "Sweden": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Royal_Dramatic_Theatre_Stockholm.jpg",
+  "Japan": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Himeji_Castle_The_Keep_Towers.jpg",
+  "South Korea": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Gyeongbokgung_Palace%2C_Seoul%2C_South_Korea.jpg",
+  "Norway": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Bryggen%2C_Bergen%2C_Norway.jpg",
+  "New Zealand": "https://upload.wikimedia.org/wikipedia/commons/5/54/Auckland_Sky_Tower_%285186071375%29.jpg",
+  "Switzerland": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Chapel_Bridge_and_Water_Tower_in_Lucerne.jpg",
+  "Denmark": "https://upload.wikimedia.org/wikipedia/commons/a/ad/The_Nyhavn_Canal_3.jpg",
+  "Finland": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Helsinki_Cathedral_in_July_2004.jpg",
+  "Belgium": "https://upload.wikimedia.org/wikipedia/commons/2/26/Grand-Place%2C_Brussels_-_panorama%2C_June_2018.jpg",
+  "Spain": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sagrada_Familia_01.jpg",
+  "Ireland": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Dublin_Castle_from_the_garden.jpg",
+  "Poland": "https://upload.wikimedia.org/wikipedia/commons/8/87/Wawel_%284%29.jpg",
+  "Hungary": "https://upload.wikimedia.org/wikipedia/commons/7/79/Budapest_Orsz%C3%A1gh%C3%A1z_%2831355012995%29.jpg",
+  "Czech Republic": "https://upload.wikimedia.org/wikipedia/commons/2/22/Prague_07-2016_view_from_Lesser_Town_Tower_of_Charles_Bridge_img3.jpg",
+  "Portugal": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Torre_de_Bel%C3%A9m%2C_Lisbon%2C_Portugal.jpg",
+  "Greece": "https://upload.wikimedia.org/wikipedia/commons/d/da/The_Parthenon_in_Athens.jpg",
+  "Türkiye": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Hagia_Sophia_%28228968325%29.jpeg",
+  "Malaysia": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Petronas_Twin_Towers%2C_Kuala_Lumpur.jpg",
+  "Singapore": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Marina_Bay_Sands_%28I%29.jpg",
+  "Malta": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Valletta_Skyline.jpg",
+  "Lithuania": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Vilnius_old_town_by_Augustas_Didzgalvis.jpg",
+  "Latvia": "https://commons.wikimedia.org/wiki/Special:Redirect/file/House_of_the_Blackheads%2C_Riga.jpg",
+  "Estonia": "https://upload.wikimedia.org/wikipedia/commons/7/70/Raekoja_plats_at_night.jpg",
+  "Bulgaria": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Alexander_Nevsky_Cathedral_in_Sofia.jpg",
+  "Croatia": "https://upload.wikimedia.org/wikipedia/commons/6/67/The_walls_of_the_fortress_and_View_of_the_old_city._panorama.jpg",
+  "Slovenia": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Bled_Castle_05.jpg",
+  "Slovakia": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Bratislava_Castle%2C_Slovakia.jpg",
+  "United Arab Emirates": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Burj_Khalifa.jpg",
+  "Qatar": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Museum_of_Islamic_Art%2C_Doha.jpg",
+  "Saudi Arabia": "https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Ka%27ba%2C_Great_Mosque_of_Mecca%2C_Saudi_Arabia.jpg",
+  "Egypt": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pyramids_of_the_Giza_Necropolis.jpg",
+  "South Africa": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Union_Buildings%2C_Pretoria%2C_South_Africa.jpg",
+  "Brazil": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Christ_the_Redeemer_-_Cristo_Redentor.jpg",
+  "Argentina": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Casa_Rosada%2C_Buenos_Aires.jpg",
+  "Chile": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Palacio_de_La_Moneda.jpg",
+  "Mexico": "https://upload.wikimedia.org/wikipedia/commons/5/51/Chichen_Itza_3.jpg",
+  "India": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
+  "Philippines": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Manila_Cathedral_2023.jpg",
+  "Thailand": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Wat_Phra_Kaew_Bangkok.jpg",
+  "Vietnam": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Imperial_City%2C_Hue.jpg",
+  "Ethiopia": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Bete_Giyorgis%2C_Lalibela%2C_Ethiopia.jpg"
+};
+
+const newsroomArticles = {
+  "uk-student-visa-update": {
+    title: "New UK student visa guidelines as of 2026",
+    category: "Student Visa",
+    date: "April 28, 2026",
+    image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1200&q=80",
+    body: [
+      "UK student visa preparation in 2026 requires careful document consistency, clear financial evidence, and strong interview readiness.",
+      "Applicants should confirm that bank records, sponsorship letters, academic records, and enrollment documents match across all submitted files.",
+      "A strong preparation plan should begin at least 8 weeks before the intended submission window.",
+      "Recommended steps include checking admission details, preparing financial proof, reviewing accommodation plans, organizing academic documents, and practicing interview answers."
+    ]
+  },
+  "daad-deadlines": {
+    title: "Germany’s DAAD scholarship deadlines and document plan",
+    category: "Scholarship",
+    date: "April 28, 2026",
+    image: "https://i.imgur.com/m8d5HZz.jpeg",
+    body: [
+      "DAAD scholarship preparation requires early planning, accurate academic records, and a focused motivation package.",
+      "Applicants should map deadlines first, then prepare recommendation letters, language proof, transcripts, and a clear statement of purpose.",
+      "A strong DAAD file should connect academic history, career direction, program choice, and long-term contribution.",
+      "Applicants should request reference letters early and keep a simple document checklist for every target program."
+    ]
+  },
+  "smart-travel-preparation": {
+    title: "Practical travel preparation tips for first-time international movers",
+    category: "Travel Preparation",
+    date: "April 28, 2026",
+    image: "https://i.imgur.com/Vf8zZnh.jpeg",
+    body: [
+      "First-time international movers should prepare travel documents, arrival plans, emergency contacts, and basic settlement needs before departure.",
+      "Important preparation areas include passport validity, visa documents, accommodation proof, airport pickup, budget planning, and local communication setup.",
+      "Applicants should keep digital and printed copies of important documents in separate safe places.",
+      "A smooth arrival plan reduces stress and helps students or travelers adjust faster during the first weeks abroad."
+    ]
+  }
+};
+
 const majorAdditionalCountryData = {
   "Canada": {
     why: "Canada is a leading destination for international students because of public universities, practical programs, multicultural cities, and post-study work pathways.",
@@ -194,7 +285,7 @@ function createFallbackCountryProfile(name) {
     key,
     code: key.slice(0, 3).toUpperCase(),
     name,
-    flag: "🌍",
+    flag: "",
     region: "Worldwide",
     image: "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800' viewBox='0 0 1200 800'%3E%3Crect width='1200' height='800' fill='%23dfe7f1'/%3E%3C/svg%3E",
     why: `${name} can be reviewed as part of a tailored Broad Mobility destination plan based on the applicant’s profile, timeline, and travel purpose.`,
@@ -231,6 +322,7 @@ function buildAdditionalCountries() {
       name,
       key,
       code: profile.code || key.slice(0, 3).toUpperCase(),
+      image: countryImages[name] || profile.image,
       unis: normalizedName === "ethiopia" ? ethiopiaUniversities : (majorData?.unis || profile.unis || [])
     });
     return countries;
@@ -342,13 +434,14 @@ function getUniversityEntries(country) {
 
 function openCountry(data, options = {}) {
   const countryHero = document.getElementById("countryHero");
-  const hasValidImage = typeof data.image === "string" && data.image.trim() && !data.image.startsWith("data:image/svg+xml");
+  const imageUrl = countryImages[data.name] || data.image || "";
+  const hasValidImage = typeof imageUrl === "string" && imageUrl.trim() && !imageUrl.startsWith("data:image/svg+xml");
   countryHero.hidden = !hasValidImage;
   countryHero.classList.toggle("is-hidden", !hasValidImage);
   if (hasValidImage) {
-    countryHero.src = data.image;
+    countryHero.src = imageUrl;
     countryHero.alt = `${data.name} destination image`;
-    countryHero.classList.toggle("country-flag-hero", data.image.includes("flagcdn.com"));
+    countryHero.classList.toggle("country-flag-hero", imageUrl.includes("flagcdn.com"));
   } else {
     countryHero.removeAttribute("src");
     countryHero.alt = "";
@@ -374,6 +467,27 @@ function openCountry(data, options = {}) {
   }
 }
 function openLegal(title, bodyHtml) { document.getElementById("legalTitle").textContent = title; document.getElementById("legalBody").innerHTML = bodyHtml; openModal(legalModal); }
+function openArticle(articleId) {
+  const article = newsroomArticles[articleId];
+  if (!article || !articleModal) return;
+
+  if (article.image) {
+    articleModalImage.hidden = false;
+    articleModalImage.src = article.image;
+    articleModalImage.alt = `${article.title} image`;
+  } else {
+    articleModalImage.hidden = true;
+    articleModalImage.removeAttribute("src");
+    articleModalImage.alt = "";
+  }
+
+  articleModalMeta.innerHTML = `<span>${escapeHtml(article.date)}</span><span>${escapeHtml(article.category)}</span>`;
+  articleModalTitle.textContent = article.title;
+  articleModalBody.innerHTML = article.body.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("");
+  openModal(articleModal);
+  articleModal.querySelector(".modal-shell").scrollTo({ top: 0, behavior: "auto" });
+}
+
 function openSearch() { openModal(searchModal); renderSearchResults(""); setTimeout(() => searchInput.focus(), 50); }
 function attachFallback(img) {
   if (img.matches(".site-logo-img,[data-logo-img]")) return;
@@ -409,7 +523,7 @@ function renderDestinations() {
     img.src = d.image;
     img.alt = d.key === "austria" ? "Innsbruck, Austria mountain city view" : d.key === "china" ? "China city skyline and landmark view" : `${d.name} destination`;
     attachFallback(img);
-    node.querySelector("h3").textContent = `${d.name} ${d.flag}`;
+    node.querySelector("h3").innerHTML = `<span class="destination-name">${escapeHtml(d.name)} <span class="destination-flag" aria-hidden="true">${escapeHtml(d.flag || "")}</span></span>`;
     node.querySelector("p").textContent = `Success pulse: ${d.pulse}`;
     article.addEventListener("click", () => openCountry(d));
     article.addEventListener("keydown", (e) => {
@@ -423,7 +537,7 @@ function renderDestinations() {
 }
 function renderMoreCountries() {
   moreCountriesList.classList.add("more-countries-list");
-  moreCountriesList.innerHTML = extraCountries.map((country) => `<button class="country-list-btn motion-card" type="button" data-country="${country.key}"><span>${escapeHtml(country.flag || "🌍")} ${escapeHtml(country.name)}</span><small>${escapeHtml(country.code || country.region || "")}</small></button>`).join("");
+  moreCountriesList.innerHTML = extraCountries.map((country) => `<button class="country-list-btn motion-card" type="button" data-country="${country.key}"><span>${escapeHtml(country.name)}</span><small>${escapeHtml(country.code || country.region || "")}</small></button>`).join("");
 }
 function startImpactCarousel() {
   if (!impactCarousel) return;
@@ -734,6 +848,12 @@ function bindEvents() {
   document.getElementById("searchOpen").addEventListener("click", openSearch);
   if (themeToggle) themeToggle.addEventListener("click", () => applyThemePreference(body.classList.contains("dark-theme") ? "light" : "dark"));
   document.getElementById("searchOpenMobile").addEventListener("click", () => { closeMenu(); openSearch(); });
+  document.querySelectorAll("[data-article-id]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      openArticle(link.dataset.articleId);
+    });
+  });
   document.getElementById("moreCountriesOpen").addEventListener("click", () => { moreCountriesModal.querySelector(".modal-shell").scrollTo({ top: 0, behavior: "auto" }); openModal(moreCountriesModal); });
   countryBackToList.addEventListener("click", () => { closeModal(countryModal); openModal(moreCountriesModal); moreCountriesModal.querySelector(".modal-shell").scrollTo({ top: 0, behavior: "auto" }); });
   document.querySelectorAll(".mobile-link").forEach((link) => link.addEventListener("click", closeMenu));
@@ -752,6 +872,7 @@ function bindEvents() {
     if (e.target === countryModal) closeModal(countryModal);
     if (e.target === moreCountriesModal) closeModal(moreCountriesModal);
     if (e.target === legalModal) closeModal(legalModal);
+    if (e.target === articleModal) closeModal(articleModal);
     if (e.target === searchModal) closeModal(searchModal);
   });
   document.addEventListener("keydown", (e) => {
@@ -761,6 +882,7 @@ function bindEvents() {
       closeModal(countryModal);
       closeModal(moreCountriesModal);
       closeModal(legalModal);
+      closeModal(articleModal);
       closeModal(searchModal);
     }
   });
