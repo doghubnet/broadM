@@ -9,16 +9,48 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <svg class="icon-sprite" aria-hidden="true" focusable="false">
+    <symbol id="icon-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+    <symbol id="icon-list-check" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></symbol>
+    <symbol id="icon-clock-off" viewBox="0 0 24 24"><path d="M4 4l16 16M12 7v5l3 2M19 15a8 8 0 0 0-10-10M5 9a8 8 0 0 0 10 10"/></symbol>
+    <symbol id="icon-user-x" viewBox="0 0 24 24"><path d="M15 19a6 6 0 0 0-12 0M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M17 9l5 5M22 9l-5 5"/></symbol>
+    <symbol id="icon-file-x" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9zM14 3v6h6M9 13l6 6M15 13l-6 6"/></symbol>
+    <symbol id="icon-badge-x" viewBox="0 0 24 24"><path d="M12 3l2.4 3.8 4.4 1.1-.3 4.5 2.8 3.5-4.6 1.1-2.5 3.7-2.2-3.9-4.5-.9.5-4.5-2.9-3.5 4.5-.9zM9.5 9.5l5 5M14.5 9.5l-5 5"/></symbol>
+    <symbol id="icon-life-buoy" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M5.6 5.6l4.2 4.2M14.2 14.2l4.2 4.2M18.4 5.6l-4.2 4.2M9.8 14.2l-4.2 4.2"/></symbol>
+    <symbol id="icon-message" viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/></symbol>
+    <symbol id="icon-file-search" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h6M14 3v6h6M15.5 17.5l3.5 3.5M17 18a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></symbol>
+    <symbol id="icon-map-pin" viewBox="0 0 24 24"><path d="M12 21s7-5.2 7-12a7 7 0 0 0-14 0c0 6.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></symbol>
+    <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="icon-route" viewBox="0 0 24 24"><circle cx="6" cy="18" r="2"/><circle cx="18" cy="6" r="2"/><path d="M8 18h5a3 3 0 0 0 0-6h-2a3 3 0 0 1 0-6h5"/></symbol>
+    <symbol id="icon-layers" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 12l9 5 9-5M3 16l9 5 9-5"/></symbol>
+    <symbol id="icon-zap" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 10-13h-7z"/></symbol>
+    <symbol id="icon-user-check" viewBox="0 0 24 24"><path d="M16 19a6 6 0 0 0-12 0M10 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M16 11l2 2 4-5"/></symbol>
+    <symbol id="icon-file-text" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9zM14 3v6h6M8 13h8M8 17h6"/></symbol>
+    <symbol id="icon-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></symbol>
+    <symbol id="icon-mic" viewBox="0 0 24 24"><path d="M12 14a4 4 0 0 0 4-4V6a4 4 0 0 0-8 0v4a4 4 0 0 0 4 4zM5 10a7 7 0 0 0 14 0M12 17v4M9 21h6"/></symbol>
+    <symbol id="icon-fast-forward" viewBox="0 0 24 24"><path d="M4 6l8 6-8 6zM12 6l8 6-8 6z"/></symbol>
+    <symbol id="icon-graduation" viewBox="0 0 24 24"><path d="M22 9L12 4 2 9l10 5zM6 11v5c2 2 10 2 12 0v-5M22 9v6"/></symbol>
+    <symbol id="icon-crown" viewBox="0 0 24 24"><path d="M3 8l4 4 5-7 5 7 4-4-2 11H5z"/></symbol>
+    <symbol id="icon-file-check" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9zM14 3v6h6M8 16l2.2 2.2L16 12"/></symbol>
+    <symbol id="icon-map" viewBox="0 0 24 24"><path d="M9 18l-6 3V6l6-3 6 3 6-3v15l-6 3zM9 3v15M15 6v15"/></symbol>
+    <symbol id="icon-rocket" viewBox="0 0 24 24"><path d="M14 4c3-1 5-1 6 0 1 1 1 3 0 6l-8 8-5-5zM8 16l-3 3M9 9l6 6M15 7h.01"/></symbol>
+    <symbol id="icon-diamond" viewBox="0 0 24 24"><path d="M6 3h12l4 6-10 12L2 9zM2 9h20M6 3l6 18 6-18"/></symbol>
+    <symbol id="icon-users" viewBox="0 0 24 24"><path d="M16 19a5 5 0 0 0-10 0M11 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M18 18a4 4 0 0 0-3-3.8M17 4a3 3 0 0 1 0 6"/></symbol>
+    <symbol id="icon-clipboard" viewBox="0 0 24 24"><path d="M9 4h6l1 2h3v15H5V6h3zM9 4h6M9 11h6M9 15h6"/></symbol>
+  </svg>
+
   <header class="site-header" id="siteHeader">
     <div class="container glass nav-shell">
-      <a class="site-logo" href="#home" aria-label="Broad Mobility home">
-        <img src="/images/logo.webp" width="148" height="42" alt="Broad Mobility logo" fetchpriority="high">
-        <span>Broad Mobility</span>
+      <a class="site-logo nav-logo" href="#home" aria-label="Broad Mobility home">
+        <img class="site-logo-img" data-logo-img src="https://i.imgur.com/4fSD4Vz.jpeg" width="148" height="42" alt="Broad Mobility logo" loading="eager" decoding="async" fetchpriority="high">
+        <span class="logo-fallback" aria-hidden="true">Broad Mobility</span>
       </a>
 
       <nav aria-label="Primary">
@@ -28,8 +60,9 @@
           <li><a href="#services">Services</a></li>
           <li><a href="#destinations">Destinations</a></li>
           <li><a href="#impact">Success Stories</a></li>
-          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#how-it-works">Process</a></li>
           <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#newsroom">Newsroom</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -44,8 +77,9 @@
 
   <aside class="mobile-panel" id="mobilePanel" aria-hidden="true">
     <div class="mobile-top">
-      <a class="site-logo" href="#home" aria-label="Broad Mobility home">
-        <img src="/images/logo.webp" width="148" height="42" alt="Broad Mobility logo">
+      <a class="site-logo nav-logo" href="#home" aria-label="Broad Mobility home">
+        <img class="site-logo-img" data-logo-img src="https://i.imgur.com/4fSD4Vz.jpeg" width="148" height="42" alt="Broad Mobility logo" loading="eager" decoding="async">
+        <span class="logo-fallback" aria-hidden="true">Broad Mobility</span>
       </a>
       <button class="icon-btn" id="menuClose" type="button" aria-label="Close menu">×</button>
     </div>
@@ -56,8 +90,9 @@
         <li><a href="#services" class="mobile-link">Services</a></li>
         <li><a href="#destinations" class="mobile-link">Destinations</a></li>
         <li><a href="#impact" class="mobile-link">Success Stories</a></li>
-        <li><a href="#how-it-works" class="mobile-link">How It Works</a></li>
+        <li><a href="#how-it-works" class="mobile-link">Process</a></li>
         <li><a href="#testimonials" class="mobile-link">Testimonials</a></li>
+        <li><a href="#newsroom" class="mobile-link">Newsroom</a></li>
         <li><a href="#contact" class="mobile-link">Contact</a></li>
       </ul>
     </nav>
@@ -68,58 +103,61 @@
   </aside>
 
   <main id="main">
-    <section class="hero" id="home">
-      <div class="floating-dot" style="width:84px;height:84px;left:8%;top:22%;background:rgba(0,166,81,.65)"></div>
-      <div class="floating-dot" style="width:56px;height:56px;left:84%;top:26%;background:rgba(242,201,76,.70);animation-delay:1s"></div>
-      <div class="floating-dot" style="width:112px;height:112px;left:68%;top:72%;background:rgba(0,31,63,.28);animation-delay:2s"></div>
+    <section class="hero hero-section" id="home">
+      <div class="floating-dot motion-float-soft" style="width:84px;height:84px;left:8%;top:22%;background:rgba(0,166,81,.65)"></div>
+      <div class="floating-dot motion-float-slow" style="width:56px;height:56px;left:84%;top:26%;background:rgba(242,201,76,.70);animation-delay:1s"></div>
+      <div class="floating-dot motion-float-soft" style="width:112px;height:112px;left:68%;top:72%;background:rgba(0,31,63,.28);animation-delay:2s"></div>
 
       <div class="container hero-inner">
         <div class="hero-copy">
-          <span class="eyebrow">Join 1,000+ travelers worldwide</span>
-          <h1 class="reveal in" style="transition-delay:.05s">Study, travel, work <span class="accent">worldwide</span>.</h1>
-          <p class="reveal in" style="transition-delay:.12s">From your location to your dream destination, with clear guidance shaped for international standards.</p>
+          <span class="eyebrow hero-badge motion-reveal motion-delay-1 hero-sequence hero-sequence-eyebrow">Join 1,000+ travelers worldwide</span>
+          <h1 class="hero-title hero-title-motion" aria-label="Study, travel, work worldwide.">
+            <span class="hero-word hero-word-study" aria-hidden="true">Study,</span>
+            <span class="hero-word hero-word-travel" aria-hidden="true">travel,</span>
+            <span class="hero-word hero-word-work" aria-hidden="true">work</span>
+            <span class="hero-word hero-word-worldwide accent" aria-hidden="true">worldwide</span>
+            <span class="hero-word hero-word-dot" aria-hidden="true">.</span>
+          </h1>
+          <p class="reveal in hero-subtitle motion-reveal motion-delay-3 hero-sequence hero-sequence-subtitle">From your location to your dream destination, with clear guidance shaped for international standards.</p>
 
-          <div class="hero-actions reveal in" style="transition-delay:.18s">
+          <div class="hero-actions reveal in motion-reveal motion-delay-4 hero-sequence hero-sequence-actions">
             <button class="btn btn-primary" id="consultOpenHero" type="button">Book Consultation</button>
             <button class="btn btn-secondary" id="exploreDestinations" type="button">Explore Destinations</button>
           </div>
 
-          <div class="marquee reveal in" style="transition-delay:.24s">
+          <div class="marquee reveal in hero-ticker motion-reveal motion-delay-5 hero-sequence hero-sequence-marquee">
             <div class="marquee-track" aria-label="Service highlights">
-              <div class="marquee-item"><img src="https://cdn-icons-png.flaticon.com/512/4436/4436481.png" alt="" loading="lazy" decoding="async"><span>100% online</span></div>
-              <div class="marquee-item"><img src="https://cdn-icons-png.flaticon.com/512/2857/2857398.png" alt="" loading="lazy" decoding="async"><span>Clear pricing</span></div>
-              <div class="marquee-item"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="" loading="lazy" decoding="async"><span>Fast response</span></div>
+              <div class="marquee-item"><img src="https://p1.hiclipart.com/preview/403/149/69/explore-icon-lense-icon-magnifier-icon-search-icon-searching-icon-zoom-icon-circle-png-clipart-thumbnail.jpg" alt="" loading="lazy" decoding="async"><span>100% online</span></div>
+              <div class="marquee-item"><img src="https://cdn-icons-png.flaticon.com/512/2150/2150150.png" alt="" loading="lazy" decoding="async"><span>Clear pricing</span></div>
+              <div class="marquee-item"><img src="https://png.pngtree.com/png-clipart/20241230/original/pngtree-yellow-lightning-bolt-clipart-energy-power-speed-electric-symbol-icon-png-image_18283587.png" alt="" loading="lazy" decoding="async"><span>Fast response</span></div>
               <div class="marquee-item"><img src="https://cdn-icons-png.flaticon.com/512/943/943941.png" alt="" loading="lazy" decoding="async"><span>Visa support</span></div>
-              <div class="marquee-item"><img src="https://cdn-icons-png.flaticon.com/512/4436/4436481.png" alt="" loading="lazy" decoding="async"><span>100% online</span></div>
-              <div class="marquee-item"><img src="https://cdn-icons-png.flaticon.com/512/2857/2857398.png" alt="" loading="lazy" decoding="async"><span>Clear pricing</span></div>
-              <div class="marquee-item"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="" loading="lazy" decoding="async"><span>Fast response</span></div>
+              <div class="marquee-item"><img src="https://p1.hiclipart.com/preview/403/149/69/explore-icon-lense-icon-magnifier-icon-search-icon-searching-icon-zoom-icon-circle-png-clipart-thumbnail.jpg" alt="" loading="lazy" decoding="async"><span>100% online</span></div>
+              <div class="marquee-item"><img src="https://cdn-icons-png.flaticon.com/512/2150/2150150.png" alt="" loading="lazy" decoding="async"><span>Clear pricing</span></div>
+              <div class="marquee-item"><img src="https://png.pngtree.com/png-clipart/20241230/original/pngtree-yellow-lightning-bolt-clipart-energy-power-speed-electric-symbol-icon-png-image_18283587.png" alt="" loading="lazy" decoding="async"><span>Fast response</span></div>
               <div class="marquee-item"><img src="https://cdn-icons-png.flaticon.com/512/943/943941.png" alt="" loading="lazy" decoding="async"><span>Visa support</span></div>
             </div>
           </div>
 
-          <div class="stats reveal in" style="transition-delay:.30s">
-            <article class="card stat">
+          <div class="stats reveal in hero-sequence hero-sequence-stats">
+            <article class="card stat hero-stat-card motion-card motion-reveal motion-delay-5">
               <strong data-count="51">0</strong>
               <span>Visas secured</span>
             </article>
-            <article class="card stat">
+            <article class="card stat hero-stat-card motion-card motion-reveal motion-delay-5">
               <strong>Global</strong>
               <span>Reach</span>
             </article>
-            <article class="card stat">
+            <article class="card stat hero-stat-card motion-card motion-reveal motion-delay-5">
               <strong>Proven</strong>
               <span>Track record</span>
             </article>
-            <article class="card stat">
+            <article class="card stat hero-stat-card motion-card motion-reveal motion-delay-5">
               <strong>95%+</strong>
               <span>Success rate</span>
             </article>
           </div>
         </div>
 
-        <div class="card reveal in" style="padding:16px;border-radius:32px;transition-delay:.10s">
-          <img src="/images/hero.webp" width="900" height="1120" alt="Broad Mobility professional travel and visa guidance" loading="eager" decoding="async" style="width:100%;height:auto;border-radius:24px">
-        </div>
       </div>
     </section>
 
@@ -128,26 +166,29 @@
         <div class="section-heading">
           <div>
             <span class="muted-pill">About Broad Mobility</span>
-            <h2 class="section-title reveal">Built on trust, service, and opportunity.</h2>
+            <h2 class="section-title reveal about-main-title">Learn more about <span class="accent">Broad Mobility</span></h2>
           </div>
-          <button class="btn btn-primary" type="button" id="consultOpenAbout">Start your application</button>
         </div>
 
         <div class="about-grid">
-          <div class="reveal">
-            <p class="section-subtitle" style="max-width:64ch">
-              "As global mobility grows, the journey to study, work, or travel abroad can feel complex and uncertain.
-              I built Broad Mobility to provide clear guidance and reliable support, so no one has to face the process alone.
-              Going abroad should be simple, transparent, and achievable. We work with trusted partners to bring real opportunities within your reach."
+          <div class="reveal about-copy">
+            <h3 class="about-subtitle">Built on Trust, Service, and Opportunity.</h3>
+            <p class="about-message">
+              “As global mobility grows, the journey to study, work, or travel abroad can feel complex and uncertain.<br><br>
+              I built Broad Mobility to provide clear guidance and reliable support, so no one has to face the process alone.<br><br>
+              Going abroad should be simple, transparent, and achievable. We work with trusted partners to bring real opportunities within your reach.”
             </p>
-            <p class="section-subtitle" style="font-weight:700;color:var(--accent);margin-top:18px">Gediyon Adamu, Founder and CEO</p>
-            <div style="height:4px;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--gold),#ff8a00);margin-top:20px"></div>
-            <p class="muted" style="margin-top:12px">Milestone growth from first success to worldwide destination coverage.</p>
+            <p class="about-founder">Gediyon Adamu, Founder &amp; CEO</p>
+            <div class="about-divider"></div>
+            <p class="about-milestone">Milestone growth from first success to worldwide destination coverage.</p>
           </div>
 
-          <a class="portrait reveal" href="https://www.linkedin.com/in/gediyon-adamu-yeshitila-080b90338" target="_blank" rel="noopener noreferrer">
-            <img src="/images/founder.webp" width="900" height="1125" alt="Portrait of Gediyon Adamu" loading="lazy" decoding="async">
-          </a>
+          <div class="portrait-wrap about-founder-card reveal">
+            <a class="portrait about-founder-frame" href="https://www.linkedin.com/in/gediyon-adamu-080b90338" target="_blank" rel="noopener noreferrer">
+              <img class="about-founder-image" src="https://i.imgur.com/l1Mqgc2.jpeg" width="900" height="1125" alt="Portrait of Gediyon Adamu, founder and CEO of Broad Mobility" loading="lazy" decoding="async">
+            </a>
+            <button class="btn btn-primary about-application-btn motion-button" type="button" id="consultOpenAbout">Start your application</button>
+          </div>
         </div>
       </div>
     </section>
@@ -176,10 +217,13 @@
             <p>Document quality checks with scenario-based interview practice sessions.</p>
           </article>
           <article class="card service reveal">
-            <h3>University Admission Support</h3>
-            <p>Guidance for program choice, profile positioning, and admissions.</p>
+            <h3>Work Visa Consultancy</h3>
+            <p>Guidance for skilled worker visas, job offer support, and long-term employment pathways.</p>
           </article>
         </div>
+        <article class="card more-services reveal" style="margin-top:22px">
+          <p><span class="more-arrow">➔</span> We also provide full <span class="accent">travel planning</span>, <span class="accent">relocation support</span>, <span class="accent">scholarship hunting</span>, and <span class="accent">family visa packages</span>. Contact us for personalized solutions.</p>
+        </article>
       </div>
     </section>
 
@@ -194,7 +238,7 @@
         </div>
 
         <div class="destinations" id="destinationGrid" aria-live="polite"></div>
-        <p class="center section-subtitle" style="margin-top:24px">100+ additional countries worldwide</p>
+        <button class="center section-subtitle more-countries-link" id="moreCountriesOpen" type="button" style="margin-top:24px">100+ additional countries worldwide</button>
       </div>
     </section>
 
@@ -208,18 +252,18 @@
           <p class="section-subtitle center" style="text-align:right">Past achievement: <strong class="accent" id="impactCount">0</strong> visas secured</p>
         </div>
 
-        <div class="testimonial-grid">
-          <article class="card service reveal">
+        <div class="impact-carousel reveal" id="impactCarousel">
+          <article class="card service impact-slide active">
             <h3>Strategic support</h3>
             <p>“The process was strategic, professional, and perfectly organized.”</p>
             <p class="muted" style="margin-top:10px;font-weight:700">Liya M. • Italy</p>
           </article>
-          <article class="card service reveal">
+          <article class="card service impact-slide">
             <h3>Interview coaching</h3>
             <p>“Excellent consultancy standards and outstanding interview coaching.”</p>
             <p class="muted" style="margin-top:10px;font-weight:700">Abel T. • Germany</p>
           </article>
-          <article class="card service reveal">
+          <article class="card service impact-slide">
             <h3>Application support</h3>
             <p>“I felt supported from planning through final visa approval.”</p>
             <p class="muted" style="margin-top:10px;font-weight:700">Sara K. • UK</p>
@@ -239,35 +283,35 @@
         </div>
 
         <div class="process">
-          <article class="card step reveal" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08);color:#fff">
-            <div class="step-number">01</div>
+          <article class="card step reveal">
+            <div class="step-number process-number">01</div>
             <h3>Initial Consultation</h3>
-            <p class="muted" style="color:rgba(255,255,255,.72)">Define goals and destination fit.</p>
+            <p class="step-desc">Define goals and destination fit.</p>
           </article>
-          <article class="card step reveal" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08);color:#fff">
-            <div class="step-number">02</div>
+          <article class="card step reveal">
+            <div class="step-number process-number">02</div>
             <h3>Strategy and Planning</h3>
-            <p class="muted" style="color:rgba(255,255,255,.72)">Create your full visa roadmap.</p>
+            <p class="step-desc">Create your full visa roadmap.</p>
           </article>
-          <article class="card step reveal" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08);color:#fff">
-            <div class="step-number">03</div>
+          <article class="card step reveal">
+            <div class="step-number process-number">03</div>
             <h3>Document Prep</h3>
-            <p class="muted" style="color:rgba(255,255,255,.72)">Build a complete, accurate file.</p>
+            <p class="step-desc">Build a complete, accurate file.</p>
           </article>
-          <article class="card step reveal" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08);color:#fff">
-            <div class="step-number">04</div>
+          <article class="card step reveal">
+            <div class="step-number process-number">04</div>
             <h3>Submission</h3>
-            <p class="muted" style="color:rgba(255,255,255,.72)">Submit with precision and timing.</p>
+            <p class="step-desc">Submit with precision and timing.</p>
           </article>
-          <article class="card step reveal" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08);color:#fff">
-            <div class="step-number">05</div>
+          <article class="card step reveal">
+            <div class="step-number process-number">05</div>
             <h3>Interview Coaching</h3>
-            <p class="muted" style="color:rgba(255,255,255,.72)">Train with realistic scenarios.</p>
+            <p class="step-desc">Train with realistic scenarios.</p>
           </article>
-          <article class="card step reveal" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08);color:#fff">
-            <div class="step-number">06</div>
+          <article class="card step reveal">
+            <div class="step-number process-number">06</div>
             <h3>Visa Approval</h3>
-            <p class="muted" style="color:rgba(255,255,255,.72)">Final guidance for departure.</p>
+            <p class="step-desc">Final guidance for departure.</p>
           </article>
         </div>
       </div>
@@ -284,21 +328,23 @@
         </div>
 
         <div style="overflow:hidden">
-          <div class="testimonial-row" id="testimonialRowA"></div>
+          <div class="testimonial-row testi-row loop-left" id="testimonialRowA"></div>
         </div>
         <div style="overflow:hidden;margin-top:16px">
-          <div class="testimonial-row reverse" id="testimonialRowB"></div>
+          <div class="testimonial-row testi-row loop-right" id="testimonialRowB"></div>
         </div>
 
         <div class="container" style="padding:0;margin-top:44px">
           <div class="guarantee reveal">
-            <div style="width:66px;height:66px;border-radius:999px;margin:0 auto 18px;background:linear-gradient(45deg,#ff8a00,#ff5c00);display:grid;place-items:center;box-shadow:0 10px 24px rgba(249,115,22,.22)">
-              <svg viewBox="0 0 24 24" fill="none" width="28" height="28" aria-hidden="true">
-                <path d="M5 13L9 17L19 7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <div class="guarantee-badge" aria-hidden="true">
+              <svg class="guarantee-badge-svg" viewBox="0 0 72 72" fill="none">
+                <circle class="guarantee-badge-fill" cx="36" cy="36" r="28"/>
+                <circle class="guarantee-badge-ring" cx="36" cy="36" r="30"/>
+                <path class="guarantee-badge-check" d="M23 37.5L32.2 46L50 27"/>
               </svg>
             </div>
-            <h3 style="margin:0;font-size:1.8rem;color:#1a2a3a">Broad Mobility Guarantee</h3>
-            <button class="btn btn-primary" id="confidenceOpen" type="button" style="margin-top:20px">Continue with confidence</button>
+            <h3>Broad Mobility Guarantee</h3>
+            <button class="btn btn-primary guarantee-cta motion-button" id="confidenceOpen" type="button">Continue with confidence</button>
           </div>
         </div>
       </div>
@@ -347,44 +393,137 @@
       <div class="container">
         <div class="section-heading">
           <div>
-            <span class="muted-pill">Contact</span>
-            <h2 class="section-title reveal">Connect with Broad Mobility</h2>
+            <span class="muted-pill">Membership</span>
+            <h2 class="section-title reveal">Choose Your Access Plan</h2>
           </div>
-          <p class="section-subtitle">Use the links below or open the consultation form.</p>
+          <p class="section-subtitle">Select a support level that fits your student, tourist, work, or professional travel goals.</p>
         </div>
 
-        <div class="contact-grid">
-          <article class="card contact-card reveal">
-            <h3 style="margin:0;color:var(--navy)">Broad Mobility</h3>
-            <p class="muted" style="margin-top:10px">Addis Ababa, Ethiopia</p>
-            <button class="btn btn-primary" type="button" id="consultOpenFooter" style="margin-top:18px">Book consultation</button>
-          </article>
+        <div class="plan-tabs reveal" role="tablist" aria-label="Membership plan switcher">
+          <button class="plan-tab active" id="tabPersonal" role="tab" aria-selected="true" aria-controls="panelPersonal" type="button">Personal</button>
+          <button class="plan-tab" id="tabGroup" role="tab" aria-selected="false" aria-controls="panelGroup" type="button">Group</button>
+        </div>
 
-          <article class="card contact-card reveal">
-            <h3 style="margin:0;color:var(--navy)">Navigation</h3>
-            <ul class="footer-links" style="margin-top:12px">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#about-us">About Us</a></li>
-              <li><a href="#services">Services</a></li>
-              <li><a href="#destinations">Destinations</a></li>
-              <li><a href="#impact">Success Stories</a></li>
-              <li><a href="#how-it-works">How It Works</a></li>
-              <li><a href="#testimonials">Testimonials</a></li>
-            </ul>
-          </article>
+        <div id="panelPersonal" class="plan-panel reveal" role="tabpanel" aria-labelledby="tabPersonal">
+          <div class="pricing-grid">
+            <article class="card pricing-card">
+              <h3>Free</h3>
+              <p class="price">$0</p>
+              <ul class="plan-features">
+                <li class="plan-feature"><svg class="plan-feature-icon positive" aria-hidden="true"><use href="#icon-globe"></use></svg><span>Website access only</span></li>
+                <li class="plan-feature"><svg class="plan-feature-icon positive" aria-hidden="true"><use href="#icon-list-check"></use></svg><span>View public services, destinations, FAQs, and contact options</span></li>
+                <li class="plan-feature"><svg class="plan-feature-icon muted" aria-hidden="true"><use href="#icon-clock-off"></use></svg><span>No priority support</span></li>
+                <li class="plan-feature"><svg class="plan-feature-icon muted" aria-hidden="true"><use href="#icon-user-x"></use></svg><span>No one-to-one consultation</span></li>
+                <li class="plan-feature"><svg class="plan-feature-icon muted" aria-hidden="true"><use href="#icon-file-x"></use></svg><span>No file review</span></li>
+                <li class="plan-feature"><svg class="plan-feature-icon muted" aria-hidden="true"><use href="#icon-badge-x"></use></svg><span>No premium guidance</span></li>
+              </ul>
+              <button class="btn btn-light plan-button" type="button">Current Access</button>
+            </article>
+            <article class="card pricing-card">
+              <h3>Go</h3>
+              <p class="price">$100</p>
+              <ul class="plan-features">
+                <li class="plan-feature"><svg class="plan-feature-icon positive" aria-hidden="true"><use href="#icon-life-buoy"></use></svg><span>Basic support</span></li>
+                <li class="plan-feature"><svg class="plan-feature-icon positive" aria-hidden="true"><use href="#icon-message"></use></svg><span>Access to standard consultation guidance</span></li>
+                <li class="plan-feature"><svg class="plan-feature-icon positive" aria-hidden="true"><use href="#icon-file-search"></use></svg><span>Basic document review</span></li>
+                <li class="plan-feature"><svg class="plan-feature-icon positive" aria-hidden="true"><use href="#icon-map-pin"></use></svg><span>General country advice</span></li>
+                <li class="plan-feature"><svg class="plan-feature-icon positive" aria-hidden="true"><use href="#icon-clock"></use></svg><span>Response within normal support time</span></li>
+                <li class="plan-feature"><svg class="plan-feature-icon positive" aria-hidden="true"><use href="#icon-route"></use></svg><span>Good for first-time applicants who need structured help</span></li>
+              </ul>
+              <button class="btn btn-primary plan-button" type="button">Upgrade to Go</button>
+            </article>
+            <article class="card pricing-card recommended">
+              <span class="plan-badge">Recommended</span>
+              <h3>Plus</h3>
+              <p class="price">$300</p>
+              <ul class="plan-features">
+                <li class="plan-feature"><svg class="plan-feature-icon positive" aria-hidden="true"><use href="#icon-layers"></use></svg><span>All Go benefits</span></li>
+                <li class="plan-feature"><svg class="plan-feature-icon positive" aria-hidden="true"><use href="#icon-zap"></use></svg><span>Priority support</span></li>
+                <li class="plan-feature"><svg class="plan-feature-icon positive" aria-hidden="true"><use href="#icon-user-check"></use></svg><span>One-to-one consultation</span></li>
+                <li class="plan-feature"><svg class="plan-feature-icon positive" aria-hidden="true"><use href="#icon-file-text"></use></svg><span>Detailed document review</span></li>
+                <li class="plan-feature"><svg class="plan-feature-icon positive" aria-hidden="true"><use href="#icon-target"></use></svg><span>Application strategy support</span></li>
+                <li class="plan-feature"><svg class="plan-feature-icon positive" aria-hidden="true"><use href="#icon-mic"></use></svg><span>Interview preparation guidance</span></li>
+                <li class="plan-feature"><svg class="plan-feature-icon positive" aria-hidden="true"><use href="#icon-fast-forward"></use></svg><span>Faster response time</span></li>
+                <li class="plan-feature"><svg class="plan-feature-icon positive" aria-hidden="true"><use href="#icon-graduation"></use></svg><span>Better for students who need direct guidance</span></li>
+              </ul>
+              <button class="btn btn-primary plan-button" type="button">Upgrade to Plus</button>
+            </article>
+            <article class="card pricing-card">
+              <h3>Pro</h3>
+              <p class="price">$600</p>
+              <ul class="plan-features">
+                <li class="plan-feature"><svg class="plan-feature-icon positive" aria-hidden="true"><use href="#icon-layers"></use></svg><span>All Plus benefits</span></li>
+                <li class="plan-feature"><svg class="plan-feature-icon positive" aria-hidden="true"><use href="#icon-crown"></use></svg><span>VIP one-to-one support</span></li>
+                <li class="plan-feature"><svg class="plan-feature-icon positive" aria-hidden="true"><use href="#icon-target"></use></svg><span>Advanced application strategy</span></li>
+                <li class="plan-feature"><svg class="plan-feature-icon positive" aria-hidden="true"><use href="#icon-file-check"></use></svg><span>Full document optimization</span></li>
+                <li class="plan-feature"><svg class="plan-feature-icon positive" aria-hidden="true"><use href="#icon-map"></use></svg><span>Custom destination planning</span></li>
+                <li class="plan-feature"><svg class="plan-feature-icon positive" aria-hidden="true"><use href="#icon-mic"></use></svg><span>Stronger interview coaching</span></li>
+                <li class="plan-feature"><svg class="plan-feature-icon positive" aria-hidden="true"><use href="#icon-rocket"></use></svg><span>Fastest response</span></li>
+                <li class="plan-feature"><svg class="plan-feature-icon positive" aria-hidden="true"><use href="#icon-diamond"></use></svg><span>Best for clients who want high-touch premium service and dedicated attention</span></li>
+              </ul>
+              <button class="btn btn-secondary plan-button" type="button" id="consultOpenFooter">Upgrade to Pro</button>
+            </article>
+          </div>
+        </div>
 
-          <article class="card contact-card reveal">
-            <h3 style="margin:0;color:var(--navy)">Connect</h3>
-            <div class="socials" aria-label="Social links">
-              <a href="mailto:scelta.infinity@gmail.com" aria-label="Email"><img src="https://pnglove.com/data/img/1231_aHzA.jpg" alt="Email" loading="lazy" decoding="async"></a>
-              <a href="https://www.instagram.com/broadmobility" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/250px-Instagram_logo_2022.svg.png" alt="Instagram" loading="lazy" decoding="async"></a>
-              <a href="https://www.facebook.com/broadmobility" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Facebook_logo_%28square%29.png" alt="Facebook" loading="lazy" decoding="async"></a>
-              <a href="https://t.me/scholartransfer" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/960px-Telegram_logo.svg.png" alt="Telegram" loading="lazy" decoding="async"></a>
-              <a href="https://www.linkedin.com/in/gediyon-adamu-yeshitila-080b90338" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><img src="https://sb.kaleidousercontent.com/67418/400x400/d2ee90c914/linkedin-logo.png" alt="LinkedIn" loading="lazy" decoding="async"></a>
-              <a href="https://x.com/gediyon_adamu" target="_blank" rel="noopener noreferrer" aria-label="X"><img src="https://freepnglogo.com/images/all_img/1725374683twitter-x-logo.png" alt="X" loading="lazy" decoding="async"></a>
-              <a href="https://www.fiverr.com/s/vv0AaAN" target="_blank" rel="noopener noreferrer" aria-label="Fiverr"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Fiverr_Logo_fiverr.png" alt="Fiverr" loading="lazy" decoding="async"></a>
-              <a href="https://www.upwork.com/freelancers/~0123a8909753318865?mp_source=share" target="_blank" rel="noopener noreferrer" aria-label="Upwork"><img src="https://cdn.worldvectorlogo.com/logos/upwork-roundedsquare-1.svg" alt="Upwork" loading="lazy" decoding="async"></a>
+        <div id="panelGroup" class="plan-panel reveal hidden" role="tabpanel" aria-labelledby="tabGroup">
+          <article class="group-offer-card">
+            <div class="group-offer-copy">
+              <h3>Group Access Offers</h3>
+              <p>If a member brings up to 3 clients total, a special group discount is available. When a group exceeds 3 people, a custom quotation request is required.</p>
+              <p>A special discount link or custom group offer is issued after contact and review.</p>
+              <div class="group-rules">
+                <span class="group-rule-pill"><svg class="group-rule-icon" aria-hidden="true"><use href="#icon-users"></use></svg><span>1 to 3 people: discount applied</span></span>
+                <span class="group-rule-pill"><svg class="group-rule-icon" aria-hidden="true"><use href="#icon-clipboard"></use></svg><span>More than 3 people: custom request required</span></span>
+              </div>
             </div>
+            <div class="group-cta-box">
+              <a class="btn group-cta-button" href="mailto:scelta.infinity@gmail.com?subject=Custom%20Group%20Offer%20Request">Contact for Group Offer</a>
+              <p class="group-cta-note">Our team reviews group size and service scope, then shares a professional tailored offer.</p>
+            </div>
+          </article>
+        </div>
+
+        <p class="pricing-note muted reveal">Pricing is for service access and support level, not for hidden fees. Group offers depend on number of people and service scope. Terms of service explain group discount rules clearly.</p>
+      </div>
+    </section>
+
+    <section id="newsroom" class="section" style="background:#fff">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="muted-pill">Newsroom</span>
+            <h2 class="section-title reveal">News &amp; Updates</h2>
+          </div>
+          <p class="section-subtitle">Stay up to date with visa policies, scholarships and travel tips.</p>
+        </div>
+        <div class="blog-grid">
+          <article class="card blog-card reveal">
+            <a href="/blog/2026-04-28-uk-student-visa-update.html">
+              <div class="blog-thumb" style="background-image:url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1200&q=80')"><span>UK Student Visa Updates 2026</span></div>
+            </a>
+            <p class="blog-date">April 28, 2026</p>
+            <h3>New UK student visa guidelines as of 2026</h3>
+            <p>Key compliance changes, financial proof updates, and interview readiness points for international applicants.</p>
+            <a class="btn btn-light" href="/blog/2026-04-28-uk-student-visa-update.html">Read More</a>
+          </article>
+          <article class="card blog-card reveal">
+            <a href="/blog/2026-04-28-daad-deadlines.html">
+              <div class="blog-thumb" style="background-image:url('https://i.imgur.com/m8d5HZz.jpeg')"><span>DAAD Scholarship Deadlines</span></div>
+            </a>
+            <p class="blog-date">April 28, 2026</p>
+            <h3>Germany’s DAAD scholarship deadlines and document plan</h3>
+            <p>A practical timeline to prepare academic records, language scores, recommendation letters, and motivation documents.</p>
+            <a class="btn btn-light" href="/blog/2026-04-28-daad-deadlines.html">Read More</a>
+          </article>
+          <article class="card blog-card reveal">
+            <a href="/blog/2026-04-28-smart-travel-tips.html">
+              <div class="blog-thumb" style="background-image:url('https://i.imgur.com/Vf8zZnh.jpeg')"><span>Smart Travel Preparation</span></div>
+            </a>
+            <p class="blog-date">April 28, 2026</p>
+            <h3>Practical travel preparation tips for first-time international movers</h3>
+            <p>How to organize documents, budget for transition costs, and prepare for your first weeks abroad with confidence.</p>
+            <a class="btn btn-light" href="/blog/2026-04-28-smart-travel-tips.html">Read More</a>
           </article>
         </div>
       </div>
@@ -394,36 +533,46 @@
   <footer class="footer">
     <div class="container footer-grid">
       <div>
-        <h3 style="margin:0 0 10px">Broad Mobility</h3>
-        <p class="footer-note">Addis Ababa, Ethiopia</p>
-        <p class="footer-note" style="margin-top:14px;max-width:38ch">Trusted visa consultancy for students, tourists, and professional travelers worldwide.</p>
+        <h3 style="margin:0 0 10px;color:#fff;font-size:1.5rem;line-height:1.1">Broad <span style="color:#00A651;font-weight:800">Mobility</span></h3>
+        <p class="footer-note" style="margin-top:14px">Addis Ababa, Ethiopia</p>
+        <p class="footer-note" style="margin-top:14px;max-width:38ch">Trusted visa consultancy for students, tourists, workers, and professional travelers worldwide.</p>
       </div>
 
       <div>
-        <h4 style="margin:0 0 12px">Pages</h4>
+        <h4 style="margin:0 0 12px">Navigation</h4>
         <ul class="footer-links">
           <li><a href="#home">Home</a></li>
           <li><a href="#about-us">About Us</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#destinations">Destinations</a></li>
+          <li><a href="#how-it-works">Process</a></li>
           <li><a href="#impact">Success Stories</a></li>
-          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#newsroom">Newsroom</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
 
       <div>
-        <h4 style="margin:0 0 12px">Legal</h4>
-        <ul class="footer-links">
-          <li><button class="link-btn" id="termsOpen" type="button" style="background:none;border:0;padding:0;color:rgba(255,255,255,.82);text-align:left">Terms of Service</button></li>
-          <li><button class="link-btn" id="privacyOpen" type="button" style="background:none;border:0;padding:0;color:rgba(255,255,255,.82);text-align:left">Privacy Policy</button></li>
-        </ul>
+        <h4 style="margin:0 0 12px">Connect</h4>
+        <div class="socials" aria-label="Social links">
+          <a href="mailto:scelta.infinity@gmail.com" aria-label="Email"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail" loading="lazy" decoding="async" style="object-fit:contain;border-radius:12px"></a>
+          <a href="https://www.instagram.com/broadmobility" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/250px-Instagram_logo_2022.svg.png" alt="Instagram" loading="lazy" decoding="async"></a>
+          <a href="https://www.facebook.com/broadmobility" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Facebook_logo_%28square%29.png" alt="Facebook" loading="lazy" decoding="async"></a>
+          <a href="https://t.me/scholartransfer" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/960px-Telegram_logo.svg.png" alt="Telegram" loading="lazy" decoding="async"></a>
+          <a href="https://www.linkedin.com/in/gediyon-adamu-yeshitila-080b90338" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><img src="https://sb.kaleidousercontent.com/67418/400x400/d2ee90c914/linkedin-logo.png" alt="LinkedIn" loading="lazy" decoding="async"></a>
+          <a href="https://x.com/gediyon_adamu" target="_blank" rel="noopener noreferrer" aria-label="X"><img src="https://freepnglogo.com/images/all_img/1725374683twitter-x-logo.png" alt="X" loading="lazy" decoding="async"></a>
+          <a href="https://www.fiverr.com/s/vv0AaAN" target="_blank" rel="noopener noreferrer" aria-label="Fiverr"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Fiverr_Logo_fiverr.png" alt="Fiverr" loading="lazy" decoding="async"></a>
+          <a href="https://www.upwork.com/freelancers/~0123a8909753318865?mp_source=share" target="_blank" rel="noopener noreferrer" aria-label="Upwork"><img src="https://cdn.worldvectorlogo.com/logos/upwork-roundedsquare-1.svg" alt="Upwork" loading="lazy" decoding="async"></a>
+        </div>
       </div>
     </div>
 
     <div class="container footer-bottom">
       <p>Copyright © 2026 Broad Mobility. All rights reserved.</p>
-      <p>Website ready for shared header, shared footer, and search integration.</p>
+      <p><button class="link-btn" id="termsOpen" type="button" style="background:none;border:0;padding:0;color:rgba(255,255,255,.82)">Terms of Service</button> | <button class="link-btn" id="privacyOpen" type="button" style="background:none;border:0;padding:0;color:rgba(255,255,255,.82)">Privacy Policy</button></p>
     </div>
+    <div class="footer-gold-line"></div>
   </footer>
 
   <div class="modal modal-dark" id="consultModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="consultTitle">
@@ -489,15 +638,16 @@
           <div class="modal-grid" style="margin-top:16px">
             <label style="padding:16px;border-radius:18px;border:1px dashed rgba(255,255,255,.20);background:rgba(255,255,255,.04)">
               High School Transcript
-              <input type="file" name="transcript" multiple style="display:block;margin-top:10px;width:100%;color:#fff">
+              <input type="file" name="highSchoolTranscript" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" style="display:block;margin-top:10px;width:100%;color:#fff">
             </label>
             <label style="padding:16px;border-radius:18px;border:1px dashed rgba(255,255,255,.20);background:rgba(255,255,255,.04)">
               Passport
-              <input type="file" name="passport" multiple style="display:block;margin-top:10px;width:100%;color:#fff">
+              <input type="file" name="passport" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" style="display:block;margin-top:10px;width:100%;color:#fff">
             </label>
           </div>
 
           <p style="margin-top:12px;color:rgba(255,255,255,.72);font-size:.92rem">Maximum combined size should stay below 10MB.</p>
+          <div id="applicationFormMessage" class="application-form-message" role="status" aria-live="polite"></div>
           <button class="btn btn-primary" type="submit" style="margin-top:18px;width:100%;border-radius:18px;padding:16px 20px">Submit Application</button>
         </form>
       </div>
@@ -506,34 +656,49 @@
 
   <div class="modal" id="countryModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="countryTitleLabel">
     <button class="modal-close" type="button" data-close="countryModal" aria-label="Close country details">×</button>
-    <div class="modal-shell">
+    <div class="modal-shell destination-modal-content">
+      <button class="country-back-btn hidden" id="countryBackToList" type="button">← Back to countries</button>
       <img class="modal-hero" id="countryHero" src="" alt="">
       <div class="modal-content">
         <h3 id="countryTitleLabel"></h3>
         <p id="countryWhy"></p>
 
         <div class="modal-grid" style="margin-top:18px">
-          <div class="modal-box">
+          <div class="modal-box destination-detail-card">
             <h4>Top Prestigious Universities</h4>
             <div id="universityGrid" class="grid" style="margin-top:12px"></div>
           </div>
-          <div class="modal-box">
+          <div class="modal-box destination-detail-card">
             <h4>Scholarships and Funding</h4>
             <p id="countryScholarships"></p>
           </div>
-          <div class="modal-box">
+          <div class="modal-box destination-detail-card">
             <h4>Work Opportunities</h4>
             <p id="countryWork"></p>
           </div>
-          <div class="modal-box">
+          <div class="modal-box destination-detail-card">
             <h4>Political and Economic Stability</h4>
             <p id="countryStability"></p>
           </div>
-          <div class="modal-box" style="grid-column:1/-1">
+          <div class="modal-box destination-detail-card" style="grid-column:1/-1">
             <h4>Living Cost and Student Life</h4>
             <p id="countryLife"></p>
           </div>
+          <div class="modal-box destination-detail-card" style="grid-column:1/-1">
+            <h4>Typical Embassy Process</h4>
+            <div id="embassyProcess"></div>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="moreCountriesModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="moreCountriesTitle">
+    <button class="modal-close" type="button" data-close="moreCountriesModal" aria-label="Close countries list">×</button>
+    <div class="modal-shell">
+      <div class="modal-content">
+        <h3 id="moreCountriesTitle">More countries we support</h3>
+        <div id="moreCountriesList" class="grid"></div>
       </div>
     </div>
   </div>
@@ -543,7 +708,7 @@
     <div class="modal-shell">
       <div class="modal-content">
         <h3 id="legalTitle">Legal</h3>
-        <p id="legalBody"></p>
+        <div id="legalBody" class="legal-body"></div>
       </div>
     </div>
   </div>
@@ -584,6 +749,7 @@
     </article>
   </template>
 
-  <script src="./script.js"></script>
+  <script src="./destinationsData.js"></script>
+  <script type="module" src="./script.js"></script>
 </body>
 </html>

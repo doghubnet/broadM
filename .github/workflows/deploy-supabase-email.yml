@@ -1,0 +1,148 @@
+name: Deploy Supabase Email Function
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy-supabase-email:
+    name: Deploy Supabase Email Function
+    runs-on: ubuntu-latest
+
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
+      RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+      BROAD_MOBILITY_WEBHOOK_SECRET: ${{ secrets.BROAD_MOBILITY_WEBHOOK_SECRET }}
+      SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Supabase CLI
+        uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      - name: Validate required secrets
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          missing=0
+
+          if [ -z "${SUPABASE_ACCESS_TOKEN:-}" ]; then
+            echo "Missing required secret: SUPABASE_ACCESS_TOKEN"
+            missing=1
+          fi
+
+          if [ -z "${SUPABASE_PROJECT_REF:-}" ]; then
+            echo "Missing required secret: SUPABASE_PROJECT_REF"
+            missing=1
+          fi
+
+          if [ -z "${RESEND_API_KEY:-}" ]; then
+            echo "Missing required secret: RESEND_API_KEY"
+            missing=1
+          fi
+
+          if [ -z "${BROAD_MOBILITY_WEBHOOK_SECRET:-}" ]; then
+            echo "Missing required secret: BROAD_MOBILITY_WEBHOOK_SECRET"
+            missing=1
+          fi
+
+          if [ "${missing}" -ne 0 ]; then
+            echo "One or more required deployment secrets are missing."
+            exit 1
+          fi
+
+          echo "Required deployment secrets are present."
+
+      - name: Set Supabase Edge Function secrets
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          supabase secrets set \
+            RESEND_API_KEY="${RESEND_API_KEY}" \
+            BROAD_MOBILITY_WEBHOOK_SECRET="${BROAD_MOBILITY_WEBHOOK_SECRET}" \
+            --project-ref "${SUPABASE_PROJECT_REF}"
+
+          echo "Supabase Edge Function secrets were set."
+
+      - name: Deploy send-application-email Edge Function
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          supabase functions deploy send-application-email \
+            --project-ref "${SUPABASE_PROJECT_REF}"
+
+          echo "Supabase Edge Function deployed."
+
+      - name: Install PostgreSQL client
+        if: ${{ env.SUPABASE_DB_URL != '' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client
+
+          echo "PostgreSQL client installed."
+
+      - name: Run webhook SQL automatically
+        if: ${{ env.SUPABASE_DB_URL != '' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [ ! -f "supabase-email-webhook.sql" ]; then
+            echo "Missing file: supabase-email-webhook.sql"
+            exit 1
+          fi
+
+          TEMP_SQL="$(mktemp)"
+
+          cleanup() {
+            rm -f "${TEMP_SQL}"
+          }
+
+          trap cleanup EXIT
+
+          python3 - "supabase-email-webhook.sql" "${TEMP_SQL}" <<'PY'
+          import os
+          import sys
+          from pathlib import Path
+
+          source_path = Path(sys.argv[1])
+          target_path = Path(sys.argv[2])
+
+          project_ref = os.environ["SUPABASE_PROJECT_REF"]
+          webhook_secret = os.environ["BROAD_MOBILITY_WEBHOOK_SECRET"]
+
+          sql = source_path.read_text(encoding="utf-8")
+          sql = sql.replace("YOUR_PROJECT_REF", project_ref)
+          sql = sql.replace("YOUR_WEBHOOK_SECRET", webhook_secret)
+
+          target_path.write_text(sql, encoding="utf-8")
+          PY
+
+          psql "${SUPABASE_DB_URL}" -v ON_ERROR_STOP=1 -f "${TEMP_SQL}"
+
+          echo "Webhook SQL executed successfully."
+
+      - name: Skip webhook SQL when database URL is missing
+        if: ${{ env.SUPABASE_DB_URL == '' }}
+        shell: bash
+        run: |
+          echo "SUPABASE_DB_URL is not configured."
+          echo "Edge Function was deployed and secrets were set."
+          echo "Manual step required:"
+          echo "Open supabase-email-webhook.sql in Supabase SQL Editor."
+          echo "Replace YOUR_PROJECT_REF with your Supabase project reference."
+          echo "Replace YOUR_WEBHOOK_SECRET with the same value stored as BROAD_MOBILITY_WEBHOOK_SECRET."
+          echo "Run the SQL manually."
