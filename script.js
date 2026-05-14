@@ -24,22 +24,23 @@ const testimonials = [
 
 
 const embassyProcessSteps = [
-  { type: "document", text: "Gather documents" },
-  { type: "checklist", text: "Complete application form" },
-  { type: "calendar", text: "Book appointment or submit online" },
-  { type: "biometrics", text: "Attend biometrics or interview" },
-  { type: "clock", text: "Track decision" },
-  { type: "passport", text: "Collect passport and prepare travel" }
+  { type: "document", text: "Confirm admission or travel purpose" },
+  { type: "folder", text: "Prepare passport and supporting documents" },
+  { type: "calendar", text: "Complete visa form and appointment booking" },
+  { type: "biometrics", text: "Attend biometrics or interview when required" },
+  { type: "passport", text: "Track decision and collect passport" },
+  { type: "route", text: "Complete pre-departure planning" }
 ];
 
 function getEmbassyStepIcon(type) {
   const icons = {
     document: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="M10 13h6"/><path d="M10 17h4"/></svg>',
-    checklist: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11"/><path d="M9 12h11"/><path d="M9 18h11"/><path d="M4 6l1.4 1.4L8 4.8"/><path d="M4 12l1.4 1.4L8 10.8"/><path d="M4 18l1.4 1.4L8 16.8"/></svg>',
+    folder: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h7l2 2h9v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 7V5a2 2 0 0 1 2-2h5l2 2h5a2 2 0 0 1 2 2v2"/></svg>',
     calendar: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v4"/><path d="M17 3v4"/><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 10h16"/><path d="M9 15h3"/><path d="M14 15h1"/></svg>',
     biometrics: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/><path d="M4 21a8 8 0 0 1 16 0"/><path d="M7 15.5c-1.8.8-3 2.3-3 4.5"/><path d="M17 15.5c1.8.8 3 2.3 3 4.5"/></svg>',
     clock: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
-    passport: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="2"/><circle cx="12" cy="11" r="3"/><path d="M9 17h6"/><path d="M10.5 11l1 1 2-2"/></svg>'
+    passport: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="2"/><circle cx="12" cy="11" r="3"/><path d="M9 17h6"/><path d="M10.5 11l1 1 2-2"/></svg>',
+    route: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l18-8-8 18-2-7z"/><path d="M11 14 7 18"/><path d="M13 14l4 4"/></svg>'
   };
   return icons[type] || icons.document;
 }
@@ -98,8 +99,68 @@ const featuredDestinationNames = new Set([
   "romania"
 ]);
 const featuredDestinationKeys = new Set(destinations.map((country) => country.key.toLowerCase()));
+const requiredAdditionalCountryNames = [
+  "Canada", "Australia", "Netherlands", "Sweden", "Japan", "South Korea", "Norway", "New Zealand", "Switzerland", "Denmark", "Finland", "Belgium", "Spain", "Ireland", "Poland", "Hungary", "Czech Republic", "Portugal", "Greece", "Türkiye", "Malaysia", "Singapore", "Malta", "Lithuania", "Latvia", "Estonia", "Bulgaria", "Croatia", "Slovenia", "Slovakia", "United Arab Emirates", "Qatar", "Saudi Arabia", "Egypt", "South Africa", "Brazil", "Argentina", "Chile", "Mexico", "India", "Philippines", "Thailand", "Vietnam", "Indonesia", "Pakistan", "Bangladesh", "Sri Lanka", "Nepal", "Kenya", "Nigeria", "Ghana", "Morocco", "Tunisia", "Algeria", "Rwanda", "Tanzania", "Uganda", "Zambia", "Zimbabwe", "Botswana", "Namibia", "Senegal", "Côte d’Ivoire", "Cameroon", "Mauritius", "Seychelles", "Cyprus", "Luxembourg", "Iceland", "Albania", "Serbia", "Montenegro", "Bosnia and Herzegovina", "North Macedonia", "Kosovo", "Moldova", "Georgia", "Armenia", "Azerbaijan", "Kazakhstan", "Uzbekistan", "Kyrgyzstan", "Jordan", "Oman", "Bahrain", "Kuwait", "Israel", "Lebanon", "Ethiopia", "Ghana", "Peru", "Colombia", "Uruguay", "Paraguay", "Costa Rica", "Panama", "Dominican Republic", "Jamaica", "Trinidad and Tobago", "Mongolia", "Taiwan", "Hong Kong", "Macao", "Brunei", "Cambodia", "Laos", "Myanmar", "Maldives", "Fiji", "Papua New Guinea"
+];
+
+const ethiopiaUniversities = [
+  ["Addis Ababa University", "Major public research university and Ethiopia’s oldest higher education institution."],
+  ["Addis Ababa Science and Technology University", "Public science and technology university focused on engineering and applied research."],
+  ["Adama Science and Technology University", "Public university known for technology, engineering, and applied science programs."],
+  ["Bahir Dar University", "Large public university with broad academic programs and research activity."],
+  ["University of Gondar", "Public university known for health sciences, research, and professional programs."]
+];
+
 const extraCountryProfiles = window.extraCountryProfiles || [];
-const extraCountries = extraCountryProfiles.filter((country) => !featuredDestinationNames.has(country.name.toLowerCase()) && !featuredDestinationKeys.has(country.key.toLowerCase()));
+const extraCountryProfilesByName = new Map(extraCountryProfiles.map((country) => [country.name.toLowerCase(), country]));
+
+function createFallbackCountryProfile(name) {
+  const key = name.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  return {
+    key,
+    code: key.slice(0, 3).toUpperCase(),
+    name,
+    flag: "🌍",
+    region: "Worldwide",
+    image: "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800' viewBox='0 0 1200 800'%3E%3Crect width='1200' height='800' fill='%23dfe7f1'/%3E%3C/svg%3E",
+    why: `${name} can be reviewed as part of a tailored Broad Mobility destination plan based on the applicant’s profile, timeline, and travel purpose.`,
+    scholarships: "Scholarship, funding, and fee options should be confirmed against current institutional and government sources before application.",
+    work: "Work and post-arrival options depend on the visa category, institution, destination rules, and current immigration guidance.",
+    stability: "Policy, admission, and visa conditions should be reviewed for the applicant’s intended intake or travel season.",
+    life: "Living costs and city choices should be checked against the applicant’s budget, field, language preference, and support needs.",
+    unis: []
+  };
+}
+
+function normalizeCountryName(name) {
+  return String(name || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[’']/g, "").replace(/[^a-z0-9]+/g, " ").trim();
+}
+
+function buildAdditionalCountries() {
+  const featuredNames = new Set(destinations.map((country) => normalizeCountryName(country.name)));
+  const featuredKeys = new Set(destinations.map((country) => country.key.toLowerCase()));
+  const seenNames = new Set();
+
+  return requiredAdditionalCountryNames.reduce((countries, name) => {
+    const normalizedName = normalizeCountryName(name);
+    const profile = extraCountryProfilesByName.get(name.toLowerCase()) || createFallbackCountryProfile(name);
+    const key = String(profile.key || normalizedName).toLowerCase();
+
+    if (featuredNames.has(normalizedName) || featuredKeys.has(key) || seenNames.has(normalizedName)) return countries;
+
+    seenNames.add(normalizedName);
+    countries.push({
+      ...profile,
+      name,
+      key,
+      code: profile.code || key.slice(0, 3).toUpperCase(),
+      unis: normalizedName === "ethiopia" ? ethiopiaUniversities : (profile.unis || [])
+    });
+    return countries;
+  }, []);
+}
+
+const extraCountries = buildAdditionalCountries();
 const allCountriesMap = new Map([...destinations, ...extraCountries].map((country) => [country.key, country]));
 
 const fallbackSvg = "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(`
@@ -178,6 +239,30 @@ function setActiveNav() {
 function openMenu() { mobilePanel.classList.add("open"); mobilePanel.setAttribute("aria-hidden", "false"); menuOpen.setAttribute("aria-expanded", "true"); syncBodyLock(); }
 function closeMenu() { mobilePanel.classList.remove("open"); mobilePanel.setAttribute("aria-hidden", "true"); menuOpen.setAttribute("aria-expanded", "false"); syncBodyLock(); }
 
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" }[char]));
+}
+
+function getUniversityEntries(country) {
+  if (normalizeCountryName(country.name) === "ethiopia") return ethiopiaUniversities;
+
+  const universities = Array.isArray(country.unis) ? country.unis : [];
+  const hasGeneratedPlaceholder = universities.some(([name, desc]) => {
+    const text = `${name || ""} ${desc || ""}`.toLowerCase();
+    return text.includes("recognized university with established academic")
+      || text.includes("university of ethiopia");
+  });
+
+  if (!universities.length || hasGeneratedPlaceholder) {
+    return [[
+      "Verified institution selection required",
+      "Program and university options should be confirmed based on the applicant’s field, intake, language, budget, and current admission rules."
+    ]];
+  }
+
+  return universities;
+}
+
 function openCountry(data, options = {}) {
   const countryHero = document.getElementById("countryHero");
   countryHero.src = data.image;
@@ -191,7 +276,7 @@ function openCountry(data, options = {}) {
   document.getElementById("countryLife").textContent = data.life;
   document.getElementById("embassyProcess").innerHTML = renderEmbassyProcess();
   const universityGrid = document.getElementById("universityGrid");
-  universityGrid.innerHTML = data.unis.map(([name, desc]) => `<article class="card country-university-card"><h5>${name}</h5><p>${desc}</p></article>`).join("");
+  universityGrid.innerHTML = getUniversityEntries(data).map(([name, desc]) => `<article class="card country-university-card"><h5>${escapeHtml(name)}</h5><p>${escapeHtml(desc)}</p></article>`).join("");
   countryBackToList.classList.toggle("hidden", !options.fromExtraList);
   const detailCards = countryModal.querySelectorAll(".destination-detail-card");
   detailCards.forEach((card, index) => card.style.setProperty("--detail-stagger", `${80 + index * 90}ms`));
@@ -252,7 +337,7 @@ function renderDestinations() {
 }
 function renderMoreCountries() {
   moreCountriesList.classList.add("more-countries-list");
-  moreCountriesList.innerHTML = extraCountries.map((country) => `<button class="country-list-btn motion-card" type="button" data-country="${country.key}"><span>${country.flag} ${country.name}</span><small>${country.region}</small></button>`).join("");
+  moreCountriesList.innerHTML = extraCountries.map((country) => `<button class="country-list-btn motion-card" type="button" data-country="${country.key}"><span>${escapeHtml(country.flag || "🌍")} ${escapeHtml(country.name)}</span><small>${escapeHtml(country.code || country.region || "")}</small></button>`).join("");
 }
 function startImpactCarousel() {
   if (!impactCarousel) return;
