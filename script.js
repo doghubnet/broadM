@@ -23,7 +23,7 @@ const testimonials = [
 ];
 
 
-const embassyProcessSteps = [
+const universalEmbassyProcess = [
   { type: "document", text: "Confirm admission or travel purpose" },
   { type: "folder", text: "Prepare passport and supporting documents" },
   { type: "calendar", text: "Complete visa form and appointment booking" },
@@ -46,7 +46,7 @@ function getEmbassyStepIcon(type) {
 }
 
 function renderEmbassyProcess() {
-  return `<div class="embassy-process-list">${embassyProcessSteps.map((step) => `
+  return `<div class="embassy-process-list">${universalEmbassyProcess.map((step) => `
     <div class="embassy-process-step">
       <span class="embassy-process-icon">${getEmbassyStepIcon(step.type)}</span>
       <span class="embassy-process-text">${step.text}</span>
@@ -113,6 +113,80 @@ const ethiopiaUniversities = [
 
 const extraCountryProfiles = window.extraCountryProfiles || [];
 const extraCountryProfilesByName = new Map(extraCountryProfiles.map((country) => [country.name.toLowerCase(), country]));
+const majorAdditionalCountryData = {
+  "Canada": {
+    why: "Canada is a leading destination for international students because of public universities, practical programs, multicultural cities, and post-study work pathways.",
+    scholarships: "Canadian funding can include university entrance scholarships, merit awards, graduate assistantships, research funding, provincial scholarships, and external awards. Funding depends on program level, university, intake, and academic profile.",
+    work: "International students may have on-campus and off-campus work options under current Canadian rules. Post-study work options depend on program eligibility, institution status, study length, and immigration policy at the time of application.",
+    stability: "Canada has a stable education system, recognized institutions, and strong international student services, but visa and work rules must always be checked against current official immigration updates.",
+    life: "Major cities such as Toronto and Vancouver are usually more expensive. Cities such as Edmonton, Winnipeg, Ottawa, Halifax, and some regional areas may offer more affordable student living depending on housing and lifestyle.",
+    unis: [["University of Toronto", "Globally recognized for research, business, engineering, health sciences, and technology."], ["University of British Columbia", "Strong international reputation with major campuses in Vancouver and Okanagan."], ["McGill University", "Research-focused university in Montréal with strong global recognition."], ["University of Alberta", "Known for engineering, science, energy, health, and research programs."], ["University of Waterloo", "Strong in co-op education, computer science, engineering, and applied innovation."]]
+  },
+  "Australia": { unis: [["University of Melbourne", "Leading research university with broad professional programs."], ["Australian National University", "Known for research, policy, science, and global affairs."], ["University of Sydney", "Major public university with wide international recognition."], ["University of Queensland", "Strong in science, health, engineering, and research."], ["Monash University", "Large research university with strong international campuses and programs."]] },
+  "Netherlands": { unis: [["University of Amsterdam", "Research university with broad English-taught options."], ["Delft University of Technology", "Leading technical university for engineering and design."], ["Utrecht University", "Historic research university with strong academic reputation."], ["Leiden University", "Known for law, humanities, science, and international studies."], ["Erasmus University Rotterdam", "Strong in business, economics, health, and social sciences."]] },
+  "Sweden": { unis: [["Karolinska Institute", "Globally respected for medicine and health sciences."], ["Lund University", "Comprehensive research university with strong international programs."], ["Uppsala University", "Historic university with broad academic strength."], ["KTH Royal Institute of Technology", "Leading technical university in engineering and technology."], ["Stockholm University", "Major research university in Sweden’s capital."]] },
+  "Japan": { unis: [["University of Tokyo", "Top research university across science, engineering, and policy."], ["Kyoto University", "Major research university known for academic depth."], ["Osaka University", "Strong in engineering, health, and research."], ["Tohoku University", "Research-intensive university with international programs."], ["Tokyo Institute of Technology", "Leading technical institution for science and engineering."]] },
+  "South Korea": { unis: [["Seoul National University", "Leading public university with broad research strength."], ["KAIST", "Top institution for science, engineering, and innovation."], ["Yonsei University", "Major private university with strong international programs."], ["Korea University", "Comprehensive university known for business, law, and research."], ["POSTECH", "Research university focused on science and technology."]] },
+  "Norway": { unis: [["University of Oslo", "Norway’s major public research university."], ["University of Bergen", "Strong in marine, climate, and social sciences."], ["Norwegian University of Science and Technology", "Leading technical university for engineering and research."], ["UiT The Arctic University of Norway", "Known for Arctic studies, health, and research."], ["Norwegian School of Economics", "Specialized institution for economics and business."]] },
+  "New Zealand": { unis: [["University of Auckland", "Largest New Zealand university with broad global recognition."], ["University of Otago", "Historic university known for health sciences and research."], ["Victoria University of Wellington", "Strong in law, policy, humanities, and science."], ["University of Canterbury", "Known for engineering, science, and research."], ["Massey University", "Broad applied programs and flexible study options."]] },
+  "Switzerland": { unis: [["ETH Zurich", "World-leading institution for science, engineering, and technology."], ["EPFL", "Top technical university in Lausanne."], ["University of Zurich", "Large research university with broad academic programs."], ["University of Geneva", "Known for international affairs, science, and law."], ["University of Bern", "Research university with strong science and health programs."]] },
+  "Denmark": { unis: [["University of Copenhagen", "Major research university with broad programs."], ["Aarhus University", "Strong public research university."], ["Technical University of Denmark", "Leading technical university for engineering."], ["Copenhagen Business School", "Specialized business and management institution."], ["Aalborg University", "Known for problem-based learning and engineering."]] },
+  "Finland": { unis: [["University of Helsinki", "Top Finnish research university."], ["Aalto University", "Strong in technology, business, design, and innovation."], ["University of Turku", "Broad research university with international programs."], ["Tampere University", "Known for technology, health, and society programs."], ["University of Oulu", "Research university strong in technology and northern studies."]] },
+  "Belgium": { unis: [["KU Leuven", "Highly ranked research university with broad programs."], ["Ghent University", "Major public research university."], ["Université catholique de Louvain", "Comprehensive university with French-language and international options."], ["University of Antwerp", "Strong in business, science, and health."], ["Vrije Universiteit Brussel", "Research university in Brussels."]] },
+  "Spain": { unis: [["University of Barcelona", "Major public university with broad research programs."], ["Autonomous University of Barcelona", "Strong research university near Barcelona."], ["Complutense University of Madrid", "Historic public university in Madrid."], ["University of Navarra", "Private university known for business, medicine, and communication."], ["Pompeu Fabra University", "Research university known for social sciences and health."]] },
+  "Ireland": { unis: [["Trinity College Dublin", "Historic university with strong global reputation."], ["University College Dublin", "Large research university with broad programs."], ["University of Galway", "Research university in western Ireland."], ["University College Cork", "Strong in science, health, and humanities."], ["Dublin City University", "Known for business, computing, and applied programs."]] },
+  "Poland": { unis: [["University of Warsaw", "Leading public research university."], ["Jagiellonian University", "Historic university in Kraków."], ["Warsaw University of Technology", "Major technical university."], ["AGH University of Krakow", "Known for engineering and applied sciences."], ["Wrocław University of Science and Technology", "Strong technical university."]] },
+  "Hungary": { unis: [["Eötvös Loránd University", "Major public university in Budapest."], ["University of Szeged", "Research university with broad programs."], ["Semmelweis University", "Leading health sciences university."], ["Budapest University of Technology and Economics", "Strong in engineering and technology."], ["University of Debrecen", "Large public university with international programs."]] },
+  "Czech Republic": { unis: [["Charles University", "Historic public research university in Prague."], ["Czech Technical University in Prague", "Leading technical university."], ["Masaryk University", "Major university in Brno."], ["Brno University of Technology", "Strong in engineering and applied sciences."], ["University of Chemistry and Technology Prague", "Specialized science and technology university."]] },
+  "Portugal": { unis: [["University of Lisbon", "Large public research university."], ["University of Porto", "Major research university in northern Portugal."], ["University of Coimbra", "Historic university with broad academic programs."], ["NOVA University Lisbon", "Known for business, science, and social sciences."], ["University of Aveiro", "Strong in engineering, science, and design."]] },
+  "Greece": { unis: [["National and Kapodistrian University of Athens", "Historic public university with broad programs."], ["Aristotle University of Thessaloniki", "Large public research university."], ["National Technical University of Athens", "Leading engineering institution."], ["University of Crete", "Research university with science and humanities strengths."], ["Athens University of Economics and Business", "Specialized in economics and business."]] },
+  "Türkiye": { unis: [["Boğaziçi University", "Highly respected public university in Istanbul."], ["Middle East Technical University", "Strong in engineering, science, and research."], ["Istanbul Technical University", "Historic technical university."], ["Koç University", "Private research university with strong international profile."], ["Sabancı University", "Known for interdisciplinary and research-focused programs."]] },
+  "Malaysia": { unis: [["Universiti Malaya", "Malaysia’s leading public research university."], ["Universiti Putra Malaysia", "Strong in agriculture, science, and research."], ["Universiti Kebangsaan Malaysia", "Major public research university."], ["Universiti Sains Malaysia", "Research university with broad programs."], ["Taylor’s University", "Private university known for hospitality, business, and design."]] },
+  "Singapore": { unis: [["National University of Singapore", "Top global university with broad research strength."], ["Nanyang Technological University", "Leading university for engineering, science, and business."], ["Singapore Management University", "Specialized in business, law, and social sciences."], ["Singapore University of Technology and Design", "Focused on technology and design innovation."], ["Singapore Institute of Technology", "Applied university with industry-focused programs."]] },
+  "Malta": { unis: [["University of Malta", "Main public university with broad programs."], ["Malta College of Arts, Science and Technology", "Applied institution for technical and vocational pathways."], ["Institute of Tourism Studies", "Specialized in tourism and hospitality."], ["Global College Malta", "Private higher education provider."], ["American University of Malta", "Private university with international programs."]] },
+  "Lithuania": { unis: [["Vilnius University", "Historic public research university."], ["Kaunas University of Technology", "Strong in engineering and technology."], ["Vytautas Magnus University", "Comprehensive university in Kaunas."], ["Vilnius Gediminas Technical University", "Technical university known for engineering."], ["Lithuanian University of Health Sciences", "Specialized health sciences university."]] },
+  "Latvia": { unis: [["University of Latvia", "Major public research university."], ["Riga Technical University", "Leading technical university."], ["Riga Stradiņš University", "Known for medicine and health sciences."], ["Latvia University of Life Sciences and Technologies", "Applied and science programs."], ["BA School of Business and Finance", "Specialized business institution."]] },
+  "Estonia": { unis: [["University of Tartu", "Leading research university in Estonia."], ["Tallinn University of Technology", "Strong in engineering, IT, and innovation."], ["Tallinn University", "Known for social sciences and humanities."], ["Estonian University of Life Sciences", "Specialized in agriculture and environmental sciences."], ["Estonian Academy of Arts", "Creative arts and design institution."]] },
+  "Bulgaria": { unis: [["Sofia University", "Major public university with broad programs."], ["Technical University of Sofia", "Leading engineering institution."], ["Medical University of Sofia", "Known for medicine and health sciences."], ["University of National and World Economy", "Business and economics university."], ["Plovdiv University", "Public university with broad academic options."]] },
+  "Croatia": { unis: [["University of Zagreb", "Largest and oldest Croatian university."], ["University of Split", "Public university with coastal campus options."], ["University of Rijeka", "Research university with broad programs."], ["University of Osijek", "Regional public university."], ["Zagreb School of Economics and Management", "Private business school."]] },
+  "Slovenia": { unis: [["University of Ljubljana", "Major public research university."], ["University of Maribor", "Large public university with broad programs."], ["University of Primorska", "Public university with international programs."], ["University of Nova Gorica", "Research-focused university."], ["IEDC-Bled School of Management", "Specialized management school."]] },
+  "Slovakia": { unis: [["Comenius University Bratislava", "Leading public university in Slovakia."], ["Slovak University of Technology in Bratislava", "Strong engineering and technology institution."], ["Technical University of Košice", "Major technical university."], ["Pavol Jozef Šafárik University", "Public university with science and medicine."], ["University of Žilina", "Known for transport, engineering, and management."]] },
+  "United Arab Emirates": { unis: [["United Arab Emirates University", "National research university with broad programs."], ["Khalifa University", "Strong in engineering, technology, and research."], ["American University of Sharjah", "International-style university with engineering and business."], ["University of Sharjah", "Large university with health, engineering, and humanities."], ["Zayed University", "Public university with applied programs."]] },
+  "Qatar": { unis: [["Qatar University", "National university with broad academic programs."], ["Hamad Bin Khalifa University", "Research university within Education City."], ["Texas A&M University at Qatar", "Engineering-focused branch campus."], ["Georgetown University in Qatar", "International affairs branch campus."], ["Carnegie Mellon University in Qatar", "Computing and business branch campus."]] },
+  "Saudi Arabia": { unis: [["King Saud University", "Major public university in Riyadh."], ["King Abdulaziz University", "Large research university in Jeddah."], ["King Fahd University of Petroleum and Minerals", "Strong in engineering, science, and energy."], ["KAUST", "Graduate research university for science and technology."], ["Princess Nourah bint Abdulrahman University", "Large public university for women."]] },
+  "Egypt": { unis: [["Cairo University", "Major public university with broad programs."], ["American University in Cairo", "International-style university with strong liberal arts and business."], ["Ain Shams University", "Large public university in Cairo."], ["Alexandria University", "Public university with broad academic options."], ["Mansoura University", "Known for medicine, science, and research."]] },
+  "South Africa": { unis: [["University of Cape Town", "Leading research university in Africa."], ["University of the Witwatersrand", "Major research university in Johannesburg."], ["Stellenbosch University", "Strong in research, science, and business."], ["University of Pretoria", "Large public university with broad programs."], ["University of Johannesburg", "Applied and comprehensive university."]] },
+  "Brazil": { unis: [["University of São Paulo", "Major public research university."], ["University of Campinas", "Strong in science, engineering, and research."], ["Federal University of Rio de Janeiro", "Large public university with broad programs."], ["São Paulo State University", "Public university with multiple campuses."], ["Federal University of Minas Gerais", "Research university with broad academic strength."]] },
+  "Argentina": { unis: [["University of Buenos Aires", "Major public university with regional recognition."], ["National University of La Plata", "Public research university."], ["Austral University", "Private university known for business and health."], ["Pontifical Catholic University of Argentina", "Private university with broad programs."], ["National University of Córdoba", "Historic public university."]] },
+  "Chile": { unis: [["University of Chile", "Leading public research university."], ["Pontifical Catholic University of Chile", "Highly ranked private university."], ["University of Santiago, Chile", "Public university with engineering and science strengths."], ["University of Concepción", "Major regional research university."], ["Federico Santa María Technical University", "Known for engineering and technology."]] },
+  "Mexico": { unis: [["National Autonomous University of Mexico", "Major public research university."], ["Tecnológico de Monterrey", "Private university known for business, engineering, and innovation."], ["IPN", "Public technical institute with engineering strength."], ["Universidad Iberoamericana", "Private university with social sciences and design."], ["University of Guadalajara", "Large public university network."]] },
+  "India": { unis: [["Indian Institute of Science", "Leading research institution in science and engineering."], ["Indian Institute of Technology Bombay", "Top technical institution."], ["Indian Institute of Technology Delhi", "Strong in engineering and technology."], ["University of Delhi", "Large public university with broad programs."], ["Jawaharlal Nehru University", "Known for social sciences, languages, and research."]] },
+  "Philippines": { unis: [["University of the Philippines", "National university system with broad programs."], ["Ateneo de Manila University", "Private university known for humanities, business, and law."], ["De La Salle University", "Private university with business and engineering."], ["University of Santo Tomas", "Historic university with broad programs."], ["Mapúa University", "Known for engineering and technology."]] },
+  "Thailand": { unis: [["Chulalongkorn University", "Leading Thai public research university."], ["Mahidol University", "Strong in medicine, health, and science."], ["Thammasat University", "Known for law, politics, business, and social sciences."], ["Chiang Mai University", "Major regional university."], ["King Mongkut’s University of Technology Thonburi", "Technical university strong in engineering."]] },
+  "Vietnam": { unis: [["Vietnam National University, Hanoi", "Major national university system."], ["Vietnam National University, Ho Chi Minh City", "National university system with broad programs."], ["Hanoi University of Science and Technology", "Leading technical university."], ["Foreign Trade University", "Known for business and economics."], ["Ton Duc Thang University", "Research-focused university in Ho Chi Minh City."]] },
+  "Ethiopia": {
+    why: "Ethiopia can be reviewed for local study pathways, regional mobility preparation, document readiness, and international application planning.",
+    scholarships: "Funding may include government-supported local education routes, institutional opportunities, external scholarships, and international scholarship preparation depending on the applicant’s target country.",
+    work: "Work and career pathways depend on field, qualification level, local regulations, and international plans. Applicants should align study choices with long-term academic or professional goals.",
+    stability: "Applicants should review current admission, document authentication, embassy appointment, and travel conditions before final planning.",
+    life: "Costs vary by city. Addis Ababa is usually higher than many regional cities. Student life depends on housing, transport, program location, and family support.",
+    unis: ethiopiaUniversities
+  }
+};
+
+function buildMajorCountryData(name) {
+  const data = majorAdditionalCountryData[name];
+  if (!data) return null;
+  return {
+    why: data.why || `${name} offers recognized education and mobility pathways that should be matched to the applicant’s field, budget, language preference, and intake plan.`,
+    scholarships: data.scholarships || `Funding in ${name} may include institutional scholarships, merit awards, research support, and external programs. Availability varies by university, intake, and applicant profile.`,
+    work: data.work || `Student work and post-study options in ${name} depend on current visa policy, institution rules, study level, and program eligibility. Applicants should check official guidance before applying.`,
+    stability: data.stability || `${name} has established education and visa systems, but admission, visa, and work rules should always be checked against current official updates.`,
+    life: data.life || `Living costs in ${name} vary by city, housing choice, transport, and lifestyle. Applicants should compare major cities with regional areas before final selection.`,
+    unis: data.unis
+  };
+}
+
 
 function createFallbackCountryProfile(name) {
   const key = name.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -149,12 +223,15 @@ function buildAdditionalCountries() {
     if (featuredNames.has(normalizedName) || featuredKeys.has(key) || seenNames.has(normalizedName)) return countries;
 
     seenNames.add(normalizedName);
+    const majorData = buildMajorCountryData(name);
+
     countries.push({
       ...profile,
+      ...(majorData || {}),
       name,
       key,
       code: profile.code || key.slice(0, 3).toUpperCase(),
-      unis: normalizedName === "ethiopia" ? ethiopiaUniversities : (profile.unis || [])
+      unis: normalizedName === "ethiopia" ? ethiopiaUniversities : (majorData?.unis || profile.unis || [])
     });
     return countries;
   }, []);
@@ -265,9 +342,18 @@ function getUniversityEntries(country) {
 
 function openCountry(data, options = {}) {
   const countryHero = document.getElementById("countryHero");
-  countryHero.src = data.image;
-  countryHero.alt = `${data.name} destination image`;
-  countryHero.classList.toggle("country-flag-hero", data.image.includes("flagcdn.com"));
+  const hasValidImage = typeof data.image === "string" && data.image.trim() && !data.image.startsWith("data:image/svg+xml");
+  countryHero.hidden = !hasValidImage;
+  countryHero.classList.toggle("is-hidden", !hasValidImage);
+  if (hasValidImage) {
+    countryHero.src = data.image;
+    countryHero.alt = `${data.name} destination image`;
+    countryHero.classList.toggle("country-flag-hero", data.image.includes("flagcdn.com"));
+  } else {
+    countryHero.removeAttribute("src");
+    countryHero.alt = "";
+    countryHero.classList.remove("country-flag-hero");
+  }
   document.getElementById("countryTitleLabel").textContent = `${data.name} ${data.flag || ""}`.trim();
   document.getElementById("countryWhy").textContent = data.why;
   document.getElementById("countryScholarships").textContent = data.scholarships;

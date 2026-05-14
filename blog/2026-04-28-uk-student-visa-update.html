@@ -7,9 +7,17 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+  <script>
+    try {
+      if (localStorage.getItem("broadMobilityTheme") === "dark") {
+        document.body.classList.add("dark-theme");
+      }
+    } catch (_error) {}
+  </script>
   <main class="section article-shell">
     <article class="container article-content article-enter">
       <a href="/#newsroom" class="article-back-btn motion-button">Back to News</a>
+      <div class="article-meta"><span>April 28, 2026</span><span>Student Visa Updates</span></div>
       <h1>New UK student visa guidelines as of 2026</h1>
       <p><strong>The 2026 UK student visa environment is more documentation-sensitive than before.</strong> Review officers are checking whether your funding story, admission record, and travel intent are consistent across every file.</p>
 

@@ -7,9 +7,17 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+  <script>
+    try {
+      if (localStorage.getItem("broadMobilityTheme") === "dark") {
+        document.body.classList.add("dark-theme");
+      }
+    } catch (_error) {}
+  </script>
   <main class="section article-shell">
     <article class="container article-content article-enter">
       <a href="/#newsroom" class="article-back-btn motion-button">Back to News</a>
+      <div class="article-meta"><span>April 28, 2026</span><span>Scholarships</span></div>
       <h1>Germany’s DAAD scholarship deadlines and document plan</h1>
       <p><strong>DAAD success depends on early planning, not last-week document collection.</strong> Strong applicants reverse-engineer deadlines and prepare evidence in sequence.</p>
 

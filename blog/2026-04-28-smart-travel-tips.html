@@ -7,9 +7,17 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+  <script>
+    try {
+      if (localStorage.getItem("broadMobilityTheme") === "dark") {
+        document.body.classList.add("dark-theme");
+      }
+    } catch (_error) {}
+  </script>
   <main class="section article-shell">
     <article class="container article-content article-enter">
       <a href="/#newsroom" class="article-back-btn motion-button">Back to News</a>
+      <div class="article-meta"><span>April 28, 2026</span><span>Travel Preparation</span></div>
       <h1>Practical travel preparation tips for first-time international movers</h1>
       <p><strong>First-time movers succeed when preparation is broken into clear stages.</strong> The goal is to reduce uncertainty before departure and protect your first-week stability after arrival.</p>
 
