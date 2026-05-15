@@ -293,7 +293,10 @@
         </div>
 
         <div class="destinations" id="destinationGrid" aria-live="polite"></div>
-        <button class="center section-subtitle more-countries-link" id="moreCountriesOpen" type="button" style="margin-top:24px">100+ additional countries worldwide</button>
+        <div class="more-countries-cta reveal">
+          <p>More supported countries worldwide</p>
+          <button class="btn btn-secondary" id="moreCountriesOpen" type="button">See More Countries</button>
+        </div>
       </div>
     </section>
 
@@ -625,7 +628,16 @@
 
     <div class="container footer-bottom">
       <p>Copyright © 2026 Broad Mobility. All rights reserved.</p>
-      <p class="footer-legal-links"><button class="link-btn flip-link footer-flip" id="termsOpen" type="button"><span class="flip-link-face flip-link-front">Terms of Service</span><span class="flip-link-face flip-link-back" aria-hidden="true">Terms of Service</span></button> <span aria-hidden="true">|</span> <button class="link-btn flip-link footer-flip" id="privacyOpen" type="button"><span class="flip-link-face flip-link-front">Privacy Policy</span><span class="flip-link-face flip-link-back" aria-hidden="true">Privacy Policy</span></button></p>
+      <div class="footer-bottom-actions">
+        <p class="footer-legal-links"><button class="link-btn flip-link footer-flip" id="termsOpen" type="button"><span class="flip-link-face flip-link-front">Terms of Service</span><span class="flip-link-face flip-link-back" aria-hidden="true">Terms of Service</span></button> <span aria-hidden="true">|</span> <button class="link-btn flip-link footer-flip" id="privacyOpen" type="button"><span class="flip-link-face flip-link-front">Privacy Policy</span><span class="flip-link-face flip-link-back" aria-hidden="true">Privacy Policy</span></button></p>
+        <div class="country-selector-wrap" id="countrySelectorWrap">
+          <button class="country-selector-btn" id="countrySelectorButton" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span id="countrySelectorValue">Ethiopia</span>
+            <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 7.5 10 12l5-4.5"/></svg>
+          </button>
+          <div class="country-selector-menu" id="countrySelectorMenu" role="listbox" aria-label="Country preference"></div>
+        </div>
+      </div>
     </div>
     <div class="footer-gold-line"></div>
   </footer>
@@ -751,9 +763,14 @@
   <div class="modal" id="moreCountriesModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="moreCountriesTitle">
     <button class="modal-close" type="button" data-close="moreCountriesModal" aria-label="Close countries list">×</button>
     <div class="modal-shell">
-      <div class="modal-content">
-        <h3 id="moreCountriesTitle">MORE COUNTRIES WE SUPPORT</h3>
-        <div id="moreCountriesList" class="grid"></div>
+      <div class="modal-content more-countries-content">
+        <h3 id="moreCountriesTitle">More supported countries worldwide</h3>
+        <div id="moreCountriesListView">
+          <p class="more-countries-intro">Select a destination to review key study, work, funding, and embassy planning notes.</p>
+          <div id="moreCountriesList" class="grid"></div>
+          <p class="more-countries-note">We can support more countries upon request. <strong><button class="country-contact-link" type="button" data-country-contact>Contact Us</button></strong></p>
+        </div>
+        <div id="moreCountriesDetail" class="country-detail-view" hidden></div>
       </div>
     </div>
   </div>

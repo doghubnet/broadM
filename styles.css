@@ -831,3 +831,57 @@ body.dark-theme .article-modal-back{color:#ffffff}
 @media (max-width:768px){.country-detail-hero,.modal-hero{min-height:180px;max-height:240px}.article-modal-content{padding:28px 20px}.article-modal-image{max-height:240px}}
 .modal-hero{height:280px}
 @media (max-width:768px){.modal-hero{height:220px}}
+
+/* Additional countries modal and footer country selector */
+.more-countries-cta{margin-top:24px;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;text-align:center}
+.more-countries-cta p{margin:0;color:#06213d;font-weight:800;font-size:1.05rem}
+body.dark-theme .more-countries-cta p{color:#f4fbff}
+.more-countries-content{color:#06213d}
+.more-countries-intro,.more-countries-note{color:#516579;margin:0 0 18px;line-height:1.6}
+.more-countries-note{margin:20px 0 0;text-align:center}
+.country-contact-link{appearance:none;border:0;background:transparent;color:#00a651;font:inherit;font-weight:900;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.country-contact-link:hover{color:#007a3d}
+.more-countries-list{grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;max-height:58vh;overflow:auto;padding:2px 2px 8px}
+.additional-country-card{display:grid;grid-template-columns:72px 1fr;align-items:center;gap:12px;min-height:88px;padding:10px;border-radius:18px;border:1px solid rgba(6,33,61,.10);background:rgba(255,255,255,.86);color:#06213d;text-align:left;box-shadow:0 10px 24px rgba(6,33,61,.06);transition:transform .2s ease,border-color .2s ease,background .2s ease,box-shadow .2s ease}
+.additional-country-card:hover{transform:translateY(-2px);border-color:rgba(0,166,81,.26);background:#ffffff;box-shadow:0 16px 34px rgba(6,33,61,.10)}
+.additional-country-img{width:100%;height:100%;min-height:68px;object-fit:cover;object-position:center;border-radius:14px;background:transparent}
+.additional-country-img[hidden]{display:none !important}
+.additional-country-card-body{display:grid;gap:4px;min-width:0}
+.additional-country-name{font-weight:850;line-height:1.18;color:#06213d}
+.additional-country-card small,.country-code-pill{color:#516579;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.country-detail-view{color:#06213d}
+.additional-country-back{position:static;margin:0 0 16px 0}
+.country-detail-heading{display:grid;gap:8px;margin:0 0 18px}
+.country-detail-heading h3{margin:0;color:#06213d;font-size:clamp(2rem,4vw,3.4rem);line-height:1.04;letter-spacing:-.035em}
+.country-detail-heading p{margin:0;color:#516579;line-height:1.65}
+.country-code-pill{width:max-content;display:inline-flex;border:1px solid rgba(0,166,81,.20);background:rgba(0,166,81,.08);border-radius:999px;padding:7px 10px;color:#007a3d}
+.country-detail-grid{margin-top:18px}
+.country-university-grid{margin-top:12px}
+.footer-bottom-actions{display:flex;align-items:center;justify-content:flex-end;gap:16px;flex-wrap:wrap;margin-left:auto}
+.country-selector-wrap{position:relative;display:inline-flex;justify-content:flex-end}
+.country-selector-btn{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(6,33,61,.14);background:rgba(255,255,255,.78);color:#06213d;border-radius:14px;padding:10px 14px;font-weight:700;cursor:pointer;transition:background .25s ease,border-color .25s ease,transform .25s ease,box-shadow .25s ease}
+.country-selector-btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.country-selector-btn:hover{transform:translateY(-1px);background:#ffffff;border-color:rgba(0,166,81,.25);box-shadow:0 12px 24px rgba(6,33,61,.10)}
+.country-selector-menu{position:absolute;right:0;bottom:calc(100% + 10px);width:min(280px,calc(100vw - 32px));max-height:420px;overflow-y:auto;background:#ffffff;color:#06213d;border:1px solid rgba(6,33,61,.12);border-radius:18px;box-shadow:0 24px 60px rgba(0,0,0,.18);padding:10px;z-index:1000;display:none}
+.country-selector-menu.is-open{display:block}
+.country-option{width:100%;border:0;background:transparent;color:#06213d;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border-radius:12px;cursor:pointer;font-weight:600;text-align:left;transition:background .2s ease,color .2s ease}
+.country-option:hover{background:rgba(0,166,81,.08)}
+.country-option .check{opacity:0;color:#00a651;font-weight:900}
+.country-option.is-selected .check{opacity:1}
+body.dark-theme .more-countries-content,body.dark-theme .country-detail-view{color:#f4fbff}
+body.dark-theme .more-countries-intro,body.dark-theme .more-countries-note,body.dark-theme .country-detail-heading p{color:#b7cad9}
+body.dark-theme .country-contact-link{color:#00d47a}
+body.dark-theme .additional-country-card{background:rgba(255,255,255,.075);border-color:rgba(255,255,255,.12);color:#f4fbff;box-shadow:0 16px 34px rgba(0,0,0,.16)}
+body.dark-theme .additional-country-card:hover{background:rgba(255,255,255,.105);border-color:rgba(0,212,122,.24)}
+body.dark-theme .additional-country-name,body.dark-theme .country-detail-heading h3{color:#ffffff}
+body.dark-theme .additional-country-card small{color:#b7cad9}
+body.dark-theme .country-code-pill{background:rgba(0,212,122,.12);border-color:rgba(0,212,122,.28);color:#00d47a}
+body.dark-theme .country-selector-btn{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16);color:#ffffff}
+body.dark-theme .country-selector-btn:hover{background:rgba(255,255,255,.12);border-color:rgba(0,212,122,.28);box-shadow:0 12px 24px rgba(0,0,0,.20)}
+body.dark-theme .country-selector-menu{background:#071a2e;color:#f4fbff;border-color:rgba(255,255,255,.14);box-shadow:0 24px 60px rgba(0,0,0,.34)}
+body.dark-theme .country-option{color:#f4fbff}
+body.dark-theme .country-option:hover{background:rgba(0,212,122,.12)}
+body.dark-theme .country-option .check{color:#00d47a}
+@media (min-width:1180px){.more-countries-list{grid-template-columns:repeat(4,1fr)}}
+@media (max-width:768px){.footer-bottom-actions{width:100%;justify-content:flex-start}.country-selector-wrap{width:100%;justify-content:flex-start}.country-selector-menu{left:0;right:auto}.additional-country-card{grid-template-columns:86px 1fr}.country-detail-hero{min-height:190px}.more-countries-list{max-height:56vh}}
+@media (max-width:480px){.more-countries-cta{align-items:stretch}.more-countries-cta .btn{width:100%}.additional-country-card{grid-template-columns:1fr}.additional-country-img{height:150px}.country-selector-menu{width:calc(100vw - 48px)}}

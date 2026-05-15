@@ -78,6 +78,13 @@ const searchInput = document.getElementById("searchInput");
 const searchResults = document.getElementById("searchResults");
 const dynamicUploads = document.getElementById("dynamicUploads");
 const moreCountriesList = document.getElementById("moreCountriesList");
+const moreCountriesListView = document.getElementById("moreCountriesListView");
+const moreCountriesDetail = document.getElementById("moreCountriesDetail");
+const moreCountriesTitle = document.getElementById("moreCountriesTitle");
+const countrySelectorWrap = document.getElementById("countrySelectorWrap");
+const countrySelectorButton = document.getElementById("countrySelectorButton");
+const countrySelectorValue = document.getElementById("countrySelectorValue");
+const countrySelectorMenu = document.getElementById("countrySelectorMenu");
 const countryBackToList = document.getElementById("countryBackToList");
 const destinationTemplate = document.getElementById("destinationTemplate");
 const testimonialTemplate = document.getElementById("testimonialTemplate");
@@ -105,8 +112,11 @@ const featuredDestinationNames = new Set([
 ]);
 const featuredDestinationKeys = new Set(destinations.map((country) => country.key.toLowerCase()));
 const requiredAdditionalCountryNames = [
-  "Canada", "Australia", "Netherlands", "Sweden", "Japan", "South Korea", "Norway", "New Zealand", "Switzerland", "Denmark", "Finland", "Belgium", "Spain", "Ireland", "Poland", "Hungary", "Czech Republic", "Portugal", "Greece", "Türkiye", "Malaysia", "Singapore", "Malta", "Lithuania", "Latvia", "Estonia", "Bulgaria", "Croatia", "Slovenia", "Slovakia", "United Arab Emirates", "Qatar", "Saudi Arabia", "Egypt", "South Africa", "Brazil", "Argentina", "Chile", "Mexico", "India", "Philippines", "Thailand", "Vietnam", "Indonesia", "Pakistan", "Bangladesh", "Sri Lanka", "Nepal", "Kenya", "Nigeria", "Ghana", "Morocco", "Tunisia", "Algeria", "Rwanda", "Tanzania", "Uganda", "Zambia", "Zimbabwe", "Botswana", "Namibia", "Senegal", "Côte d’Ivoire", "Cameroon", "Mauritius", "Seychelles", "Cyprus", "Luxembourg", "Iceland", "Albania", "Serbia", "Montenegro", "Bosnia and Herzegovina", "North Macedonia", "Kosovo", "Moldova", "Georgia", "Armenia", "Azerbaijan", "Kazakhstan", "Uzbekistan", "Kyrgyzstan", "Jordan", "Oman", "Bahrain", "Kuwait", "Israel", "Lebanon", "Ethiopia", "Ghana", "Peru", "Colombia", "Uruguay", "Paraguay", "Costa Rica", "Panama", "Dominican Republic", "Jamaica", "Trinidad and Tobago", "Mongolia", "Taiwan", "Hong Kong", "Macao", "Brunei", "Cambodia", "Laos", "Myanmar", "Maldives", "Fiji", "Papua New Guinea"
+  "Canada", "Australia", "Netherlands", "Japan", "South Korea", "Norway", "New Zealand", "Switzerland", "Denmark", "Finland", "Belgium", "Spain", "Ireland", "Poland", "Hungary", "Czech Republic", "Portugal", "Greece", "Malaysia", "Türkiye", "Singapore", "Malta", "United Arab Emirates", "Qatar", "Mexico", "Brunei", "South Africa"
 ];
+
+const countrySelectorCountries = ["Ethiopia", ...requiredAdditionalCountryNames];
+const COUNTRY_SELECTOR_STORAGE_KEY = "broadMobilitySelectedCountry";
 
 const ethiopiaUniversities = [
   ["Addis Ababa University", "Major public research university and Ethiopia’s oldest higher education institution."],
@@ -119,50 +129,37 @@ const ethiopiaUniversities = [
 const extraCountryProfiles = window.extraCountryProfiles || [];
 const extraCountryProfilesByName = new Map(extraCountryProfiles.map((country) => [country.name.toLowerCase(), country]));
 const countryImages = {
-  "Canada": "https://upload.wikimedia.org/wikipedia/commons/b/b7/CN_Tower_from_Puente_de_Luz%2C_Toronto%2C_Ontario%2C_2025-08-25_01.jpg",
-  "Australia": "https://upload.wikimedia.org/wikipedia/commons/4/40/Sydney_Opera_House_Sails.jpg",
-  "Netherlands": "https://upload.wikimedia.org/wikipedia/commons/f/ff/KinderdijkMolens02.jpg",
-  "Sweden": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Royal_Dramatic_Theatre_Stockholm.jpg",
-  "Japan": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Himeji_Castle_The_Keep_Towers.jpg",
-  "South Korea": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Gyeongbokgung_Palace%2C_Seoul%2C_South_Korea.jpg",
-  "Norway": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Bryggen%2C_Bergen%2C_Norway.jpg",
-  "New Zealand": "https://upload.wikimedia.org/wikipedia/commons/5/54/Auckland_Sky_Tower_%285186071375%29.jpg",
-  "Switzerland": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Chapel_Bridge_and_Water_Tower_in_Lucerne.jpg",
-  "Denmark": "https://upload.wikimedia.org/wikipedia/commons/a/ad/The_Nyhavn_Canal_3.jpg",
-  "Finland": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Helsinki_Cathedral_in_July_2004.jpg",
-  "Belgium": "https://upload.wikimedia.org/wikipedia/commons/2/26/Grand-Place%2C_Brussels_-_panorama%2C_June_2018.jpg",
-  "Spain": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Sagrada_Familia_01.jpg",
-  "Ireland": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Dublin_Castle_from_the_garden.jpg",
-  "Poland": "https://upload.wikimedia.org/wikipedia/commons/8/87/Wawel_%284%29.jpg",
-  "Hungary": "https://upload.wikimedia.org/wikipedia/commons/7/79/Budapest_Orsz%C3%A1gh%C3%A1z_%2831355012995%29.jpg",
-  "Czech Republic": "https://upload.wikimedia.org/wikipedia/commons/2/22/Prague_07-2016_view_from_Lesser_Town_Tower_of_Charles_Bridge_img3.jpg",
-  "Portugal": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Torre_de_Bel%C3%A9m%2C_Lisbon%2C_Portugal.jpg",
-  "Greece": "https://upload.wikimedia.org/wikipedia/commons/d/da/The_Parthenon_in_Athens.jpg",
-  "Türkiye": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Hagia_Sophia_%28228968325%29.jpeg",
-  "Malaysia": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Petronas_Twin_Towers%2C_Kuala_Lumpur.jpg",
-  "Singapore": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Marina_Bay_Sands_%28I%29.jpg",
-  "Malta": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Valletta_Skyline.jpg",
-  "Lithuania": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Vilnius_old_town_by_Augustas_Didzgalvis.jpg",
-  "Latvia": "https://commons.wikimedia.org/wiki/Special:Redirect/file/House_of_the_Blackheads%2C_Riga.jpg",
-  "Estonia": "https://upload.wikimedia.org/wikipedia/commons/7/70/Raekoja_plats_at_night.jpg",
-  "Bulgaria": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Alexander_Nevsky_Cathedral_in_Sofia.jpg",
-  "Croatia": "https://upload.wikimedia.org/wikipedia/commons/6/67/The_walls_of_the_fortress_and_View_of_the_old_city._panorama.jpg",
-  "Slovenia": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Bled_Castle_05.jpg",
-  "Slovakia": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Bratislava_Castle%2C_Slovakia.jpg",
-  "United Arab Emirates": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Burj_Khalifa.jpg",
-  "Qatar": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Museum_of_Islamic_Art%2C_Doha.jpg",
-  "Saudi Arabia": "https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Ka%27ba%2C_Great_Mosque_of_Mecca%2C_Saudi_Arabia.jpg",
-  "Egypt": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pyramids_of_the_Giza_Necropolis.jpg",
-  "South Africa": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Union_Buildings%2C_Pretoria%2C_South_Africa.jpg",
-  "Brazil": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Christ_the_Redeemer_-_Cristo_Redentor.jpg",
-  "Argentina": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Casa_Rosada%2C_Buenos_Aires.jpg",
-  "Chile": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Palacio_de_La_Moneda.jpg",
-  "Mexico": "https://upload.wikimedia.org/wikipedia/commons/5/51/Chichen_Itza_3.jpg",
-  "India": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg",
-  "Philippines": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Manila_Cathedral_2023.jpg",
-  "Thailand": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Wat_Phra_Kaew_Bangkok.jpg",
-  "Vietnam": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Imperial_City%2C_Hue.jpg",
-  "Ethiopia": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Bete_Giyorgis%2C_Lalibela%2C_Ethiopia.jpg"
+  "Canada": "https://travelfine.es/wp-content/uploads/2023/04/Canada-Principal.jpg",
+  "Australia": "https://www.vistra.com/sites/default/files/2019-03/Sydney.jpg",
+  "Netherlands": "https://assets.plaece.nl/thumb/dyAx6mAcjJM7gCKNJEUHcgPglR-PCDQ5HoD8CArp-Vs/resizing_type:fit/width:960/height:0/gravity:sm/enlarge:0/aHR0cHM6Ly9hc3NldHMucGxhZWNlLm5sL2t1bWEtd2FkZGVuL3VwbG9hZHMvbWVkaWEvNWY5ODNjMTJjYzgwNC9wcmluc2VudHVpbi1ncm9uaW5nZW4tZG9uZS1ieS1kZW9uLTIwMTktbWFya2V0aW5nLWdyb25pbmdlbi5qcGVn.jpeg",
+  "Japan": "https://images.contentstack.io/v3/assets/blt06f605a34f1194ff/bltc1564bc44f66a900/675e1262cbd7d6bc5f15c6b0/japan-725347-Header_Mobile.jpg?fit=crop&disable=upscale&auto=webp&quality=60&crop=smart",
+  "South Korea": "https://res.cloudinary.com/pleasant-holidays/image/upload/v1715187926/Destinations/Asia/South%20Korea/south-korea-seoul-aerial-as.jpg",
+  "Norway": "https://images.travelandleisureasia.com/wp-content/uploads/sites/5/2024/03/05172512/bergen.jpeg",
+  "New Zealand": "https://cdn.britannica.com/25/180825-050-B4693350/Wellington-Harbour-New-Zealand.jpg",
+  "Switzerland": "https://lp-cms-production.imgix.net/2019-06/shutterstock_160155083.jpg",
+  "Denmark": "https://explore-live.s3.eu-west-1.amazonaws.com/medialibraries/explore/explore-media/destinations/europe/denmark/denmark-main.jpg?ext=.jpg&width=1920&format=webp&quality=80&v=201704280926%201920w",
+  "Finland": "https://images.contentstack.io/v3/assets/blt06f605a34f1194ff/blt877152370274e4fa/6835a1d45f33e76dd94db789/iStock-1916715095-header-mobile.jpg?fit=crop&disable=upscale&auto=webp&quality=60&crop=smart",
+  "Belgium": "https://media.bookmundi.com/files/uploads/bookmundi/cropped/countryfeatured/belgium-1737366349.jpg?format=auto&quality=60&width=1920",
+  "Spain": "https://i.natgeofe.com/k/e800ca90-2b5b-4dad-b4d7-b67a48c96c91/spain-madrid_16x9.jpg?w=1200",
+  "Ireland": "https://www.vacationsbyrail.com/media/41324961/dublin-ireland.jpg",
+  "Poland": "https://visiteurope.com/sites/default/files/images/2023-12/Poland-Wroclaw_shutterstock_Triff-scaled.jpg",
+  "Hungary": "https://images.goway.com/production/styles/article_featured_image_3xl/s3/featured_images/Chain%20Bridge%20above%20Danube%20River%20in%20Budapest.%20Hungary_shutterstock_562412311.jpg.webp?VersionId=u.gkjZptnpil61Z0NsEm9976cZHLDLrF&h=426f1266&itok=CjByS9XL",
+  "Czech Republic": "https://gfmag.com/wp-content/uploads/2024/09/Czech-Republic-diversification.jpg",
+  "Portugal": "https://images.winalist.com/blog/wp-content/uploads/2024/03/05114638/AdobeStock_593917660.jpeg",
+  "Greece": "https://thetourguy.com/wp-content/uploads/2022/04/best-places-to-visit-in-greece-feature-crop.jpg",
+  "Malaysia": "https://s7d1.scene7.com/is/image/wbcollab/kl-malaysia?qlt=90&fmt=webp&resMode=sharp2",
+  "Türkiye": "https://primetravelks.com/uploads/0000/6/2025/01/11/turkiye.jpg",
+  "Singapore": "https://www.telegraph.co.uk/content/dam/travel/2025/11/05/TELEMMGLPICT000442637458_17623346578150_trans_NvBQzQNjv4BqqVzuuqpFlyLIwiB6NTmJwfSVWeZ_vEN7c6bHu2jJnT8.jpeg?imwidth=640",
+  "Malta": "https://media.gq.com/photos/5bc4b85c6f8daa7dae417db4/16:9/w_2560%2Cc_limit/travel-guide-gq-malta.jpg",
+  "United Arab Emirates": "https://cdn.sanity.io/images/nxpteyfv/goguides/bca1356ed689893437973440cd9fa1d0084917b7-1600x1066.jpg",
+  "Qatar": "https://media.worldnomads.com/explore/qatar/6-things-qatar-doha-social.jpg",
+  "Mexico": "https://images.contentstack.io/v3/assets/blt06f605a34f1194ff/blt2e10559cc9e609a6/67bafee3e1c1431efd96b480/pexels-pxleta-18491242-MOBILE-HEADER.jpg?fit=crop&disable=upscale&auto=webp&quality=60&crop=smart",
+  "Brunei": "https://www.bizbrunei.com/wp-content/uploads/2024/07/290724-BBF-bedb.jpg",
+  "South Africa": "https://hips.hearstapps.com/hmg-prod/images/gettyimages-970157462-647e08df0dd33.jpg?resize=2048:*"
+};
+
+const countryCodes = {
+  Ethiopia: "ET", Canada: "CA", Australia: "AU", Netherlands: "NL", Japan: "JP", "South Korea": "KR", Norway: "NO", "New Zealand": "NZ", Switzerland: "CH", Denmark: "DK", Finland: "FI", Belgium: "BE", Spain: "ES", Ireland: "IE", Poland: "PL", Hungary: "HU", "Czech Republic": "CZ", Portugal: "PT", Greece: "GR", Malaysia: "MY", "Türkiye": "TR", Singapore: "SG", Malta: "MT", "United Arab Emirates": "AE", Qatar: "QA", Mexico: "MX", Brunei: "BN", "South Africa": "ZA"
 };
 
 const newsroomArticles = {
@@ -321,7 +318,7 @@ function buildAdditionalCountries() {
       ...(majorData || {}),
       name,
       key,
-      code: profile.code || key.slice(0, 3).toUpperCase(),
+      code: countryCodes[name] || profile.code || key.slice(0, 3).toUpperCase(),
       image: countryImages[name] || profile.image,
       unis: normalizedName === "ethiopia" ? ethiopiaUniversities : (majorData?.unis || profile.unis || [])
     });
@@ -535,9 +532,135 @@ function renderDestinations() {
     destinationGrid.appendChild(node);
   });
 }
+function hideBrokenAdditionalImages(root = document) {
+  root.querySelectorAll(".additional-country-img").forEach((img) => {
+    img.addEventListener("error", () => {
+      img.hidden = true;
+      img.removeAttribute("src");
+    }, { once: true });
+  });
+}
+
 function renderMoreCountries() {
+  moreCountriesTitle.textContent = "More supported countries worldwide";
+  moreCountriesListView.hidden = false;
+  moreCountriesDetail.hidden = true;
   moreCountriesList.classList.add("more-countries-list");
-  moreCountriesList.innerHTML = extraCountries.map((country) => `<button class="country-list-btn motion-card" type="button" data-country="${country.key}"><span>${escapeHtml(country.name)}</span><small>${escapeHtml(country.code || country.region || "")}</small></button>`).join("");
+  moreCountriesList.innerHTML = extraCountries.map((country) => `
+    <button class="country-list-btn additional-country-card motion-card" type="button" data-country="${country.key}">
+      <img class="additional-country-img" src="${escapeHtml(country.image)}" alt="${escapeHtml(country.name)} destination" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+      <span class="additional-country-card-body">
+        <span class="additional-country-name">${escapeHtml(country.name)}</span>
+        <small>${escapeHtml(country.code || country.region || "")}</small>
+      </span>
+    </button>`).join("");
+  hideBrokenAdditionalImages(moreCountriesList);
+}
+
+function renderAdditionalCountryDetail(country) {
+  const universityCards = getUniversityEntries(country).map(([name, desc]) => `<article class="card country-university-card"><h5>${escapeHtml(name)}</h5><p>${escapeHtml(desc)}</p></article>`).join("");
+  moreCountriesTitle.textContent = country.name;
+  moreCountriesListView.hidden = true;
+  moreCountriesDetail.hidden = false;
+  moreCountriesDetail.innerHTML = `
+    <button class="country-back-btn additional-country-back" type="button" data-country-back>← Back to countries</button>
+    <img class="country-detail-hero additional-country-img" src="${escapeHtml(country.image)}" alt="${escapeHtml(country.name)} destination image" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+    <div class="country-detail-heading">
+      <span class="country-code-pill">${escapeHtml(country.code || "")}</span>
+      <h3>${escapeHtml(country.name)}</h3>
+      <p>${escapeHtml(country.why)}</p>
+    </div>
+    <div class="modal-grid country-detail-grid">
+      <div class="modal-box destination-detail-card">
+        <h4>Top Prestigious Universities</h4>
+        <div class="grid country-university-grid">${universityCards}</div>
+      </div>
+      <div class="modal-box destination-detail-card">
+        <h4>Scholarships and Funding</h4>
+        <p>${escapeHtml(country.scholarships)}</p>
+      </div>
+      <div class="modal-box destination-detail-card">
+        <h4>Work Opportunities</h4>
+        <p>${escapeHtml(country.work)}</p>
+      </div>
+      <div class="modal-box destination-detail-card">
+        <h4>Political and Economic Stability</h4>
+        <p>${escapeHtml(country.stability)}</p>
+      </div>
+      <div class="modal-box destination-detail-card" style="grid-column:1/-1">
+        <h4>Living Cost and Student Life</h4>
+        <p>${escapeHtml(country.life)}</p>
+      </div>
+      <div class="modal-box destination-detail-card" style="grid-column:1/-1">
+        <h4>Typical Embassy Process</h4>
+        ${renderEmbassyProcess()}
+      </div>
+    </div>`;
+  hideBrokenAdditionalImages(moreCountriesDetail);
+  moreCountriesModal.querySelector(".modal-shell").scrollTo({ top: 0, behavior: "auto" });
+}
+
+function openMoreCountriesList() {
+  renderMoreCountries();
+  moreCountriesModal.querySelector(".modal-shell").scrollTo({ top: 0, behavior: "auto" });
+  openModal(moreCountriesModal);
+}
+
+function setCountrySelectorValue(countryName, { persist = true } = {}) {
+  const selected = countrySelectorCountries.includes(countryName) ? countryName : "Ethiopia";
+  countrySelectorValue.textContent = selected;
+  countrySelectorMenu.querySelectorAll(".country-option").forEach((option) => {
+    const isSelected = option.dataset.countryName === selected;
+    option.classList.toggle("is-selected", isSelected);
+    option.setAttribute("aria-selected", isSelected ? "true" : "false");
+  });
+  if (persist) {
+    try { localStorage.setItem(COUNTRY_SELECTOR_STORAGE_KEY, selected); } catch (_error) {}
+  }
+}
+
+function closeCountrySelector() {
+  countrySelectorMenu.classList.remove("is-open");
+  countrySelectorButton.setAttribute("aria-expanded", "false");
+}
+
+function toggleCountrySelector() {
+  const isOpen = countrySelectorMenu.classList.toggle("is-open");
+  countrySelectorButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
+}
+
+function initializeCountrySelector() {
+  if (!countrySelectorWrap || !countrySelectorButton || !countrySelectorMenu) return;
+  countrySelectorMenu.innerHTML = countrySelectorCountries.map((country) => `
+    <button class="country-option" type="button" role="option" data-country-name="${escapeHtml(country)}">
+      <span>${escapeHtml(country)}</span><span class="check" aria-hidden="true">✓</span>
+    </button>`).join("");
+
+  let initialCountry = "Ethiopia";
+  try {
+    const stored = localStorage.getItem(COUNTRY_SELECTOR_STORAGE_KEY);
+    if (countrySelectorCountries.includes(stored)) initialCountry = stored;
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (!stored && timeZone === "Africa/Addis_Ababa") initialCountry = "Ethiopia";
+  } catch (_error) {}
+  setCountrySelectorValue(initialCountry, { persist: false });
+
+  countrySelectorButton.addEventListener("click", (event) => {
+    event.stopPropagation();
+    toggleCountrySelector();
+  });
+  countrySelectorMenu.addEventListener("click", (event) => {
+    const option = event.target.closest(".country-option");
+    if (!option) return;
+    setCountrySelectorValue(option.dataset.countryName);
+    closeCountrySelector();
+  });
+  document.addEventListener("click", (event) => {
+    if (!countrySelectorWrap.contains(event.target)) closeCountrySelector();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeCountrySelector();
+  });
 }
 function startImpactCarousel() {
   if (!impactCarousel) return;
@@ -854,7 +977,7 @@ function bindEvents() {
       openArticle(link.dataset.articleId);
     });
   });
-  document.getElementById("moreCountriesOpen").addEventListener("click", () => { moreCountriesModal.querySelector(".modal-shell").scrollTo({ top: 0, behavior: "auto" }); openModal(moreCountriesModal); });
+  document.getElementById("moreCountriesOpen").addEventListener("click", openMoreCountriesList);
   countryBackToList.addEventListener("click", () => { closeModal(countryModal); openModal(moreCountriesModal); moreCountriesModal.querySelector(".modal-shell").scrollTo({ top: 0, behavior: "auto" }); });
   document.querySelectorAll(".mobile-link").forEach((link) => link.addEventListener("click", closeMenu));
   document.querySelectorAll("[data-close]").forEach((btn) => btn.addEventListener("click", () => closeModal(document.getElementById(btn.dataset.close))));
@@ -895,13 +1018,24 @@ function bindEvents() {
     if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
   });
   document.getElementById("searchClear").addEventListener("click", () => { searchInput.value = ""; renderSearchResults(""); searchInput.focus(); });
-  moreCountriesList.addEventListener("click", (e) => {
+  moreCountriesModal.addEventListener("click", (e) => {
+    const contact = e.target.closest("[data-country-contact]");
+    if (contact) {
+      closeModal(moreCountriesModal);
+      openModal(consultModal);
+      return;
+    }
+    const back = e.target.closest("[data-country-back]");
+    if (back) {
+      renderMoreCountries();
+      moreCountriesModal.querySelector(".modal-shell").scrollTo({ top: 0, behavior: "auto" });
+      return;
+    }
     const btn = e.target.closest("[data-country]");
     if (!btn) return;
     const country = allCountriesMap.get(btn.dataset.country);
     if (!country) return;
-    openCountry(country, { fromExtraList: true });
-    closeModal(moreCountriesModal);
+    renderAdditionalCountryDetail(country);
   });
 
   const tabPersonal = document.getElementById("tabPersonal");
@@ -959,6 +1093,7 @@ function init() {
   animateHeroIntro();
   renderDestinations();
   renderMoreCountries();
+  initializeCountrySelector();
   renderTestimonials();
   applyMotionClasses();
   startImpactCarousel();
