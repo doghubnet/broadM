@@ -122,59 +122,43 @@
   <main id="main">
     <section class="hero hero-section" id="home">
       <div class="hero-map-bg" aria-hidden="true">
-        <svg class="hero-world-map" viewBox="0 0 1200 620" focusable="false">
-          <defs>
-            <filter id="routeDotGlow" x="-80%" y="-80%" width="260%" height="260%">
-              <feGaussianBlur stdDeviation="4" result="blur"/>
-              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-            <path id="route-usa" d="M656 346 C522 260 378 236 250 214"/>
-            <path id="route-canada" d="M656 346 C518 244 368 204 242 178"/>
-            <path id="route-uk" d="M656 346 C612 288 572 250 536 212"/>
-            <path id="route-germany" d="M656 346 C636 286 624 246 614 206"/>
-            <path id="route-italy" d="M656 346 C632 314 612 286 608 256"/>
-            <path id="route-austria" d="M656 346 C646 302 638 270 634 232"/>
-            <path id="route-romania" d="M656 346 C660 306 672 274 694 248"/>
-            <path id="route-china" d="M656 346 C774 258 900 222 1018 246"/>
-            <path id="route-japan" d="M656 346 C800 248 972 230 1082 278"/>
-          </defs>
-
-          <g class="map-continents" aria-hidden="true">
-            <path d="M178 174c36-28 84-42 138-36 49 6 93 27 124 60-29 12-52 29-68 52-22 32-24 66-46 96-29 39-84 56-132 40-45-15-77-54-81-99-4-42 19-84 65-113Z"/>
-            <path d="M334 392c44 19 72 54 78 97 5 40-15 79-53 102-42-32-66-75-70-126-2-32 12-57 45-73Z"/>
-            <path d="M516 160c36-30 82-45 137-43 57 2 106 24 144 65-36 2-67 12-92 31-29 21-46 51-77 67-39 20-89 13-119-19-30-33-27-72 7-101Z"/>
-            <path d="M706 215c64-25 142-24 212 3 69 26 116 73 129 128-52-13-103-14-153-3-52 12-103 37-155 28-54-10-97-52-100-97-2-26 20-46 67-59Z"/>
-            <path d="M552 337c47 8 83 36 99 78 16 41 8 87-23 125-48-15-83-47-103-95-19-46-10-83 27-108Z"/>
-            <path d="M927 448c42-19 92-10 124 21 27 27 34 63 19 96-45 2-86-11-123-38-31-24-38-51-20-79Z"/>
+        <svg class="hero-world-map" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid meet" focusable="false">
+          <g class="map-land" aria-hidden="true">
+            <path class="continent continent-north-america" d="M122 180c26-38 76-66 135-70 47-3 96 8 136 33 23 14 48 17 77 12 24-4 43 7 45 26-45 14-71 35-79 62-9 30-35 45-72 39-30-5-53 1-69 19-20 23-51 24-83 7-27-15-50-19-78-14-21 4-39-8-43-28-6-29 6-58 35-86Z"/>
+            <path class="continent continent-south-america" d="M372 316c30 7 52 28 60 58 9 32-4 58-26 80-16 16-19 38-28 61-34-24-55-58-65-99-9-37 2-75 59-100Z"/>
+            <path class="continent continent-europe" d="M552 142c36-24 85-31 127-16 28 10 47 29 58 53-31 2-52 10-64 24-14 17-39 19-68 7-24-9-47-8-70 4-14-25-8-51 17-72Z"/>
+            <path class="continent continent-africa" d="M603 224c48-12 91 4 116 43 24 38 22 91-5 130-17 24-25 54-31 89-44-18-78-50-101-96-22-45-30-84-24-117 5-26 20-42 45-49Z"/>
+            <path class="continent continent-asia" d="M716 165c61-34 145-39 226-13 71 23 122 70 141 129-44-9-79-3-104 18-29 25-66 29-109 12-41-16-80-13-117 7-37 20-76 12-102-21-23-30-19-81 65-132Z"/>
+            <path class="continent continent-australia" d="M934 389c42-20 93-13 126 18 24 23 30 54 14 82-43 4-84-6-122-30-29-19-36-45-18-70Z"/>
           </g>
 
-          <g class="map-border-lines" aria-hidden="true">
-            <path d="M154 281c126-48 247-44 362 13 104 52 211 67 320 47 93-17 174-10 244 23"/>
-            <path d="M250 186c156 88 319 111 489 71 106-25 205-20 298 15"/>
-            <path d="M310 500c129-105 275-151 438-138 116 9 219 43 309 102"/>
+          <g class="route-lines" aria-hidden="true">
+            <path id="route-usa" class="route-line" d="M620 300 C462 216 318 185 218 207"/>
+            <path id="route-uk" class="route-line" d="M620 300 C590 244 565 210 543 178"/>
+            <path id="route-italy" class="route-line" d="M620 300 C610 265 597 240 583 216"/>
+            <path id="route-germany" class="route-line" d="M620 300 C625 248 619 216 606 188"/>
+            <path id="route-austria" class="route-line" d="M620 300 C629 260 626 230 616 204"/>
+            <path id="route-romania" class="route-line" d="M620 300 C642 262 648 234 641 208"/>
+            <path id="route-china" class="route-line" d="M620 300 C733 229 831 210 930 229"/>
+            <path id="route-japan" class="route-line" d="M620 300 C770 220 932 221 1038 263"/>
           </g>
 
-          <g class="flight-routes" aria-hidden="true">
-            <use href="#route-usa"/><use href="#route-canada"/><use href="#route-uk"/><use href="#route-germany"/><use href="#route-italy"/><use href="#route-austria"/><use href="#route-romania"/><use href="#route-china"/><use href="#route-japan"/>
+          <g class="route-pins" aria-hidden="true">
+            <circle class="route-origin" cx="620" cy="300" r="5"/>
+            <circle cx="218" cy="207" r="3"/><circle cx="543" cy="178" r="3"/><circle cx="583" cy="216" r="3"/>
+            <circle cx="606" cy="188" r="3"/><circle cx="616" cy="204" r="3"/><circle cx="641" cy="208" r="3"/>
+            <circle cx="930" cy="229" r="3"/><circle cx="1038" cy="263" r="3"/>
           </g>
 
-          <g class="route-hubs" filter="url(#routeDotGlow)" aria-hidden="true">
-            <circle class="origin-hub" cx="656" cy="346" r="5.5"/>
-            <circle cx="250" cy="214" r="3.5"/><circle cx="242" cy="178" r="3.5"/><circle cx="536" cy="212" r="3.5"/>
-            <circle cx="614" cy="206" r="3.5"/><circle cx="608" cy="256" r="3.5"/><circle cx="634" cy="232" r="3.5"/>
-            <circle cx="694" cy="248" r="3.5"/><circle cx="1018" cy="246" r="3.5"/><circle cx="1082" cy="278" r="3.5"/>
-          </g>
-
-          <g class="route-dots" filter="url(#routeDotGlow)" aria-hidden="true">
-            <circle class="route-dot" r="4"><animateMotion dur="10.2s" begin="0s" repeatCount="indefinite"><mpath href="#route-usa"/></animateMotion></circle>
-            <circle class="route-dot" r="4"><animateMotion dur="11.4s" begin=".8s" repeatCount="indefinite"><mpath href="#route-canada"/></animateMotion></circle>
-            <circle class="route-dot" r="3.6"><animateMotion dur="7.4s" begin="1.4s" repeatCount="indefinite"><mpath href="#route-uk"/></animateMotion></circle>
-            <circle class="route-dot" r="3.6"><animateMotion dur="7.9s" begin="2.1s" repeatCount="indefinite"><mpath href="#route-germany"/></animateMotion></circle>
-            <circle class="route-dot" r="3.6"><animateMotion dur="8.3s" begin="2.8s" repeatCount="indefinite"><mpath href="#route-italy"/></animateMotion></circle>
-            <circle class="route-dot" r="3.6"><animateMotion dur="8.8s" begin="3.6s" repeatCount="indefinite"><mpath href="#route-austria"/></animateMotion></circle>
-            <circle class="route-dot" r="3.6"><animateMotion dur="9.2s" begin="4.4s" repeatCount="indefinite"><mpath href="#route-romania"/></animateMotion></circle>
-            <circle class="route-dot" r="4"><animateMotion dur="11.8s" begin="5.2s" repeatCount="indefinite"><mpath href="#route-china"/></animateMotion></circle>
-            <circle class="route-dot" r="4"><animateMotion dur="12s" begin="6s" repeatCount="indefinite"><mpath href="#route-japan"/></animateMotion></circle>
+          <g class="route-motion" aria-hidden="true">
+            <circle class="route-dot" r="3.7"><animateMotion dur="9s" begin="0s" repeatCount="indefinite"><mpath href="#route-usa"/></animateMotion></circle>
+            <circle class="route-dot" r="3.4"><animateMotion dur="7.4s" begin=".8s" repeatCount="indefinite"><mpath href="#route-uk"/></animateMotion></circle>
+            <circle class="route-dot" r="3.4"><animateMotion dur="7.8s" begin="1.6s" repeatCount="indefinite"><mpath href="#route-italy"/></animateMotion></circle>
+            <circle class="route-dot" r="3.4"><animateMotion dur="8.2s" begin="2.4s" repeatCount="indefinite"><mpath href="#route-germany"/></animateMotion></circle>
+            <circle class="route-dot" r="3.4"><animateMotion dur="8.8s" begin="3.2s" repeatCount="indefinite"><mpath href="#route-austria"/></animateMotion></circle>
+            <circle class="route-dot" r="3.4"><animateMotion dur="9.4s" begin="4s" repeatCount="indefinite"><mpath href="#route-romania"/></animateMotion></circle>
+            <circle class="route-dot" r="3.7"><animateMotion dur="11s" begin="4.8s" repeatCount="indefinite"><mpath href="#route-china"/></animateMotion></circle>
+            <circle class="route-dot" r="3.7"><animateMotion dur="12s" begin="5.6s" repeatCount="indefinite"><mpath href="#route-japan"/></animateMotion></circle>
           </g>
         </svg>
       </div>
@@ -186,7 +170,7 @@
             <span class="hero-word hero-word-study" aria-hidden="true">Study,</span>
             <span class="hero-word hero-word-travel" aria-hidden="true">travel,</span>
             <span class="hero-word hero-word-work" aria-hidden="true">work</span>
-            <span class="hero-word hero-word-worldwide accent" aria-hidden="true">worldwide</span>
+            <span class="hero-word hero-word-worldwide hero-worldwide accent" aria-hidden="true">worldwide</span>
             <span class="hero-word hero-word-dot" aria-hidden="true">.</span>
           </h1>
           <p class="reveal in hero-subtitle motion-reveal motion-delay-3 hero-sequence hero-sequence-subtitle">From your location to your dream destination, with clear guidance shaped for international standards.</p>
