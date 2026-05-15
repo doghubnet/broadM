@@ -115,7 +115,11 @@ const requiredAdditionalCountryNames = [
   "Canada", "Australia", "Netherlands", "Japan", "South Korea", "Norway", "New Zealand", "Switzerland", "Denmark", "Finland", "Belgium", "Spain", "Ireland", "Poland", "Hungary", "Czech Republic", "Portugal", "Greece", "Malaysia", "Türkiye", "Singapore", "Malta", "United Arab Emirates", "Qatar", "Mexico", "Brunei", "South Africa"
 ];
 
-const countrySelectorCountries = ["Ethiopia", ...requiredAdditionalCountryNames];
+const worldwideSelectorCountries = [
+  "Afghanistan", "Åland Islands", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antarctica", "Antigua & Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia & Herzegovina", "Botswana", "Brazil", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Fiji", "Finland", "France", "French Guiana", "French Polynesia", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macao", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Martinique", "Mauritania", "Mauritius", "Mexico", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nepal", "Netherlands", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Norway", "Oman", "Pakistan", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Puerto Rico", "Qatar", "Réunion", "Romania", "Russia", "Rwanda", "Saint Kitts & Nevis", "Saint Lucia", "Saint Vincent & Grenadines", "Samoa", "San Marino", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Somalia", "South Africa", "South Korea", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad & Tobago", "Tunisia", "Türkiye", "Turkmenistan", "Turks & Caicos Islands", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
+];
+
+const countrySelectorCountries = ["Ethiopia", ...worldwideSelectorCountries];
 const COUNTRY_SELECTOR_STORAGE_KEY = "broadMobilitySelectedCountry";
 
 const ethiopiaUniversities = [
@@ -522,6 +526,13 @@ function renderDestinations() {
     attachFallback(img);
     node.querySelector("h3").innerHTML = `<span class="destination-name">${escapeHtml(d.name)} <span class="destination-flag" aria-hidden="true">${escapeHtml(d.flag || "")}</span></span>`;
     node.querySelector("p").textContent = `Success pulse: ${d.pulse}`;
+    const learnMore = node.querySelector(".destination-learn-more");
+    learnMore.textContent = "Learn more";
+    learnMore.setAttribute("aria-label", `Learn more about ${d.name}`);
+    learnMore.addEventListener("click", (event) => {
+      event.stopPropagation();
+      openCountry(d);
+    });
     article.addEventListener("click", () => openCountry(d));
     article.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") {
@@ -609,11 +620,17 @@ function openMoreCountriesList() {
 function setCountrySelectorValue(countryName, { persist = true } = {}) {
   const selected = countrySelectorCountries.includes(countryName) ? countryName : "Ethiopia";
   countrySelectorValue.textContent = selected;
-  countrySelectorMenu.querySelectorAll(".country-option").forEach((option) => {
+  countrySelectorMenu.querySelectorAll(".country-option-divider").forEach((divider) => divider.remove());
+  let selectedOption = null;
+  countrySelectorMenu.querySelectorAll(".country-selector-option").forEach((option) => {
     const isSelected = option.dataset.countryName === selected;
     option.classList.toggle("is-selected", isSelected);
     option.setAttribute("aria-selected", isSelected ? "true" : "false");
+    if (isSelected) selectedOption = option;
   });
+  if (selectedOption) {
+    selectedOption.insertAdjacentHTML("afterend", '<div class="country-option-divider" aria-hidden="true"></div>');
+  }
   if (persist) {
     try { localStorage.setItem(COUNTRY_SELECTOR_STORAGE_KEY, selected); } catch (_error) {}
   }
@@ -632,8 +649,8 @@ function toggleCountrySelector() {
 function initializeCountrySelector() {
   if (!countrySelectorWrap || !countrySelectorButton || !countrySelectorMenu) return;
   countrySelectorMenu.innerHTML = countrySelectorCountries.map((country) => `
-    <button class="country-option" type="button" role="option" data-country-name="${escapeHtml(country)}">
-      <span>${escapeHtml(country)}</span><span class="check" aria-hidden="true">✓</span>
+    <button class="country-selector-option" type="button" role="option" data-country-name="${escapeHtml(country)}">
+      <span>${escapeHtml(country)}</span><span class="country-check" aria-hidden="true">✓</span>
     </button>`).join("");
 
   let initialCountry = "Ethiopia";
@@ -650,7 +667,7 @@ function initializeCountrySelector() {
     toggleCountrySelector();
   });
   countrySelectorMenu.addEventListener("click", (event) => {
-    const option = event.target.closest(".country-option");
+    const option = event.target.closest(".country-selector-option");
     if (!option) return;
     setCountrySelectorValue(option.dataset.countryName);
     closeCountrySelector();
