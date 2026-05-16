@@ -402,15 +402,22 @@ function updateSmartHeader() {
   setActiveNav();
   const currentY = Math.max(window.scrollY, 0);
   const overlayOpen = Boolean(document.querySelector(".modal.open")) || mobilePanel.classList.contains("open");
-  if (overlayOpen || currentY <= 80) {
-    siteHeader.classList.remove("nav-hidden");
-    siteHeader.classList.add("nav-visible");
-  } else if (currentY > lastHeaderScrollY + 10 && currentY > 120) {
-    siteHeader.classList.add("nav-hidden");
-    siteHeader.classList.remove("nav-visible");
-  } else if (currentY < lastHeaderScrollY - 4) {
-    siteHeader.classList.remove("nav-hidden");
-    siteHeader.classList.add("nav-visible");
+  if (currentY <= 10) {
+    siteHeader.classList.add("is-at-top", "nav-visible");
+    siteHeader.classList.remove("is-scrolled", "nav-hidden");
+  } else {
+    siteHeader.classList.remove("is-at-top");
+    siteHeader.classList.add("is-scrolled");
+    if (overlayOpen) {
+      siteHeader.classList.remove("nav-hidden");
+      siteHeader.classList.add("nav-visible");
+    } else if (currentY > lastHeaderScrollY + 10 && currentY > 120) {
+      siteHeader.classList.add("nav-hidden");
+      siteHeader.classList.remove("nav-visible");
+    } else if (currentY < lastHeaderScrollY - 4) {
+      siteHeader.classList.remove("nav-hidden");
+      siteHeader.classList.add("nav-visible");
+    }
   }
   lastHeaderScrollY = currentY;
   headerScrollTicking = false;
