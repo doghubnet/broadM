@@ -12,18 +12,73 @@ const destinations = [
 ];
 
 const testimonials = [
-  { type: "photo", img: "https://static.vecteezy.com/system/resources/previews/039/334/804/large_2x/ai-generated-indian-female-student-free-photo.jpg", name: "Liya M.", country: "Italy", span: "large" },
-  { type: "text", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMAwGwNGnsOePzcAHZmLgTBVglmNJdxdjC8Q&s", name: "Abel T.", country: "Germany", span: "wide", q: "BROVI helped me organize my documents, understand the right timeline, and prepare each step with more confidence. The process felt structured instead of confusing." },
-  { type: "text", img: "https://images.generated.photos/E1HM3sJC877Av9GBetIjxFC1T2iQeGLh8HNznemmZ4Y/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MjQwOTYyLmpwZw.jpg", name: "Sara K.", country: "United Kingdom", q: "The guidance was practical and clear. I received useful support on document quality, scholarship planning, and the order of steps before submitting my application." },
-  { type: "text", img: "/images/testimonials/nahom.webp", name: "Nahom B.", country: "France", q: "My visa preparation became easier to manage because BROVI explained the requirements, reviewed the weak points, and helped me prepare for possible interview questions." },
-  { type: "photo", img: "https://static.vecteezy.com/system/resources/thumbnails/028/633/357/small/cute-ethiopian-woman-generate-ai-photo.jpeg", name: "Bethel R.", country: "Austria", span: "wide" },
-  { type: "photo", img: "https://i.imgur.com/vKCNhuK.png", name: "Selam A.", country: "Romania" },
-  { type: "text", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOzv11DlwTVx5MxQDumc57Q_DnBQSA05l0Zg&s", name: "Yosef G.", country: "United States", span: "wide", q: "The team helped me choose a realistic destination path and prepare my documents with better consistency. Communication was clear from the first consultation." },
-  { type: "text", img: "https://static.vecteezy.com/system/resources/previews/039/334/804/large_2x/ai-generated-indian-female-student-free-photo.jpg", name: "Liya M.", country: "Italy", q: "BROVI gave me a clear checklist and helped me understand what needed attention before submission. The support made the preparation feel more professional." },
-  { type: "photo", img: "https://img.freepik.com/premium-photo/illustration-man-abstract-art-ai-generated_57312-1264.jpg", name: "Mikiyas D.", country: "China", span: "wide" },
-  { type: "text", img: "https://static.vecteezy.com/system/resources/thumbnails/028/633/357/small/cute-ethiopian-woman-generate-ai-photo.jpeg", name: "Bethel R.", country: "Austria", q: "I appreciated the transparent communication, document feedback, and step-by-step planning. It helped me move through the process with confidence." }
+  {
+    name: "Nahom B.",
+    country: "France",
+    gender: "male",
+    image: "https://i.imgur.com/Cb6c9oB.png",
+    q: "My visa preparation became easier to manage because BROVI explained the requirements, reviewed the weak points, and helped me prepare for possible interview questions.",
+    rating: 5,
+    row: "top",
+    layout: "image-right",
+    personKey: "nahom"
+  },
+  {
+    name: "Sara K.",
+    country: "United Kingdom",
+    gender: "female",
+    image: "https://i.imgur.com/PHyHc3Q.jpeg",
+    q: "The guidance was practical and clear. I received useful support on document quality, scholarship planning, and the order of steps before submitting my application.",
+    rating: 5,
+    row: "top",
+    layout: "image-right",
+    personKey: "sara"
+  },
+  {
+    name: "Abel T.",
+    country: "Germany",
+    gender: "male",
+    image: "https://i.imgur.com/KQQuENm.png",
+    q: "BROVI helped me organize my documents, understand the right timeline, and prepare each step with more confidence. The process felt structured instead of confusing.",
+    rating: 5,
+    row: "top",
+    layout: "image-right",
+    personKey: "abel"
+  },
+  {
+    name: "Liya M.",
+    country: "Italy",
+    gender: "female",
+    image: "https://i.imgur.com/HDpfqC1.jpeg",
+    q: "BROVI gave me a clear checklist and helped me understand what needed attention before submission. The support made the preparation feel more professional.",
+    rating: 5,
+    row: "bottom",
+    layout: "image-right",
+    personKey: "liya"
+  },
+  {
+    name: "Bethel R.",
+    country: "Austria",
+    gender: "female",
+    image: "https://i.imgur.com/5zUa2aZ.jpeg",
+    q: "I appreciated the transparent communication, document feedback, and step-by-step planning. It helped me move through the process with confidence.",
+    rating: 5,
+    row: "bottom",
+    layout: "image-right",
+    personKey: "bethel"
+  },
+  {
+    name: "Yosef G.",
+    country: "United States",
+    gender: "male",
+    image: "https://i.imgur.com/lqbyitC.png",
+    q: "The team helped me choose a realistic destination path and prepare my documents with better consistency. Communication was clear from the first consultation.",
+    rating: 5,
+    row: "bottom",
+    layout: "image-right",
+    personKey: "yosef"
+  }
 ];
-
 
 const universalEmbassyProcess = [
   { type: "document", text: "Confirm admission or travel purpose" },
@@ -727,23 +782,51 @@ function startImpactCarousel() {
     slides[current].classList.add("active");
   }, 6000);
 }
-function createTestimonialCard(item) {
-  const isPhotoCard = item.type === "photo";
-  const node = (isPhotoCard ? testimonialImageTemplate : testimonialTextTemplate).content.cloneNode(true);
+function createTestimonialTextCard(item) {
+  const node = testimonialTextTemplate.content.cloneNode(true);
   const article = node.querySelector(".testimonial-marquee-card");
+  const rating = Number.isFinite(item.rating) ? item.rating : 5;
 
-  if (isPhotoCard) {
-    const img = node.querySelector("img");
-    img.src = item.img;
-    img.alt = `${item.name || "BROVI client"} portrait`;
-    attachFallback(img);
-  } else {
-    node.querySelector(".testimonial-client-name").textContent = item.name;
-    node.querySelector(".testimonial-quote").textContent = item.q;
-    node.querySelector(".testimonial-client-country").textContent = item.country;
-  }
+  article.dataset.person = item.personKey;
+  article.dataset.gender = item.gender;
+  node.querySelector(".testimonial-client-name").textContent = item.name;
+  node.querySelector(".testimonial-stars").textContent = "★".repeat(rating);
+  node.querySelector(".testimonial-quote").textContent = item.q;
+  node.querySelector(".testimonial-client-country").textContent = item.country;
 
   return article;
+}
+
+function createTestimonialImageCard(item) {
+  const node = testimonialImageTemplate.content.cloneNode(true);
+  const article = node.querySelector(".testimonial-marquee-card");
+  const img = node.querySelector("img");
+
+  article.dataset.person = item.personKey;
+  article.dataset.gender = item.gender;
+  img.src = item.image;
+  img.alt = `${item.name} BROVI client portrait`;
+  attachFallback(img);
+
+  return article;
+}
+
+function createTestimonialPair(item) {
+  const pair = document.createElement("div");
+  pair.className = `testimonial-pair testimonial-pair-${item.layout}`;
+  pair.dataset.person = item.personKey;
+  pair.dataset.gender = item.gender;
+
+  const textCard = createTestimonialTextCard(item);
+  const imageCard = createTestimonialImageCard(item);
+
+  if (item.layout === "image-left") {
+    pair.append(imageCard, textCard);
+  } else {
+    pair.append(textCard, imageCard);
+  }
+
+  return pair;
 }
 
 function renderTestimonialRow(target, items, directionClass) {
@@ -751,7 +834,7 @@ function renderTestimonialRow(target, items, directionClass) {
   track.className = `testimonial-track ${directionClass}`;
 
   [...items, ...items].forEach((item) => {
-    track.appendChild(createTestimonialCard(item));
+    track.appendChild(createTestimonialPair(item));
   });
 
   target.replaceChildren(track);
@@ -760,8 +843,8 @@ function renderTestimonialRow(target, items, directionClass) {
 function renderTestimonials() {
   if (!testimonialRowOne || !testimonialRowTwo || !testimonialTextTemplate || !testimonialImageTemplate) return;
 
-  const rowOneItems = testimonials.slice(0, 5);
-  const rowTwoItems = testimonials.slice(5);
+  const rowOneItems = testimonials.filter((item) => item.row === "top");
+  const rowTwoItems = testimonials.filter((item) => item.row === "bottom");
 
   renderTestimonialRow(testimonialRowOne, rowOneItems, "testimonial-track-left");
   renderTestimonialRow(testimonialRowTwo, rowTwoItems, "testimonial-track-right");

@@ -1492,3 +1492,54 @@ body.dark-theme .testimonial-marquee-card.testimonial-text-card:nth-child(4n + 3
   .testimonial-marquee-card.testimonial-text-card{width:300px;min-height:190px;padding:22px}
   .testimonial-marquee-card.testimonial-photo-card{width:310px;height:205px;min-height:205px}
 }
+
+/* Testimonial person-pair refinements: keep each quote attached to its matching portrait */
+.testimonial-marquee-wrap{
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  padding-inline:clamp(12px,2vw,32px);
+}
+.testimonial-track{gap:28px}
+.testimonial-pair{
+  flex:0 0 auto;
+  display:flex;
+  align-items:stretch;
+  gap:8px;
+  width:max-content;
+}
+.testimonial-pair .testimonial-marquee-card{
+  width:360px;
+  height:250px;
+  min-height:250px;
+  border-radius:22px;
+}
+.testimonial-pair .testimonial-text-card{
+  padding:26px 28px;
+}
+.testimonial-pair .testimonial-photo-card{
+  width:360px;
+  height:250px;
+  min-height:250px;
+}
+.testimonial-pair .testimonial-photo-card img{height:100%;object-fit:cover}
+.testimonial-photo-card[data-person="sara"] img{object-position:50% 42%}
+.testimonial-photo-card[data-person="abel"] img{object-position:50% 38%}
+.testimonial-photo-card[data-person="bethel"] img{object-position:50% 40%}
+.testimonial-photo-card[data-person="liya"] img{object-position:50% 39%}
+.testimonial-photo-card[data-person="nahom"] img{object-position:50% 36%}
+.testimonial-photo-card[data-person="yosef"] img{object-position:50% 38%}
+@media (max-width:900px){
+  .testimonial-track{gap:22px}
+  .testimonial-pair .testimonial-marquee-card,
+  .testimonial-pair .testimonial-photo-card{width:330px;height:235px;min-height:235px}
+}
+@media (max-width:720px){
+  .testimonial-marquee-wrap{padding-inline:16px}
+  .testimonial-track{gap:18px}
+  .testimonial-pair{flex-direction:column;gap:8px;width:300px}
+  .testimonial-pair .testimonial-marquee-card,
+  .testimonial-pair .testimonial-photo-card{width:300px;height:auto;min-height:0}
+  .testimonial-pair .testimonial-text-card{min-height:205px;padding:22px}
+  .testimonial-pair .testimonial-photo-card{height:215px;min-height:215px}
+}
