@@ -1155,3 +1155,137 @@ body:not(.dark-theme):not(.dark-mode) .modal-shell>.modal-close,body:not(.dark-t
 body.detail-view-active #main-navbar{transform:translateY(-120%)}
 body.dark-theme #main-navbar.scrolled,body.dark-mode #main-navbar.scrolled{background:rgba(1,24,36,.92);backdrop-filter:blur(18px);color:#ffffff}
 body:not(.dark-theme):not(.dark-mode) #main-navbar.scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(18px);color:#06213a}
+
+/* Requested visual refinements: section shine, worldwide gradient text, and mobile header containment */
+html,body{max-width:100%;overflow-x:hidden}
+
+#about-us .section-heading,
+#services .section-heading,
+#destinations .section-heading,
+#impact .section-heading,
+#testimonials .section-heading,
+#faq .section-heading,
+#pricing .section-heading,
+#newsroom .section-heading{
+  position:relative;
+  isolation:isolate;
+}
+#about-us .section-heading::before,
+#services .section-heading::before,
+#destinations .section-heading::before,
+#impact .section-heading::before,
+#testimonials .section-heading::before,
+#faq .section-heading::before,
+#pricing .section-heading::before,
+#newsroom .section-heading::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:min(760px,92vw);
+  height:220px;
+  transform:translate(-50%,-50%) scale(1);
+  border-radius:999px;
+  background:
+    radial-gradient(circle at 24% 35%,rgba(139,202,232,.24),transparent 46%),
+    radial-gradient(circle at 66% 33%,rgba(165,218,210,.18),transparent 48%),
+    radial-gradient(circle at 75% 42%,rgba(224,156,176,.16),transparent 50%),
+    radial-gradient(circle at 52% 58%,rgba(0,166,81,.12),transparent 54%),
+    radial-gradient(circle at 45% 44%,rgba(242,201,76,.12),transparent 52%);
+  background-size:130% 130%;
+  background-position:0% 50%;
+  filter:blur(30px);
+  opacity:.82;
+  z-index:-1;
+  pointer-events:none;
+  animation:sectionHeadingGlowDrift 12s ease-in-out infinite;
+}
+body.dark-theme #about-us .section-heading::before,
+body.dark-theme #services .section-heading::before,
+body.dark-theme #destinations .section-heading::before,
+body.dark-theme #impact .section-heading::before,
+body.dark-theme #testimonials .section-heading::before,
+body.dark-theme #faq .section-heading::before,
+body.dark-theme #pricing .section-heading::before,
+body.dark-theme #newsroom .section-heading::before{
+  background:
+    radial-gradient(circle at 24% 35%,rgba(66,153,225,.18),transparent 46%),
+    radial-gradient(circle at 66% 33%,rgba(45,212,191,.12),transparent 48%),
+    radial-gradient(circle at 74% 40%,rgba(207,132,154,.12),transparent 50%),
+    radial-gradient(circle at 52% 58%,rgba(0,212,122,.14),transparent 54%),
+    radial-gradient(circle at 45% 44%,rgba(242,201,76,.08),transparent 52%);
+  opacity:.70;
+}
+@keyframes sectionHeadingGlowDrift{
+  0%,100%{transform:translate(-50%,-50%) scale(1);background-position:0% 50%}
+  50%{transform:translate(-50%,-52%) scale(1.04);background-position:100% 50%}
+}
+
+.hero-worldwide,
+.hero-word-worldwide{
+  color:transparent !important;
+  background-image:linear-gradient(100deg,#00a651 0%,#00d47a 28%,#168aad 58%,#003f5f 78%,#00a651 100%);
+  background-size:240% 100%;
+  background-position:0% 50%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:
+    heroWordSettle var(--hero-motion-duration) var(--hero-motion-ease) .23s forwards,
+    worldwideTextGradient 9s ease-in-out 1.7s infinite;
+}
+body.dark-theme .hero-worldwide,
+body.dark-theme .hero-word-worldwide{
+  background-image:linear-gradient(100deg,#00d47a 0%,#7dffb2 30%,#168aad 62%,#6bb7d6 82%,#00d47a 100%);
+}
+@keyframes worldwideTextGradient{
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
+
+.nav-links a.active,
+.nav-links a.active .flip-link-front,
+.nav-links a.active .flip-link-back,
+.mobile-menu a.active{color:var(--accent) !important}
+body.dark-theme .nav-links a.active,
+body.dark-theme .nav-links a.active .flip-link-front,
+body.dark-theme .nav-links a.active .flip-link-back,
+body.dark-theme .mobile-menu a.active{color:#00d47a !important}
+
+@media (max-width:900px){
+  .site-header{padding:10px 0 0}
+  .site-header .container,.nav-shell{width:100%;max-width:100%}
+  .nav-shell{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;border-radius:0}
+  .nav-links{display:none !important}
+  #main-navbar .site-logo,#main-navbar .nav-logo{flex:0 1 auto;min-width:0;padding:3px 6px}
+  #main-navbar .site-logo img,#main-navbar .nav-logo img,#main-navbar .site-logo-img{width:clamp(118px,34vw,170px);max-width:clamp(118px,34vw,170px);height:auto;max-height:48px;object-fit:contain}
+  .header-actions{flex:0 0 auto;display:flex;align-items:center;gap:8px;min-width:0}
+  .header-actions .icon-btn{width:44px;height:44px;flex:0 0 44px}
+  .nav-cta{display:none !important}
+  .menu-toggle{display:grid !important}
+}
+@media (min-width:901px){
+  .menu-toggle{display:none !important}
+}
+@media (min-width:1025px){
+  .nav-links{display:flex}
+}
+@media (max-width:480px){
+  .nav-shell{padding-inline:10px}
+  #main-navbar .site-logo,#main-navbar .nav-logo{padding:2px 5px}
+  #main-navbar .site-logo img,#main-navbar .nav-logo img,#main-navbar .site-logo-img{width:clamp(112px,38vw,152px);max-width:clamp(112px,38vw,152px)}
+  .header-actions{gap:6px}
+  .header-actions .icon-btn{width:40px;height:40px;flex-basis:40px}
+}
+@media (prefers-reduced-motion:reduce){
+  #about-us .section-heading::before,
+  #services .section-heading::before,
+  #destinations .section-heading::before,
+  #impact .section-heading::before,
+  #testimonials .section-heading::before,
+  #faq .section-heading::before,
+  #pricing .section-heading::before,
+  #newsroom .section-heading::before{animation:none !important}
+  .hero-worldwide,
+  .hero-word-worldwide{animation:none !important;opacity:1 !important;filter:none !important;transform:none !important}
+}
