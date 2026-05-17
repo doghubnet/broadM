@@ -387,12 +387,7 @@
           <p class="section-subtitle">Real stories from clients who used the service.</p>
         </div>
 
-        <div style="overflow:hidden">
-          <div class="testimonial-row testi-row loop-left" id="testimonialRowA"></div>
-        </div>
-        <div style="overflow:hidden;margin-top:16px">
-          <div class="testimonial-row testi-row loop-right" id="testimonialRowB"></div>
-        </div>
+        <div class="testimonial-bento-grid" id="testimonialBentoGrid" aria-label="Client testimonials"></div>
 
         <div class="container" style="padding:0;margin-top:44px">
           <div class="guarantee reveal">
@@ -859,18 +854,20 @@
     </article>
   </template>
 
-  <template id="testimonialTemplate">
-    <article class="card testimonial">
-      <div style="font-size:2.8rem;line-height:1;color:var(--accent)">“</div>
-      <div class="stars">★★★★★</div>
-      <p style="margin-top:12px"></p>
-      <footer>
-        <img alt="" loading="lazy" decoding="async">
-        <div>
-          <strong></strong>
-          <div class="muted" style="font-size:.92rem"></div>
-        </div>
-      </footer>
+  <template id="testimonialTextTemplate">
+    <article class="testimonial-bento-card testimonial-text-card motion-card scroll-reveal">
+      <div class="testimonial-card-top">
+        <strong class="testimonial-client-name"></strong>
+        <span class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</span>
+      </div>
+      <p class="testimonial-quote"></p>
+      <span class="testimonial-client-country"></span>
+    </article>
+  </template>
+
+  <template id="testimonialImageTemplate">
+    <article class="testimonial-bento-card testimonial-photo-card motion-card scroll-reveal">
+      <img src="" alt="" loading="lazy" decoding="async">
     </article>
   </template>
 

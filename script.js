@@ -12,14 +12,16 @@ const destinations = [
 ];
 
 const testimonials = [
-  { img: "https://static.vecteezy.com/system/resources/previews/039/334/804/large_2x/ai-generated-indian-female-student-free-photo.jpg", name: "Liya M.", country: "Italy", q: "BROVI gave me clear, step-by-step support from consultation to approval." },
-  { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMAwGwNGnsOePzcAHZmLgTBVglmNJdxdjC8Q&s", name: "Abel T.", country: "Germany", q: "Exceptional interview coaching and document quality improved my confidence." },
-  { img: "https://images.generated.photos/E1HM3sJC877Av9GBetIjxFC1T2iQeGLh8HNznemmZ4Y/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MjQwOTYyLmpwZw.jpg", name: "Sara K.", country: "United Kingdom", q: "Professional communication and fast response throughout the entire process." },
-  { img: "/images/testimonials/nahom.webp", name: "Nahom B.", country: "France", q: "Their strategy helped me choose the right destination and timeline." },
-  { img: "https://static.vecteezy.com/system/resources/thumbnails/028/633/357/small/cute-ethiopian-woman-generate-ai-photo.jpeg", name: "Bethel R.", country: "Austria", q: "Premium guidance with practical scholarship and visa preparation advice." },
-  { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOzv11DlwTVx5MxQDumc57Q_DnBQSA05l0Zg&s", name: "Yosef G.", country: "United States", q: "The visa pathway became simple and structured with clear milestones." },
-  { img: "https://i.imgur.com/vKCNhuK.png", name: "Selam A.", country: "Romania", q: "Transparent communication made every stage easier to understand." },
-  { img: "https://img.freepik.com/premium-photo/illustration-man-abstract-art-ai-generated_57312-1264.jpg", name: "Mikiyas D.", country: "China", q: "Their country strategy and interview preparation helped me move with confidence." }
+  { type: "photo", img: "https://static.vecteezy.com/system/resources/previews/039/334/804/large_2x/ai-generated-indian-female-student-free-photo.jpg", name: "Liya M.", country: "Italy", span: "large" },
+  { type: "text", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMAwGwNGnsOePzcAHZmLgTBVglmNJdxdjC8Q&s", name: "Abel T.", country: "Germany", span: "wide", q: "BROVI helped me organize my documents, understand the right timeline, and prepare each step with more confidence. The process felt structured instead of confusing." },
+  { type: "text", img: "https://images.generated.photos/E1HM3sJC877Av9GBetIjxFC1T2iQeGLh8HNznemmZ4Y/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MjQwOTYyLmpwZw.jpg", name: "Sara K.", country: "United Kingdom", q: "The guidance was practical and clear. I received useful support on document quality, scholarship planning, and the order of steps before submitting my application." },
+  { type: "text", img: "/images/testimonials/nahom.webp", name: "Nahom B.", country: "France", q: "My visa preparation became easier to manage because BROVI explained the requirements, reviewed the weak points, and helped me prepare for possible interview questions." },
+  { type: "photo", img: "https://static.vecteezy.com/system/resources/thumbnails/028/633/357/small/cute-ethiopian-woman-generate-ai-photo.jpeg", name: "Bethel R.", country: "Austria", span: "wide" },
+  { type: "photo", img: "https://i.imgur.com/vKCNhuK.png", name: "Selam A.", country: "Romania" },
+  { type: "text", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOzv11DlwTVx5MxQDumc57Q_DnBQSA05l0Zg&s", name: "Yosef G.", country: "United States", span: "wide", q: "The team helped me choose a realistic destination path and prepare my documents with better consistency. Communication was clear from the first consultation." },
+  { type: "text", img: "https://static.vecteezy.com/system/resources/previews/039/334/804/large_2x/ai-generated-indian-female-student-free-photo.jpg", name: "Liya M.", country: "Italy", q: "BROVI gave me a clear checklist and helped me understand what needed attention before submission. The support made the preparation feel more professional." },
+  { type: "photo", img: "https://img.freepik.com/premium-photo/illustration-man-abstract-art-ai-generated_57312-1264.jpg", name: "Mikiyas D.", country: "China", span: "wide" },
+  { type: "text", img: "https://static.vecteezy.com/system/resources/thumbnails/028/633/357/small/cute-ethiopian-woman-generate-ai-photo.jpeg", name: "Bethel R.", country: "Austria", q: "I appreciated the transparent communication, document feedback, and step-by-step planning. It helped me move through the process with confidence." }
 ];
 
 
@@ -71,8 +73,7 @@ const legalModal = document.getElementById("legalModal");
 const articleModal = document.getElementById("articleModal");
 const searchModal = document.getElementById("searchModal");
 const destinationGrid = document.getElementById("destinationGrid");
-const testimonialRowA = document.getElementById("testimonialRowA");
-const testimonialRowB = document.getElementById("testimonialRowB");
+const testimonialBentoGrid = document.getElementById("testimonialBentoGrid");
 const impactCount = document.getElementById("impactCount");
 const searchInput = document.getElementById("searchInput");
 const searchResults = document.getElementById("searchResults");
@@ -87,7 +88,8 @@ const countrySelectorValue = document.getElementById("countrySelectorValue");
 const countrySelectorMenu = document.getElementById("countrySelectorMenu");
 const countryBackToList = document.getElementById("countryBackToList");
 const destinationTemplate = document.getElementById("destinationTemplate");
-const testimonialTemplate = document.getElementById("testimonialTemplate");
+const testimonialTextTemplate = document.getElementById("testimonialTextTemplate");
+const testimonialImageTemplate = document.getElementById("testimonialImageTemplate");
 const impactCarousel = document.getElementById("impactCarousel");
 const articleModalImage = document.getElementById("articleModalImage");
 const articleModalMeta = document.getElementById("articleModalMeta");
@@ -725,22 +727,30 @@ function startImpactCarousel() {
   }, 6000);
 }
 function renderTestimonials() {
-  const uniqueCards = testimonials.map((t) => {
-    const node = testimonialTemplate.content.cloneNode(true);
-    const article = node.querySelector(".testimonial");
-    article.classList.add("motion-card");
-    const img = node.querySelector("img");
-    img.src = t.img;
-    img.alt = `${t.name} portrait`;
-    attachFallback(img);
-    node.querySelector("strong").textContent = t.name;
-    node.querySelector(".muted").textContent = t.country;
-    node.querySelector("p").textContent = t.q;
-    return article.outerHTML;
-  }).join("");
-  const cards = uniqueCards + uniqueCards;
-  testimonialRowA.innerHTML = cards;
-  testimonialRowB.innerHTML = cards;
+  if (!testimonialBentoGrid || !testimonialTextTemplate || !testimonialImageTemplate) return;
+
+  testimonialBentoGrid.replaceChildren();
+
+  testimonials.forEach((item) => {
+    const isPhotoCard = item.type === "photo";
+    const node = (isPhotoCard ? testimonialImageTemplate : testimonialTextTemplate).content.cloneNode(true);
+    const article = node.querySelector(".testimonial-bento-card");
+
+    if (item.span) article.classList.add(`is-${item.span}`);
+
+    if (isPhotoCard) {
+      const img = node.querySelector("img");
+      img.src = item.img;
+      img.alt = `${item.name || "BROVI client"} portrait`;
+      attachFallback(img);
+    } else {
+      node.querySelector(".testimonial-client-name").textContent = item.name;
+      node.querySelector(".testimonial-quote").textContent = item.q;
+      node.querySelector(".testimonial-client-country").textContent = item.country;
+    }
+
+    testimonialBentoGrid.appendChild(node);
+  });
 }
 function renderSearchResults(query) {
   const q = query.trim().toLowerCase();
@@ -781,7 +791,7 @@ function applyMotionClasses() {
   document.querySelectorAll(".about-copy, .guarantee").forEach((el) => el.classList.add("scroll-reveal"));
   document.querySelectorAll(".service, .more-services, .step, .faq-item, .pricing-card, .group-offer-card, .blog-card").forEach((el) => el.classList.add("motion-card", "scroll-reveal"));
   document.querySelectorAll(".impact-slide, .success-feature-card, .success-story-card").forEach((el) => el.classList.add("motion-card"));
-  document.querySelectorAll(".testimonial").forEach((el) => el.classList.add("motion-card"));
+  document.querySelectorAll(".testimonial-bento-card").forEach((el) => el.classList.add("motion-card", "scroll-reveal"));
   document.querySelectorAll(".about-founder-card").forEach((el) => el.classList.add("motion-card", "scroll-reveal"));
   document.querySelectorAll(".btn:not(.icon-btn), .article-back-btn, .group-cta-button").forEach((el) => el.classList.add("motion-button"));
   document.querySelectorAll(".modal-shell").forEach((el) => el.classList.add("motion-modal"));
