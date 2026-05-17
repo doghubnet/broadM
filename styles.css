@@ -157,6 +157,10 @@ button{cursor:pointer}
 .pricing-card{padding:22px;display:flex;flex-direction:column;gap:12px;position:relative}
 .pricing-card h3{margin:0;color:var(--navy)}
 .pricing-card .price{margin:0;font-size:2rem;font-weight:800;color:var(--accent)}
+
+.pricing-card .price{display:grid;gap:4px;line-height:1.05}
+.price-etb{display:block;color:#64748b;font-size:.92rem;font-weight:800;line-height:1.35}
+body.dark-theme .price-etb{color:#c6d6e2}
 .pricing-card ul{margin:0;padding:0;list-style:none;color:var(--muted)}
 .plan-features{display:grid;gap:14px;margin-top:12px;margin-bottom:28px}
 .plan-feature{display:flex;align-items:flex-start;gap:12px;font-size:1rem;line-height:1.55;color:#475569}
@@ -1582,3 +1586,39 @@ body.dark-theme .payment-label,body.dark-theme .payment-method-card span,body.da
 body.dark-theme .payment-form-grid input{background:#12253c;color:#ffffff;border-color:rgba(255,255,255,.16)}
 body.dark-theme .payment-form-message.is-success{color:#7ee0a3}
 @media (max-width:760px){.payment-modal-content{padding:28px 20px}.payment-modal-header{display:grid;padding-right:48px}.payment-plan-summary,.payment-account-box,.payment-form-grid,.payment-method-grid{grid-template-columns:1fr}.payment-method-card{min-height:auto}.payment-language-tabs{width:max-content}.payment-modal-header h3{font-size:clamp(1.8rem,8vw,2.4rem)}}
+.payment-summary-panel{margin-top:18px}
+.payment-summary-card{border:1px solid rgba(6,33,61,.12);border-radius:22px;background:#ffffff;color:#06213d;padding:24px;box-shadow:0 18px 42px rgba(0,31,63,.08)}
+.payment-summary-brand{color:#00a651;font-weight:900;letter-spacing:.08em;margin-bottom:10px}
+.payment-summary-title-row{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:18px}
+.payment-summary-title-row h4{margin:0;color:#06213d;font-size:1.35rem;line-height:1.2}
+.payment-summary-status{display:inline-flex;align-items:center;border-radius:999px;background:rgba(0,166,81,.12);color:#007a3d;font-weight:900;padding:8px 12px;white-space:nowrap}
+.payment-summary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.payment-summary-row{border:1px solid rgba(6,33,61,.10);border-radius:14px;background:#f8fafc;padding:12px 14px;min-width:0}
+.payment-summary-row span{display:block;margin-bottom:5px;color:#64748b;font-size:.76rem;font-weight:900;text-transform:uppercase;letter-spacing:.045em}
+.payment-summary-row strong{display:block;color:#06213d;word-break:break-word;line-height:1.35}
+.payment-summary-disclaimer{margin-top:16px;border-left:4px solid #00a651;background:#f2fbf5;border-radius:14px;padding:14px 16px;color:#334155;font-weight:700;line-height:1.6}
+.payment-summary-disclaimer p{margin:0 0 10px}.payment-summary-disclaimer p:last-child{margin-bottom:0}
+.payment-summary-actions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:18px}.payment-summary-actions .btn{width:100%;padding:12px 14px}
+.payment-print-summary{display:none}
+body.dark-theme .payment-summary-card{background:#0d2136;color:#f5faff;border-color:rgba(255,255,255,.12)}
+body.dark-theme .payment-summary-title-row h4,body.dark-theme .payment-summary-row strong{color:#f5faff}
+body.dark-theme .payment-summary-row{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.10)}
+body.dark-theme .payment-summary-row span{color:#c6d6e2}
+body.dark-theme .payment-summary-disclaimer{background:rgba(0,166,81,.12);color:#dbeafe}
+@media (max-width:760px){.payment-summary-title-row,.payment-summary-grid,.payment-summary-actions{grid-template-columns:1fr;display:grid}.payment-summary-status{width:max-content}.payment-summary-card{padding:20px}}
+@media print{
+  @page{size:A4;margin:16mm}
+  html,body{background:#ffffff !important;color:#000000 !important}
+  body>*:not(.payment-print-summary){display:none !important}
+  .payment-print-summary{display:block !important;position:static !important;background:#ffffff !important;color:#000000 !important;width:100%;margin:0;padding:0;font-family:Arial,sans-serif}
+  .payment-print-summary .payment-summary-card{box-shadow:none !important;border:1px solid #d7dee8 !important;border-radius:0 !important;padding:0 !important;color:#000000 !important;background:#ffffff !important}
+  .payment-print-summary .payment-summary-brand{color:#001f3f !important;font-size:18pt;margin:0 0 8mm !important}
+  .payment-print-summary .payment-summary-title-row{display:flex !important;align-items:flex-start !important;justify-content:space-between !important;border-bottom:1px solid #d7dee8;padding-bottom:6mm;margin-bottom:7mm !important}
+  .payment-print-summary .payment-summary-title-row h4{color:#000000 !important;font-size:18pt;margin:0 !important}
+  .payment-print-summary .payment-summary-status{background:#ffffff !important;color:#000000 !important;border:1px solid #000000 !important}
+  .payment-print-summary .payment-summary-grid{display:grid !important;grid-template-columns:1fr 1fr !important;gap:4mm !important}
+  .payment-print-summary .payment-summary-row{background:#ffffff !important;border:1px solid #d7dee8 !important;border-radius:0 !important;color:#000000 !important;break-inside:avoid}
+  .payment-print-summary .payment-summary-row span,.payment-print-summary .payment-summary-row strong{color:#000000 !important}
+  .payment-print-summary .payment-summary-disclaimer{background:#ffffff !important;color:#000000 !important;border:1px solid #d7dee8 !important;border-left:4px solid #000000 !important;border-radius:0 !important;break-inside:avoid}
+  .payment-summary-actions,.modal,.site-header,.navbar,.payment-modal{display:none !important}
+}

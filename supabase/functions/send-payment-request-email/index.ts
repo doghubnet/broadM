@@ -51,6 +51,7 @@ function buildTextBody(record: PaymentRequestRecord): string {
     "",
     "A new manual payment request was submitted and is pending verification.",
     "",
+    `Request Code: ${safe(record.request_code)}`,
     `Plan Name: ${safe(record.plan_name)}`,
     `USD Price: ${safe(record.plan_price_usd)}`,
     `ETB Price: ${safe(record.plan_price_etb)}`,
@@ -62,7 +63,7 @@ function buildTextBody(record: PaymentRequestRecord): string {
     `Receipt Storage Path: ${safe(record.receipt_path)}`,
     "Status: pending",
     "",
-    "Do not treat this as completed payment until an admin verifies the receipt inside Supabase. The receipt is stored in a private bucket and is not attached."
+    "Do not treat this request as plan access until an admin reviews the private receipt inside Supabase. The receipt is stored in a private bucket and is not attached."
   ].join("\n");
 }
 
@@ -79,6 +80,7 @@ function buildHtmlBody(record: PaymentRequestRecord): string {
           <h2 style="margin: 0 0 10px; color: #001F3F; font-size: 24px; line-height: 1.25;">New BROVI Payment Request</h2>
           <p style="margin: 0 0 24px; color: #475569; line-height: 1.6;">A new manual payment request was submitted and is pending verification.</p>
           <table role="presentation" style="width: 100%; border-collapse: collapse; margin-bottom: 24px;">
+            ${row("Request Code", record.request_code)}
             ${row("Plan Name", record.plan_name)}
             ${row("USD Price", record.plan_price_usd)}
             ${row("ETB Price", record.plan_price_etb)}
@@ -90,7 +92,7 @@ function buildHtmlBody(record: PaymentRequestRecord): string {
             ${row("Receipt Storage Path", record.receipt_path)}
             ${row("Status", "pending")}
           </table>
-          <p style="margin: 0; padding: 14px 16px; border-left: 4px solid #00A651; background: #F2FBF5; color: #334155; line-height: 1.6;">Do not treat this as completed payment until an admin verifies the receipt inside Supabase. The receipt is stored in a private bucket and is not attached.</p>
+          <p style="margin: 0; padding: 14px 16px; border-left: 4px solid #00A651; background: #F2FBF5; color: #334155; line-height: 1.6;">Do not treat this request as plan access until an admin reviews the private receipt inside Supabase. The receipt is stored in a private bucket and is not attached.</p>
         </div>
       </section>
     </main>
@@ -113,7 +115,7 @@ Deno.serve(async (req: Request) => {
 
   const expectedSecret = Deno.env.get("BROAD_MOBILITY_WEBHOOK_SECRET");
   if (!expectedSecret) {
-    console.error("Missing Broad Mobility webhook secret.");
+    console.error("Missing BROVI webhook secret.");
     return jsonResponse({ ok: false, error: "Webhook secret is not configured" }, 500);
   }
 

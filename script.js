@@ -80,15 +80,38 @@ const testimonials = [
   }
 ];
 
-const PAYMENT_EXCHANGE_RATE_ETB_PER_USD = 130;
 const PAYMENT_RECEIPTS_BUCKET = "payment-receipts";
 const MAX_PAYMENT_RECEIPT_BYTES = 10 * 1024 * 1024;
 const ALLOWED_PAYMENT_RECEIPT_MIME_TYPES = new Set(["application/pdf", "image/jpeg", "image/png"]);
 const ALLOWED_PAYMENT_RECEIPT_EXTENSIONS = new Set(["pdf", "jpg", "jpeg", "png"]);
 const PAYMENT_PLANS = {
-  go: { plan_id: "go", name: "Go", price_usd: 100 },
-  plus: { plan_id: "plus", name: "Plus", price_usd: 300 },
-  pro: { plan_id: "pro", name: "Pro", price_usd: 600 }
+  go: {
+    id: "go",
+    plan_id: "go",
+    name: "Go",
+    priceUsd: 149.99,
+    priceEtb: 23550,
+    displayUsd: "$149.99",
+    displayEtb: "23,550 ETB"
+  },
+  plus: {
+    id: "plus",
+    plan_id: "plus",
+    name: "Plus",
+    priceUsd: 349.99,
+    priceEtb: 54950,
+    displayUsd: "$349.99",
+    displayEtb: "54,950 ETB"
+  },
+  pro: {
+    id: "pro",
+    plan_id: "pro",
+    name: "Pro",
+    priceUsd: 699.99,
+    priceEtb: 109900,
+    displayUsd: "$699.99",
+    displayEtb: "109,900 ETB"
+  }
 };
 const PAYMENT_METHODS = [
   {
@@ -131,9 +154,9 @@ const PAYMENT_I18N = {
     reference: "Transaction Reference",
     receipt: "Upload Receipt",
     submit: "Submit Payment Request",
-    pending: "Pending verification",
-    mainInstruction: "Transfer the exact amount to the selected payment account below. Use your full name as the payment reason. After payment, upload your receipt and submit your request. Your plan access starts after payment verification.",
-    success: "Payment request submitted successfully. Our team will verify your receipt and contact you soon."
+    pending: "Pending Verification",
+    mainInstruction: "Transfer the exact amount to the selected payment account below. Use your full name as the payment reason. After payment, upload your receipt and submit your request. Your plan access starts after our team verifies your payment.",
+    success: "Payment verification request submitted successfully. Your status is Pending Verification."
   },
   am: {
     title: "የክፍያ ማረጋገጫ",
@@ -1180,15 +1203,28 @@ function getPaymentLabels() {
 }
 
 function formatUsd(amount) {
-  return `$${Number(amount).toLocaleString("en-US")}`;
+  return Number(amount).toLocaleString("en-US", { style: "currency", currency: "USD" });
 }
 
 function formatEtb(amount) {
-  return `ETB ${Number(amount).toLocaleString("en-US", { maximumFractionDigits: 0 })}`;
+  return `${Number(amount).toLocaleString("en-US", { maximumFractionDigits: 0 })} ETB`;
 }
 
-function getPaymentEtbAmount(plan) {
-  return plan.price_usd * PAYMENT_EXCHANGE_RATE_ETB_PER_USD;
+function getPlanUsd(plan) {
+  return plan.priceUsd;
+}
+
+function getPlanEtb(plan) {
+  return plan.priceEtb;
+}
+
+function generatePaymentRequestCode() {
+  const datePart = new Date().toISOString().slice(0, 10).replaceAll("-", "");
+  const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  const randomValues = new Uint32Array(6);
+  crypto.getRandomValues(randomValues);
+  const suffix = Array.from(randomValues, (value) => alphabet[value % alphabet.length]).join("");
+  return `BRV-PAY-${datePart}-${suffix}`;
 }
 
 function setPaymentFormMessage(type, message) {
@@ -1257,8 +1293,17 @@ function updatePaymentLanguage() {
 
 function updatePaymentPlanSummary() {
   document.getElementById("paymentPlanName").textContent = selectedPaymentPlan.name;
-  document.getElementById("paymentUsdAmount").textContent = formatUsd(selectedPaymentPlan.price_usd);
-  document.getElementById("paymentEtbAmount").textContent = formatEtb(getPaymentEtbAmount(selectedPaymentPlan));
+  document.getElementById("paymentUsdAmount").textContent = selectedPaymentPlan.displayUsd;
+  document.getElementById("paymentEtbAmount").textContent = selectedPaymentPlan.displayEtb;
+}
+
+function syncPricingCardsFromPaymentPlans() {
+  Object.values(PAYMENT_PLANS).forEach((plan) => {
+    const usdEl = document.querySelector(`[data-plan-price="${plan.id}"]`);
+    const etbEl = document.querySelector(`[data-plan-etb="${plan.id}"]`);
+    if (usdEl) usdEl.textContent = plan.displayUsd;
+    if (etbEl) etbEl.textContent = plan.displayEtb;
+  });
 }
 
 function getPaymentFocusableElements() {
@@ -1290,6 +1335,10 @@ function openPaymentModal(planId, trigger) {
 
   const form = document.getElementById("paymentRequestForm");
   form?.reset();
+  if (form) form.hidden = false;
+  document.getElementById("paymentSummaryPanel")?.setAttribute("hidden", "");
+  const printableSummary = document.getElementById("paymentPrintableSummary");
+  if (printableSummary) printableSummary.innerHTML = "";
   setPaymentFormMessage("", "");
   updatePaymentPlanSummary();
   renderPaymentMethods();
@@ -1337,10 +1386,11 @@ function validatePaymentForm(form) {
 
   return {
     payload: {
-      plan_id: selectedPaymentPlan.plan_id,
+      request_code: generatePaymentRequestCode(),
+      plan_id: selectedPaymentPlan.id,
       plan_name: selectedPaymentPlan.name,
-      plan_price_usd: selectedPaymentPlan.price_usd,
-      plan_price_etb: getPaymentEtbAmount(selectedPaymentPlan),
+      plan_price_usd: getPlanUsd(selectedPaymentPlan),
+      plan_price_etb: getPlanEtb(selectedPaymentPlan),
       payment_method: selectedPaymentMethod.method_id,
       full_name: fullName,
       email,
@@ -1369,6 +1419,73 @@ async function uploadPaymentReceipt(file, extension) {
   return data.path;
 }
 
+function buildPaymentSummaryRows(summary) {
+  const rows = [
+    ["Request ID", summary.request_code],
+    ["Selected Plan", summary.plan_name],
+    ["USD Price", summary.display_usd],
+    ["ETB Equivalent", summary.display_etb],
+    ["Selected Payment Method", summary.payment_method_name],
+    ["Payment Account Name", summary.account_name],
+    ["Payment Account Number", summary.account_number],
+    ["Applicant Full Name", summary.full_name],
+    ["Applicant Email", summary.email],
+    ["Applicant Phone", summary.phone],
+    ["Transaction Reference", summary.transaction_reference],
+    ["Submitted Date and Time", summary.submitted_at],
+    ["Receipt Uploaded", "Yes"]
+  ];
+
+  return rows.map(([label, value]) => `<div class="payment-summary-row"><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong></div>`).join("");
+}
+
+function buildPaymentSummaryMarkup(summary, printable = false) {
+  const actions = printable ? "" : `<div class="payment-summary-actions">
+    <button class="btn btn-primary" type="button" id="paymentDownloadPdf">Download PDF</button>
+    <button class="btn btn-secondary" type="button" id="paymentPrintSummary">Print</button>
+    <button class="btn btn-light" type="button" id="paymentCopyRequestId">Copy Request ID</button>
+    <button class="btn btn-light" type="button" id="paymentSummaryClose">Close</button>
+  </div>`;
+
+  return `<div class="payment-summary-card">
+    <div class="payment-summary-brand">BROVI</div>
+    <div class="payment-summary-title-row">
+      <h4>Payment Verification Request Summary</h4>
+      <span class="payment-summary-status">Pending Verification</span>
+    </div>
+    <div class="payment-summary-grid">${buildPaymentSummaryRows(summary)}</div>
+    <div class="payment-summary-disclaimer">
+      <p>This document confirms that your payment verification request was submitted to BROVI. It does not confirm payment approval. Your plan access starts after our team verifies your payment.</p>
+      <p lang="am">ይህ ሰነድ የክፍያ ማረጋገጫ ጥያቄዎ ለBROVI መላኩን ያረጋግጣል። ይህ የክፍያ ማጽደቅ አይደለም። የፕላን መዳረሻዎ ቡድናችን ክፍያዎን ካረጋገጠ በኋላ ይጀምራል።</p>
+    </div>
+    ${actions}
+  </div>`;
+}
+
+function renderPaymentVerificationSummary(summary) {
+  const summaryPanel = document.getElementById("paymentSummaryPanel");
+  const printableSummary = document.getElementById("paymentPrintableSummary");
+  const form = document.getElementById("paymentRequestForm");
+  if (!summaryPanel || !printableSummary || !form) return;
+
+  form.hidden = true;
+  summaryPanel.hidden = false;
+  summaryPanel.innerHTML = buildPaymentSummaryMarkup(summary);
+  printableSummary.innerHTML = buildPaymentSummaryMarkup(summary, true);
+
+  document.getElementById("paymentPrintSummary")?.addEventListener("click", () => window.print());
+  document.getElementById("paymentDownloadPdf")?.addEventListener("click", () => window.print());
+  document.getElementById("paymentCopyRequestId")?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(summary.request_code);
+      document.getElementById("paymentCopyRequestId").textContent = "Copied";
+    } catch (_error) {
+      document.getElementById("paymentCopyRequestId").textContent = summary.request_code;
+    }
+  });
+  document.getElementById("paymentSummaryClose")?.addEventListener("click", closePaymentModal);
+}
+
 async function handlePaymentRequestSubmit(event) {
   event.preventDefault();
   const form = event.currentTarget;
@@ -1388,17 +1505,30 @@ async function handlePaymentRequestSubmit(event) {
 
   try {
     const receiptPath = await uploadPaymentReceipt(validation.file, validation.extension);
+    const submittedAt = new Date();
+    const insertPayload = { ...validation.payload, receipt_path: receiptPath };
     const { error } = await supabase
       .from("payment_requests")
-      .insert([{ ...validation.payload, receipt_path: receiptPath }]);
+      .insert([insertPayload]);
 
     if (error) throw error;
+
+    const summary = {
+      ...insertPayload,
+      display_usd: selectedPaymentPlan.displayUsd,
+      display_etb: selectedPaymentPlan.displayEtb,
+      payment_method_name: selectedPaymentMethod.method_name,
+      account_name: selectedPaymentMethod.account_name,
+      account_number: selectedPaymentMethod.account_number,
+      submitted_at: submittedAt.toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" })
+    };
 
     form.reset();
     selectedPaymentMethod = PAYMENT_METHODS[0];
     renderPaymentMethods();
     updatePaymentAccountSummary();
     setPaymentFormMessage("success", labels.success);
+    renderPaymentVerificationSummary(summary);
   } catch (error) {
     console.error("Payment request submission failed", error);
     setPaymentFormMessage("error", "Payment request submission failed. Please check your connection and try again.");
@@ -1597,6 +1727,7 @@ function init() {
   renderMoreCountries();
   initializeCountrySelector();
   renderTestimonials();
+  syncPricingCardsFromPaymentPlans();
   applyMotionClasses();
   startImpactCarousel();
   startProcessNumberCycle();

@@ -21,6 +21,7 @@ create table if not exists public.payment_methods (
 create table if not exists public.payment_requests (
   id uuid primary key default gen_random_uuid(),
   created_at timestamptz not null default now(),
+  request_code text not null,
   plan_id text not null,
   plan_name text not null,
   plan_price_usd numeric not null,
@@ -36,15 +37,48 @@ create table if not exists public.payment_requests (
   verified_at timestamptz,
   constraint payment_requests_status_check check (status in ('pending', 'verified', 'rejected')),
   constraint payment_requests_plan_check check (plan_id in ('go', 'plus', 'pro')),
-  constraint payment_requests_usd_positive_check check (plan_price_usd > 0),
-  constraint payment_requests_etb_positive_check check (plan_price_etb > 0),
+  constraint payment_requests_request_code_format_check check (request_code ~ '^BRV-PAY-[0-9]{8}-[A-Z0-9]{6}$'),
+  constraint payment_requests_usd_plan_check check (plan_price_usd in (149.99, 349.99, 699.99)),
+  constraint payment_requests_etb_plan_check check (plan_price_etb in (23550, 54950, 109900)),
   constraint payment_requests_email_check check (position('@' in email) > 1),
   constraint payment_requests_receipt_path_check check (receipt_path like 'receipts/%')
 );
 
 comment on table public.payment_methods is 'Active BROVI manual payment accounts. Admin may update account values manually inside Supabase if accounts change. Do not add other payment methods without direct owner approval.';
-comment on table public.payment_requests is 'Manual payment receipt requests submitted by clients. Public inserts only; admins verify or reject inside Supabase.';
-comment on column public.payment_requests.status is 'Always forced to pending on public insert. Admin may later update to verified or rejected inside Supabase.';
+comment on table public.payment_requests is 'Manual payment verification requests submitted by clients. Public inserts only; admins verify or reject inside Supabase.';
+comment on column public.payment_requests.status is 'Always forced to pending on public insert. Admin may later update the record inside Supabase.';
+comment on column public.payment_requests.request_code is 'Unique public-facing payment verification request code shown to the applicant and admin.';
+
+alter table public.payment_requests
+  add column if not exists request_code text;
+
+alter table public.payment_requests
+  drop constraint if exists payment_requests_usd_positive_check,
+  drop constraint if exists payment_requests_etb_positive_check,
+  drop constraint if exists payment_requests_request_code_required_check,
+  drop constraint if exists payment_requests_request_code_format_check,
+  drop constraint if exists payment_requests_usd_plan_check,
+  drop constraint if exists payment_requests_etb_plan_check;
+
+alter table public.payment_requests
+  add constraint payment_requests_request_code_required_check
+  check (request_code is not null) not valid;
+
+alter table public.payment_requests
+  add constraint payment_requests_request_code_format_check
+  check (request_code ~ '^BRV-PAY-[0-9]{8}-[A-Z0-9]{6}$') not valid;
+
+alter table public.payment_requests
+  add constraint payment_requests_usd_plan_check
+  check (plan_price_usd in (149.99, 349.99, 699.99)) not valid;
+
+alter table public.payment_requests
+  add constraint payment_requests_etb_plan_check
+  check (plan_price_etb in (23550, 54950, 109900)) not valid;
+
+create unique index if not exists payment_requests_request_code_unique_idx
+on public.payment_requests (request_code)
+where request_code is not null;
 
 alter table public.payment_methods enable row level security;
 alter table public.payment_requests enable row level security;
@@ -64,9 +98,10 @@ on public.payment_requests
 for insert
 to anon
 with check (
-  plan_id in ('go', 'plus', 'pro')
-  and plan_price_usd > 0
-  and plan_price_etb > 0
+  request_code ~ '^BRV-PAY-[0-9]{8}-[A-Z0-9]{6}$'
+  and plan_id in ('go', 'plus', 'pro')
+  and plan_price_usd in (149.99, 349.99, 699.99)
+  and plan_price_etb in (23550, 54950, 109900)
   and payment_method in ('telebirr', 'cbe_bank', 'siinque_bank')
   and length(full_name) between 2 and 140
   and position('@' in email) > 1
@@ -95,7 +130,7 @@ before insert on public.payment_requests
 for each row
 execute function public.force_pending_payment_request();
 
--- Seed only the approved active BROVI manual payment accounts.
+-- Seed only the allowed active BROVI manual payment accounts.
 insert into public.payment_methods (
   method_id,
   method_name,
