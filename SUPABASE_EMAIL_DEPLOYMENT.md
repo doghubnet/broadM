@@ -119,3 +119,38 @@ Manual steps:
 ## 11. Security confirmation
 
 No email API key was exposed in frontend code.
+
+## 12. Manual payment verification system
+
+BROVI also includes a manual payment verification flow for the Go, Plus, and Pro plans. This is **not** a live payment gateway. Clients transfer payment manually to one of the active BROVI payment accounts, upload a receipt, and submit a payment request. Admins verify or reject the request inside Supabase.
+
+### Required setup
+
+1. Run `supabase-payment-system.sql` in the Supabase SQL Editor. This creates:
+   - `public.payment_methods`
+   - `public.payment_requests`
+   - a private `payment-receipts` storage bucket
+   - RLS policies that allow public reads only for active payment methods and public inserts only for payment requests/receipt uploads
+2. Confirm the `payment-receipts` bucket is private in Supabase Storage. Do not make receipt files public.
+3. Deploy the `send-payment-request-email` Edge Function using the workflow or Supabase CLI.
+4. Run `supabase-payment-webhook.sql` after replacing `YOUR_WEBHOOK_SECRET` with the same secure value stored as `BROAD_MOBILITY_WEBHOOK_SECRET`.
+
+### Payment accounts
+
+The active payment account values are seeded in `public.payment_methods`. The site owner may update those account values manually inside Supabase if accounts change. Do not add other payment methods without direct owner approval.
+
+### Payment email secret
+
+Add the required GitHub repository secret and Supabase Edge Function secret:
+
+- `PAYMENT_ADMIN_EMAIL`
+
+For Resend no-domain testing with `BROVI <onboarding@resend.dev>`, `PAYMENT_ADMIN_EMAIL` must be the Resend account owner email. For production, verify a domain in Resend and update the function sender to a verified sender such as `payments@brovi.com` or another verified sender.
+
+### Security notes
+
+- The frontend never uses a service role key.
+- The frontend never sends Resend API keys or webhook secrets.
+- Payment receipts remain private and are referenced by storage path only.
+- Public users cannot read, update, or delete payment requests.
+- New payment requests are forced to `pending`; admins verify or reject inside Supabase.

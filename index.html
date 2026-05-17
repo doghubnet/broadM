@@ -488,7 +488,7 @@
                 <li class="plan-feature"><svg class="plan-feature-icon positive" aria-hidden="true"><use href="#icon-clock"></use></svg><span>Response within normal support time</span></li>
                 <li class="plan-feature"><svg class="plan-feature-icon positive" aria-hidden="true"><use href="#icon-route"></use></svg><span>Good for first-time applicants who need structured help</span></li>
               </ul>
-              <button class="btn btn-primary plan-button" type="button">Upgrade to Go</button>
+              <button class="btn btn-primary plan-button" type="button" data-payment-plan="go">Upgrade to Go</button>
             </article>
             <article class="card pricing-card recommended">
               <span class="plan-badge">Recommended</span>
@@ -504,7 +504,7 @@
                 <li class="plan-feature"><svg class="plan-feature-icon positive" aria-hidden="true"><use href="#icon-fast-forward"></use></svg><span>Faster response time</span></li>
                 <li class="plan-feature"><svg class="plan-feature-icon positive" aria-hidden="true"><use href="#icon-graduation"></use></svg><span>Better for students who need direct guidance</span></li>
               </ul>
-              <button class="btn btn-primary plan-button" type="button">Upgrade to Plus</button>
+              <button class="btn btn-primary plan-button" type="button" data-payment-plan="plus">Upgrade to Plus</button>
             </article>
             <article class="card pricing-card">
               <h3>Pro</h3>
@@ -519,7 +519,7 @@
                 <li class="plan-feature"><svg class="plan-feature-icon positive" aria-hidden="true"><use href="#icon-rocket"></use></svg><span>Fastest response</span></li>
                 <li class="plan-feature"><svg class="plan-feature-icon positive" aria-hidden="true"><use href="#icon-diamond"></use></svg><span>Best for clients who want high-touch premium service and dedicated attention</span></li>
               </ul>
-              <button class="btn btn-secondary plan-button" type="button" id="consultOpenFooter">Upgrade to Pro</button>
+              <button class="btn btn-secondary plan-button" type="button" id="paymentOpenPro" data-payment-plan="pro">Upgrade to Pro</button>
             </article>
           </div>
         </div>
@@ -753,6 +753,71 @@
           <p style="margin-top:12px;color:rgba(255,255,255,.72);font-size:.92rem">Maximum combined size should stay below 10MB.</p>
           <div id="applicationFormMessage" class="application-form-message" role="status" aria-live="polite"></div>
           <button class="btn btn-primary" type="submit" style="margin-top:18px;width:100%;border-radius:18px;padding:16px 20px">Submit Application</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal payment-modal" id="paymentModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="paymentModalTitle">
+    <div class="modal-shell payment-modal-shell">
+      <button class="modal-close payment-close" id="paymentClose" type="button" aria-label="Close payment verification">×</button>
+      <div class="modal-content payment-modal-content">
+        <div class="payment-modal-header">
+          <div>
+            <span class="payment-status-pill" id="paymentStatusLabel">Pending verification</span>
+            <h3 id="paymentModalTitle">Payment Verification</h3>
+          </div>
+          <div class="payment-language-tabs" role="tablist" aria-label="Payment language">
+            <button class="payment-lang-tab is-active" type="button" data-payment-lang="en" role="tab" aria-selected="true">English</button>
+            <button class="payment-lang-tab" type="button" data-payment-lang="am" role="tab" aria-selected="false">አማርኛ</button>
+          </div>
+        </div>
+
+        <div class="payment-plan-summary" aria-live="polite">
+          <div>
+            <span class="payment-label" id="paymentSelectedPlanLabel">Selected Plan</span>
+            <strong id="paymentPlanName">Go</strong>
+          </div>
+          <div>
+            <span class="payment-label" id="paymentAmountLabel">Amount to Pay</span>
+            <strong><span id="paymentUsdAmount">$100</span> · <span id="paymentEtbAmount">ETB 0</span></strong>
+          </div>
+        </div>
+
+        <p class="payment-instruction" id="paymentInstructionText">Transfer the exact amount to the selected payment account below. Use your full name as the payment reason. After payment, upload your receipt and submit your request. Your plan access starts after payment verification.</p>
+
+        <form id="paymentRequestForm" novalidate>
+          <div class="payment-method-section">
+            <h4 id="paymentMethodHeading">Choose Payment Method</h4>
+            <div class="payment-method-grid" id="paymentMethodGrid" role="radiogroup" aria-labelledby="paymentMethodHeading"></div>
+          </div>
+
+          <div class="payment-account-box">
+            <div>
+              <span class="payment-label" id="paymentAccountNameLabel">Account Name</span>
+              <strong id="paymentAccountName">Gedion Adamu</strong>
+            </div>
+            <div>
+              <span class="payment-label" id="paymentAccountNumberLabel">Account Number</span>
+              <strong id="paymentAccountNumber">0906795434</strong>
+            </div>
+          </div>
+
+          <div class="payment-instruction-box">
+            <h4 id="paymentInstructionLabel">Payment Instructions</h4>
+            <p id="paymentMethodInstruction">Transfer the exact amount to the selected account and use your full name as the payment reason.</p>
+          </div>
+
+          <div class="payment-form-grid">
+            <label><span id="paymentFullNameLabel">Full Name</span><input id="paymentFullName" name="fullName" type="text" autocomplete="name" required></label>
+            <label><span id="paymentEmailLabel">Email</span><input id="paymentEmail" name="email" type="email" autocomplete="email" required></label>
+            <label><span id="paymentPhoneLabel">Phone</span><input id="paymentPhone" name="phone" type="tel" autocomplete="tel" required></label>
+            <label><span id="paymentReferenceLabel">Transaction Reference</span><input id="paymentReference" name="transactionReference" type="text" required></label>
+            <label class="payment-receipt-field"><span id="paymentReceiptLabel">Upload Receipt</span><input id="paymentReceipt" name="receipt" type="file" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" required></label>
+          </div>
+
+          <div id="paymentFormMessage" class="payment-form-message" role="status" aria-live="polite"></div>
+          <button class="btn btn-primary payment-submit" id="paymentSubmitButton" type="submit">Submit Payment Request</button>
         </form>
       </div>
     </div>

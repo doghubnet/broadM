@@ -1543,3 +1543,42 @@ body.dark-theme .testimonial-marquee-card.testimonial-text-card:nth-child(4n + 3
   .testimonial-pair .testimonial-text-card{min-height:205px;padding:22px}
   .testimonial-pair .testimonial-photo-card{height:215px;min-height:215px}
 }
+
+/* Manual payment verification modal */
+.payment-modal-shell{width:min(980px,100%);background:#ffffff;color:#06213d;border:1px solid rgba(6,33,61,.10)}
+.payment-modal-content{padding:34px 36px 38px}
+.payment-modal-header{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:22px;padding-right:58px}
+.payment-modal-header h3{margin:8px 0 0;color:#06213d;text-transform:uppercase;letter-spacing:-.035em;font-weight:900}
+.payment-status-pill{display:inline-flex;align-items:center;width:max-content;border-radius:999px;padding:7px 12px;background:rgba(0,166,81,.10);color:#008a45;font-weight:800;font-size:.82rem}
+.payment-language-tabs{display:inline-flex;gap:6px;padding:5px;border-radius:999px;background:#eef5f2;border:1px solid rgba(6,33,61,.08)}
+.payment-lang-tab{border:0;border-radius:999px;background:transparent;color:#496173;font-weight:800;padding:8px 12px}
+.payment-lang-tab.is-active{background:#00a651;color:#ffffff;box-shadow:0 8px 18px rgba(0,166,81,.18)}
+.payment-plan-summary,.payment-account-box{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0}
+.payment-plan-summary>div,.payment-account-box>div,.payment-instruction-box{border:1px solid rgba(6,33,61,.10);border-radius:18px;background:#f7fafc;padding:16px 18px}
+.payment-label{display:block;margin-bottom:6px;color:#64748b;font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em}
+.payment-plan-summary strong,.payment-account-box strong{display:block;color:#06213d;font-size:1.08rem;word-break:break-word}
+.payment-instruction{margin:18px 0;color:#42576b;line-height:1.7;font-weight:600}
+.payment-method-section h4,.payment-instruction-box h4{margin:0 0 12px;color:#06213d;font-size:1rem}
+.payment-method-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.payment-method-card{display:grid;gap:6px;position:relative;min-height:132px;padding:18px;border-radius:18px;background:#f5f8ef;border:1px solid rgba(0,31,63,.08);box-shadow:0 12px 28px rgba(0,31,63,.05);cursor:pointer;transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease}
+.payment-method-card:hover,.payment-method-card.is-selected{border-color:rgba(0,166,81,.45);box-shadow:0 16px 36px rgba(0,166,81,.12);transform:translateY(-1px)}
+.payment-method-card input{position:absolute;opacity:0;pointer-events:none}
+.payment-method-card span{color:#64748b;font-weight:700;font-size:.9rem}
+.payment-method-card strong,.payment-method-name{color:#06213d !important;font-weight:900;font-size:1rem;word-break:break-word}
+.payment-instruction-box p{margin:0;color:#42576b;line-height:1.6}
+.payment-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:18px}
+.payment-form-grid label{display:grid;gap:8px;color:#06213d;font-weight:800}
+.payment-form-grid input{width:100%;border-radius:14px;border:1px solid rgba(6,33,61,.16);background:#ffffff;color:#06213d;padding:13px 15px;outline:none}
+.payment-form-grid input:focus{border-color:#00a651;box-shadow:0 0 0 4px rgba(0,166,81,.12)}
+.payment-receipt-field{grid-column:1/-1}
+.payment-form-message{display:none;margin-top:16px;padding:12px 14px;border-radius:14px;font-weight:800;line-height:1.45}
+.payment-form-message.is-success{display:block;background:rgba(0,166,81,.12);color:#007a3d;border:1px solid rgba(0,166,81,.24)}
+.payment-form-message.is-error{display:block;background:rgba(220,38,38,.10);color:#b42318;border:1px solid rgba(220,38,38,.22)}
+.payment-submit{width:100%;margin-top:18px;border-radius:18px;padding:16px 20px}
+body.dark-theme .payment-modal-shell{background:#0d2136;color:#f5faff;border-color:rgba(255,255,255,.10)}
+body.dark-theme .payment-modal-header h3,body.dark-theme .payment-plan-summary strong,body.dark-theme .payment-account-box strong,body.dark-theme .payment-method-section h4,body.dark-theme .payment-instruction-box h4,body.dark-theme .payment-form-grid label,body.dark-theme .payment-method-card strong,body.dark-theme .payment-method-name{color:#f5faff !important}
+body.dark-theme .payment-language-tabs,body.dark-theme .payment-plan-summary>div,body.dark-theme .payment-account-box>div,body.dark-theme .payment-instruction-box,body.dark-theme .payment-method-card{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.10)}
+body.dark-theme .payment-label,body.dark-theme .payment-method-card span,body.dark-theme .payment-instruction,body.dark-theme .payment-instruction-box p{color:#c6d6e2}
+body.dark-theme .payment-form-grid input{background:#12253c;color:#ffffff;border-color:rgba(255,255,255,.16)}
+body.dark-theme .payment-form-message.is-success{color:#7ee0a3}
+@media (max-width:760px){.payment-modal-content{padding:28px 20px}.payment-modal-header{display:grid;padding-right:48px}.payment-plan-summary,.payment-account-box,.payment-form-grid,.payment-method-grid{grid-template-columns:1fr}.payment-method-card{min-height:auto}.payment-language-tabs{width:max-content}.payment-modal-header h3{font-size:clamp(1.8rem,8vw,2.4rem)}}

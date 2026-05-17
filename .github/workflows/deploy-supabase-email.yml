@@ -1,4 +1,4 @@
-name: Deploy Supabase Email Function
+name: Deploy Supabase Email Functions
 
 on:
   workflow_dispatch:
@@ -8,7 +8,7 @@ permissions:
 
 jobs:
   deploy-supabase-email:
-    name: Deploy Supabase Email Function
+    name: Deploy Supabase Email Functions
     runs-on: ubuntu-latest
 
     env:
@@ -16,6 +16,7 @@ jobs:
       SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
       RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
       BROAD_MOBILITY_WEBHOOK_SECRET: ${{ secrets.BROAD_MOBILITY_WEBHOOK_SECRET }}
+      PAYMENT_ADMIN_EMAIL: ${{ secrets.PAYMENT_ADMIN_EMAIL }}
       SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
 
     steps:
@@ -54,6 +55,11 @@ jobs:
             missing=1
           fi
 
+          if [ -z "${PAYMENT_ADMIN_EMAIL:-}" ]; then
+            echo "Missing required secret: PAYMENT_ADMIN_EMAIL"
+            missing=1
+          fi
+
           if [ "${missing}" -ne 0 ]; then
             echo "One or more required deployment secrets are missing."
             exit 1
@@ -69,11 +75,12 @@ jobs:
           supabase secrets set \
             RESEND_API_KEY="${RESEND_API_KEY}" \
             BROAD_MOBILITY_WEBHOOK_SECRET="${BROAD_MOBILITY_WEBHOOK_SECRET}" \
+            PAYMENT_ADMIN_EMAIL="${PAYMENT_ADMIN_EMAIL}" \
             --project-ref "${SUPABASE_PROJECT_REF}"
 
           echo "Supabase Edge Function secrets were set."
 
-      - name: Deploy send-application-email Edge Function
+      - name: Deploy Supabase Edge Functions
         shell: bash
         run: |
           set -euo pipefail
@@ -81,7 +88,10 @@ jobs:
           supabase functions deploy send-application-email \
             --project-ref "${SUPABASE_PROJECT_REF}"
 
-          echo "Supabase Edge Function deployed."
+          supabase functions deploy send-payment-request-email \
+            --project-ref "${SUPABASE_PROJECT_REF}"
+
+          echo "Supabase Edge Functions deployed."
 
       - name: Install PostgreSQL client
         if: ${{ env.SUPABASE_DB_URL != '' }}
@@ -100,10 +110,12 @@ jobs:
         run: |
           set -euo pipefail
 
-          if [ ! -f "supabase-email-webhook.sql" ]; then
-            echo "Missing file: supabase-email-webhook.sql"
-            exit 1
-          fi
+          for required_sql in supabase-payment-system.sql supabase-email-webhook.sql supabase-payment-webhook.sql; do
+            if [ ! -f "${required_sql}" ]; then
+              echo "Missing file: ${required_sql}"
+              exit 1
+            fi
+          done
 
           TEMP_SQL="$(mktemp)"
 
@@ -113,36 +125,39 @@ jobs:
 
           trap cleanup EXIT
 
-          python3 - "supabase-email-webhook.sql" "${TEMP_SQL}" <<'PY'
+          python3 - "${TEMP_SQL}" <<'PY'
           import os
           import sys
           from pathlib import Path
 
-          source_path = Path(sys.argv[1])
-          target_path = Path(sys.argv[2])
-
+          target_path = Path(sys.argv[1])
           project_ref = os.environ["SUPABASE_PROJECT_REF"]
           webhook_secret = os.environ["BROAD_MOBILITY_WEBHOOK_SECRET"]
 
-          sql = source_path.read_text(encoding="utf-8")
-          sql = sql.replace("YOUR_PROJECT_REF", project_ref)
-          sql = sql.replace("YOUR_WEBHOOK_SECRET", webhook_secret)
+          payment_system_sql = Path("supabase-payment-system.sql").read_text(encoding="utf-8")
+          application_webhook_sql = Path("supabase-email-webhook.sql").read_text(encoding="utf-8")
+          payment_webhook_sql = Path("supabase-payment-webhook.sql").read_text(encoding="utf-8")
 
-          target_path.write_text(sql, encoding="utf-8")
+          application_webhook_sql = application_webhook_sql.replace("YOUR_PROJECT_REF", project_ref)
+          application_webhook_sql = application_webhook_sql.replace("YOUR_WEBHOOK_SECRET", webhook_secret)
+          payment_webhook_sql = payment_webhook_sql.replace("YOUR_WEBHOOK_SECRET", webhook_secret)
+
+          target_path.write_text("\n\n".join([payment_system_sql, application_webhook_sql, payment_webhook_sql]), encoding="utf-8")
           PY
 
           psql "${SUPABASE_DB_URL}" -v ON_ERROR_STOP=1 -f "${TEMP_SQL}"
 
-          echo "Webhook SQL executed successfully."
+          echo "Payment system and webhook SQL executed successfully."
 
       - name: Skip webhook SQL when database URL is missing
         if: ${{ env.SUPABASE_DB_URL == '' }}
         shell: bash
         run: |
           echo "SUPABASE_DB_URL is not configured."
-          echo "Edge Function was deployed and secrets were set."
-          echo "Manual step required:"
-          echo "Open supabase-email-webhook.sql in Supabase SQL Editor."
-          echo "Replace YOUR_PROJECT_REF with your Supabase project reference."
-          echo "Replace YOUR_WEBHOOK_SECRET with the same value stored as BROAD_MOBILITY_WEBHOOK_SECRET."
-          echo "Run the SQL manually."
+          echo "Edge Functions were deployed and secrets were set."
+          echo "Manual steps required:"
+          echo "1. Run supabase-payment-system.sql in Supabase SQL Editor."
+          echo "2. Open supabase-email-webhook.sql and supabase-payment-webhook.sql in Supabase SQL Editor."
+          echo "3. Replace placeholder webhook secrets with the same value stored as BROAD_MOBILITY_WEBHOOK_SECRET."
+          echo "4. Replace YOUR_PROJECT_REF in supabase-email-webhook.sql with your Supabase project reference."
+          echo "5. Run both webhook SQL files manually."

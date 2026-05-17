@@ -80,6 +80,85 @@ const testimonials = [
   }
 ];
 
+const PAYMENT_EXCHANGE_RATE_ETB_PER_USD = 130;
+const PAYMENT_RECEIPTS_BUCKET = "payment-receipts";
+const MAX_PAYMENT_RECEIPT_BYTES = 10 * 1024 * 1024;
+const ALLOWED_PAYMENT_RECEIPT_MIME_TYPES = new Set(["application/pdf", "image/jpeg", "image/png"]);
+const ALLOWED_PAYMENT_RECEIPT_EXTENSIONS = new Set(["pdf", "jpg", "jpeg", "png"]);
+const PAYMENT_PLANS = {
+  go: { plan_id: "go", name: "Go", price_usd: 100 },
+  plus: { plan_id: "plus", name: "Plus", price_usd: 300 },
+  pro: { plan_id: "pro", name: "Pro", price_usd: 600 }
+};
+const PAYMENT_METHODS = [
+  {
+    method_id: "telebirr",
+    method_name: "Telebirr",
+    account_name: "Gedion Adamu",
+    account_number: "0906795434",
+    instruction_en: "Transfer the exact amount to this Telebirr account and use your full name as the payment reason.",
+    instruction_am: "ትክክለኛውን መጠን ወደዚህ የቴሌብር ሂሳብ ያስተላልፉ፣ በምክንያት ቦታ ሙሉ ስምዎን ይጻፉ።"
+  },
+  {
+    method_id: "cbe_bank",
+    method_name: "CBE Bank",
+    account_name: "Gedion Adamu",
+    account_number: "1000238891977",
+    instruction_en: "Transfer the exact amount to this CBE Bank account and keep the bank receipt for upload.",
+    instruction_am: "ትክክለኛውን መጠን ወደዚህ የCBE Bank ሂሳብ ያስተላልፉ፣ የባንክ ደረሰኙን ለማስገባት ያስቀምጡ።"
+  },
+  {
+    method_id: "siinque_bank",
+    method_name: "Siinque Bank",
+    account_name: "Gediyon Adamu",
+    account_number: "1073488600113",
+    instruction_en: "Transfer the exact amount to this Siinque Bank account and upload the receipt after payment.",
+    instruction_am: "ትክክለኛውን መጠን ወደዚህ የSiinque Bank ሂሳብ ያስተላልፉ፣ ከክፍያ በኋላ ደረሰኙን ያስገቡ።"
+  }
+];
+const PAYMENT_I18N = {
+  en: {
+    title: "Payment Verification",
+    selectedPlan: "Selected Plan",
+    amountToPay: "Amount to Pay",
+    chooseMethod: "Choose Payment Method",
+    accountName: "Account Name",
+    accountNumber: "Account Number",
+    instructions: "Payment Instructions",
+    fullName: "Full Name",
+    email: "Email",
+    phone: "Phone",
+    reference: "Transaction Reference",
+    receipt: "Upload Receipt",
+    submit: "Submit Payment Request",
+    pending: "Pending verification",
+    mainInstruction: "Transfer the exact amount to the selected payment account below. Use your full name as the payment reason. After payment, upload your receipt and submit your request. Your plan access starts after payment verification.",
+    success: "Payment request submitted successfully. Our team will verify your receipt and contact you soon."
+  },
+  am: {
+    title: "የክፍያ ማረጋገጫ",
+    selectedPlan: "የተመረጠ ፕላን",
+    amountToPay: "የሚከፈል መጠን",
+    chooseMethod: "የክፍያ መንገድ ይምረጡ",
+    accountName: "የሂሳብ ስም",
+    accountNumber: "የሂሳብ ቁጥር",
+    instructions: "የክፍያ መመሪያ",
+    fullName: "ሙሉ ስም",
+    email: "ኢሜይል",
+    phone: "ስልክ",
+    reference: "የግብይት ማረጋገጫ ቁጥር",
+    receipt: "ደረሰኝ ያስገቡ",
+    submit: "የክፍያ ጥያቄ ላክ",
+    pending: "ማረጋገጫ በመጠባበቅ ላይ",
+    mainInstruction: "ትክክለኛውን የክፍያ መጠን ከታች ወዳለው የተመረጠ የክፍያ ሂሳብ ያስተላልፉ። በምክንያት ቦታ ሙሉ ስምዎን ይጻፉ። ከክፍያ በኋላ ደረሰኙን ያስገቡና ጥያቄዎን ይላኩ። የፕላን መዳረሻዎ ክፍያው ከተረጋገጠ በኋላ ይጀምራል።",
+    success: "የክፍያ ጥያቄዎ በተሳካ ሁኔታ ተልኳል። ቡድናችን ደረሰኙን አረጋግጦ በቅርቡ ያገኝዎታል።"
+  }
+};
+let selectedPaymentPlan = PAYMENT_PLANS.go;
+let selectedPaymentMethod = PAYMENT_METHODS[0];
+let paymentLanguage = "en";
+let paymentTriggerElement = null;
+
 const universalEmbassyProcess = [
   { type: "document", text: "Confirm admission or travel purpose" },
   { type: "folder", text: "Prepare passport and supporting documents" },
@@ -127,6 +206,7 @@ const moreCountriesModal = document.getElementById("moreCountriesModal");
 const legalModal = document.getElementById("legalModal");
 const articleModal = document.getElementById("articleModal");
 const searchModal = document.getElementById("searchModal");
+const paymentModal = document.getElementById("paymentModal");
 const destinationGrid = document.getElementById("destinationGrid");
 const testimonialRowOne = document.getElementById("testimonialRowOne");
 const testimonialRowTwo = document.getElementById("testimonialRowTwo");
@@ -439,10 +519,10 @@ function syncBodyLock() {
   body.style.overflow = hasOpenModal || hasOpenMenu ? "hidden" : "";
 }
 function isDetailModal(modal) {
-  return modal === consultModal || modal === legalModal || modal === countryModal || modal === moreCountriesModal || modal === articleModal;
+  return modal === consultModal || modal === paymentModal || modal === legalModal || modal === countryModal || modal === moreCountriesModal || modal === articleModal;
 }
 function syncDetailViewState() {
-  const active = Boolean(document.querySelector("#consultModal.open, #legalModal.open, #countryModal.open, #moreCountriesModal.open, #articleModal.open"));
+  const active = Boolean(document.querySelector("#consultModal.open, #paymentModal.open, #legalModal.open, #countryModal.open, #moreCountriesModal.open, #articleModal.open"));
   body.classList.toggle("detail-view-active", active);
   if (active) navbar?.classList.add("nav-hidden");
   else navbar?.classList.remove("nav-force-visible");
@@ -1095,6 +1175,239 @@ async function handleConsultFormSubmit(event) {
   }
 }
 
+function getPaymentLabels() {
+  return PAYMENT_I18N[paymentLanguage] || PAYMENT_I18N.en;
+}
+
+function formatUsd(amount) {
+  return `$${Number(amount).toLocaleString("en-US")}`;
+}
+
+function formatEtb(amount) {
+  return `ETB ${Number(amount).toLocaleString("en-US", { maximumFractionDigits: 0 })}`;
+}
+
+function getPaymentEtbAmount(plan) {
+  return plan.price_usd * PAYMENT_EXCHANGE_RATE_ETB_PER_USD;
+}
+
+function setPaymentFormMessage(type, message) {
+  const messageEl = document.getElementById("paymentFormMessage");
+  if (!messageEl) return;
+  messageEl.textContent = message || "";
+  messageEl.classList.remove("is-success", "is-error");
+  if (type && message) messageEl.classList.add(type === "success" ? "is-success" : "is-error");
+}
+
+function updatePaymentAccountSummary() {
+  document.getElementById("paymentAccountName").textContent = selectedPaymentMethod.account_name;
+  document.getElementById("paymentAccountNumber").textContent = selectedPaymentMethod.account_number;
+  document.getElementById("paymentMethodInstruction").textContent = paymentLanguage === "am"
+    ? selectedPaymentMethod.instruction_am
+    : selectedPaymentMethod.instruction_en;
+}
+
+function renderPaymentMethods() {
+  const grid = document.getElementById("paymentMethodGrid");
+  if (!grid) return;
+
+  grid.innerHTML = PAYMENT_METHODS.map((method) => {
+    const checked = method.method_id === selectedPaymentMethod.method_id ? "checked" : "";
+    return `<label class="payment-method-card ${checked ? "is-selected" : ""}">
+      <input type="radio" name="paymentMethod" value="${escapeHtml(method.method_id)}" ${checked}>
+      <span class="payment-method-name">${escapeHtml(method.method_name)}</span>
+      <span>${escapeHtml(method.account_name)}</span>
+      <strong>${escapeHtml(method.account_number)}</strong>
+    </label>`;
+  }).join("");
+
+  grid.querySelectorAll('input[name="paymentMethod"]').forEach((input) => {
+    input.addEventListener("change", () => {
+      selectedPaymentMethod = PAYMENT_METHODS.find((method) => method.method_id === input.value) || PAYMENT_METHODS[0];
+      renderPaymentMethods();
+      updatePaymentAccountSummary();
+    });
+  });
+}
+
+function updatePaymentLanguage() {
+  const labels = getPaymentLabels();
+  document.getElementById("paymentModalTitle").textContent = labels.title;
+  document.getElementById("paymentStatusLabel").textContent = labels.pending;
+  document.getElementById("paymentSelectedPlanLabel").textContent = labels.selectedPlan;
+  document.getElementById("paymentAmountLabel").textContent = labels.amountToPay;
+  document.getElementById("paymentInstructionText").textContent = labels.mainInstruction;
+  document.getElementById("paymentMethodHeading").textContent = labels.chooseMethod;
+  document.getElementById("paymentAccountNameLabel").textContent = labels.accountName;
+  document.getElementById("paymentAccountNumberLabel").textContent = labels.accountNumber;
+  document.getElementById("paymentInstructionLabel").textContent = labels.instructions;
+  document.getElementById("paymentFullNameLabel").textContent = labels.fullName;
+  document.getElementById("paymentEmailLabel").textContent = labels.email;
+  document.getElementById("paymentPhoneLabel").textContent = labels.phone;
+  document.getElementById("paymentReferenceLabel").textContent = labels.reference;
+  document.getElementById("paymentReceiptLabel").textContent = labels.receipt;
+  document.getElementById("paymentSubmitButton").textContent = labels.submit;
+  document.querySelectorAll(".payment-lang-tab").forEach((tab) => {
+    const active = tab.dataset.paymentLang === paymentLanguage;
+    tab.classList.toggle("is-active", active);
+    tab.setAttribute("aria-selected", active ? "true" : "false");
+  });
+  updatePaymentAccountSummary();
+}
+
+function updatePaymentPlanSummary() {
+  document.getElementById("paymentPlanName").textContent = selectedPaymentPlan.name;
+  document.getElementById("paymentUsdAmount").textContent = formatUsd(selectedPaymentPlan.price_usd);
+  document.getElementById("paymentEtbAmount").textContent = formatEtb(getPaymentEtbAmount(selectedPaymentPlan));
+}
+
+function getPaymentFocusableElements() {
+  if (!paymentModal) return [];
+  return [...paymentModal.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])')]
+    .filter((el) => el.offsetParent !== null || el === document.activeElement);
+}
+
+function trapPaymentModalFocus(event) {
+  if (!paymentModal?.classList.contains("open") || event.key !== "Tab") return;
+  const focusable = getPaymentFocusableElements();
+  if (!focusable.length) return;
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  }
+}
+
+function openPaymentModal(planId, trigger) {
+  selectedPaymentPlan = PAYMENT_PLANS[planId] || PAYMENT_PLANS.go;
+  selectedPaymentMethod = PAYMENT_METHODS[0];
+  paymentLanguage = "en";
+  paymentTriggerElement = trigger || document.activeElement;
+
+  const form = document.getElementById("paymentRequestForm");
+  form?.reset();
+  setPaymentFormMessage("", "");
+  updatePaymentPlanSummary();
+  renderPaymentMethods();
+  updatePaymentLanguage();
+  openModal(paymentModal);
+  window.setTimeout(() => document.querySelector('.payment-lang-tab[data-payment-lang="en"]')?.focus(), 40);
+}
+
+function closePaymentModal() {
+  if (!paymentModal?.classList.contains("open")) return;
+  closeModal(paymentModal);
+  if (paymentTriggerElement && typeof paymentTriggerElement.focus === "function") {
+    window.setTimeout(() => paymentTriggerElement.focus(), 40);
+  }
+}
+
+function validatePaymentReceipt(input) {
+  if (!input?.files || input.files.length === 0) return { error: "Please upload your payment receipt." };
+  if (input.files.length > 1) return { error: "Please upload one receipt file only." };
+  const file = input.files[0];
+  const extension = getFileExtension(file);
+  if (!ALLOWED_PAYMENT_RECEIPT_MIME_TYPES.has(file.type) || !ALLOWED_PAYMENT_RECEIPT_EXTENSIONS.has(extension)) {
+    return { error: "Receipt must be a PDF, JPG, JPEG, or PNG file." };
+  }
+  if (file.size > MAX_PAYMENT_RECEIPT_BYTES) return { error: "Receipt file size must be 10MB or below." };
+  return { file, extension };
+}
+
+function validatePaymentForm(form) {
+  const fullName = getFieldValue(form, "fullName");
+  const email = getFieldValue(form, "email");
+  const phone = getFieldValue(form, "phone");
+  const transactionReference = getFieldValue(form, "transactionReference");
+  const paymentMethodInput = form.querySelector('input[name="paymentMethod"]:checked');
+  const simpleEmailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
+  if (!fullName) return { error: "Full Name is required." };
+  if (!email || !simpleEmailPattern.test(email) || !form.elements.email.validity.valid) return { error: "Please enter a valid email address." };
+  if (!phone) return { error: "Phone is required." };
+  if (!paymentMethodInput) return { error: "Please choose a payment method." };
+  if (!transactionReference) return { error: "Transaction Reference is required." };
+
+  const receipt = validatePaymentReceipt(form.elements.receipt);
+  if (receipt.error) return receipt;
+
+  return {
+    payload: {
+      plan_id: selectedPaymentPlan.plan_id,
+      plan_name: selectedPaymentPlan.name,
+      plan_price_usd: selectedPaymentPlan.price_usd,
+      plan_price_etb: getPaymentEtbAmount(selectedPaymentPlan),
+      payment_method: selectedPaymentMethod.method_id,
+      full_name: fullName,
+      email,
+      phone,
+      transaction_reference: transactionReference
+    },
+    file: receipt.file,
+    extension: receipt.extension
+  };
+}
+
+function buildPaymentReceiptPath(extension) {
+  return `receipts/${crypto.randomUUID()}.${extension}`;
+}
+
+async function uploadPaymentReceipt(file, extension) {
+  const path = buildPaymentReceiptPath(extension);
+  const { data, error } = await supabase.storage
+    .from(PAYMENT_RECEIPTS_BUCKET)
+    .upload(path, file, {
+      cacheControl: "3600",
+      upsert: false,
+      contentType: file.type
+    });
+  if (error) throw error;
+  return data.path;
+}
+
+async function handlePaymentRequestSubmit(event) {
+  event.preventDefault();
+  const form = event.currentTarget;
+  const submitButton = document.getElementById("paymentSubmitButton");
+  const labels = getPaymentLabels();
+  const originalButtonText = submitButton.textContent;
+  setPaymentFormMessage("", "");
+
+  const validation = validatePaymentForm(form);
+  if (validation.error) {
+    setPaymentFormMessage("error", validation.error);
+    return;
+  }
+
+  submitButton.disabled = true;
+  submitButton.textContent = paymentLanguage === "am" ? "በመላክ ላይ..." : "Submitting...";
+
+  try {
+    const receiptPath = await uploadPaymentReceipt(validation.file, validation.extension);
+    const { error } = await supabase
+      .from("payment_requests")
+      .insert([{ ...validation.payload, receipt_path: receiptPath }]);
+
+    if (error) throw error;
+
+    form.reset();
+    selectedPaymentMethod = PAYMENT_METHODS[0];
+    renderPaymentMethods();
+    updatePaymentAccountSummary();
+    setPaymentFormMessage("success", labels.success);
+  } catch (error) {
+    console.error("Payment request submission failed", error);
+    setPaymentFormMessage("error", "Payment request submission failed. Please check your connection and try again.");
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = originalButtonText;
+  }
+}
+
 function bindFaq() {
   document.querySelectorAll(".faq-item").forEach((item) => {
     const btn = item.querySelector(".faq-question");
@@ -1121,8 +1434,18 @@ function bindEvents() {
   document.getElementById("consultOpenHero").addEventListener("click", () => openModal(consultModal));
   document.getElementById("consultOpenAbout").addEventListener("click", () => openModal(consultModal));
   document.getElementById("consultOpenMobile").addEventListener("click", () => { closeMenu(); openModal(consultModal); });
-  document.getElementById("consultOpenFooter").addEventListener("click", () => openModal(consultModal));
   document.getElementById("confidenceOpen").addEventListener("click", () => openModal(consultModal));
+  document.querySelectorAll("[data-payment-plan]").forEach((button) => {
+    button.addEventListener("click", () => openPaymentModal(button.dataset.paymentPlan, button));
+  });
+  document.getElementById("paymentClose")?.addEventListener("click", closePaymentModal);
+  document.getElementById("paymentRequestForm")?.addEventListener("submit", handlePaymentRequestSubmit);
+  document.querySelectorAll(".payment-lang-tab").forEach((tab) => {
+    tab.addEventListener("click", () => {
+      paymentLanguage = tab.dataset.paymentLang === "am" ? "am" : "en";
+      updatePaymentLanguage();
+    });
+  });
   document.getElementById("exploreDestinations").addEventListener("click", () => document.getElementById("destinations").scrollIntoView({ behavior: "smooth", block: "start" }));
   menuOpen.addEventListener("click", openMenu);
   menuClose.addEventListener("click", closeMenu);
@@ -1167,8 +1490,10 @@ function bindEvents() {
     if (e.target === legalModal) closeModal(legalModal);
     if (e.target === articleModal) closeModal(articleModal);
     if (e.target === searchModal) closeModal(searchModal);
+    if (e.target === paymentModal) closePaymentModal();
   });
   document.addEventListener("keydown", (e) => {
+    trapPaymentModalFocus(e);
     if (e.key === "Escape") {
       closeMenu();
       closeModal(consultModal);
@@ -1177,6 +1502,7 @@ function bindEvents() {
       closeModal(legalModal);
       closeModal(articleModal);
       closeModal(searchModal);
+      closePaymentModal();
     }
   });
   searchInput.addEventListener("input", (e) => renderSearchResults(e.target.value));

@@ -1,2 +1,5 @@
 [functions.send-application-email]
 verify_jwt = false
+
+[functions.send-payment-request-email]
+verify_jwt = false
