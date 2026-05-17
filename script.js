@@ -380,12 +380,23 @@ function syncBodyLock() {
   const hasOpenMenu = mobilePanel.classList.contains("open");
   body.style.overflow = hasOpenModal || hasOpenMenu ? "hidden" : "";
 }
+function isDetailModal(modal) {
+  return modal === legalModal || modal === countryModal || modal === moreCountriesModal || modal === articleModal;
+}
+function syncDetailViewState() {
+  const active = Boolean(document.querySelector("#legalModal.open, #countryModal.open, #moreCountriesModal.open, #articleModal.open"));
+  body.classList.toggle("detail-view-active", active);
+  if (active) navbar?.classList.add("nav-hidden");
+  else navbar?.classList.remove("nav-force-visible");
+}
 function openModal(modal) {
   modal.classList.add("open");
   modal.setAttribute("aria-hidden", "false");
   const shell = modal.querySelector(".motion-modal");
   if (shell) requestAnimationFrame(() => shell.classList.add("is-open"));
+  if (isDetailModal(modal)) navbar?.classList.add("nav-hidden");
   syncBodyLock();
+  syncDetailViewState();
 }
 function closeModal(modal) {
   const shell = modal.querySelector(".motion-modal");
@@ -393,10 +404,25 @@ function closeModal(modal) {
   modal.classList.remove("open");
   modal.setAttribute("aria-hidden", "true");
   syncBodyLock();
+  syncDetailViewState();
 }
-function updateNavbarScrollState() {
+let lastNavbarScrollY = window.scrollY;
+let navbarTicking = false;
+function updateNavbar() {
   if (!navbar) return;
-  navbar.classList.toggle("scrolled", window.scrollY > 50);
+  const currentY = Math.max(window.scrollY, 0);
+  navbar.classList.toggle("scrolled", currentY > 50 || body.classList.contains("detail-view-active"));
+  if (currentY <= 10 && !body.classList.contains("detail-view-active")) {
+    navbar.classList.remove("nav-hidden", "nav-force-visible");
+  } else if (currentY > lastNavbarScrollY && currentY > 80) {
+    navbar.classList.add("nav-hidden");
+    navbar.classList.remove("nav-force-visible");
+  } else if (currentY < lastNavbarScrollY) {
+    navbar.classList.remove("nav-hidden");
+    navbar.classList.add("nav-force-visible");
+  }
+  lastNavbarScrollY = currentY;
+  navbarTicking = false;
 }
 function setActiveNav() {
   const sections = ["home", "about-us", "services", "destinations", "impact", "how-it-works", "testimonials", "newsroom", "contact"];
@@ -1119,7 +1145,13 @@ function startProcessNumberCycle() {
   if (!prefersReducedMotion) window.setInterval(activateProcessNumber, 1800);
 }
 
-function syncMenuScroll() { updateNavbarScrollState(); setActiveNav(); }
+function syncMenuScroll() {
+  setActiveNav();
+  if (!navbarTicking) {
+    window.requestAnimationFrame(updateNavbar);
+    navbarTicking = true;
+  }
+}
 function init() {
   initThemeToggle();
   setupLogoFallbacks();
@@ -1139,6 +1171,16 @@ function init() {
   syncMenuScroll();
   document.querySelectorAll("img").forEach(attachFallback);
 }
+window.addEventListener("wheel", (event) => {
+  if (!body.classList.contains("detail-view-active") || !navbar) return;
+  if (event.deltaY < 0) {
+    navbar.classList.remove("nav-hidden");
+    navbar.classList.add("nav-force-visible");
+  } else if (event.deltaY > 0) {
+    navbar.classList.add("nav-hidden");
+    navbar.classList.remove("nav-force-visible");
+  }
+}, { passive: true });
 window.addEventListener("scroll", syncMenuScroll, { passive: true });
 window.addEventListener("resize", setActiveNav, { passive: true });
 init();
