@@ -60,7 +60,7 @@ const siteMap = [
 ];
 
 const body = document.body;
-const siteHeader = document.getElementById("siteHeader");
+const navbar = document.getElementById("main-navbar");
 const menuOpen = document.getElementById("menuOpen");
 const menuClose = document.getElementById("menuClose");
 const mobilePanel = document.getElementById("mobilePanel");
@@ -394,33 +394,9 @@ function closeModal(modal) {
   modal.setAttribute("aria-hidden", "true");
   syncBodyLock();
 }
-function setHeaderState() { siteHeader.classList.toggle("scrolled", window.scrollY > 16); }
-let lastHeaderScrollY = window.scrollY;
-let headerScrollTicking = false;
-function updateSmartHeader() {
-  setHeaderState();
-  setActiveNav();
-  const currentY = Math.max(window.scrollY, 0);
-  const overlayOpen = Boolean(document.querySelector(".modal.open")) || mobilePanel.classList.contains("open");
-  if (currentY <= 10) {
-    siteHeader.classList.add("is-at-top", "nav-visible");
-    siteHeader.classList.remove("is-scrolled", "nav-hidden");
-  } else {
-    siteHeader.classList.remove("is-at-top");
-    siteHeader.classList.add("is-scrolled");
-    if (overlayOpen) {
-      siteHeader.classList.remove("nav-hidden");
-      siteHeader.classList.add("nav-visible");
-    } else if (currentY > lastHeaderScrollY + 10 && currentY > 120) {
-      siteHeader.classList.add("nav-hidden");
-      siteHeader.classList.remove("nav-visible");
-    } else if (currentY < lastHeaderScrollY - 4) {
-      siteHeader.classList.remove("nav-hidden");
-      siteHeader.classList.add("nav-visible");
-    }
-  }
-  lastHeaderScrollY = currentY;
-  headerScrollTicking = false;
+function updateNavbarScrollState() {
+  if (!navbar) return;
+  navbar.classList.toggle("scrolled", window.scrollY > 50);
 }
 function setActiveNav() {
   const sections = ["home", "about-us", "services", "destinations", "impact", "how-it-works", "testimonials", "newsroom", "contact"];
@@ -1031,10 +1007,12 @@ function bindEvents() {
   document.getElementById("pricingTermsOpen")?.addEventListener("click", openTermsContent);
   const footerDisclosureToggle = document.getElementById("footerDisclosureToggle");
   const footerDisclosureContent = document.getElementById("footerDisclosureContent");
+  const footerDisclosure = document.querySelector(".footer-disclosure");
   footerDisclosureToggle?.addEventListener("click", () => {
     const isOpen = footerDisclosureToggle.getAttribute("aria-expanded") === "true";
     footerDisclosureToggle.setAttribute("aria-expanded", String(!isOpen));
     footerDisclosureToggle.querySelector(".footer-disclosure-toggle-text").textContent = isOpen ? "Expand to view" : "Collapse";
+    footerDisclosure?.classList.toggle("is-open", !isOpen);
     footerDisclosureContent?.classList.toggle("is-open", !isOpen);
   });
   document.getElementById("privacyOpen").addEventListener("click", () => openLegal("Privacy Policy", `<section><h3>Privacy Policy</h3><p>This Policy explains how BROVI collects, uses, stores, and protects personal information shared through this website and our consultation services.</p></section><section><h4>1) Introduction</h4><p>We are committed to responsible data handling and only collect information necessary for service delivery, communication, and compliance.</p></section><section><h4>2) Information We Collect</h4><p>We may collect contact details, education/work background, destination interests, uploaded records, and consultation notes.</p></section><section><h4>3) How We Use Information</h4><p>Data is used to assess eligibility pathways, deliver advisory guidance, prepare documentation checklists, and communicate updates.</p></section><section><h4>4) Consultation and Service Delivery Data</h4><p>Consultation records may include action plans, timeline recommendations, and document feedback to improve delivery quality and continuity.</p></section><section><h4>5) Cookies and Technical Data</h4><p>We may use basic technical logs or analytics signals (such as browser type and page interactions) to improve site usability and reliability.</p></section><section><h4>6) Document Handling</h4><p>Uploaded files are used only for advisory and preparation support. Clients should avoid sharing unrelated sensitive records not required for service scope.</p></section><section><h4>7) Sharing with Trusted Partners</h4><p>Where necessary, information may be shared with trusted service partners or official channels strictly for client-requested processing steps.</p></section><section><h4>8) Data Retention</h4><p>Information is retained only for active services, recordkeeping, legal obligations, or quality control, then securely deleted or archived.</p></section><section><h4>9) Security Measures</h4><p>BROVI applies reasonable technical and operational safeguards to reduce unauthorized access, disclosure, or misuse risks.</p></section><section><h4>10) User Rights</h4><p>You may request access, correction, or deletion of eligible personal data by contacting us. Some records may be retained where required by law.</p></section><section><h4>11) International Users</h4><p>Clients using our services across borders acknowledge that processing may involve data handling relevant to destination-country procedures.</p></section><section><h4>12) Third-Party Links</h4><p>Our site may link to third-party platforms. We are not responsible for external privacy practices and recommend reviewing those policies directly.</p></section><section><h4>13) Updates to This Policy</h4><p>We may revise this Policy as services evolve. Updated versions apply from the date of publication on our website.</p></section><section><h4>14) Contact Information</h4><p>Privacy inquiries: scelta.infinity@gmail.com.</p></section>`));
@@ -1141,12 +1119,7 @@ function startProcessNumberCycle() {
   if (!prefersReducedMotion) window.setInterval(activateProcessNumber, 1800);
 }
 
-function syncMenuScroll() {
-  if (!headerScrollTicking) {
-    window.requestAnimationFrame(updateSmartHeader);
-    headerScrollTicking = true;
-  }
-}
+function syncMenuScroll() { updateNavbarScrollState(); setActiveNav(); }
 function init() {
   initThemeToggle();
   setupLogoFallbacks();

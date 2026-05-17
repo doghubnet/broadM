@@ -53,7 +53,7 @@
     <symbol id="icon-clipboard" viewBox="0 0 24 24"><path d="M9 4h6l1 2h3v15H5V6h3zM9 4h6M9 11h6M9 15h6"/></symbol>
   </svg>
 
-  <header class="site-header" id="siteHeader">
+  <header class="site-header" id="main-navbar">
     <div class="container glass nav-shell">
       <a class="site-logo nav-logo" href="#home" aria-label="BROVI home">
         <img class="site-logo-img" data-logo-img src="https://i.imgur.com/vwUJlqR.jpeg" width="148" height="42" alt="BROVI logo" loading="eager" decoding="async" fetchpriority="high">
@@ -613,31 +613,29 @@
           <span class="footer-feature-title">Expert travel planning and coaching</span>
         </div>
         <div class="footer-feature-item">
-          <span class="footer-feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3h10v18H7z"/><path d="M10 7h4M10 11h4M10 15h2.2M14.2 16.6l1.1 1.1 2.5-2.7"/></svg></span>
+          <span class="footer-feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M16.5 7.5c-.8-1-2.2-1.6-4.1-1.6-2.4 0-4.1 1.2-4.1 3 0 2 2 2.6 4.2 3.1 2.3.5 4.2 1.1 4.2 3.1 0 1.8-1.8 3-4.4 3-2 0-3.7-.7-4.8-1.9"/><path d="M5 21h14"/></svg></span>
           <span class="footer-feature-title">No hidden fees</span>
         </div>
       </div>
     </section>
 
-    <section class="container footer-disclosure" aria-labelledby="footerDisclosureTitle">
-      <div class="footer-disclosure-header">
-        <h3 id="footerDisclosureTitle">About BROVI</h3>
-        <button class="footer-disclosure-toggle" id="footerDisclosureToggle" type="button" aria-expanded="false" aria-controls="footerDisclosureContent">
-          <span class="footer-disclosure-toggle-text">Expand to view</span>
-          <span class="footer-disclosure-chevron" aria-hidden="true">⌄</span>
-        </button>
-      </div>
-      <div class="footer-disclosure-preview">
-        <p>BROVI provides study, travel, work, and mobility guidance for clients who need clear support before making international plans. Our service focuses on destination selection, document preparation guidance, interview readiness, travel planning, and process support so applicants can prepare with better structure and confidence.</p>
-        <p>Every destination has its own requirements, timelines, fees, and review standards. Embassy, consular, institutional, airline, border, and third-party decisions remain outside BROVI’s control, and final outcomes depend on official review, client eligibility, document quality, timing, and truthful information.</p>
+    <section class="container footer-disclosure" aria-label="BROVI service information">
+      <div class="footer-disclosure-preview" id="footerDisclosurePreview">
+        BROVI provides study, travel, work, and mobility guidance for clients who need clear support before making international plans. Our service focuses on destination selection, document preparation guidance, interview readiness, travel planning, and process support so applicants can prepare with better structure and confidence.
       </div>
       <div class="footer-disclosure-content" id="footerDisclosureContent">
         <div class="footer-disclosure-expanded">
+          <p>BROVI provides study, travel, work, and mobility guidance for clients who need clear support before making international plans. Our service focuses on destination selection, document preparation guidance, interview readiness, travel planning, and process support so applicants can prepare with better structure and confidence.</p>
+          <p>Every destination has its own requirements, timelines, fees, and review standards. Embassy, consular, institutional, airline, border, and third-party decisions remain outside BROVI’s control, and final outcomes depend on official review, client eligibility, document quality, timing, and truthful information.</p>
           <p>Clients are responsible for providing accurate personal details, valid documents, and complete supporting records. Incomplete, inconsistent, expired, altered, or misleading information can delay processing or lead to refusal by the relevant authority.</p>
           <p>BROVI works to keep guidance practical, transparent, and easy to understand. Service access, response times, document review depth, and planning support depend on the selected package, the destination, and the complexity of each case.</p>
           <p>We may update destination information, preparation steps, and service notes as rules change. Clients should always review official requirements before submission, travel, payment, or booking decisions.</p>
         </div>
       </div>
+      <button class="footer-disclosure-toggle" id="footerDisclosureToggle" type="button" aria-expanded="false" aria-controls="footerDisclosureContent">
+        <span class="footer-disclosure-toggle-text">Expand to view</span>
+        <span class="footer-disclosure-chevron" aria-hidden="true">⌄</span>
+      </button>
     </section>
     <div class="container footer-grid">
       <div>
