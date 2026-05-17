@@ -381,10 +381,10 @@ function syncBodyLock() {
   body.style.overflow = hasOpenModal || hasOpenMenu ? "hidden" : "";
 }
 function isDetailModal(modal) {
-  return modal === legalModal || modal === countryModal || modal === moreCountriesModal || modal === articleModal;
+  return modal === consultModal || modal === legalModal || modal === countryModal || modal === moreCountriesModal || modal === articleModal;
 }
 function syncDetailViewState() {
-  const active = Boolean(document.querySelector("#legalModal.open, #countryModal.open, #moreCountriesModal.open, #articleModal.open"));
+  const active = Boolean(document.querySelector("#consultModal.open, #legalModal.open, #countryModal.open, #moreCountriesModal.open, #articleModal.open"));
   body.classList.toggle("detail-view-active", active);
   if (active) navbar?.classList.add("nav-hidden");
   else navbar?.classList.remove("nav-force-visible");
@@ -411,15 +411,19 @@ let navbarTicking = false;
 function updateNavbar() {
   if (!navbar) return;
   const currentY = Math.max(window.scrollY, 0);
-  navbar.classList.toggle("scrolled", currentY > 50 || body.classList.contains("detail-view-active"));
-  if (currentY <= 10 && !body.classList.contains("detail-view-active")) {
-    navbar.classList.remove("nav-hidden", "nav-force-visible");
-  } else if (currentY > lastNavbarScrollY && currentY > 80) {
-    navbar.classList.add("nav-hidden");
-    navbar.classList.remove("nav-force-visible");
-  } else if (currentY < lastNavbarScrollY) {
-    navbar.classList.remove("nav-hidden");
-    navbar.classList.add("nav-force-visible");
+  const detailOpen = body.classList.contains("detail-view-active");
+  navbar.classList.toggle("scrolled", currentY > 50 || detailOpen);
+
+  if (!detailOpen) {
+    if (currentY <= 10) {
+      navbar.classList.remove("nav-hidden", "nav-force-visible");
+    } else if (currentY > lastNavbarScrollY && currentY > 80) {
+      navbar.classList.add("nav-hidden");
+      navbar.classList.remove("nav-force-visible");
+    } else if (currentY < lastNavbarScrollY) {
+      navbar.classList.remove("nav-hidden");
+      navbar.classList.add("nav-force-visible");
+    }
   }
   lastNavbarScrollY = currentY;
   navbarTicking = false;
