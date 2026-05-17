@@ -387,7 +387,10 @@
           <p class="section-subtitle">Real stories from clients who used the service.</p>
         </div>
 
-        <div class="testimonial-bento-grid" id="testimonialBentoGrid" aria-label="Client testimonials"></div>
+        <div class="testimonial-marquee-wrap" aria-label="Client testimonials">
+          <div class="testimonial-marquee-row testimonial-row-one" id="testimonialRowOne"></div>
+          <div class="testimonial-marquee-row testimonial-row-two" id="testimonialRowTwo"></div>
+        </div>
 
         <div class="container" style="padding:0;margin-top:44px">
           <div class="guarantee reveal">
@@ -855,7 +858,7 @@
   </template>
 
   <template id="testimonialTextTemplate">
-    <article class="testimonial-bento-card testimonial-text-card motion-card scroll-reveal">
+    <article class="testimonial-marquee-card testimonial-text-card motion-card scroll-reveal">
       <div class="testimonial-card-top">
         <strong class="testimonial-client-name"></strong>
         <span class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</span>
@@ -866,7 +869,7 @@
   </template>
 
   <template id="testimonialImageTemplate">
-    <article class="testimonial-bento-card testimonial-photo-card motion-card scroll-reveal">
+    <article class="testimonial-marquee-card testimonial-photo-card motion-card scroll-reveal">
       <img src="" alt="" loading="lazy" decoding="async">
     </article>
   </template>

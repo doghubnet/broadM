@@ -73,7 +73,8 @@ const legalModal = document.getElementById("legalModal");
 const articleModal = document.getElementById("articleModal");
 const searchModal = document.getElementById("searchModal");
 const destinationGrid = document.getElementById("destinationGrid");
-const testimonialBentoGrid = document.getElementById("testimonialBentoGrid");
+const testimonialRowOne = document.getElementById("testimonialRowOne");
+const testimonialRowTwo = document.getElementById("testimonialRowTwo");
 const impactCount = document.getElementById("impactCount");
 const searchInput = document.getElementById("searchInput");
 const searchResults = document.getElementById("searchResults");
@@ -726,31 +727,44 @@ function startImpactCarousel() {
     slides[current].classList.add("active");
   }, 6000);
 }
-function renderTestimonials() {
-  if (!testimonialBentoGrid || !testimonialTextTemplate || !testimonialImageTemplate) return;
+function createTestimonialCard(item) {
+  const isPhotoCard = item.type === "photo";
+  const node = (isPhotoCard ? testimonialImageTemplate : testimonialTextTemplate).content.cloneNode(true);
+  const article = node.querySelector(".testimonial-marquee-card");
 
-  testimonialBentoGrid.replaceChildren();
+  if (isPhotoCard) {
+    const img = node.querySelector("img");
+    img.src = item.img;
+    img.alt = `${item.name || "BROVI client"} portrait`;
+    attachFallback(img);
+  } else {
+    node.querySelector(".testimonial-client-name").textContent = item.name;
+    node.querySelector(".testimonial-quote").textContent = item.q;
+    node.querySelector(".testimonial-client-country").textContent = item.country;
+  }
 
-  testimonials.forEach((item) => {
-    const isPhotoCard = item.type === "photo";
-    const node = (isPhotoCard ? testimonialImageTemplate : testimonialTextTemplate).content.cloneNode(true);
-    const article = node.querySelector(".testimonial-bento-card");
+  return article;
+}
 
-    if (item.span) article.classList.add(`is-${item.span}`);
+function renderTestimonialRow(target, items, directionClass) {
+  const track = document.createElement("div");
+  track.className = `testimonial-track ${directionClass}`;
 
-    if (isPhotoCard) {
-      const img = node.querySelector("img");
-      img.src = item.img;
-      img.alt = `${item.name || "BROVI client"} portrait`;
-      attachFallback(img);
-    } else {
-      node.querySelector(".testimonial-client-name").textContent = item.name;
-      node.querySelector(".testimonial-quote").textContent = item.q;
-      node.querySelector(".testimonial-client-country").textContent = item.country;
-    }
-
-    testimonialBentoGrid.appendChild(node);
+  [...items, ...items].forEach((item) => {
+    track.appendChild(createTestimonialCard(item));
   });
+
+  target.replaceChildren(track);
+}
+
+function renderTestimonials() {
+  if (!testimonialRowOne || !testimonialRowTwo || !testimonialTextTemplate || !testimonialImageTemplate) return;
+
+  const rowOneItems = testimonials.slice(0, 5);
+  const rowTwoItems = testimonials.slice(5);
+
+  renderTestimonialRow(testimonialRowOne, rowOneItems, "testimonial-track-left");
+  renderTestimonialRow(testimonialRowTwo, rowTwoItems, "testimonial-track-right");
 }
 function renderSearchResults(query) {
   const q = query.trim().toLowerCase();
@@ -791,7 +805,7 @@ function applyMotionClasses() {
   document.querySelectorAll(".about-copy, .guarantee").forEach((el) => el.classList.add("scroll-reveal"));
   document.querySelectorAll(".service, .more-services, .step, .faq-item, .pricing-card, .group-offer-card, .blog-card").forEach((el) => el.classList.add("motion-card", "scroll-reveal"));
   document.querySelectorAll(".impact-slide, .success-feature-card, .success-story-card").forEach((el) => el.classList.add("motion-card"));
-  document.querySelectorAll(".testimonial-bento-card").forEach((el) => el.classList.add("motion-card", "scroll-reveal"));
+  document.querySelectorAll(".testimonial-marquee-card").forEach((el) => el.classList.add("motion-card", "scroll-reveal"));
   document.querySelectorAll(".about-founder-card").forEach((el) => el.classList.add("motion-card", "scroll-reveal"));
   document.querySelectorAll(".btn:not(.icon-btn), .article-back-btn, .group-cta-button").forEach((el) => el.classList.add("motion-button"));
   document.querySelectorAll(".modal-shell").forEach((el) => el.classList.add("motion-modal"));
