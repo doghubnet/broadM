@@ -85,6 +85,15 @@ const MAX_PAYMENT_RECEIPT_BYTES = 10 * 1024 * 1024;
 const ALLOWED_PAYMENT_RECEIPT_MIME_TYPES = new Set(["application/pdf", "image/jpeg", "image/png"]);
 const ALLOWED_PAYMENT_RECEIPT_EXTENSIONS = new Set(["pdf", "jpg", "jpeg", "png"]);
 const PAYMENT_PLANS = {
+  free: {
+    id: "free",
+    plan_id: "free",
+    name: "Free",
+    priceUsd: 0,
+    priceEtb: 0,
+    displayUsd: "$0",
+    displayEtb: "0 ETB"
+  },
   go: {
     id: "go",
     plan_id: "go",
@@ -119,6 +128,8 @@ const PAYMENT_METHODS = [
     method_name: "Telebirr",
     account_name: "Gedion Adamu",
     account_number: "0906795434",
+    logo_url: "https://upload.wikimedia.org/wikipedia/en/a/a4/Telebirr.png",
+    logo_alt: "Telebirr logo",
     instruction_en: "Transfer the exact amount to this Telebirr account and use your full name as the payment reason.",
     instruction_am: "ትክክለኛውን መጠን ወደዚህ የቴሌብር ሂሳብ ያስተላልፉ፣ በምክንያት ቦታ ሙሉ ስምዎን ይጻፉ።"
   },
@@ -127,6 +138,8 @@ const PAYMENT_METHODS = [
     method_name: "CBE Bank",
     account_name: "Gedion Adamu",
     account_number: "1000238891977",
+    logo_url: "https://soccer.et/wp-content/uploads/2025/10/CBE.jpg",
+    logo_alt: "CBE Bank logo",
     instruction_en: "Transfer the exact amount to this CBE Bank account and keep the bank receipt for upload.",
     instruction_am: "ትክክለኛውን መጠን ወደዚህ የCBE Bank ሂሳብ ያስተላልፉ፣ የባንክ ደረሰኙን ለማስገባት ያስቀምጡ።"
   },
@@ -135,6 +148,8 @@ const PAYMENT_METHODS = [
     method_name: "Siinque Bank",
     account_name: "Gediyon Adamu",
     account_number: "1073488600113",
+    logo_url: "https://siinqeebank.com/wp-content/uploads/2024/03/Green-Logo.png",
+    logo_alt: "Siinque Bank logo",
     instruction_en: "Transfer the exact amount to this Siinque Bank account and upload the receipt after payment.",
     instruction_am: "ትክክለኛውን መጠን ወደዚህ የSiinque Bank ሂሳብ ያስተላልፉ፣ ከክፍያ በኋላ ደረሰኙን ያስገቡ።"
   }
@@ -1249,8 +1264,12 @@ function renderPaymentMethods() {
 
   grid.innerHTML = PAYMENT_METHODS.map((method) => {
     const checked = method.method_id === selectedPaymentMethod.method_id ? "checked" : "";
-    return `<label class="payment-method-card ${checked ? "is-selected" : ""}">
+    return `<label class="payment-method-card ${checked ? "is-selected" : ""}" data-payment-method="${escapeHtml(method.method_id)}">
       <input type="radio" name="paymentMethod" value="${escapeHtml(method.method_id)}" ${checked}>
+      <span class="payment-method-logo-wrap">
+        <img class="payment-method-logo" src="${escapeHtml(method.logo_url)}" alt="${escapeHtml(method.logo_alt)}" loading="lazy" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false;">
+        <span class="payment-method-logo-fallback" hidden>${escapeHtml(method.method_name)}</span>
+      </span>
       <span class="payment-method-name">${escapeHtml(method.method_name)}</span>
       <span>${escapeHtml(method.account_name)}</span>
       <strong>${escapeHtml(method.account_number)}</strong>
@@ -1392,6 +1411,8 @@ function validatePaymentForm(form) {
       plan_price_usd: getPlanUsd(selectedPaymentPlan),
       plan_price_etb: getPlanEtb(selectedPaymentPlan),
       payment_method: selectedPaymentMethod.method_id,
+      payment_account_name: selectedPaymentMethod.account_name,
+      payment_account_number: selectedPaymentMethod.account_number,
       full_name: fullName,
       email,
       phone,
@@ -1441,8 +1462,7 @@ function buildPaymentSummaryRows(summary) {
 
 function buildPaymentSummaryMarkup(summary, printable = false) {
   const actions = printable ? "" : `<div class="payment-summary-actions">
-    <button class="btn btn-primary" type="button" id="paymentDownloadPdf">Download PDF</button>
-    <button class="btn btn-secondary" type="button" id="paymentPrintSummary">Print</button>
+    <button class="btn btn-primary" type="button" id="paymentPrintSummary">Print / Save as PDF</button>
     <button class="btn btn-light" type="button" id="paymentCopyRequestId">Copy Request ID</button>
     <button class="btn btn-light" type="button" id="paymentSummaryClose">Close</button>
   </div>`;
@@ -1474,7 +1494,6 @@ function renderPaymentVerificationSummary(summary) {
   printableSummary.innerHTML = buildPaymentSummaryMarkup(summary, true);
 
   document.getElementById("paymentPrintSummary")?.addEventListener("click", () => window.print());
-  document.getElementById("paymentDownloadPdf")?.addEventListener("click", () => window.print());
   document.getElementById("paymentCopyRequestId")?.addEventListener("click", async () => {
     try {
       await navigator.clipboard.writeText(summary.request_code);
@@ -1501,17 +1520,26 @@ async function handlePaymentRequestSubmit(event) {
   }
 
   submitButton.disabled = true;
+  submitButton.classList.add("is-loading");
   submitButton.textContent = paymentLanguage === "am" ? "በመላክ ላይ..." : "Submitting...";
 
   try {
     const receiptPath = await uploadPaymentReceipt(validation.file, validation.extension);
     const submittedAt = new Date();
-    const insertPayload = { ...validation.payload, receipt_path: receiptPath };
+    const insertPayload = { ...validation.payload, receipt_path: receiptPath, status: "pending" };
     const { error } = await supabase
       .from("payment_requests")
       .insert([insertPayload]);
 
-    if (error) throw error;
+    if (error) {
+      const { error: cleanupError } = await supabase.storage
+        .from(PAYMENT_RECEIPTS_BUCKET)
+        .remove([receiptPath]);
+      if (cleanupError) {
+        console.warn("Payment receipt cleanup failed after request insert error", { message: cleanupError.message });
+      }
+      throw error;
+    }
 
     const summary = {
       ...insertPayload,
@@ -1530,10 +1558,14 @@ async function handlePaymentRequestSubmit(event) {
     setPaymentFormMessage("success", labels.success);
     renderPaymentVerificationSummary(summary);
   } catch (error) {
-    console.error("Payment request submission failed", error);
+    console.error("Payment request submission failed", {
+      message: error?.message || "Unknown payment request error",
+      code: error?.code || undefined
+    });
     setPaymentFormMessage("error", "Payment request submission failed. Please check your connection and try again.");
   } finally {
     submitButton.disabled = false;
+    submitButton.classList.remove("is-loading");
     submitButton.textContent = originalButtonText;
   }
 }

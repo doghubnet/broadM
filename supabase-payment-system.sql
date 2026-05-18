@@ -27,6 +27,8 @@ create table if not exists public.payment_requests (
   plan_price_usd numeric not null,
   plan_price_etb numeric not null,
   payment_method text not null,
+  payment_account_name text not null,
+  payment_account_number text not null,
   full_name text not null,
   email text not null,
   phone text not null,
@@ -48,9 +50,13 @@ comment on table public.payment_methods is 'Active BROVI manual payment accounts
 comment on table public.payment_requests is 'Manual payment verification requests submitted by clients. Public inserts only; admins verify or reject inside Supabase.';
 comment on column public.payment_requests.status is 'Always forced to pending on public insert. Admin may later update the record inside Supabase.';
 comment on column public.payment_requests.request_code is 'Unique public-facing payment verification request code shown to the applicant and admin.';
+comment on column public.payment_requests.payment_account_name is 'Manual payment account name shown to the applicant when the payment request was submitted.';
+comment on column public.payment_requests.payment_account_number is 'Manual payment account number shown to the applicant when the payment request was submitted.';
 
 alter table public.payment_requests
-  add column if not exists request_code text;
+  add column if not exists request_code text,
+  add column if not exists payment_account_name text,
+  add column if not exists payment_account_number text;
 
 alter table public.payment_requests
   drop constraint if exists payment_requests_usd_positive_check,
@@ -58,7 +64,9 @@ alter table public.payment_requests
   drop constraint if exists payment_requests_request_code_required_check,
   drop constraint if exists payment_requests_request_code_format_check,
   drop constraint if exists payment_requests_usd_plan_check,
-  drop constraint if exists payment_requests_etb_plan_check;
+  drop constraint if exists payment_requests_etb_plan_check,
+  drop constraint if exists payment_requests_account_name_required_check,
+  drop constraint if exists payment_requests_account_number_required_check;
 
 alter table public.payment_requests
   add constraint payment_requests_request_code_required_check
@@ -75,6 +83,14 @@ alter table public.payment_requests
 alter table public.payment_requests
   add constraint payment_requests_etb_plan_check
   check (plan_price_etb in (23550, 54950, 109900)) not valid;
+
+alter table public.payment_requests
+  add constraint payment_requests_account_name_required_check
+  check (payment_account_name is not null and length(payment_account_name) between 2 and 140) not valid;
+
+alter table public.payment_requests
+  add constraint payment_requests_account_number_required_check
+  check (payment_account_number is not null and length(payment_account_number) between 5 and 80) not valid;
 
 create unique index if not exists payment_requests_request_code_unique_idx
 on public.payment_requests (request_code)
@@ -103,6 +119,11 @@ with check (
   and plan_price_usd in (149.99, 349.99, 699.99)
   and plan_price_etb in (23550, 54950, 109900)
   and payment_method in ('telebirr', 'cbe_bank', 'siinque_bank')
+  and payment_account_name is not null
+  and payment_account_number is not null
+  and length(payment_account_name) between 2 and 140
+  and length(payment_account_number) between 5 and 80
+  and status = 'pending'
   and length(full_name) between 2 and 140
   and position('@' in email) > 1
   and length(phone) between 5 and 60
